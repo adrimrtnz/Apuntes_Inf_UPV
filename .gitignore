@@ -1,9 +1,14 @@
 Hyperloop/*
 **/video
+**/Video
 **/enlaces
+**/Tools
 
 *.pdf
 *.html
 *.url
 *.ppt
+*.pptx
+*.ppsx
+*.png
 *.http*
