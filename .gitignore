@@ -12,3 +12,5 @@ Hyperloop/*
 *.ppsx
 *.png
 *.http*
+
+*.c
