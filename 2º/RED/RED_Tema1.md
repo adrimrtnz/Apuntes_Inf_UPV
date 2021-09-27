@@ -80,3 +80,36 @@ $$
 T_{trans} = \frac{L}{V_{trans}}
 $$
 
+¿Cuánto tardamos en inyectar un paquete de L bits en una red de Rbps?
+
+$$
+R = \frac{L}{t_{trans}}
+$$
+
+### Estructura de internet
+Es más o menos jerárquica. En el centro existen unos pocos ISPs de grandes redes (cobertura nacional e internacional. **Redes Troncales**).
+* ISPs comerciales de "nivel-1" (tier-1) + Grances distribuidores de contenidos (Goole, Akamai, Microsoft).
+* Se tratan entre sí como iguales (intercambio de datos gratis, acuerdo entre iguales $\rightarrow$ *peering*).
+* Los ISPs de Nivel-3 son ISPs locales.
+    * Son clientes de las redes de Nivel-1 y Nivel-2.
+    * **Redes/ISP de acceso** (last hop) a las que se conectan los host de los usuarios.
+
+### Retardos, pérdidas y tasa de transferencia (throughput) en redes de conmutación de paquetes
+Si la tasa de llegada de paquetes al enlace excede la capacidad de salida del enlace los paquetes se encolan, esperando su turno.
+
+Existen 4 fuentes en el retardo de los paquetes:
+* **Tiempo de procesamiento** (procesamiento del nodo):
+    * Comprobación de errores.
+    * Determinar enlace de salida.
+    * Del orden de microsegundos.
+* **Tiempo de cola** (retardo de cola):
+    * Tiempo de espera en enlace de salida para la transmisión.
+    * Depende del nivel de congestión del router.
+    * *Diapos 1-43*.
+* **Tiempo de transmisión**:
+* **Tiempo de propagación**:
+    * Tiempo que tarda la señal en transmitirse en el medio en el que lo hace.
+    * Lo más influyente es la distancia de un punto a otro.
+    * **RTT** (**R**ound **T**rip **T**ime): tiempo en milisegundos desde que un navegador manda la petición hasta que recive una respuesta desde el servidor
+
+### Capas de protocolos, modelos de servicio
