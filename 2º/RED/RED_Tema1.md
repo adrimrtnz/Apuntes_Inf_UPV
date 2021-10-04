@@ -95,7 +95,14 @@ Es más o menos jerárquica. En el centro existen unos pocos ISPs de grandes red
     * **Redes/ISP de acceso** (last hop) a las que se conectan los host de los usuarios.
 
 ### Retardos, pérdidas y tasa de transferencia (throughput) en redes de conmutación de paquetes
+![Throughput](https://cdn.comparitech.com/wp-content/uploads/2019/01/DiagramLatency-vs-throughput-2-1024x427.jpg)
+
 Si la tasa de llegada de paquetes al enlace excede la capacidad de salida del enlace los paquetes se encolan, esperando su turno.
+
+El **Throughput extremo a extremo** es la tasa a la que los bits son recibidos entre el destino.
+* **Instantaneo**: tasa en un momento dado.
+* **Medio**.
+
 
 Existen 4 fuentes en el retardo de los paquetes:
 * **Tiempo de procesamiento** (procesamiento del nodo):
@@ -113,3 +120,16 @@ Existen 4 fuentes en el retardo de los paquetes:
     * **RTT** (**R**ound **T**rip **T**ime): tiempo en milisegundos desde que un navegador manda la petición hasta que recive una respuesta desde el servidor
 
 ### Capas de protocolos, modelos de servicio
+
+#### Modelo de referencia ISO/OSI
+Permite interpretar el significado de los datos. La **sesión** delimita y sincroniza el intercambio de datos. La pila de Internet no tiene estas capas, si una aplicación necesita estos servicios, debe implementarlos.
+
+|Capas|
+|:--------:|
+|Aplicación|
+|Sesión|
+|Transporte|
+|Red|
+|Enlace|
+|Física|
+
