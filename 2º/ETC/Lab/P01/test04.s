@@ -1,7 +1,7 @@
-. data = 0x1000000C
+.data 0x1000000C
 var1: .word 500
 var2: .word 100
-cadena: .asciiz “practica etc”
+cadena: .asciiz "practica etc"
 
 
 la $t0, var1

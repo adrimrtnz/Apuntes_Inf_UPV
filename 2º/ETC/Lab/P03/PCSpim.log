@@ -1,0 +1,777 @@
+Messages
+=========================
+SPIM Version 6.4 of January 1, 2002
+Copyright 1990-2002 by James R. Larus (larus@cs.wisc.edu).
+All Rights Reserved.
+DOS and Windows ports by David A. Carley (dac@cs.wisc.edu).
+Copyright 1997 by Morgan Kaufmann Publishers, Inc.
+See the file README for a full copyright notice.
+SPIM Version 6.4 of January 1, 2002
+Copyright 1990-2002 by James R. Larus (larus@cs.wisc.edu).
+All Rights Reserved.
+DOS and Windows ports by David A. Carley (dac@cs.wisc.edu).
+Copyright 1997 by Morgan Kaufmann Publishers, Inc.
+See the file README for a full copyright notice.
+Memory and registers have been cleared, and the simulator reinitialized.
+
+C:\Users\adri_\OneDrive\UPV\2º\ETC\Lab\P03\02_exer_01.s has been successfully loaded
+SPIM Version 6.4 of January 1, 2002
+Copyright 1990-2002 by James R. Larus (larus@cs.wisc.edu).
+All Rights Reserved.
+DOS and Windows ports by David A. Carley (dac@cs.wisc.edu).
+Copyright 1997 by Morgan Kaufmann Publishers, Inc.
+See the file README for a full copyright notice.
+Memory and registers have been cleared, and the simulator reinitialized.
+
+C:\Users\adri_\OneDrive\UPV\2º\ETC\Lab\P03\02_exer_01.s has been successfully loaded
+SPIM Version 6.4 of January 1, 2002
+Copyright 1990-2002 by James R. Larus (larus@cs.wisc.edu).
+All Rights Reserved.
+DOS and Windows ports by David A. Carley (dac@cs.wisc.edu).
+Copyright 1997 by Morgan Kaufmann Publishers, Inc.
+See the file README for a full copyright notice.
+Memory and registers have been cleared, and the simulator reinitialized.
+
+Load failed. Check code and simulator settings and try again.
+SPIM Version 6.4 of January 1, 2002
+Copyright 1990-2002 by James R. Larus (larus@cs.wisc.edu).
+All Rights Reserved.
+DOS and Windows ports by David A. Carley (dac@cs.wisc.edu).
+Copyright 1997 by Morgan Kaufmann Publishers, Inc.
+See the file README for a full copyright notice.
+Memory and registers have been cleared, and the simulator reinitialized.
+
+Load failed. Check code and simulator settings and try again.
+SPIM Version 6.4 of January 1, 2002
+Copyright 1990-2002 by James R. Larus (larus@cs.wisc.edu).
+All Rights Reserved.
+DOS and Windows ports by David A. Carley (dac@cs.wisc.edu).
+Copyright 1997 by Morgan Kaufmann Publishers, Inc.
+See the file README for a full copyright notice.
+Memory and registers have been cleared, and the simulator reinitialized.
+
+Load failed. Check code and simulator settings and try again.
+SPIM Version 6.4 of January 1, 2002
+Copyright 1990-2002 by James R. Larus (larus@cs.wisc.edu).
+All Rights Reserved.
+DOS and Windows ports by David A. Carley (dac@cs.wisc.edu).
+Copyright 1997 by Morgan Kaufmann Publishers, Inc.
+See the file README for a full copyright notice.
+Memory and registers have been cleared, and the simulator reinitialized.
+
+Load failed. Check code and simulator settings and try again.
+SPIM Version 6.4 of January 1, 2002
+Copyright 1990-2002 by James R. Larus (larus@cs.wisc.edu).
+All Rights Reserved.
+DOS and Windows ports by David A. Carley (dac@cs.wisc.edu).
+Copyright 1997 by Morgan Kaufmann Publishers, Inc.
+See the file README for a full copyright notice.
+Memory and registers have been cleared, and the simulator reinitialized.
+
+C:\Users\adri_\OneDrive\UPV\2º\ETC\Lab\P03\02_exer_01.s has been successfully loaded
+Exception occurred at PC=0x00000000
+  Bad address in text read: 0x00000000
+SPIM Version 6.4 of January 1, 2002
+Copyright 1990-2002 by James R. Larus (larus@cs.wisc.edu).
+All Rights Reserved.
+DOS and Windows ports by David A. Carley (dac@cs.wisc.edu).
+Copyright 1997 by Morgan Kaufmann Publishers, Inc.
+See the file README for a full copyright notice.
+Memory and registers have been cleared, and the simulator reinitialized.
+
+C:\Users\adri_\OneDrive\UPV\2º\ETC\Lab\P03\02_exer_01.s has been successfully loaded
+[0x00400000]        0x3407004d  ori $7, $0, 77                  ; 4: li $a3, 'M'
+[0x00400004]        0x0c100018  jal 0x00400060 [Input]          ; 5: jal Input
+[0x00400060]        0x00043021  addu $6, $0, $4                 ; 32: move $a2, $a0       # para no cargarnos si hay algo cargado
+[0x00400064]        0x3402000b  ori $2, $0, 11                  ; 33: li $v0, 11          # print_char
+[0x00400068]        0x00072021  addu $4, $0, $7                 ; 34: move $a0, $a3
+[0x0040006c]        0x0000000c  syscall                         ; 35: syscall
+[0x00400070]        0x3402000b  ori $2, $0, 11                  ; 36: li $v0, 11
+[0x00400074]        0x3404003d  ori $4, $0, 61                  ; 37: li $a0, '='
+[0x00400078]        0x0000000c  syscall                         ; 38: syscall
+[0x0040007c]        0x00062021  addu $4, $0, $6                 ; 39: move $a0, $a2
+[0x00400080]        0x03e00008  jr $31                          ; 40: jr $ra
+[0x00400008]        0x34020005  ori $2, $0, 5                   ; 6: li $v0,5          # read_int
+[0x0040000c]        0x0000000c  syscall                         ; 7: syscall
+[0x00400010]        0x00022021  addu $4, $0, $2                 ; 8: move $a0,$v0
+[0x00400014]        0x34070051  ori $7, $0, 81                  ; 9: li $a3, 'Q'
+[0x00400018]        0x0c100018  jal 0x00400060 [Input]          ; 10: jal Input
+[0x00400060]        0x00043021  addu $6, $0, $4                 ; 32: move $a2, $a0       # para no cargarnos si hay algo cargado
+[0x00400064]        0x3402000b  ori $2, $0, 11                  ; 33: li $v0, 11          # print_char
+[0x00400068]        0x00072021  addu $4, $0, $7                 ; 34: move $a0, $a3
+[0x0040006c]        0x0000000c  syscall                         ; 35: syscall
+[0x00400070]        0x3402000b  ori $2, $0, 11                  ; 36: li $v0, 11
+[0x00400074]        0x3404003d  ori $4, $0, 61                  ; 37: li $a0, '='
+[0x00400078]        0x0000000c  syscall                         ; 38: syscall
+[0x0040007c]        0x00062021  addu $4, $0, $6                 ; 39: move $a0, $a2
+[0x00400080]        0x03e00008  jr $31                          ; 40: jr $ra
+[0x0040001c]        0x34020005  ori $2, $0, 5                   ; 11: li $v0,5          # read_int
+[0x00400020]        0x0000000c  syscall                         ; 12: syscall
+SPIM Version 6.4 of January 1, 2002
+Copyright 1990-2002 by James R. Larus (larus@cs.wisc.edu).
+All Rights Reserved.
+DOS and Windows ports by David A. Carley (dac@cs.wisc.edu).
+Copyright 1997 by Morgan Kaufmann Publishers, Inc.
+See the file README for a full copyright notice.
+Memory and registers have been cleared, and the simulator reinitialized.
+
+Registers have been cleared.
+
+SPIM Version 6.4 of January 1, 2002
+Copyright 1990-2002 by James R. Larus (larus@cs.wisc.edu).
+All Rights Reserved.
+DOS and Windows ports by David A. Carley (dac@cs.wisc.edu).
+Copyright 1997 by Morgan Kaufmann Publishers, Inc.
+See the file README for a full copyright notice.
+Memory and registers have been cleared, and the simulator reinitialized.
+
+C:\Users\adri_\OneDrive\UPV\2º\ETC\Lab\P03\02_exer_01.s has been successfully loaded
+SPIM Version 6.4 of January 1, 2002
+Copyright 1990-2002 by James R. Larus (larus@cs.wisc.edu).
+All Rights Reserved.
+DOS and Windows ports by David A. Carley (dac@cs.wisc.edu).
+Copyright 1997 by Morgan Kaufmann Publishers, Inc.
+See the file README for a full copyright notice.
+Memory and registers have been cleared, and the simulator reinitialized.
+
+C:\Users\adri_\OneDrive\UPV\2º\ETC\Lab\P03\02_exer_01.s has been successfully loaded
+SPIM Version 6.4 of January 1, 2002
+Copyright 1990-2002 by James R. Larus (larus@cs.wisc.edu).
+All Rights Reserved.
+DOS and Windows ports by David A. Carley (dac@cs.wisc.edu).
+Copyright 1997 by Morgan Kaufmann Publishers, Inc.
+See the file README for a full copyright notice.
+Memory and registers have been cleared, and the simulator reinitialized.
+
+C:\Users\adri_\OneDrive\UPV\2º\ETC\Lab\P03\02_exer_01.s has been successfully loaded
+[0x00400000]        0x3407004d  ori $7, $0, 77                  ; 4: li $a3, 'M'
+[0x00400004]        0x0c100018  jal 0x00400060 [Input]          ; 5: jal Input
+[0x00400060]        0x00043021  addu $6, $0, $4                 ; 32: move $a2, $a0       # para no cargarnos si hay algo cargado
+[0x00400064]        0x3402000b  ori $2, $0, 11                  ; 33: li $v0, 11          # print_char
+[0x00400068]        0x00072021  addu $4, $0, $7                 ; 34: move $a0, $a3
+[0x0040006c]        0x0000000c  syscall                         ; 35: syscall
+[0x00400070]        0x3402000b  ori $2, $0, 11                  ; 36: li $v0, 11
+[0x00400074]        0x3404003d  ori $4, $0, 61                  ; 37: li $a0, '='
+[0x00400078]        0x0000000c  syscall                         ; 38: syscall
+[0x0040007c]        0x00062021  addu $4, $0, $6                 ; 39: move $a0, $a2
+[0x00400080]        0x03e00008  jr $31                          ; 40: jr $ra
+[0x00400008]        0x34020005  ori $2, $0, 5                   ; 6: li $v0,5          # read_int
+[0x0040000c]        0x0000000c  syscall                         ; 7: syscall
+[0x00400010]        0x00022021  addu $4, $0, $2                 ; 8: move $a0,$v0
+[0x00400014]        0x34070051  ori $7, $0, 81                  ; 9: li $a3, 'Q'
+[0x00400018]        0x0c100018  jal 0x00400060 [Input]          ; 10: jal Input
+[0x00400060]        0x00043021  addu $6, $0, $4                 ; 32: move $a2, $a0       # para no cargarnos si hay algo cargado
+[0x00400064]        0x3402000b  ori $2, $0, 11                  ; 33: li $v0, 11          # print_char
+[0x00400068]        0x00072021  addu $4, $0, $7                 ; 34: move $a0, $a3
+[0x0040006c]        0x0000000c  syscall                         ; 35: syscall
+[0x00400070]        0x3402000b  ori $2, $0, 11                  ; 36: li $v0, 11
+[0x00400074]        0x3404003d  ori $4, $0, 61                  ; 37: li $a0, '='
+[0x00400078]        0x0000000c  syscall                         ; 38: syscall
+[0x0040007c]        0x00062021  addu $4, $0, $6                 ; 39: move $a0, $a2
+[0x00400080]        0x03e00008  jr $31                          ; 40: jr $ra
+[0x0040001c]        0x34020005  ori $2, $0, 5                   ; 11: li $v0,5          # read_int
+[0x00400020]        0x0000000c  syscall                         ; 12: syscall
+[0x00400024]        0x00022821  addu $5, $0, $2                 ; 13: move $a1,$v0
+[0x00400028]        0x34070052  ori $7, $0, 82                  ; 14: li $a3, 'R'
+[0x0040002c]        0x0c100012  jal 0x00400048 [Mult]           ; 15: jal Mult
+[0x00400048]        0x34020000  ori $2, $0, 0                   ; 23: li $v0, 0
+[0x0040004c]        0x10a00004  beq $5, $0, 16 [MultRet-0x0040004c]; 24: beqz $a1, MultRet
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x0040005c]        0x03e00008  jr $31                          ; 30: jr $ra
+[0x00400030]        0x0c100021  jal 0x00400084 [Output]         ; 16: jal Output
+[0x00400084]        0x00043021  addu $6, $0, $4                 ; 42: move $a2, $a0
+[0x00400088]        0x3402000b  ori $2, $0, 11                  ; 43: li $v0, 11
+[0x0040008c]        0x00072021  addu $4, $0, $7                 ; 44: move $a0, $a3
+[0x00400090]        0x0000000c  syscall                         ; 45: syscall
+[0x00400094]        0x3402000b  ori $2, $0, 11                  ; 46: li $v0, 11
+[0x00400098]        0x3404003d  ori $4, $0, 61                  ; 47: li $a0, '='
+[0x0040009c]        0x0000000c  syscall                         ; 48: syscall
+[0x004000a0]        0x34020001  ori $2, $0, 1                   ; 49: li $v0, 1
+[0x004000a4]        0x00062021  addu $4, $0, $6                 ; 50: move $a0, $a2
+[0x004000a8]        0x0000000c  syscall                         ; 51: syscall
+[0x004000ac]        0x03e00008  jr $31                          ; 52: jr $ra
+[0x00400034]        0x00022021  addu $4, $0, $2                 ; 17: move $a0,$v0
+[0x00400038]        0x34020001  ori $2, $0, 1                   ; 18: li $v0,1          # print_int
+[0x0040003c]        0x0000000c  syscall                         ; 19: syscall
+[0x00400040]        0x3402000a  ori $2, $0, 10                  ; 20: li $v0,10         # exit
+[0x00400044]        0x0000000c  syscall                         ; 21: syscall
+Exception occurred at PC=0x00000000
+  Bad address in text read: 0x00000000
+Exception occurred at PC=0x00000000
+  Bad address in text read: 0x00000000
+Exception occurred at PC=0x00000000
+  Bad address in text read: 0x00000000
+Exception occurred at PC=0x00000000
+  Bad address in text read: 0x00000000
+Exception occurred at PC=0x00000000
+  Bad address in text read: 0x00000000
+Exception occurred at PC=0x00000000
+  Bad address in text read: 0x00000000
+Exception occurred at PC=0x00000000
+  Bad address in text read: 0x00000000
+Exception occurred at PC=0x00000000
+  Bad address in text read: 0x00000000
+Exception occurred at PC=0x00000000
+  Bad address in text read: 0x00000000
+Exception occurred at PC=0x00000000
+  Bad address in text read: 0x00000000
+Exception occurred at PC=0x00000000
+  Bad address in text read: 0x00000000
+SPIM Version 6.4 of January 1, 2002
+Copyright 1990-2002 by James R. Larus (larus@cs.wisc.edu).
+All Rights Reserved.
+DOS and Windows ports by David A. Carley (dac@cs.wisc.edu).
+Copyright 1997 by Morgan Kaufmann Publishers, Inc.
+See the file README for a full copyright notice.
+Memory and registers have been cleared, and the simulator reinitialized.
+
+C:\Users\adri_\OneDrive\UPV\2º\ETC\Lab\P03\02_exer_01.s has been successfully loaded
+SPIM Version 6.4 of January 1, 2002
+Copyright 1990-2002 by James R. Larus (larus@cs.wisc.edu).
+All Rights Reserved.
+DOS and Windows ports by David A. Carley (dac@cs.wisc.edu).
+Copyright 1997 by Morgan Kaufmann Publishers, Inc.
+See the file README for a full copyright notice.
+Memory and registers have been cleared, and the simulator reinitialized.
+
+C:\Users\adri_\OneDrive\UPV\2º\ETC\Lab\P03\02_exer_01.s has been successfully loaded
+[0x00400000]        0x3407004d  ori $7, $0, 77                  ; 4: li $a3, 'M'
+[0x00400004]        0x0c100018  jal 0x00400060 [Input]          ; 5: jal Input
+[0x00400060]        0x00043021  addu $6, $0, $4                 ; 32: move $a2, $a0       # para no cargarnos si hay algo cargado
+[0x00400064]        0x3402000b  ori $2, $0, 11                  ; 33: li $v0, 11          # print_char
+[0x00400068]        0x00072021  addu $4, $0, $7                 ; 34: move $a0, $a3
+[0x0040006c]        0x0000000c  syscall                         ; 35: syscall
+[0x00400070]        0x3402000b  ori $2, $0, 11                  ; 36: li $v0, 11
+[0x00400074]        0x3404003d  ori $4, $0, 61                  ; 37: li $a0, '='
+[0x00400078]        0x0000000c  syscall                         ; 38: syscall
+[0x0040007c]        0x00062021  addu $4, $0, $6                 ; 39: move $a0, $a2
+[0x00400080]        0x03e00008  jr $31                          ; 40: jr $ra
+[0x00400008]        0x34020005  ori $2, $0, 5                   ; 6: li $v0,5          # read_int
+[0x0040000c]        0x0000000c  syscall                         ; 7: syscall
+[0x00400010]        0x00022021  addu $4, $0, $2                 ; 8: move $a0,$v0
+[0x00400014]        0x34070051  ori $7, $0, 81                  ; 9: li $a3, 'Q'
+[0x00400018]        0x0c100018  jal 0x00400060 [Input]          ; 10: jal Input
+[0x00400060]        0x00043021  addu $6, $0, $4                 ; 32: move $a2, $a0       # para no cargarnos si hay algo cargado
+[0x00400064]        0x3402000b  ori $2, $0, 11                  ; 33: li $v0, 11          # print_char
+[0x00400068]        0x00072021  addu $4, $0, $7                 ; 34: move $a0, $a3
+[0x0040006c]        0x0000000c  syscall                         ; 35: syscall
+[0x00400070]        0x3402000b  ori $2, $0, 11                  ; 36: li $v0, 11
+[0x00400074]        0x3404003d  ori $4, $0, 61                  ; 37: li $a0, '='
+[0x00400078]        0x0000000c  syscall                         ; 38: syscall
+[0x0040007c]        0x00062021  addu $4, $0, $6                 ; 39: move $a0, $a2
+[0x00400080]        0x03e00008  jr $31                          ; 40: jr $ra
+[0x0040001c]        0x34020005  ori $2, $0, 5                   ; 11: li $v0,5          # read_int
+[0x00400020]        0x0000000c  syscall                         ; 12: syscall
+[0x00400024]        0x00022821  addu $5, $0, $2                 ; 13: move $a1,$v0
+[0x00400028]        0x34070052  ori $7, $0, 82                  ; 14: li $a3, 'R'
+[0x0040002c]        0x0c100012  jal 0x00400048 [Mult]           ; 15: jal Mult
+[0x00400048]        0x34020000  ori $2, $0, 0                   ; 23: li $v0, 0
+[0x0040004c]        0x10a00004  beq $5, $0, 16 [MultRet-0x0040004c]; 24: beqz $a1, MultRet
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 26: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 27: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 28: bne $a1, $zero, MultFor
+[0x0040005c]        0x03e00008  jr $31                          ; 30: jr $ra
+[0x00400030]        0x0c100021  jal 0x00400084 [Output]         ; 16: jal Output
+[0x00400084]        0x00043021  addu $6, $0, $4                 ; 42: move $a2, $a0
+SPIM Version 6.4 of January 1, 2002
+Copyright 1990-2002 by James R. Larus (larus@cs.wisc.edu).
+All Rights Reserved.
+DOS and Windows ports by David A. Carley (dac@cs.wisc.edu).
+Copyright 1997 by Morgan Kaufmann Publishers, Inc.
+See the file README for a full copyright notice.
+Memory and registers have been cleared, and the simulator reinitialized.
+
+C:\Users\adri_\OneDrive\UPV\2º\ETC\Lab\P03\02_exer_01.s has been successfully loaded
+SPIM Version 6.4 of January 1, 2002
+Copyright 1990-2002 by James R. Larus (larus@cs.wisc.edu).
+All Rights Reserved.
+DOS and Windows ports by David A. Carley (dac@cs.wisc.edu).
+Copyright 1997 by Morgan Kaufmann Publishers, Inc.
+See the file README for a full copyright notice.
+Memory and registers have been cleared, and the simulator reinitialized.
+
+C:\Users\adri_\OneDrive\UPV\2º\ETC\Lab\P03\02_exer_01.s has been successfully loaded
+SPIM Version 6.4 of January 1, 2002
+Copyright 1990-2002 by James R. Larus (larus@cs.wisc.edu).
+All Rights Reserved.
+DOS and Windows ports by David A. Carley (dac@cs.wisc.edu).
+Copyright 1997 by Morgan Kaufmann Publishers, Inc.
+See the file README for a full copyright notice.
+Memory and registers have been cleared, and the simulator reinitialized.
+
+C:\Users\adri_\OneDrive\UPV\2º\ETC\Lab\P03\02_exer_01.s has been successfully loaded
+SPIM Version 6.4 of January 1, 2002
+Copyright 1990-2002 by James R. Larus (larus@cs.wisc.edu).
+All Rights Reserved.
+DOS and Windows ports by David A. Carley (dac@cs.wisc.edu).
+Copyright 1997 by Morgan Kaufmann Publishers, Inc.
+See the file README for a full copyright notice.
+Memory and registers have been cleared, and the simulator reinitialized.
+
+C:\Users\adri_\OneDrive\UPV\2º\ETC\Lab\P03\02_exer_01.s has been successfully loaded
+SPIM Version 6.4 of January 1, 2002
+Copyright 1990-2002 by James R. Larus (larus@cs.wisc.edu).
+All Rights Reserved.
+DOS and Windows ports by David A. Carley (dac@cs.wisc.edu).
+Copyright 1997 by Morgan Kaufmann Publishers, Inc.
+See the file README for a full copyright notice.
+Memory and registers have been cleared, and the simulator reinitialized.
+
+C:\Users\adri_\OneDrive\UPV\2º\ETC\Lab\P03\02_exer_01.s has been successfully loaded
+SPIM Version 6.4 of January 1, 2002
+Copyright 1990-2002 by James R. Larus (larus@cs.wisc.edu).
+All Rights Reserved.
+DOS and Windows ports by David A. Carley (dac@cs.wisc.edu).
+Copyright 1997 by Morgan Kaufmann Publishers, Inc.
+See the file README for a full copyright notice.
+Memory and registers have been cleared, and the simulator reinitialized.
+
+C:\Users\adri_\OneDrive\UPV\2º\ETC\Lab\P03\02_exer_01.s has been successfully loaded
+SPIM Version 6.4 of January 1, 2002
+Copyright 1990-2002 by James R. Larus (larus@cs.wisc.edu).
+All Rights Reserved.
+DOS and Windows ports by David A. Carley (dac@cs.wisc.edu).
+Copyright 1997 by Morgan Kaufmann Publishers, Inc.
+See the file README for a full copyright notice.
+Memory and registers have been cleared, and the simulator reinitialized.
+
+Load failed. Check code and simulator settings and try again.
+SPIM Version 6.4 of January 1, 2002
+Copyright 1990-2002 by James R. Larus (larus@cs.wisc.edu).
+All Rights Reserved.
+DOS and Windows ports by David A. Carley (dac@cs.wisc.edu).
+Copyright 1997 by Morgan Kaufmann Publishers, Inc.
+See the file README for a full copyright notice.
+Memory and registers have been cleared, and the simulator reinitialized.
+
+C:\Users\adri_\OneDrive\UPV\2º\ETC\Lab\P03\02_exer_02.s has been successfully loaded
+
+
+Registers
+=========================
+ PC     = 00000000     EPC    = 00000000     Cause  = 00000000     BadVAddr= 00000000
+ Status = 00000000     HI     = 00000000     LO     = 00000000
+                                 General Registers
+R0  (r0) = 00000000  R8  (t0) = 00000000  R16 (s0) = 00000000  R24 (t8) = 00000000
+R1  (at) = 00000000  R9  (t1) = 00000000  R17 (s1) = 00000000  R25 (t9) = 00000000
+R2  (v0) = 0000000a  R10 (t2) = 00000000  R18 (s2) = 00000000  R26 (k0) = 00000000
+R3  (v1) = 00000000  R11 (t3) = 00000000  R19 (s3) = 00000000  R27 (k1) = 00000000
+R4  (a0) = 0000000a  R12 (t4) = 00000000  R20 (s4) = 00000000  R28 (gp) = 10008000
+R5  (a1) = 00000000  R13 (t5) = 00000000  R21 (s5) = 00000000  R29 (sp) = 7fffe380
+R6  (a2) = 00000003  R14 (t6) = 00000000  R22 (s6) = 00000000  R30 (s8) = 00000000
+R7  (a3) = 00000052  R15 (t7) = 00000000  R23 (s7) = 00000000  R31 (ra) = 00400038
+                              Double Floating Point Registers
+FP0  = 0.000000      FP8  = 0.000000      FP16 = 0.000000      FP24 = 0.000000     
+FP2  = 0.000000      FP10 = 0.000000      FP18 = 0.000000      FP26 = 0.000000     
+FP4  = 0.000000      FP12 = 0.000000      FP20 = 0.000000      FP28 = 0.000000     
+FP6  = 0.000000      FP14 = 0.000000      FP22 = 0.000000      FP30 = 0.000000     
+                              Single Floating Point Registers
+FP0  = 0.000000      FP8  = 0.000000      FP16 = 0.000000      FP24 = 0.000000     
+FP1  = 0.000000      FP9  = 0.000000      FP17 = 0.000000      FP25 = 0.000000     
+FP2  = 0.000000      FP10 = 0.000000      FP18 = 0.000000      FP26 = 0.000000     
+FP3  = 0.000000      FP11 = 0.000000      FP19 = 0.000000      FP27 = 0.000000     
+FP4  = 0.000000      FP12 = 0.000000      FP20 = 0.000000      FP28 = 0.000000     
+FP5  = 0.000000      FP13 = 0.000000      FP21 = 0.000000      FP29 = 0.000000     
+FP6  = 0.000000      FP14 = 0.000000      FP22 = 0.000000      FP30 = 0.000000     
+FP7  = 0.000000      FP15 = 0.000000      FP23 = 0.000000      FP31 = 0.000000     
+
+
+Console
+=========================
+M=2
+Q=3
+R=6
+M=1
+Q=2
+R=2
+M=3
+Q=0
+R=0
+
+
+Text Segment
+=========================
+[0x00400000]        0x3407004d  ori $7, $0, 77                  ; 4: li $a3, 'M'
+[0x00400004]        0x0c100018  jal 0x00400060 [Input]          ; 5: jal Input
+[0x00400008]        0x34020005  ori $2, $0, 5                   ; 6: li $v0,5          # read_int
+[0x0040000c]        0x0000000c  syscall                         ; 7: syscall
+[0x00400010]        0x00022021  addu $4, $0, $2                 ; 8: move $a0,$v0
+[0x00400014]        0x34070051  ori $7, $0, 81                  ; 9: li $a3, 'Q'
+[0x00400018]        0x0c100018  jal 0x00400060 [Input]          ; 10: jal Input
+[0x0040001c]        0x34020005  ori $2, $0, 5                   ; 11: li $v0,5          # read_int
+[0x00400020]        0x0000000c  syscall                         ; 12: syscall
+[0x00400024]        0x00022821  addu $5, $0, $2                 ; 13: move $a1,$v0
+[0x00400028]        0x0c100012  jal 0x00400048 [Mult]           ; 15: jal Mult
+[0x0040002c]        0x34070052  ori $7, $0, 82                  ; 16: li $a3, 'R'
+[0x00400030]        0x00022821  addu $5, $0, $2                 ; 17: move $a1,$v0
+[0x00400034]        0x0c100021  jal 0x00400084 [Output]         ; 18: jal Output
+[0x00400038]        0x10800002  beq $4, $0, 8 [exit-0x00400038] ; 20: beqz $a0, exit
+[0x0040003c]        0x14a0fff1  bne $5, $0, -60 [__start-0x0040003c]; 21: bnez $a1, __start
+[0x00400040]        0x3402000a  ori $2, $0, 10                  ; 23: li $v0,10         # exit
+[0x00400044]        0x0000000c  syscall                         ; 24: syscall
+[0x00400048]        0x34020000  ori $2, $0, 0                   ; 29: li $v0, 0
+[0x0040004c]        0x10a00004  beq $5, $0, 16 [MultRet-0x0040004c]; 30: beqz $a1, MultRet
+[0x00400050]        0x00441020  add $2, $2, $4                  ; 32: add $v0, $v0, $a0
+[0x00400054]        0x20a5ffff  addi $5, $5, -1                 ; 33: addi $a1, $a1, -1         # Suma $a0+$a0 $a1 veces
+[0x00400058]        0x14a0fffe  bne $5, $0, -8 [MultFor-0x00400058]; 34: bne $a1, $zero, MultFor
+[0x0040005c]        0x03e00008  jr $31                          ; 36: jr $ra
+[0x00400060]        0x00043021  addu $6, $0, $4                 ; 38: move $a2, $a0       # para no cargarnos si hay algo cargado
+[0x00400064]        0x3402000b  ori $2, $0, 11                  ; 39: li $v0, 11          # print_char
+[0x00400068]        0x00072021  addu $4, $0, $7                 ; 40: move $a0, $a3
+[0x0040006c]        0x0000000c  syscall                         ; 41: syscall
+[0x00400070]        0x3402000b  ori $2, $0, 11                  ; 42: li $v0, 11
+[0x00400074]        0x3404003d  ori $4, $0, 61                  ; 43: li $a0, '='
+[0x00400078]        0x0000000c  syscall                         ; 44: syscall
+[0x0040007c]        0x00062021  addu $4, $0, $6                 ; 45: move $a0, $a2
+[0x00400080]        0x03e00008  jr $31                          ; 46: jr $ra
+[0x00400084]        0x3402000b  ori $2, $0, 11                  ; 48: li $v0, 11
+[0x00400088]        0x00072021  addu $4, $0, $7                 ; 49: move $a0, $a3
+[0x0040008c]        0x0000000c  syscall                         ; 50: syscall
+[0x00400090]        0x3402000b  ori $2, $0, 11                  ; 51: li $v0, 11
+[0x00400094]        0x3404003d  ori $4, $0, 61                  ; 52: li $a0, '='
+[0x00400098]        0x0000000c  syscall                         ; 53: syscall
+[0x0040009c]        0x34020001  ori $2, $0, 1                   ; 54: li $v0, 1
+[0x004000a0]        0x00052021  addu $4, $0, $5                 ; 55: move $a0, $a1
+[0x004000a4]        0x0000000c  syscall                         ; 56: syscall
+[0x004000a8]        0x3402000b  ori $2, $0, 11                  ; 57: li $v0, 11
+[0x004000ac]        0x3404000a  ori $4, $0, 10                  ; 58: li $a0, '\n'
+[0x004000b0]        0x0000000c  syscall                         ; 59: syscall
+[0x004000b4]        0x03e00008  jr $31                          ; 60: jr $ra
+
+        KERNEL
+
+
+Data Segment
+=========================
+
+        DATA
+[0x10000000]...[0x10040000]        0x00000000
+
+        STACK
+[0x7fffe380]                        0x00000000  0x00000000  0x7fffefde  0x7fffefb7
+[0x7fffe390]                        0x7fffef8b  0x7fffef5f  0x7fffef3e  0x7fffef07
+[0x7fffe3a0]                        0x7fffeecb  0x7fffee9a  0x7fffee83  0x7fffee5f
+[0x7fffe3b0]                        0x7fffee38  0x7fffee06  0x7fffed99  0x7fffed83
+[0x7fffe3c0]                        0x7fffed6e  0x7fffed61  0x7fffed4b  0x7fffed38
+[0x7fffe3d0]                        0x7fffed0e  0x7fffecf6  0x7fffecdf  0x7fffecbe
+[0x7fffe3e0]                        0x7fffec95  0x7fffec87  0x7fffe78f  0x7fffe751
+[0x7fffe3f0]                        0x7fffe736  0x7fffe719  0x7fffe6cf  0x7fffe6bd
+[0x7fffe400]                        0x7fffe6a5  0x7fffe68a  0x7fffe666  0x7fffe63d
+[0x7fffe410]                        0x7fffe61f  0x7fffe5b0  0x7fffe599  0x7fffe58a
+[0x7fffe420]                        0x7fffe574  0x7fffe54d  0x7fffe527  0x7fffe512
+[0x7fffe430]                        0x7fffe4ee  0x7fffe4d5  0x7fffe4ba  0x7fffe480
+[0x7fffe440]                        0x7fffe46e  0x7fffe452  0x00000000  0x00000000
+[0x7fffe450]                        0x5f5f0000  0x504d4f43  0x4c5f5441  0x52455941
+[0x7fffe460]                        0x6769483d  0x69704468  0x72617741  0x69770065
+[0x7fffe470]                        0x7269646e  0x5c3a433d  0x444e4957  0x0053574f
+[0x7fffe480]                        0x584f4256  0x49534d5f  0x534e495f  0x4c4c4154
+[0x7fffe490]                        0x5441505f  0x3a433d48  0x6f72505c  0x6d617267
+[0x7fffe4a0]                        0x6c694620  0x4f5c7365  0x6c636172  0x69565c65
+[0x7fffe4b0]                        0x61757472  0x786f426c  0x5355005c  0x52505245
+[0x7fffe4c0]                        0x4c49464f  0x3a433d45  0x6573555c  0x615c7372
+[0x7fffe4d0]                        0x5f697264  0x45535500  0x4d414e52  0x64413d45
+[0x7fffe4e0]                        0x6ee16972  0x72614d20  0x656eed74  0x5355007a
+[0x7fffe4f0]                        0x4f445245  0x4e49414d  0x414f525f  0x474e494d
+[0x7fffe500]                        0x464f5250  0x3d454c49  0x52464942  0x5054534f
+[0x7fffe510]                        0x53550043  0x4f445245  0x4e49414d  0x4649423d
+[0x7fffe520]                        0x54534f52  0x54004350  0x433d504d  0x73555c3a
+[0x7fffe530]                        0x5c737265  0x69726461  0x70415c5f  0x74614470
+[0x7fffe540]                        0x6f4c5c61  0x5c6c6163  0x706d6554  0x4d455400
+[0x7fffe550]                        0x3a433d50  0x6573555c  0x615c7372  0x5f697264
+[0x7fffe560]                        0x7070415c  0x61746144  0x636f4c5c  0x545c6c61
+[0x7fffe570]                        0x00706d65  0x74737953  0x6f526d65  0x433d746f
+[0x7fffe580]                        0x49575c3a  0x574f444e  0x79530053  0x6d657473
+[0x7fffe590]                        0x76697244  0x3a433d65  0x42555000  0x3d43494c
+[0x7fffe5a0]                        0x555c3a43  0x73726573  0x6275505c  0x0063696c
+[0x7fffe5b0]                        0x6f4d5350  0x656c7564  0x68746150  0x7250253d
+[0x7fffe5c0]                        0x6172676f  0x6c69466d  0x78287365  0x25293638
+[0x7fffe5d0]                        0x6e69575c  0x73776f64  0x65776f50  0x65685372
+[0x7fffe5e0]                        0x4d5c6c6c  0x6c75646f  0x433b7365  0x49575c3a
+[0x7fffe5f0]                        0x574f444e  0x79735c53  0x6d657473  0x575c3233
+[0x7fffe600]                        0x6f646e69  0x6f507377  0x53726577  0x6c6c6568
+[0x7fffe610]                        0x2e31765c  0x6f4d5c30  0x656c7564  0x50003b73
+[0x7fffe620]                        0x72676f72  0x36576d61  0x3d323334  0x505c3a43
+[0x7fffe630]                        0x72676f72  0x46206d61  0x73656c69  0x6f725000
+[0x7fffe640]                        0x6d617267  0x656c6946  0x38782873  0x433d2936
+[0x7fffe650]                        0x72505c3a  0x6172676f  0x6946206d  0x2073656c
+[0x7fffe660]                        0x36387828  0x72500029  0x6172676f  0x6c69466d
+[0x7fffe670]                        0x433d7365  0x72505c3a  0x6172676f  0x6946206d
+[0x7fffe680]                        0x2073656c  0x36387828  0x72500029  0x6172676f
+[0x7fffe690]                        0x7461446d  0x3a433d61  0x6f72505c  0x6d617267
+[0x7fffe6a0]                        0x61746144  0x4f525000  0x53534543  0x525f524f
+[0x7fffe6b0]                        0x53495645  0x3d4e4f49  0x61306538  0x4f525000
+[0x7fffe6c0]                        0x53534543  0x4c5f524f  0x4c455645  0x5000363d
+[0x7fffe6d0]                        0x45434f52  0x524f5353  0x4544495f  0x4649544e
+[0x7fffe6e0]                        0x3d524549  0x65746e49  0x2034366c  0x696d6146
+[0x7fffe6f0]                        0x3620796c  0x646f4d20  0x31206c65  0x53203234
+[0x7fffe700]                        0x70706574  0x20676e69  0x202c3031  0x756e6547
+[0x7fffe710]                        0x49656e69  0x6c65746e  0x4f525000  0x53534543
+[0x7fffe720]                        0x415f524f  0x49484352  0x36574554  0x3d323334
+[0x7fffe730]                        0x36444d41  0x52500034  0x5345434f  0x5f524f53
+[0x7fffe740]                        0x48435241  0x43455449  0x45525554  0x3638783d
+[0x7fffe750]                        0x54415000  0x54584548  0x4f432e3d  0x452e3b4d
+[0x7fffe760]                        0x2e3b4558  0x3b544142  0x444d432e  0x42562e3b
+[0x7fffe770]                        0x562e3b53  0x2e3b4542  0x2e3b534a  0x3b45534a
+[0x7fffe780]                        0x4653572e  0x53572e3b  0x4d2e3b48  0x50004353
+[0x7fffe790]                        0x3d687461  0x505c3a43  0x72676f72  0x46206d61
+[0x7fffe7a0]                        0x73656c69  0x38782820  0x435c2936  0x6f6d6d6f
+[0x7fffe7b0]                        0x6946206e  0x5c73656c  0x6361724f  0x4a5c656c
+[0x7fffe7c0]                        0x5c617661  0x6176616a  0x68746170  0x5c3a433b
+[0x7fffe7d0]                        0x444e4957  0x5c53574f  0x74737973  0x32336d65
+[0x7fffe7e0]                        0x5c3a433b  0x444e4957  0x3b53574f  0x575c3a43
+[0x7fffe7f0]                        0x4f444e49  0x535c5357  0x65747379  0x5c32336d
+[0x7fffe800]                        0x6d656257  0x5c3a433b  0x444e4957  0x5c53574f
+[0x7fffe810]                        0x74737953  0x32336d65  0x6e69575c  0x73776f64
+[0x7fffe820]                        0x65776f50  0x65685372  0x765c6c6c  0x5c302e31
+[0x7fffe830]                        0x5c3a433b  0x444e4957  0x5c53574f  0x74737953
+[0x7fffe840]                        0x32336d65  0x65704f5c  0x4853536e  0x3a433b5c
+[0x7fffe850]                        0x6f72505c  0x6d617267  0x6c694620  0x645c7365
+[0x7fffe860]                        0x656e746f  0x433b5c74  0x72505c3a  0x6172676f
+[0x7fffe870]                        0x6946206d  0x5c73656c  0x5c746947  0x3b646d63
+[0x7fffe880]                        0x505c3a43  0x72676f72  0x46206d61  0x73656c69
+[0x7fffe890]                        0x38782820  0x575c2936  0x72666c6f  0x52206d61
+[0x7fffe8a0]                        0x61657365  0x5c686372  0x666c6f57  0x536d6172
+[0x7fffe8b0]                        0x70697263  0x433b5c74  0x6c685c3a  0x3a433b61
+[0x7fffe8c0]                        0x6f72505c  0x6d617267  0x6c694620  0x675c7365
+[0x7fffe8d0]                        0x6c70756e  0x625c746f  0x433b6e69  0x72505c3a
+[0x7fffe8e0]                        0x6172676f  0x6946206d  0x5c73656c  0x65646f6e
+[0x7fffe8f0]                        0x3b5c736a  0x505c3a43  0x72676f72  0x61446d61
+[0x7fffe900]                        0x635c6174  0x6f636f68  0x6574616c  0x69625c79
+[0x7fffe910]                        0x433b3b6e  0x72505c3a  0x6172676f  0x6946206d
+[0x7fffe920]                        0x5c73656c  0x6b636f44  0x445c7265  0x656b636f
+[0x7fffe930]                        0x65725c72  0x72756f73  0x5c736563  0x3b6e6962
+[0x7fffe940]                        0x505c3a43  0x72676f72  0x61446d61  0x445c6174
+[0x7fffe950]                        0x656b636f  0x73654472  0x706f746b  0x7265765c
+[0x7fffe960]                        0x6e6f6973  0x6e69622d  0x5c3a433b  0x676f7250
+[0x7fffe970]                        0x206d6172  0x656c6946  0x756b5c73  0x74636562
+[0x7fffe980]                        0x3a433b6c  0x6573555c  0x615c7372  0x5f697264
+[0x7fffe990]                        0x7070415c  0x61746144  0x636f4c5c  0x505c6c61
+[0x7fffe9a0]                        0x72676f72  0x5c736d61  0x68747950  0x505c6e6f
+[0x7fffe9b0]                        0x6f687479  0x5c39336e  0x69726353  0x5c737470
+[0x7fffe9c0]                        0x5c3a433b  0x72657355  0x64615c73  0x5c5f6972
+[0x7fffe9d0]                        0x44707041  0x5c617461  0x61636f4c  0x72505c6c
+[0x7fffe9e0]                        0x6172676f  0x505c736d  0x6f687479  0x79505c6e
+[0x7fffe9f0]                        0x6e6f6874  0x3b5c3933  0x555c3a43  0x73726573
+[0x7fffea00]                        0x7264615c  0x415c5f69  0x61447070  0x4c5c6174
+[0x7fffea10]                        0x6c61636f  0x6f72505c  0x6d617267  0x79505c73
+[0x7fffea20]                        0x6e6f6874  0x7479505c  0x336e6f68  0x63535c38
+[0x7fffea30]                        0x74706972  0x433b5c73  0x73555c3a  0x5c737265
+[0x7fffea40]                        0x69726461  0x70415c5f  0x74614470  0x6f4c5c61
+[0x7fffea50]                        0x5c6c6163  0x676f7250  0x736d6172  0x7479505c
+[0x7fffea60]                        0x5c6e6f68  0x68747950  0x38336e6f  0x3a433b5c
+[0x7fffea70]                        0x6573555c  0x615c7372  0x5f697264  0x7070415c
+[0x7fffea80]                        0x61746144  0x636f4c5c  0x505c6c61  0x72676f72
+[0x7fffea90]                        0x5c736d61  0x68747950  0x505c6e6f  0x6f687479
+[0x7fffeaa0]                        0x2d38336e  0x535c3233  0x70697263  0x3b5c7374
+[0x7fffeab0]                        0x555c3a43  0x73726573  0x7264615c  0x415c5f69
+[0x7fffeac0]                        0x61447070  0x4c5c6174  0x6c61636f  0x6f72505c
+[0x7fffead0]                        0x6d617267  0x79505c73  0x6e6f6874  0x7479505c
+[0x7fffeae0]                        0x336e6f68  0x32332d38  0x3a433b5c  0x6573555c
+[0x7fffeaf0]                        0x615c7372  0x5f697264  0x7070415c  0x61746144
+[0x7fffeb00]                        0x636f4c5c  0x4d5c6c61  0x6f726369  0x74666f73
+[0x7fffeb10]                        0x6e69575c  0x73776f64  0x73707041  0x5c3a433b
+[0x7fffeb20]                        0x476e694d  0x5c343657  0x5f363878  0x772d3436
+[0x7fffeb30]                        0x6d2d3436  0x77676e69  0x625c3233  0x433b6e69
+[0x7fffeb40]                        0x694d5c3a  0x3657476e  0x69625c34  0x3a433b6e
+[0x7fffeb50]                        0x6573555c  0x615c7372  0x5f697264  0x7070415c
+[0x7fffeb60]                        0x61746144  0x636f4c5c  0x505c6c61  0x72676f72
+[0x7fffeb70]                        0x5c736d61  0x7263694d  0x666f736f  0x53562074
+[0x7fffeb80]                        0x646f4320  0x69625c65  0x3a433b6e  0x6573555c
+[0x7fffeb90]                        0x615c7372  0x5f697264  0x6f642e5c  0x74656e74
+[0x7fffeba0]                        0x6f6f745c  0x433b736c  0x72505c3a  0x6172676f
+[0x7fffebb0]                        0x6946206d  0x5c73656c  0x6176614a  0x6b646a5c
+[0x7fffebc0]                        0x2e34312d  0x5c312e30  0x3b6e6962  0x555c3a43
+[0x7fffebd0]                        0x73726573  0x7264615c  0x415c5f69  0x61447070
+[0x7fffebe0]                        0x4c5c6174  0x6c61636f  0x63694d5c  0x6f736f72
+[0x7fffebf0]                        0x575c7466  0x6f646e69  0x70417377  0x433b7370
+[0x7fffec00]                        0x73555c3a  0x5c737265  0x69726461  0x70415c5f
+[0x7fffec10]                        0x74614470  0x6f525c61  0x6e696d61  0x706e5c67
+[0x7fffec20]                        0x3a433b6d  0x6f6f745c  0x6e5c736c  0x69766f65
+[0x7fffec30]                        0x654e5c6d  0x6d69766f  0x6e69625c  0x5c3a433b
+[0x7fffec40]                        0x72657355  0x64615c73  0x5c5f6972  0x44707041
+[0x7fffec50]                        0x5c617461  0x61636f4c  0x69675c6c  0x61726b74
+[0x7fffec60]                        0x5c6e656b  0x3b6e6962  0x505c3a43  0x72676f72
+[0x7fffec70]                        0x46206d61  0x73656c69  0x4d42495c  0x6f6c435c
+[0x7fffec80]                        0x625c6475  0x4f006e69  0x69573d53  0x776f646e
+[0x7fffec90]                        0x544e5f73  0x656e4f00  0x76697244  0x6e6f4365
+[0x7fffeca0]                        0x656d7573  0x3a433d72  0x6573555c  0x615c7372
+[0x7fffecb0]                        0x5f697264  0x656e4f5c  0x76697244  0x6e4f0065
+[0x7fffecc0]                        0x69724465  0x433d6576  0x73555c3a  0x5c737265
+[0x7fffecd0]                        0x69726461  0x6e4f5c5f  0x69724465  0x4e006576
+[0x7fffece0]                        0x45424d55  0x464f5f52  0x4f52505f  0x53534543
+[0x7fffecf0]                        0x3d53524f  0x4f4c0038  0x534e4f47  0x45565245
+[0x7fffed00]                        0x5c5c3d52  0x52464942  0x5054534f  0x4f4c0043
+[0x7fffed10]                        0x414c4143  0x41445050  0x433d4154  0x73555c3a
+[0x7fffed20]                        0x5c737265  0x69726461  0x70415c5f  0x74614470
+[0x7fffed30]                        0x6f4c5c61  0x006c6163  0x3d62696c  0x5c3a433b
+[0x7fffed40]                        0x5c616c68  0x6c616c68  0x48006269  0x50454d4f
+[0x7fffed50]                        0x3d485441  0x6573555c  0x615c7372  0x5f697264
+[0x7fffed60]                        0x4d4f4800  0x49524445  0x433d4556  0x6c68003a
+[0x7fffed70]                        0x62696c61  0x5c3a433d  0x5c616c68  0x6c616c68
+[0x7fffed80]                        0x68006269  0x6e69616c  0x3a433d63  0x616c685c
+[0x7fffed90]                        0x636e695c  0x6564756c  0x554e4700  0x544f4c50
+[0x7fffeda0]                        0x42494c5f  0x5c3a433d  0x676f7250  0x206d6172
+[0x7fffedb0]                        0x656c6946  0x6e675c73  0x6f6c7075  0x65645c74
+[0x7fffedc0]                        0x433b6f6d  0x72505c3a  0x6172676f  0x6946206d
+[0x7fffedd0]                        0x5c73656c  0x70756e67  0x5c746f6c  0x6f6d6564
+[0x7fffede0]                        0x6d61675c  0x433b7365  0x72505c3a  0x6172676f
+[0x7fffedf0]                        0x6946206d  0x5c73656c  0x70756e67  0x5c746f6c
+[0x7fffee00]                        0x72616873  0x72440065  0x72657669  0x61746144
+[0x7fffee10]                        0x5c3a433d  0x646e6957  0x5c73776f  0x74737953
+[0x7fffee20]                        0x32336d65  0x6972445c  0x73726576  0x6972445c
+[0x7fffee30]                        0x44726576  0x00617461  0x666e6f63  0x65736769
+[0x7fffee40]                        0x6f6f7274  0x3a433d74  0x4e49575c  0x53574f44
+[0x7fffee50]                        0x6e6f435c  0x53676966  0x6f527465  0x4300746f
+[0x7fffee60]                        0x70536d6f  0x433d6365  0x49575c3a  0x574f444e
+[0x7fffee70]                        0x79735c53  0x6d657473  0x635c3233  0x652e646d
+[0x7fffee80]                        0x43006578  0x55504d4f  0x4e524554  0x3d454d41
+[0x7fffee90]                        0x52464942  0x5054534f  0x6f430043  0x6e6f6d6d
+[0x7fffeea0]                        0x676f7250  0x576d6172  0x32333436  0x5c3a433d
+[0x7fffeeb0]                        0x676f7250  0x206d6172  0x656c6946  0x6f435c73
+[0x7fffeec0]                        0x6e6f6d6d  0x6c694620  0x43007365  0x6f6d6d6f
+[0x7fffeed0]                        0x6f72506e  0x6d617267  0x656c6946  0x38782873
+[0x7fffeee0]                        0x433d2936  0x72505c3a  0x6172676f  0x6946206d
+[0x7fffeef0]                        0x2073656c  0x36387828  0x6f435c29  0x6e6f6d6d
+[0x7fffef00]                        0x6c694620  0x43007365  0x6f6d6d6f  0x6f72506e
+[0x7fffef10]                        0x6d617267  0x656c6946  0x3a433d73  0x6f72505c
+[0x7fffef20]                        0x6d617267  0x6c694620  0x28207365  0x29363878
+[0x7fffef30]                        0x6d6f435c  0x206e6f6d  0x656c6946  0x68430073
+[0x7fffef40]                        0x6c6f636f  0x79657461  0x6c6f6f54  0x636f4c73
+[0x7fffef50]                        0x6f697461  0x3a433d6e  0x6f6f745c  0x4300736c
+[0x7fffef60]                        0x6f636f68  0x6574616c  0x73614c79  0x74615074
+[0x7fffef70]                        0x64705568  0x3d657461  0x36323331  0x39363036
+[0x7fffef80]                        0x32383436  0x37333235  0x43003837  0x6f636f68
+[0x7fffef90]                        0x6574616c  0x736e4979  0x6c6c6174  0x5c3a433d
+[0x7fffefa0]                        0x676f7250  0x446d6172  0x5c617461  0x636f6863
+[0x7fffefb0]                        0x74616c6f  0x41007965  0x41445050  0x433d4154
+[0x7fffefc0]                        0x73555c3a  0x5c737265  0x69726461  0x70415c5f
+[0x7fffefd0]                        0x74614470  0x6f525c61  0x6e696d61  0x4c410067
+[0x7fffefe0]                        0x4553554c  0x52505352  0x4c49464f  0x3a433d45
+[0x7fffeff0]                        0x6f72505c  0x6d617267  0x61746144  0x00000000
+
+        KERNEL DATA
+[0x90000000]...[0x90010000]        0x00000000
+
+
