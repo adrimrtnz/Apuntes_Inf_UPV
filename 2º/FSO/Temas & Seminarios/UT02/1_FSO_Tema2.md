@@ -28,6 +28,7 @@ Es la ejecución de varias tareas intercaladas entre ellas haciendo posible que 
     * Mientras se realizan operaciones de E/S el procesador debe poder ejecutar simultáneamente instrucciones útiles.
 
 ## Utilidades del sistema operativo
-> Completar (Pg. 23)
+* Se ejecutan como procesos de usuario y proporcionan un **entorno más cómodo** de trabajo.
+* Se proporcionan como parte del OS, pero no son imprescindibles para el funcionamiento de la máquina.
 
 ## Identidades

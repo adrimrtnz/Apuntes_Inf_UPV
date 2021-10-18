@@ -17,7 +17,8 @@ __start:  li $a3, 'M'
           move $a1,$v0
           jal Output
 
-          beqz $a0, exit
+
+          beqz $a0, exit    # Esto es el while
           bnez $a1, __start
 
 exit:     li $v0,10         # exit

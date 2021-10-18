@@ -1,0 +1,16 @@
+if test $# -eq 1
+then
+    if test -s $1
+    then
+	if test -d $1
+	then
+	    echo "$1 es un directorio"
+	else
+	    $(sudo rm $1)
+	fi
+    else
+	echo "El archivo $1 no existe"
+    fi
+else
+    echo "Solo se admite un argumento"
+fi

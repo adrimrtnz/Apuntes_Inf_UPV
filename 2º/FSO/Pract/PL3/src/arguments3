@@ -1,0 +1,4 @@
+for in in $(ls)
+do
+    echo $i
+done
