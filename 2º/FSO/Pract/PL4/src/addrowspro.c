@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <sys/wait.h>
+#include <unistd.h>
+#include <stdlib.h>
 #include <math.h>
 
 #define DIMROW 100
@@ -14,7 +17,7 @@ row matrix[NUMROWS];
 
 int main()
 {
-    int i, j, k;
+    int i, j, k, r_value;
     long total_add = 0;
     
     // Initializing to 1 all the elements of the vector
@@ -33,7 +36,15 @@ int main()
     
     for (i = 0; i < NUMROWS; i++)
     {
-        total_add += matrix[i].add;
+        r_value = fork();
+        if (r_value == 0)
+        {
+            exit(matrix[i].add);
+        }
+        else
+        {
+            total_add += matrix[i].add;
+        }
     }
     
     printf("The total addition is %ld\n", total_add);

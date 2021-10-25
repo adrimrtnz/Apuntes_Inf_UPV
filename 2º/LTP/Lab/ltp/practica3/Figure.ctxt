@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Figure
+comment0.text=\r\n\ class\ Figure.\r\n\ \r\n\ @author\ LTP\ \r\n\ @version\ 2020-21\r\n
+comment1.params=x\ y
+comment1.target=Figure(double,\ double)
+comment2.params=
+comment2.target=double\ area()
+comment3.params=o
+comment3.target=boolean\ equals(java.lang.Object)
+comment4.params=
+comment4.target=java.lang.String\ toString()
+comment5.params=f
+comment5.target=int\ compareTo(Figure)
+numComments=6

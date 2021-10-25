@@ -18,9 +18,8 @@ int main(int argc, char *argv[])
     }
     else if (childpid == 0)
     {
-        printf("---------CHILD PID: %ld---------\n", (long)getpid());
-        if (execl("/bin/ls", "ls", "-l", NULL) < 0)
-        //if (execvp(arguments[0], arguments) < 0)
+        printf("\n---------CHILD PID: %ld---------\n", (long)getpid());
+        if (execvp(argv[1], &argv[1]) < 0)
         {
             printf("Could not execute: ls\n");
             exit(1);
