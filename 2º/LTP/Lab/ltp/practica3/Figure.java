@@ -8,7 +8,7 @@ package practica3;
  * @version 2020-21
  */
 
-public abstract class Figure implements Comparable<Figure> {
+public abstract class Figure implements Comparable<Figure>, Printable {
     private double x;
     private double y;
     
@@ -26,7 +26,7 @@ public abstract class Figure implements Comparable<Figure> {
     }
     
     public String toString() {
-        return "Position: (" + x + ", " + y + ")"; 
+        return "Position: (" + x + ", " + y + ")\n\tArea: " + this.area(); 
     }
     
     public int compareTo (Figure f)
@@ -35,4 +35,6 @@ public abstract class Figure implements Comparable<Figure> {
         if(this.area() < f.area()) { return -1; }
         else { return 0; }
     }
+    
+    public void print (char c) { return; }
 }

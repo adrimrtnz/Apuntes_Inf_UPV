@@ -8,7 +8,7 @@ import java.util.*;
  * @version 2020-21
  */
 
-public class FiguresGroup {
+public class FiguresGroup implements Printable {
     private static final int NUM_FIGURES = 10;
     private Figure[] figuresList = new Figure[NUM_FIGURES];
     private int numF = 0;
@@ -30,7 +30,7 @@ public class FiguresGroup {
     public Figure greatestFigure() {
         int index = 0;
         double max = 0;
-        for (int i = 0; i < (numF - 1); i++) {
+        for (int i = 0; i < numF; i++) {
             if (figuresList[i].area() > max) {
                 max = figuresList[i].area();
                 index = i;
@@ -75,15 +75,22 @@ public class FiguresGroup {
             Figure x = figuresList[i];
             int j = l.size() - 1;
             
-            while (j >= 0 && l.get(j).compareTo(x) < 0)
+            while (j >= 0 && l.get(j).compareTo(x) > 0)
             {
                 j--;
             }
             
-            l.add(j+1, figuresList[i]);
+            l.add(j+1, x);
         }
         
         return l;
+    }
+    
+    public void print(char c) {
+        
+        for (int i = 0; i < numF; i++) {
+           figuresList[i].print(c);
+        }
     }
     
 }

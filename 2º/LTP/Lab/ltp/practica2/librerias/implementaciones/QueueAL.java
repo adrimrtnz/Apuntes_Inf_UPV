@@ -83,6 +83,6 @@ public class QueueAL<T> implements Queue<T> {
      */
     public boolean isEmpty() {
         // TO COMPLETE / CHANGE ... 
-        return true;
+        return size() == 0;
     } 
 }

@@ -1,4 +1,6 @@
 #BlueJ class context
 comment0.target=FiguresQueue
 comment0.text=\r\n\ class\ FiguresQueue.\r\n\ \r\n\ @author\ LTP\ \r\n\ @version\ 2020-21\r\n
-numComments=1
+comment1.params=
+comment1.target=double\ area()
+numComments=2

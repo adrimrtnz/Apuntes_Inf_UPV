@@ -22,7 +22,7 @@ public class FiguresGroupUse {
         g.add(new Rectangle(7.0, 2.0, 1.0, 3.0));
         System.out.println(g.orderedList());
         
-        // g.print('*');
+        g.print('*');
     }
     
     public static void testComparableRange() {

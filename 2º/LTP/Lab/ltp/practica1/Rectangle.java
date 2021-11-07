@@ -18,6 +18,10 @@ public class Rectangle extends Figure
         height = h;
     }
     
+    public double perimeter() {
+        return (2 * base) + (2 * height);
+    }
+    
     public double area() {
         return base * height;
     }

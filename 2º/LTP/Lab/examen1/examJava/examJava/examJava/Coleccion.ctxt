@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.target=Coleccion
+comment0.text=\r\n\ interface\ Coleccion\r\n\ \r\n\ @author\ LTP\ \r\n\ @version\ 2021-22\r\n
+comment1.params=e
+comment1.target=void\ add(java.lang.Object)
+comment2.params=
+comment2.target=java.lang.Object\ remove()
+comment2.text=Inserta\ un\ elemento\ en\ la\ coleccion
+comment3.params=
+comment3.target=int\ size()
+comment3.text=Devuelve\ y\ borra\ un\ elemento\ de\ la\ coleccion
+comment4.params=
+comment4.target=boolean\ isEmpty()
+comment4.text=Devuelve\ el\ numero\ de\ elementos\ de\ la\ coleccion
+comment5.params=c
+comment5.target=boolean\ isGreater(Coleccion)
+comment5.text=Comprueba\ si\ la\ coleccion\ esta\ vacia
+comment6.params=
+comment6.target=java.lang.String\ aCadena()
+comment6.text=Comprueba\ si\ la\ coleccion\ tiene\ mas\ elementos\ que\ c
+comment7.params=e
+comment7.target=boolean\ pertenece(java.lang.Object)
+comment7.text=Convierte\ la\ coleccion\ a\ cadena\ de\ texto
+numComments=8

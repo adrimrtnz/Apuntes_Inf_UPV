@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Vector
+comment0.text=\r\n\ interface\ Vector\r\n\ \r\n\ @author\ LTP\r\n\ @version\ 2021-22\r\n
+comment1.params=i\ e
+comment1.target=void\ addPos(int,\ java.lang.Object)
+comment2.params=i
+comment2.target=java.lang.Object\ removePos(int)
+comment2.text=Inserta\ un\ elemento\ en\ una\ posicion
+comment3.params=i
+comment3.target=java.lang.Object\ getPos(int)
+comment3.text=Devuelve\ y\ borra\ el\ elemento\ en\ una\ posicion
+numComments=4

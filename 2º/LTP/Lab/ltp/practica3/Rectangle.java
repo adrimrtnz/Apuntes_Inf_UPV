@@ -43,8 +43,22 @@ public class Rectangle extends Figure implements ComparableRange<Figure>
         double dif = this.area() - o.area();
        
         
-        if (Math.abs(dif /suma) >= 0.10  ) { return 0; }
+        if (Math.abs(dif /suma) <= 0.10  ) { return 0; }
         
         return this.compareTo(o);
+    }
+    
+    public void print(char c) {
+        int b = (int) base;
+        int h = (int) height;
+        
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j < b; j++) {
+                System.out.print(c);
+            }
+            
+            System.out.println();
+        }
+        System.out.println();
     }
 }

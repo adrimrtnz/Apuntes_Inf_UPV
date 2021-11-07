@@ -17,6 +17,7 @@ public abstract class Figure {
         this.y = y; 
     }
     
+    public abstract double perimeter();
     public abstract double area();
     
     public boolean equals(Object o) {

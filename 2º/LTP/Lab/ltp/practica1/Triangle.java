@@ -18,6 +18,8 @@ public class Triangle extends Figure {
         height = h;
     }
     
+    public double perimeter() { return -1; }
+    
     public double area() {
         return (base * height) / 2.0;
     }

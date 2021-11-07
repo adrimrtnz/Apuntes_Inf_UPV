@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.target=VectorList
+comment0.text=\r\n\ class\ VectorList\r\n\ \r\n\ @author\ LTP\r\n\ @version\ 2021-22\r\n
+comment1.params=e
+comment1.target=void\ add(java.lang.Object)
+comment1.text=metodos\ de\ Coleccion<T>
+comment10.params=e
+comment10.target=boolean\ pertenece(java.lang.Object)
+comment2.params=
+comment2.target=java.lang.Object\ remove()
+comment3.params=
+comment3.target=int\ size()
+comment4.params=
+comment4.target=boolean\ isEmpty()
+comment5.params=c
+comment5.target=boolean\ isGreater(Coleccion)
+comment6.params=
+comment6.target=java.lang.String\ aCadena()
+comment7.params=i\ e
+comment7.target=void\ addPos(int,\ java.lang.Object)
+comment7.text=metodos\ de\ Vector<T>
+comment8.params=i
+comment8.target=java.lang.Object\ removePos(int)
+comment9.params=i
+comment9.target=java.lang.Object\ getPos(int)
+numComments=11

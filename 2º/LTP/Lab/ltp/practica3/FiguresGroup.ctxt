@@ -17,4 +17,6 @@ comment7.params=o
 comment7.target=boolean\ equals(java.lang.Object)
 comment8.params=
 comment8.target=java.util.List\ orderedList()
-numComments=9
+comment9.params=c
+comment9.target=void\ print(char)
+numComments=10

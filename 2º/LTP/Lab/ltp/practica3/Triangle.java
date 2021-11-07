@@ -34,6 +34,6 @@ public class Triangle extends Figure {
         return "Triangle:\n\t" +
             super.toString() +
             "\n\tBase: " + base +
-            "\n\tHeight: " + height;
+            "\n\tHeight: " + height + "\n";
     }
 }

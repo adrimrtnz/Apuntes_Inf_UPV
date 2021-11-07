@@ -12,8 +12,15 @@ public class Circle extends Figure {
     private double radius;
 
     public Circle(double x, double y, double r) {
+        // Si se invoca el constructor de la clase base
+        // tiene que ser la primera instrucción del cuerpo
+        // del constructor de la subclase
         super(x, y);
         radius = r;
+    }
+    
+    public double perimeter() {
+        return 2 * Math.PI * radius;
     }
     
     public double area() {

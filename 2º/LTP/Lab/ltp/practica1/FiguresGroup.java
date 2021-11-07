@@ -15,7 +15,7 @@ public class FiguresGroup {
     
     public void add(Figure f) { 
         // para crear grupo conjuntos
-        // if (figuresList.found(f)) { return; }
+        // if (found(f)) { return; }
         figuresList[numF++] = f; 
     }
     
@@ -30,7 +30,7 @@ public class FiguresGroup {
     public Figure greatestFigure() {
         int index = 0;
         double max = 0;
-        for (int i = 0; i < (numF - 1); i++) {
+        for (int i = 0; i < numF; i++) {
             if (figuresList[i].area() > max) {
                 max = figuresList[i].area();
                 index = i;
