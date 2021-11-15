@@ -1,0 +1,113 @@
++OK Hello there.
+CAPA
++OK Here's what I can do:
+STLS
+TOP
+USER
+LOGIN-DELAY 10
+PIPELINING
+UIDL
+IMPLEMENTATION Courier Mail Server
+.
+USER redes09
++OK Password required.
+PASS bloqueo
++OK logged in.
+STAT
++OK 7 9800
+LIST
++OK POP3 clients that break here, they violate STD53.
+1 727
+2 748
+3 714
+4 754
+5 2283
+6 2287
+7 2287
+.
+UIDL
++OK
+1 1635488728.V803I200eM838141.serveis-rdc
+2 UID2-1635488807
+3 UID3-1635488807
+4 UID4-1635488807
+5 UID5-1635488807
+6 UID6-1635488807
+7 UID7-1635488807
+.
+RETR 7
++OK 2287 octets follow.
+Return-Path: <redes09@redes.upv.es>
+X-Original-To: redes09@redes.upv.es
+Delivered-To: redes09@redes.upv.es
+Received: from [158.42.180.9] (rdc09.redes.upv.es [158.42.180.9])
+	by serveis-rdc (Postfix) with ESMTP id 44B825F792
+	for <redes09@redes.upv.es>; Fri, 29 Oct 2021 09:55:34 +0200 (CEST)
+To: redes09@redes.upv.es
+From: =?UTF-8?B?QWRyacOhbiBNYXJ0w61uZXo=?= <redes09@redes.upv.es>
+Subject: Captura POP3
+Message-ID: <b2d509a9-7192-f678-fce3-bed095aef289@redes.upv.es>
+Date: Fri, 29 Oct 2021 09:55:34 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="------------6B2A6EC4675FAEDFD5534CF0"
+Content-Language: en-US
+
+This is a multi-part message in MIME format.
+--------------6B2A6EC4675FAEDFD5534CF0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+
+
+    Ingredientes
+
+  * 400 gramos de Arroz Bomba
+  * 1 Kg. de pollo troceado
+  * 500 gramos de conejo troceado
+  * 200 gramos de jud..as verdes
+  * 100 gramos de garrof.. fresco
+  * 100 gramos de tomate troceado
+  * 6 cucharadas de aceite de oliva
+  * Unas hebras de azafr..n
+  * Piment..n rojo molido
+  * Una ramita de romero
+  * Sal
+
+
+--------------6B2A6EC4675FAEDFD5534CF0
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 8bit
+
+<html>
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <div class="moz-text-html" lang="x-unicode">
+      <div class="recipe-ingredients">
+        <h2 id="ingredientes">Ingredientes</h2>
+        <ul class="ingredients-list">
+          <li>400 gramos de Arroz Bomba </li>
+          <li>1 Kg. de pollo troceado </li>
+          <li>500 gramos de conejo troceado </li>
+          <li>200 gramos de jud..as verdes </li>
+          <li>100 gramos de garrof.. fresco </li>
+          <li>100 gramos de tomate troceado </li>
+          <li>6 cucharadas de aceite de oliva </li>
+          <li>Unas hebras de azafr..n </li>
+          <li>Piment..n rojo molido </li>
+          <li>Una ramita de romero </li>
+          <li>Sal</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
+
+--------------6B2A6EC4675FAEDFD5534CF0--
+.
+QUIT
++OK Bye-bye.

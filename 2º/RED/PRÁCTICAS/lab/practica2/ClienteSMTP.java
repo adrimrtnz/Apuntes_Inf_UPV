@@ -23,6 +23,8 @@ public class ClienteSMTP
       
             PrintWriter pw = new PrintWriter(s.getOutputStream(), true);
             pw.println("HELO 10.236.32.170");
+            
+            System.out.println(lee.nextLine());
            
             s.close();
         } 

@@ -17,7 +17,7 @@ row matrix[NUMROWS];
 
 int main()
 {
-    int i, j, k, r_value;
+    int i, j, k, r_value, status;
     long total_add = 0;
     
     // Initializing to 1 all the elements of the vector
@@ -43,7 +43,8 @@ int main()
         }
         else
         {
-            total_add += matrix[i].add;
+            wait(&status);
+            total_add += status/256;
         }
     }
     

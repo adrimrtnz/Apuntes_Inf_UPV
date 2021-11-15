@@ -19,8 +19,8 @@ public class ClienteTCP3
             System.out.println("Conectado:\n\t" + 
             "IP remota: " + s.getInetAddress() + "\n\t" +
             "Puerto remoto: " + s.getPort() + "\n\t"  + 
-            "IP local: " + s.getLocalPort() + "\n\t" +
-            "Puerto local: " + s.getLocalAddress() + "\n\t");
+            "IP local: " + s.getLocalAddress() + "\n\t" +
+            "Puerto local: " + s.getLocalPort() + "\n\t");
             s.close();
         }
         catch(NoRouteToHostException e) {

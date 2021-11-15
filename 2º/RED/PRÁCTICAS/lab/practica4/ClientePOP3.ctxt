@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=ClientePOP3
+comment1.params=cadena
+comment1.target=void\ error(java.lang.String)
+comment2.params=
+comment2.target=void\ PrintMenu()
+comment3.params=args
+comment3.target=void\ main(java.lang.String[])
+numComments=4

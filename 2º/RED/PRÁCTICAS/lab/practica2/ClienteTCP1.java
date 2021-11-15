@@ -13,8 +13,8 @@ import java.io.*;
 public class ClienteTCP1
 {
     public static void main(String[] args) throws IOException {
-           Socket s = new Socket("www.upv.es", 81);
-           System.out.println("Conectado:\n\t" + s);
+           Socket s = new Socket("www.upv.es", 80);
+           System.out.println("¡Conectado!\n\t" + s);
            s.close();
         }
 }
