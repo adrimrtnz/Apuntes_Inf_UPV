@@ -1,0 +1,19 @@
+total 1116
+drwxrwxrwx 1 bifrost bifrost   4096 Nov 16 10:16 .
+drwxrwxrwx 1 bifrost bifrost   4096 Nov 16 09:36 ..
+-rwxrwxrwx 1 bifrost bifrost 869225 Nov 16 10:09 PL06 Castellano.pdf
+-rwxrwxrwx 1 bifrost bifrost 142760 Nov 16 09:36 PL06 Cuestiones.pdf
+-rwxrwxrwx 1 bifrost bifrost   1399 Nov 16 09:36 a_pipe.c
+-rwxrwxrwx 1 bifrost bifrost  16880 Nov 16 09:44 descriptor
+-rwxrwxrwx 1 bifrost bifrost    588 Nov 16 09:36 descriptor.c
+-rwxrwxrwx 1 bifrost bifrost  16800 Nov 16 09:48 descriptor_out
+-rwxrwxrwx 1 bifrost bifrost    760 Nov 16 09:36 descriptor_output.c
+-rwxrwxrwx 1 bifrost bifrost  16912 Nov 16 10:16 ls_redir
+-rwxrwxrwx 1 bifrost bifrost    679 Nov 16 10:16 ls_redir.c
+-rwxrwxrwx 1 bifrost bifrost      0 Nov 16 10:16 ls_salida.txt
+-rwxrwxrwx 1 bifrost bifrost     47 Nov 16 09:55 messages.txt
+-rwxrwxrwx 1 bifrost bifrost     23 Nov 16 10:03 output.txt
+-rwxrwxrwx 1 bifrost bifrost  17048 Nov 16 10:03 redir_out
+-rwxrwxrwx 1 bifrost bifrost    622 Nov 16 09:36 redir_output.c
+-rwxrwxrwx 1 bifrost bifrost  16960 Nov 16 09:55 share
+-rwxrwxrwx 1 bifrost bifrost    693 Nov 16 09:36 share_file.c

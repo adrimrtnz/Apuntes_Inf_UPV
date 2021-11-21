@@ -51,4 +51,7 @@ module ExeP5 where
     ins x (y:ys) | x < y = x:y:ys
                  | otherwise = y:(ins x ys)
 
-    
+    doubleAll :: [Int] -> [Int]
+    doubleAll = map (2*)
+
+    --FALTA: ejercicio 10 map' y filter'
