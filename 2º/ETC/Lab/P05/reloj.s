@@ -19,7 +19,7 @@ cad_reloj_en_s: .asciiz "\n   Reloj en segundos: "
                 .text 0x00400000
 
 __start:        la $a0, reloj
-                li $a1, 0x0002030C
+                li $a1, 0xAB163610
                 jal inicializa_reloj
                 la $a0, reloj
                 jal devuelve_reloj_en_s

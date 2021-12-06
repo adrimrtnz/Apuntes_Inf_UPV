@@ -19,6 +19,8 @@ cad_reloj_en_s: .asciiz "\n   Reloj en segundos: "
                 .text 0x00400000
 
 __start:        la $a0, reloj
+                li $a1, 0xBB967650
+                jal inicializa_reloj
                 jal imprime_reloj
 
              

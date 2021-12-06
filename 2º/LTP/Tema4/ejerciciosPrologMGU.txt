@@ -1,0 +1,23 @@
+p(f(X,b), Z)
+p(f(a,Y), g(c))
+	-> {x/a, Y/b}
+	-> {Z / g(c)}
+	-> {x/a, Y/b} U {Z / g(c)}
+	p(f(a,Y), g(c))
+	p(f(a,Y), g(c))
+		-- Al ser iguales unifican:
+		
+
+p([a,X], Y)
+p([H|R], b)
+	-> {[a,X]/[a|[X]]}
+	-> {H/a, R/[X]} U {Y / b}
+	-> = {H/a, R/[X], Y/b}
+	p([H|[X]], b)
+
+p(f(X), b, X)
+p(f(a), Y, b)
+	-> {X/a} U {y/b} U {X/b}
+	La razón técnica de que esto no unifique es que la sustitución
+	de la X se aplica a todas, por tanto la segunda X se habría
+	convertido en una a antes de hacer la última sustitución.
