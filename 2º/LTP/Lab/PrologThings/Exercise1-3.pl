@@ -39,11 +39,11 @@ aunt(X, Y) :-
     parent(Z, Y).
 
 sibling(X, Y) :-
-    X \== Y,
     father(F, X),
     father(F, Y),
     mother(M, X),
-    mother(M, Y).
+    mother(M, Y),
+    X \== Y.
 
 grandpa_of(X, Y) :-
     (mother(M, Y),father(X,M));

@@ -18,20 +18,20 @@
 /*
  REPETICIONES : Numero de veces que se suma/resta 1 a V
 */
-#define REPETICIONES 10000000
+#define REPETICIONES      10000
 
 /*
    VARIABLES GLOBALES (COMPARTIDAS) 
 */
 
 long int V = 100;      // Valor inicial
-int llave = 0;
-
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 /* 
    FUNCIONES AUXILIARES
    test_and_set(int * objetivo) : devuelve 1 (cierto) si llave esta siendo utilizada, 
                                   devuelve 0 (falso) si llave esta libre.
 */
+
 int test_and_set(int *spinlock) {
   int ret;
   __asm__ __volatile__(
@@ -55,16 +55,14 @@ void *agrega (void *argumento) {
   long int cont;
   long int aux;
   
- 
   for (cont = 0; cont < REPETICIONES; cont = cont + 1) {
-  
-  while (test_and_set(&llave));
-
-      V = V + 1;
-      
-    llave = 0;
+      pthread_mutex_lock(&mutex);
+      aux = V;
+      aux = aux + 1;
+      usleep(500);
+      V = aux;
+      pthread_mutex_unlock(&mutex);
   }
-
   printf("-------> Fin AGREGA (V = %ld)\n", V);
   pthread_exit(0);
 }
@@ -75,9 +73,12 @@ void *resta (void *argumento) {
   long int aux;
   
   for (cont = 0; cont < REPETICIONES; cont = cont + 1) {
-    while (test_and_set(&llave));
-        V = V - 1;
-    llave = 0;
+        pthread_mutex_lock(&mutex);
+        aux = V;
+        aux = aux - 1;
+        usleep(500);
+        V = aux;
+        pthread_mutex_unlock(&mutex);
   }
   
   printf("-------> Fin RESTA  (V = %ld)\n", V);

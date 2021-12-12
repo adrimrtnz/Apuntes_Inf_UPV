@@ -18,11 +18,25 @@ cad_reloj_en_s: .asciiz "\n   Reloj en segundos: "
                 .globl __start
                 .text 0x00400000
 
-__start:        la $a0, reloj
-                li $a1, 0xAB163610
-                jal inicializa_reloj
+__start:        #la $a0, reloj
+                #li $a1, 0xAB163610
+                #jal inicializa_reloj
+
+                #la $a0, reloj
+                #li $a1, 23              # Horas
+                #jal inicializa_reloj_hh
+                #li $a1, 13              # Minutos
+                #jal inicializa_reloj_mm
+                #li $a1, 89              # Segundos
+                #jal inicializa_reloj_ss
+
+                la $a0, reloj
+                li $a1, 66765
+                jal inicializa_reloj_en_s
+
                 la $a0, reloj
                 jal devuelve_reloj_en_s
+
                 move $a0, $v0
                 jal imprime_s
 
@@ -32,8 +46,8 @@ __start:        la $a0, reloj
                 #li $a3, 89              # Segundos
                 #jal inicializa_reloj_alt
                 
-                #la $a0, reloj
-                #jal imprime_reloj
+                la $a0, reloj
+                jal imprime_reloj
              
 salir:          li $v0, 10              # Codigo de exit (10)
                 syscall                 # Ultima instruccion ejecutada
@@ -51,6 +65,18 @@ inicializa_reloj:
                 sw $a1, 0($a0)
                 jr $ra
 
+inicializa_reloj_en_s:
+                li $t0, 60
+                div $a1, $t0
+                mflo $a1        # Cociente en parte LO
+                mfhi $t1        # Resto en parte HI
+                sb $t1, 0($a0)
+                div $a1, $t0
+                mflo $a1
+                mfhi $t1
+                sb $t1, 1($a0)
+                sb $a1, 2($a0)
+                jr $ra
 
 inicializa_reloj_alt:
                 li $t0, 0x001F3F3F
@@ -61,7 +87,24 @@ inicializa_reloj_alt:
                 and $a1, $a1, $t0
 
                 sw $a1, 0($a0)
+                jr $ra
 
+inicializa_reloj_hh:
+                li $t0, 0x1F
+                and $a1, $a1, $t0
+                sb  $a1, 2($a0)
+                jr $ra
+
+inicializa_reloj_mm:
+                li $t0, 0x3F
+                and $a1, $a1, $t0
+                sb  $a1, 1($a0)
+                jr $ra
+
+inicializa_reloj_ss:
+                li $t0, 0x3F
+                and $a1, $a1, $t0
+                sb  $a1, 0($a0)
                 jr $ra
 
                 ########################################################## 
@@ -134,12 +177,12 @@ imprime_s:      move $t0, $a0
                 
 devuelve_reloj_en_s:
                 lb $t0, 0($a0)
-                add $v0, $t0, $zero
+                addu $v0, $t0, $zero
                 lb $t0, 1($a0)
                 li $t1, 60
                 mult $t0, $t1
                 mflo $t0
-                add $v0, $v0, $t0
+                addu $v0, $v0, $t0
                 lb $t0, 2($a0)
                 li $t1, 3600
                 mult $t0, $t1
@@ -147,7 +190,8 @@ devuelve_reloj_en_s:
                 mfhi $t1
                 sll $t1, $t1, 16
                 or $t0, $t0, $t1
-                add $v0, $v0, $t0
+                addu $v0, $v0, $t0
+                jr $ra
 
 
                 ########################################################## 

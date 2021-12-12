@@ -18,7 +18,7 @@
 /*
  REPETICIONES : Numero de veces que se suma/resta 1 a V
 */
-#define REPETICIONES 10000000
+#define REPETICIONES 10000
 
 /*
    VARIABLES GLOBALES (COMPARTIDAS) 
@@ -60,7 +60,10 @@ void *agrega (void *argumento) {
   
   while (test_and_set(&llave));
 
-      V = V + 1;
+      aux = V;
+      aux = aux + 1;
+      usleep(500);
+      V = aux;
       
     llave = 0;
   }
@@ -76,7 +79,10 @@ void *resta (void *argumento) {
   
   for (cont = 0; cont < REPETICIONES; cont = cont + 1) {
     while (test_and_set(&llave));
-        V = V - 1;
+      aux = V;
+      aux = aux - 1;
+      usleep(500);
+      V = aux;
     llave = 0;
   }
   

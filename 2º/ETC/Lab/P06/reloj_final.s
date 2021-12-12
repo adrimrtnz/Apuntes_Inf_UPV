@@ -31,7 +31,7 @@ __start:        la $a0, reloj
                 jal pasa_hora
 
                 la $a0, reloj
-                li $t4, 1
+                li $t4, 0
 
 ini_repe:       beq $t4, 40, fin_repe 
                 jal pasa_segundo            # subimos 40 segundo
@@ -123,23 +123,6 @@ imprime_s:      move $t0, $a0
                 jr $ra
                 
                 ########################################################## 
-                # Subrutina que incrementa el reloj en una hora
-                # Entrada: $a0 con la dirección del reloj
-                # Salida: reloj incrementado en memoria
-                # Nota: 23:MM:SS -> 00:MM:SS
-                ########################################################## 
-                
-pasa_hora:      lbu $t0, 2($a0)         # $t0 = HH
-                addiu $t0, $t0, 1       # $t0 = HH++
-                li $t1, 24
-                beq $t0, $t1, H24       # Si HH==24 se pone HH a cero
-                sb $t0, 2($a0)          # Escribe HH++
-                j fin_pasa_hora
-H24:            sb $zero, 2($a0)        # Escribe HH a 0
-fin_pasa_hora:  jr $ra
-
-
-                ########################################################## 
                 # Subrutina que incrementa el reloj en un segundo
                 # Entrada: $a0 con la dirección del reloj
                 # Salida: reloj incrementado en memoria
@@ -152,7 +135,7 @@ pasa_segundo:   lbu $t0, 0($a0)         # $t0 = SS
                 beq $t0, $t1, S60       # Si SS==60 se pone SS a cero
                 sb $t0, 0($a0)          # Escribe SS++
                 j fin_pasa_seg
-S60:            sb $zero, 0($a0)        # Escribe SS a 0
+S60:            sb $zero, 0($a0)        # Escribe SS a 0 e incrementa MM
                 j pasa_minuto
 fin_pasa_seg:   jr $ra
 
@@ -169,9 +152,26 @@ pasa_minuto:    lbu $t0, 1($a0)         # $t0 = MM
                 beq $t0, $t1, M60       # Si MM==60 se pone MM a cero
                 sb $t0, 1($a0)          # Escribe MM++
                 j fin_pasa_min
-M60:            sb $zero, 1($a0)        # Escribe MM a 0
+M60:            sb $zero, 1($a0)        # Escribe MM a 0 e incrementa HH
                 j pasa_hora
 fin_pasa_min:   jr $ra
+
+                ########################################################## 
+                # Subrutina que incrementa el reloj en una hora
+                # Entrada: $a0 con la dirección del reloj
+                # Salida: reloj incrementado en memoria
+                # Nota: 23:MM:SS -> 00:MM:SS
+                ########################################################## 
+                
+pasa_hora:      lbu $t0, 2($a0)         # $t0 = HH
+                addiu $t0, $t0, 1       # $t0 = HH++
+                li $t1, 24
+                beq $t0, $t1, H24       # Si HH==24 se pone HH a cero
+                sb $t0, 2($a0)          # Escribe HH++
+                j fin_pasa_hora
+H24:            sb $zero, 2($a0)        # Escribe HH a 0
+fin_pasa_hora:  jr $ra
+
 
                 ########################################################## 
                 # Subrutina que multiplica por 36 

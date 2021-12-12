@@ -55,15 +55,13 @@ void *agrega (void *argumento) {
   long int cont;
   long int aux;
   
-  for (cont = 0; cont < REPETICIONES; cont = cont + 1) {
-  
-
+  for (cont = 0; cont < REPETICIONES; cont = cont + 1) 
+  {
       sem_wait(&sem);
       V = V + 1;
       sem_post(&sem);
-      
-
   }
+
   printf("-------> Fin AGREGA (V = %ld)\n", V);
   pthread_exit(0);
 }
@@ -73,7 +71,8 @@ void *resta (void *argumento) {
   long int cont;
   long int aux;
   
-  for (cont = 0; cont < REPETICIONES; cont = cont + 1) {
+  for (cont = 0; cont < REPETICIONES; cont = cont + 1) 
+  {
         sem_wait(&sem);
         V = V - 1;
         sem_post(&sem);
@@ -95,10 +94,10 @@ void *inspecciona (void *argumento) {
 
 int main (int argc, char *argv[]) {
   //Declaracion de  variables 
-    pthread_t hiloSuma, hiloResta, hiloInspeccion;
-    pthread_attr_t attr;   
+  pthread_t hiloSuma, hiloResta, hiloInspeccion;
+  pthread_attr_t attr;   
 
-    sem_init(&sem, 0, 1);
+  sem_init(&sem, 0, 1);
 
   // Inicilizacion de los atributos de los hilos (por defecto)
   pthread_attr_init(&attr);

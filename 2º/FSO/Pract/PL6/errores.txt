@@ -1,0 +1,15 @@
+share_file.c: In function ‘main’:
+share_file.c:17:5: warning: implicit declaration of function ‘write’; did you mean ‘fwrite’? [-Wimplicit-function-declaration]
+   17 |     write(fd,parent_message,strlen(parent_message));
+      |     ^~~~~
+      |     fwrite
+share_file.c:19:11: warning: implicit declaration of function ‘fork’ [-Wimplicit-function-declaration]
+   19 |     pid = fork();
+      |           ^~~~
+share_file.c:22:9: warning: implicit declaration of function ‘close’; did you mean ‘pclose’? [-Wimplicit-function-declaration]
+   22 |         close(fd);
+      |         ^~~~~
+      |         pclose
+share_file.c:25:5: warning: implicit declaration of function ‘wait’ [-Wimplicit-function-declaration]
+   25 |     wait(NULL);
+      |     ^~~~

@@ -10,35 +10,35 @@ media_s:        .float  0.0
 media_d:        .double 0.0
 
                 ##########################################################
-                # Segmento de c骴igo
+                # Segmento de c贸digo
                 ##########################################################
 
                 .globl __start
                 .text 0x00400000
 
-__start:        la $t0, dimension      # Direcci髇 de la dimensi髇
-                lw $t0, 0($t0)         # Lectura de la dimensi髇
-                mtc1 $t0, $f4          # Lleva la dimensi髇 a $f4
-                la $t1, valores        # Direcci髇 de los valores       
+__start:        la $t0, dimension      # Direcci贸n de la dimensi贸n
+                lw $t0, 0($t0)         # Lectura de la dimensi贸n
+                mtc1 $t0, $f4          # Lleva la dimensi贸n a $f4
+                la $t1, valores        # Direcci贸n de los valores       
                 mtc1 $zero, $f0        # Lleva 0.0 a $f0
 
 bucle:          lwc1 $f6, 0($t1)       # Lee valor[i]
                 add.s $f0, $f0, $f6    # Suma del valor
-                addiu $t1, $t1, 4      # Direcci髇 de valor[i+1] 
+                addiu $t1, $t1, 4      # Direcci贸n de valor[i+1] 
                 addiu $t0, $t0, -1     # Decrementa contador
                 bgtz $t0, bucle        
 
-                cvt.s.w $f4, $f4       # Convierte dimension a real
-                div.s $f0, $f0, $f4    # Calcula media aritm閠ica
-                cvt.d.s $f2, $f0       # Convierte a doble precisi髇
-                la $t0, media_s        # Direcci髇 del resultado media_s
-                swc1 $f0, 0($t0)       # Escribe resultado simple precisi髇
-                la $t0, media_d        # Direcci髇 del resultado media_d
-                swc1 $f2, 0($t0)       # Escribe parte baja doble precisi髇
-                swc1 $f3, 4($t0)       # Escribe parte alta doble precisi髇
+                cvt.s.w $f4, $f4       # Convierte dimensi贸n a real
+                div.s $f0, $f0, $f4    # Calcula media aritm茅tica
+                cvt.d.s $f2, $f0       # Convierte a doble precisi贸n
+                la $t0, media_s        # Direcci贸n del resultado media_s
+                swc1 $f0, 0($t0)       # Escribe resultado simple precisi贸n
+                la $t0, media_d        # Direcci贸n del resultado media_d
+                swc1 $f2, 0($t0)       # Escribe parte baja doble precisi贸n
+                swc1 $f3, 4($t0)       # Escribe parte alta doble precisi贸n
  
                 ########################################################
-                # Finalizaci髇 del programa 
+                # Finalizaci贸n del programa 
                 # Llamada al sistema denominada "exit"
                 ########################################################= 
 

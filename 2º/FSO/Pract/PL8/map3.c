@@ -33,17 +33,17 @@ int main()
 
     printf("\n PROCESS MEMORY MAP /proc/%d/maps \n", getpid());
 
-    // Create command “path_maps” to show memory map
+    // Create command ï¿½path_mapsï¿½ to show memory map
     sprintf(path_maps, "cat /proc/%d/maps",getpid());
     // Empty the buffer
     fflush(stdout);
-    // Execute command “path_maps”
+    // Execute command ï¿½path_mapsï¿½
     system(path_maps);
 	
     printf ("            ---------------\n\n");
 
     /*** Dynamic memory allocation ***/
-    vdin = (int *) malloc(100*sizeof(int));
+    vdin = (int *) malloc(10000000000*sizeof(int));
    
     printf("Dynamic vector vdin address: %p\n", vdin);
     printf("\n PROCESS MEMORY MAP (after malloc)\n");

@@ -34,3 +34,53 @@ module Things where
         let areaLado = 2 * pi * r * h
             areaBase = pi * r^2
         in areaLado + 2 * areaBase
+
+    maximum' :: (Ord a) => [a] -> a 
+    maximum' [] = error "Maximum of an empty list"
+    maximum' [x] = x
+    maximum' (x:xs)
+        | x > maxTail = x
+        | otherwise = maxTail
+        where maxTail = maximum' xs
+
+    reverse' :: [a] -> [a]
+    reverse' [] = []
+    reverse' (x:xs) = reverse' xs ++ [x]
+
+    quicksort :: (Ord a) => [a] -> [a]
+    quicksort [] = []
+    quicksort (x:xs) =
+        let smallerSorted = quicksort[a | a <- xs, a <= x]
+            biggerSorted  = quicksort[a | a <- xs, a > x]
+        in smallerSorted ++ [x] ++ biggerSorted
+        ---( Alternative form with filter )---
+        --let smallerSorted = quicksort (filter (<= x) xs)
+        --     biggerSorted  = quicksort (filter (> x) xs)
+        --in smallerSorted ++ [x] ++ biggerSorted
+
+    applyTwice :: (a -> a) -> a -> a
+    applyTwice f x = f (f x)
+
+    largestDivisible :: (Integral a) => a
+    largestDivisible = head (filter p [100000, 99999..])
+        where p x = x `mod` 3829 == 0
+
+    collatz :: (Integral a) => a -> [a]
+    collatz 1 = [1]
+    collatz n
+            | even n = n:collatz (n `div` 2)
+            | odd n = n:collatz (n*3 + 1)
+
+    numLongCollatz :: Int -> Int
+    numLongCollatz x = length (filter isLong (map collatz [1..100]))
+        where isLong xs = length xs > x
+
+    -- recursive form of sum
+    sum' :: (Num a) => [a] -> a
+    sum' [] = 0
+    sum' (x:xs) = x +  sum xs
+
+
+    -- sum with foldr function
+    sum'' :: (Num a) => [a] -> a
+    sum'' = foldl (+) 0

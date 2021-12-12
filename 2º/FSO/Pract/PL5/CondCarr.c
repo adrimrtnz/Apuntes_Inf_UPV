@@ -18,7 +18,7 @@
 /*
  REPETICIONES : Numero de veces que se suma/resta 1 a V
 */
-#define REPETICIONES      50000
+#define REPETICIONES 10000000
 
 /*
    VARIABLES GLOBALES (COMPARTIDAS) 
@@ -34,7 +34,10 @@ long int V = 100;      // Valor inicial
 
 int test_and_set(int *spinlock) {
   int ret;
-  __asm__ __volatile__(
+  /*
+    volatile: prevent GCC from deleting the asm statement as unused
+  */
+  __asm__ __volatile__(  
     "xchg %0, %1"
     : "=r"(ret), "=m"(*spinlock)
     : "0"(1), "m"(*spinlock)
@@ -55,13 +58,11 @@ void *agrega (void *argumento) {
   long int cont;
   long int aux;
   
-  for (cont = 0; cont < REPETICIONES; cont = cont + 1) {
-  
-
+  for (cont = 0; cont < REPETICIONES; cont = cont + 1) 
+  {
       V = V + 1;
-      
-
   }
+
   printf("-------> Fin AGREGA (V = %ld)\n", V);
   pthread_exit(0);
 }
@@ -71,10 +72,9 @@ void *resta (void *argumento) {
   long int cont;
   long int aux;
   
-  for (cont = 0; cont < REPETICIONES; cont = cont + 1) {
-    
+  for (cont = 0; cont < REPETICIONES; cont = cont + 1) 
+  {
         V = V - 1;
-
   }
   
   printf("-------> Fin RESTA  (V = %ld)\n", V);
@@ -83,8 +83,9 @@ void *resta (void *argumento) {
 
 void *inspecciona (void *argumento) {
  
-  for (;;) {
-    usleep(200000);
+  for (;;) 
+  {
+    usleep(1e6);
     fprintf(stderr, "Inspeccion: Valor actual de V = %ld\n", V);
   } 
 }
@@ -93,7 +94,7 @@ void *inspecciona (void *argumento) {
 
 int main (int argc, char *argv[]) {
   //Declaracion de  variables 
-    pthread_t hiloSuma, hiloResta, hiloInspeccion;
+    pthread_t hiloSuma, hiloResta, hiloInspecciona;
     pthread_attr_t attr;   
 
   // Inicilizacion de los atributos de los hilos (por defecto)
@@ -103,7 +104,7 @@ int main (int argc, char *argv[]) {
   // EJERCICIO: Cree los tres hilos propuestos con dichos atributos 
   pthread_create(&hiloSuma, &attr, agrega, NULL);
   pthread_create(&hiloResta, &attr, resta, NULL);
-  pthread_create(&hiloInspeccion, &attr, inspecciona, NULL);
+  pthread_create(&hiloInspecciona, &attr, inspecciona, NULL);
 
   // EJERCICIO: Hilo principal debe espera a que las
   // tareas "agrega" y "resta" finalicen 

@@ -18,20 +18,20 @@
 /*
  REPETICIONES : Numero de veces que se suma/resta 1 a V
 */
-#define REPETICIONES 10000000
+#define REPETICIONES      10000
 
 /*
    VARIABLES GLOBALES (COMPARTIDAS) 
 */
 
 long int V = 100;      // Valor inicial
-int llave = 0;
-
+sem_t sem;
 /* 
    FUNCIONES AUXILIARES
    test_and_set(int * objetivo) : devuelve 1 (cierto) si llave esta siendo utilizada, 
                                   devuelve 0 (falso) si llave esta libre.
 */
+
 int test_and_set(int *spinlock) {
   int ret;
   __asm__ __volatile__(
@@ -55,14 +55,14 @@ void *agrega (void *argumento) {
   long int cont;
   long int aux;
   
- 
-  for (cont = 0; cont < REPETICIONES; cont = cont + 1) {
-  
-  while (test_and_set(&llave));
-
-      V = V + 1;
-      
-    llave = 0;
+  for (cont = 0; cont < REPETICIONES; cont = cont + 1) 
+  {
+      sem_wait(&sem);
+      aux = V;
+      aux = aux + 1;
+      usleep(500);
+      V = aux;
+      sem_post(&sem);
   }
 
   printf("-------> Fin AGREGA (V = %ld)\n", V);
@@ -74,10 +74,14 @@ void *resta (void *argumento) {
   long int cont;
   long int aux;
   
-  for (cont = 0; cont < REPETICIONES; cont = cont + 1) {
-    while (test_and_set(&llave));
-        V = V - 1;
-    llave = 0;
+  for (cont = 0; cont < REPETICIONES; cont = cont + 1) 
+  {
+        sem_wait(&sem);
+        aux = V;
+        aux = aux - 1;
+        usleep(500);
+        V = aux;
+        sem_post(&sem);
   }
   
   printf("-------> Fin RESTA  (V = %ld)\n", V);
@@ -98,6 +102,8 @@ int main (int argc, char *argv[]) {
   //Declaracion de  variables 
     pthread_t hiloSuma, hiloResta, hiloInspeccion;
     pthread_attr_t attr;   
+
+    sem_init(&sem, 0, 1);
 
   // Inicilizacion de los atributos de los hilos (por defecto)
   pthread_attr_init(&attr);
