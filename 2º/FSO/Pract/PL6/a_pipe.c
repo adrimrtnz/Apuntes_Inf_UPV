@@ -10,7 +10,7 @@ int main (int argc,char *argv[]) {
     int i;
     char* arguments1 [] = { "ls", "-la", 0 };
     char* arguments2 [] = { "wc", "-l", 0 };
-    int fildes[2];
+    int fildes[2]; // fildes[0] = lectura(IN), fildes[1] = escritura(OUT);
     pid_t pid;
 
     // Parent process creates a pipe

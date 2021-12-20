@@ -187,9 +187,6 @@ devuelve_reloj_en_s:
                 li $t1, 3600
                 mult $t0, $t1
                 mflo $t0
-                mfhi $t1
-                sll $t1, $t1, 16
-                or $t0, $t0, $t1
                 addu $v0, $v0, $t0
                 jr $ra
 

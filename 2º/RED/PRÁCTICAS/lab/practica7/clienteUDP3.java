@@ -24,10 +24,11 @@ public class clienteUDP3
             
             String name = "Adrian Martinez\n";
             DatagramPacket dp = new DatagramPacket(name.getBytes(),
-                name.getBytes().length, InetAddress.getLocalHost(),7777);
+                name.getBytes().length, InetAddress.getLocalHost(),port);
             
             DatagramSocket ds = new DatagramSocket();
             
+            ds.setSoTimeout(timeout);
             ds.send(dp);
             ds.receive(p);
             

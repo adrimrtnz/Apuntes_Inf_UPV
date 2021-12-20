@@ -43,7 +43,7 @@ int main()
     printf ("            ---------------\n\n");
 
     /*** Dynamic memory allocation ***/
-    vdin = (int *) malloc(10000000000*sizeof(int));
+    vdin = (int *) malloc(1000*sizeof(int));
    
     printf("Dynamic vector vdin address: %p\n", vdin);
     printf("\n PROCESS MEMORY MAP (after malloc)\n");

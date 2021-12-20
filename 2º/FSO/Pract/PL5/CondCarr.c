@@ -35,7 +35,7 @@ long int V = 100;      // Valor inicial
 int test_and_set(int *spinlock) {
   int ret;
   /*
-    volatile: prevent GCC from deleting the asm statement as unused
+    volatile: prevents GCC from deleting the asm statement as unused
   */
   __asm__ __volatile__(  
     "xchg %0, %1"

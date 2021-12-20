@@ -9,7 +9,6 @@ package practica6;
  */
 public class Ejercicio1 extends Thread
 {
-  final int N_HILOS = 3;
   final int REPETICIONES = 10;
   String msg;
   
@@ -34,12 +33,12 @@ public class Ejercicio1 extends Thread
   
   public static void main (String args[]) 
   {
-      Ejercicio1 hilo1 = new Ejercicio1("Hilo1 en ejecución.");
-      Ejercicio1 hilo2 = new Ejercicio1("Hilo2 en ejecución.");
-      Ejercicio1 hilo3 = new Ejercicio1("Hilo3 en ejecución.");
+      int N_HILOS = 3;
       
-      hilo1.start();
-      hilo2.start();
-      hilo3.start();
+      for (int i = 0; i < N_HILOS; i++) {
+          String msg = "Hilo " + (i + 1) + " en ejecución,";
+          Ejercicio1 h = new Ejercicio1(msg);
+          h.start();
+      }
   }
 }

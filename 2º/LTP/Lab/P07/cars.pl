@@ -5,8 +5,8 @@ model('golf', 'volkswagen').
 model('touran', 'volkswagen').
 model('clio', 'renault').
 model('twingo', 'renault').
-model('mégane', 'renault').
-model('scénic', 'renault').
+model('megane', 'renault').
+model('scenic', 'renault').
 model('2008', 'peugeot').
 model('3008', 'peugeot').
 model('corsa', 'opel').
@@ -24,8 +24,8 @@ since('golf', 1974).
 since('touran', 2003).
 since('clio', 1990).
 since('twingo', 1993).
-since('mégane', 1995).
-since('scénic', 1995).
+since('megane', 1995).
+since('scenic', 1995).
 since('2008', 2013).
 since('3008', 2008).
 since('corsa', 1982).
@@ -37,8 +37,8 @@ segment('golf', 'c').
 segment('touran', 'c').
 segment('clio', 'b').
 segment('twingo', 'a').
-segment('mégane', 'c').
-segment('scénic', 'c').
+segment('megane', 'c').
+segment('scenic', 'c').
 segment('2008', 'b').
 segment('3008', 'c').
 segment('corsa', 'b').
@@ -49,13 +49,20 @@ brand(A,B) :- model(B,A).
 % A es modelo del país B si A es modelo de C y C es del país B
 isModelFrom(A,B) :- model(A,C), country(C,B).
 
+% A es pais de B si B es modelo de A
+isCountryOf(A, B) :- isModelFrom(B, A).
+
 % A y B son modelos de la misma marca C si ...
 isSameBrand(A,B) :- model(A,C), model(B,C), A \== B.        
 
 % A y B son modelos del mismo año si ...
 isSameYear(A,B) :- since(A,C), since(B,C), A \== B.
 
+% A es Classic si es anterior a 1995
+isClassic(A) :- since(A, X), X < 1995.
+
 % A y B estan relacionados si ...
 isRelated(A,B) :- isSameBrand(A,B).
 isRelated(A,B) :- isSameYear(A,B).
-isRelated(A,B) :- segment(A,C), segment(B,C), A \== B. 
+isRelated(A,B) :- segment(A,C), segment(B,C), A \== B.
+isRelated(A,B) :- isClassic(A), isClassic(B), A \== B.

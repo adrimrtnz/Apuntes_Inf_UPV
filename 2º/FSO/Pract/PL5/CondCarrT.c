@@ -58,10 +58,8 @@ void *agrega (void *argumento) {
  
   for (cont = 0; cont < REPETICIONES; cont = cont + 1) {
   
-  while (test_and_set(&llave));
-
-      V = V + 1;
-      
+    while (test_and_set(&llave));
+    V = V + 1;  
     llave = 0;
   }
 
@@ -76,7 +74,7 @@ void *resta (void *argumento) {
   
   for (cont = 0; cont < REPETICIONES; cont = cont + 1) {
     while (test_and_set(&llave));
-        V = V - 1;
+    V = V - 1;
     llave = 0;
   }
   

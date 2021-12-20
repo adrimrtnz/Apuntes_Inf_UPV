@@ -28,6 +28,6 @@ int main() {
 
     //pthread_join (thread1, NULL);
     //pthread_join (thread2, NULL);
-
-    //pthread_exit(0);
+    
+    //pthread_exit(0); 
 }

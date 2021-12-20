@@ -15,7 +15,7 @@ public class daytime
     public static void main(String args[])
     {
         int timeout = 3000;
-        int tamBuffer = 1000;
+        int tamBuffer = 1024;
         int port = 7777;
         
         try 
