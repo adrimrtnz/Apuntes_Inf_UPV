@@ -41,3 +41,22 @@ module MoreThings where
 
     -- Express subtract using flip
     -- flip (-) x y
+    
+    dobleFactorial :: Integer -> Integer 
+    dobleFactorial 0 = 1
+    dobleFactorial 1 = 1
+    dobleFactorial n = n * (dobleFactorial (n - 2))
+
+    potencia :: Integer -> Integer -> Integer 
+    potencia _ 0 = 1
+    potencia x n 
+            | odd n = x * (potencia x (div n 2)) * (potencia x (div n 2))
+            | otherwise = (potencia x (div n 2)) * (potencia x (div n 2))
+
+    numeroBloquesR :: Integer -> Integer
+    numeroBloquesR n 
+            | n < 1 = 0
+            | otherwise = (n * 2) + numeroBloquesR (n-1)
+
+    numeroBloquesC :: Integer -> Integer
+    numeroBloquesC n = sum [x*2 | x <- [1..n]] 
