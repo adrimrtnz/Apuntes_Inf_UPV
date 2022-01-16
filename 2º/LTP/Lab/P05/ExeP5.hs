@@ -54,4 +54,14 @@ module ExeP5 where
     doubleAll :: [Int] -> [Int]
     doubleAll = map (2*)
 
-    --FALTA: ejercicio 10 map' y filter'
+    -- map definido con lista intensional
+    map' :: (a -> b) -> [a] -> [b]
+    map' _ [] = []
+    map' f x = [f y | y <- x]
+
+    -- filter definido con lista intensional
+    filter' :: (a -> Bool) -> [a] -> [a]
+    filter' _ [] = []
+    filter' f x = [y | y <- x, f y]
+
+    
