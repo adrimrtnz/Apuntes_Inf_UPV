@@ -1,0 +1,47 @@
+Class documentation
+<---- javadoc command: ---->
+/Applications/BlueJ 3.1.1/BlueJ.app/Contents/Frameworks/jdk.framework/Versions/A/Contents/Home/bin/javadoc
+-author
+-version
+-nodeprecated
+-package
+-noindex
+-notree
+-nohelp
+-nonavbar
+-source
+1.7
+-classpath
+/Applications/BlueJ 3.1.1/BlueJ.app/Contents/Resources/Java/bluejcore.jar:/Applications/BlueJ 3.1.1/BlueJ.app/Contents/Resources/Java/junit-4.8.2.jar:/Users/mabel/Documents/Mabel/Actuales/EDAGrado/Flip-Teaching2014-15/Tema1/eda
+-d
+/Users/mabel/Documents/Mabel/Actuales/EDAGrado/Flip-Teaching2014-15/Tema1/eda/doc
+-encoding
+windows-1252
+-charset
+windows-1252
+-docletpath
+/Applications/BlueJ 3.1.1/BlueJ.app/Contents/Resources/Java/bjdoclet.jar
+-doclet
+bluej.doclet.doclets.formats.html.HtmlDoclet
+/Users/mabel/Documents/Mabel/Actuales/EDAGrado/Flip-Teaching2014-15/Tema1/eda/ejemplos/tema1/Paciente.java
+<---- end of javadoc command ---->
+Loading source file /Users/mabel/Documents/Mabel/Actuales/EDAGrado/Flip-Teaching2014-15/Tema1/eda/ejemplos/tema1/Paciente.java...
+Constructing Javadoc information...
+Standard Doclet version 1.7.0_45
+Building tree for all the packages and classes...
+Generating /Users/mabel/Documents/Mabel/Actuales/EDAGrado/Flip-Teaching2014-15/Tema1/eda/doc/ejemplos/tema1/Paciente.html...
+Generating /Users/mabel/Documents/Mabel/Actuales/EDAGrado/Flip-Teaching2014-15/Tema1/eda/doc/ejemplos/tema1/package-frame.html...
+Generating /Users/mabel/Documents/Mabel/Actuales/EDAGrado/Flip-Teaching2014-15/Tema1/eda/doc/ejemplos/tema1/package-summary.html...
+Generating /Users/mabel/Documents/Mabel/Actuales/EDAGrado/Flip-Teaching2014-15/Tema1/eda/doc/constant-values.html...
+/Users/mabel/Documents/Mabel/Actuales/EDAGrado/Flip-Teaching2014-15/Tema1/eda/ejemplos/tema1/GestorDePacientes.java:7: error: cannot find symbol
+  private Cola<Paciente> q;  private double horaCita;
+          ^
+  symbol:   class Cola
+  location: class GestorDePacientes
+Building index for all the packages and classes...
+Building index for all classes...
+Generating /Users/mabel/Documents/Mabel/Actuales/EDAGrado/Flip-Teaching2014-15/Tema1/eda/doc/allclasses-frame.html...
+Generating /Users/mabel/Documents/Mabel/Actuales/EDAGrado/Flip-Teaching2014-15/Tema1/eda/doc/allclasses-noframe.html...
+Generating /Users/mabel/Documents/Mabel/Actuales/EDAGrado/Flip-Teaching2014-15/Tema1/eda/doc/index.html...
+Generating /Users/mabel/Documents/Mabel/Actuales/EDAGrado/Flip-Teaching2014-15/Tema1/eda/doc/stylesheet.css...
+1 error

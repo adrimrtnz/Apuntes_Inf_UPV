@@ -1,0 +1,12 @@
+﻿-----------------------
+Bibliografía del Tema 3
+-----------------------
+
+- Sahni, S. Data Structures, Algorithms, and Applications in Java. McGraw-Hill, 2000. 
+Capítulo 11, apartados 1 y 5 (excepto 11.5.3).
+
+- Weiss, M.A. Estructuras de Datos en Java. Adisson-Wesley, 2000.
+Capítulo 6, apartado 7, y capítulo 19.
+
+- Michael T. Goodrich and Roberto Tamassia. Data Structures and Algorithms in Java (4th edition). John Wiley & Sons, Inc., 2010.
+Capítulo 9, apartados 1 y 2.

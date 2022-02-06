@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=Lista
+comment1.params=e\ i
+comment1.target=void\ insertar(java.lang.Object,\ int)
+comment1.text=\ SII\ 0<\=i<\=talla()\:\ \r\n\ inserta\ el\ elemento\ e\ en\ la\ posicion\ i\ de\ una\ Lista\ \r\n
+comment2.params=i
+comment2.target=void\ eliminar(int)
+comment2.text=\ SII\ 0<\=i<talla()\:\ \r\n\ elimina\ el\ elemento\ que\ ocupa\ la\ posicion\ i\ de\ una\ Lista\ \r\n
+comment3.params=i
+comment3.target=java.lang.Object\ recuperar(int)
+comment3.text=\ SII\ 0<\=i<talla()\:\ \r\n\ devuelve\ el\ elemento\ que\ ocupa\ la\ posici\u00F3n\ ide\ una\ Lista\ \r\n
+comment4.params=
+comment4.target=boolean\ esVacia()
+comment4.text=\ comprueba\ si\ una\ Lista\ esta\ vacia\ \r\n
+comment5.params=
+comment5.target=int\ talla()
+comment5.text=\ devuelve\ la\ talla\ de\ una\ Lista,\ o\ su\ numero\ de\ elementos\ \r\n
+numComments=6

@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=T
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ T\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=n
+comment1.target=T(int)
+comment2.params=ms
+comment2.target=void\ delay(int)
+comment3.params=
+comment3.target=void\ run()
+comment4.params=argv
+comment4.target=void\ main(java.lang.String[])
+numComments=5

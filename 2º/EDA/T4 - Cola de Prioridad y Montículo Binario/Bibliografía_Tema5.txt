@@ -1,0 +1,16 @@
+﻿-----------------------
+Bibliografía del Tema 5
+-----------------------
+
+- Weiss, M.A. Estructuras de Datos en Java. Adisson-Wesley, 2000. 
+Capítulo 6, sección 8 para el modelo Cola de Prioridad. Capítulo 20, secciones de 1 a 5, para Heap.
+
+- Sahni, S. Data Structures, Algorithms, and Applications in Java. McGraw-Hill, 2000.
+Capítulo 13, secciones 1 a 4.
+
+- Michael T. Goodrich and Roberto Tamassia. Data Structures and Algorithms in Java (4th edition). John Wiley & Sons, Inc., 2010. 
+Capítulo 8, secciones 1 a 3.
+
+- Documentación elaborada por I. Galiano y N. Prieto, en PoliformaT: Apuntes - Introducción a la Representación Jerárquica de una EDA: Árbol Binario
+
+- Documentación elaborada por I. Galiano y N. Prieto, en PoliformaT: Apuntes - Montículo Binario: una estructura para la Representación de Cola de Prioridad y la Ordenación Rápida.

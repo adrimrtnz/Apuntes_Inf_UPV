@@ -1,0 +1,29 @@
+﻿-------------------------------
+Bibliografía del Tema 6: Grafos
+-------------------------------
+
+Bibliografía básica:
+- Sahni, S. Data Structures, Algorithms, and Applications in Java. McGraw-Hill, 2000.
+   - Capítulo 17 completo
+   - Apartado 3 del capítulo 18, secciones 5 y 6, para Caminos Mínimos y Árboles de Recubrimiento (Spanning Trees)
+
+Bibliografía adicional:
+- Weiss, M.A. Estructuras de Datos en Java. Adisson-Wesley, 2000. 
+   - Capítulo 14 para grafos dirigidos
+   - Apartado 2.3 del capítulo 22 para el algoritmo de Dijkstra 
+   - Apartado 2.1 del capítulo 23 para grafos no dirigidos y el algoritmo de Kruskal
+
+
+-------------------------------------------------
+Bibliografía del Tema 6: Estructuras de Partición
+-------------------------------------------------
+
+- Sahni, S. Data Structures, Algorithms and Applications in Java. McGraw-Hill, 2000.
+   - Capítulo 7, apartado 7 para el modelo UF-Set y su implementación Fast-Find
+   - Capítulo 12, apartado 9, sección 2 para el resto de contenidos
+
+- Sedgewick R., Wayne K. Algorithms (4th Edition). Addison-Wesley Professional, 2011. 
+   - Capítulo 1, apartado 5
+
+- Weiss, M.A. Estructuras de Datos en Java. Adisson-Wesley, 2000. 
+   - Capítulo 23

@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=LEGPila
+comment1.params=
+comment1.target=LEGPila()
+comment1.text=crea\ una\ Pila\ vacia\ *
+comment2.params=e
+comment2.target=void\ apilar(java.lang.Object)
+comment2.text=inserta\ el\ Elemento\ e\ en\ una\ Pila,\ o\ lo\ situa\ en\ su\ tope\ *
+comment3.params=
+comment3.target=java.lang.Object\ desapilar()
+comment3.text=\ SII\ \!esVacia()\:\ \r\n\ obtiene\ y\ elimina\ de\ una\ Pila\ el\ Elemento\ que\ ocupa\ su\ tope\ \r\n
+comment4.params=
+comment4.target=java.lang.Object\ tope()
+comment4.text=\ SII\ \!esVacia()\:\ \r\n\ obtiene\ el\ Elemento\ que\ ocupa\ el\ tope\ de\ una\ Pila\ \r\n
+comment5.params=
+comment5.target=boolean\ esVacia()
+comment5.text=comprueba\ si\ una\ Pila\ esta\ vacia\ *
+comment6.params=
+comment6.target=java.lang.String\ toString()
+comment6.text=\ obtiene\ un\ String\ con\ los\ Elementos\ de\ una\ Pila\ en\ orden\ LIFO,\ \r\n\ \ inverso\ al\ de\ insercion,\ \r\n\ \ y\ con\ el\ formato\ que\ se\ usa\ en\ el\ estandar\ de\ Java.\ \r\n\ \ Asi,\ por\ ejemplo,\ si\ se\ tiene\ una\ Pila\ con\ los\ Integer\ del\ 1\ al\ 4,\ \r\n\ \ en\ orden\ LIFO,\ toString\ devuelve\ [4,\ 3,\ 2,\ 1];\ \r\n\ \ si\ la\ Pila\ esta\ vacia,\ entonces\ devuelve\ []\ \r\n
+numComments=7

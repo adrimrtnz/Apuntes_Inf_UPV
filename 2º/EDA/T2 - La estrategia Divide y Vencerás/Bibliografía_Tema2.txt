@@ -1,0 +1,15 @@
+-----------------------
+Bibliografía del Tema 2
+-----------------------
+
+- Weiss, M.A. Estructuras de Datos en Java. Adisson-Wesley, 2000.
+Apartados del 1 al 4 del Capítulo 7 y del 5 al 7 del Capítulo 8. En concreto, consultar los puntos 5.1 y 5.2 para el planteamiento y resolución del problema de Subsecuencia de Suma Máxima.
+
+- Documentación elaborada por I. Galiano y N. Prieto, en PoliformaT: 
+Apuntes - Diseño recursivo y eficiente: soluciones Divide y Vencerás para la Ordenación y la Selección.
+
+- Sahni, S. Data Structures, Algorithms, and Applications in Java. McGraw-Hill, 2000. 
+Capítulo 19.
+
+- Michael T. Goodrich and Roberto Tamassia. Data Structures and Algorithms in Java (4th edition). John Wiley & Sons, Inc., 2010.
+Apartados 1 y 2 del Capítulo 11, sobre la aplicación de DyV al problema de la Ordenación.
