@@ -2,7 +2,7 @@
 comment0.target=InsertionSort
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ InsertionSort\ here.\r\n\ \r\n\ @author\ Adri\u00E1n\ Mart\u00EDnez\ \r\n\ @version\ 6th\ Feb\ 2022\r\n
 comment1.params=input
-comment1.target=int[]\ SortInt(int[])
+comment1.target=int[]\ sortInt(int[])
 comment2.params=input
-comment2.target=int[]\ SortIntDecreasing(int[])
+comment2.target=int[]\ sortIntDecreasing(int[])
 numComments=3

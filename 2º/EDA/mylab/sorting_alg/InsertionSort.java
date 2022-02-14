@@ -9,7 +9,7 @@ package sorting_alg;
  */
 public class InsertionSort
 {
-    static public int[] SortInt(int[] input) {
+    static public int[] sortInt(int[] input) {
         
         for (int j = 1; j < input.length; j++) {
            int key = input[j];
@@ -24,7 +24,7 @@ public class InsertionSort
         return input;
     }
     
-    static public int[] SortIntDecreasing(int[] input) {
+    static public int[] sortIntDecreasing(int[] input) {
         
         for (int j = 1; j < input.length; j++) {
            int key = input[j];
