@@ -7,7 +7,6 @@ import javafx.scene.control.TextField;
 
 public class CalculatorController {
     
-    @FXML
     private enum operations {
         SUM, SUB, MULT, DIV
     }
