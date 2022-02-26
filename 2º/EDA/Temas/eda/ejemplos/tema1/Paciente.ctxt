@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Paciente
+comment1.params=n
+comment1.target=Paciente(int)
+comment2.params=
+comment2.target=java.lang.String\ toString()
+numComments=3

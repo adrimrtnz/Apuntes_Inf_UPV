@@ -63,4 +63,34 @@ Analizando el **GAR** se puede determinar si hay o no riesgo de interbloqueo, pa
   
   * Si existe una **secuencia segura** (un orden en el que vayan terminando todos los hilos o procesos) $\rightarrow$ **no hay interbloqueo**.
 
+## Soluciones al interbloqueo
 
+Existen diferentes estrategias, que de **mejor a peor** son:
+
+1. **Prevención**: diseñar un sistema que **rompa** alguna Condición de Coffman
+
+2. **Evitación**: Monitorizar cada una de las peticiones de los procesos y se analiza con un **GAR**. Si una solicitud crea un ciclo (*riesgo de interbloqueo*), se deniega esa solicitud.
+
+3. **Detección y recuperación**: El sistema monitoriza periódicamente su estado, y utiliza los **GAR** para detectar si ya hay un interbloqueo:
+   
+   * Detección: se monitoriza periódicamente el sistema.
+   
+   * Recuperación: si hay interbloqueo, se aborta alguna actividad involucrada.
+
+4. **Ignorar el problema**: No resulve nada. Es el propio usuario el que debe detectar y solucionar el problema del interbloqueo. Pese a ser la peor, es utilizada en muchos sistemas operativos como Unix y Windows.
+
+#### ¿Cómo llevar a cabo la **prevención**?
+
+* La condición de **Exclusión Mutua** viene fijada por la propia naturaleza del recurso. Normalmente los recursos suelen usarse en exclusión mutua, por tanto esta condición es dificil de romper.
+
+* La condición de **Retención y Espera** es una consecuencia de la forma habitual de la que los procesos usan los recursos. Para romperla se puede:
+  
+  * Pedir inicialmente TODO lo que podemos necesitar.
+  
+  * Solicitar recursos de modo no bloqueante.
+  
+  * **Estas soluciones disminuyen** la **concurrencia**, la **utilización de recursos** y hacen **posible la inanición** de hilos.
+
+* La condición de **No expulsión** se puede romper permitiendo que un hilo expropie recursos de otro hilo. Esto implicará que el hilo expropiado debe volver a solicitar sus recursos. Para que esto pueda funcionar se debe ordenar de alguna forma los procesos (como dándoles prioridad), si no podríamos llegar al **Livelock** donde los procesos se expropian los procesos mutuamente, no quedando bloquados pero tampoco pudiendo avanzar.
+
+* La condición de **Espera circular** se puede romper estableciendo un **orden** total entre los recursos, obligando a solicitar los recursos en orden. Es la **condición más fácil de romper**.
