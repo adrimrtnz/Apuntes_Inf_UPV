@@ -54,8 +54,7 @@ public class NumeroPrimitiva implements Comparable<NumeroPrimitiva>/* COMPLETAR 
     
     /* COMPLETAR EL METODO compareTo */
     public int compareTo(NumeroPrimitiva np) {
-        return this.equals(np) ? 0 :
-            (this.numero < np.numero ? -1 : 1);
+        return this.numero - np.numero;
     }
     
     /**
