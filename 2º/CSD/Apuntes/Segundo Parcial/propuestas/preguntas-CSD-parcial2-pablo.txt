@@ -1,0 +1,30 @@
+(V) 1.- El tiempo necesario para alcanzar consenso mediante al algoritmo distribuido tolerante a fallos visto en clase, no está acotado.
+
+(F) 2.- Si coordinamos el acceso a una sección crítica por parte de diferentes nodos en un sistema distribuido, siempre será preferible utilizar el algoritmo distribuido visto en clase, al algoritmo centralizado.
+
+(V) 3.- Suponga que empleamos el algoritmo de exclusión mutua basado en un anillo visto en clase para coordinar el acceso a una sección crítica por parte de N nodos. Cuando uno de estos nodos pida entrar a su sección crítica, harán falta menos de N mensajes del algoritmo para que consiga entrar.
+
+(V) 4.- Si tenemos un evento 'a' etiquetado con el reloj de Lamport L(a)=x y otro evento 'b' etiquetado con el reloj lógico de Lamport L(b)=y, sabiendo que el evento 'a' se ejecuta en el nodo N1 y el evento 'b' se ejecuta
+en el nodo N2, si sabemos que L(a)==L(b), podemos deducir que los eventos 'a' y 'b' son concurrentes.
+
+(F) 5.- Mediante el algoritmo de coordinación de relojes de Cristian, logramos la misma sincronización de relojes que logramos empleando relojes vectoriales.
+
+(F) 6.- Suponga que tenemos un sistema formado por 3 nodos: N1, N2, N3. Suponga que el evento 'x' es un evento de recepción de cierto mensaje 'm'. Suponga que el reloj vectorial incluido en ese mensaje 'm' es [4,6,0] y que el mensaje fue enviado por el nodo N2. Podemos deducir que el evento 'x' se ejecuta en el Nodo N1.
+
+(V) 7.- Elección de líder y pertenencia a grupos son casos particulares del problema de consenso distribuido.
+
+(V) 8.- El algoritmo de Chandy-Lamport requiere de O(N²) mensajes para calcular el estado global, siendo N el número de nodos.
+
+(F) 9.- El algoritmo para el cálculo de los relojes lógicos de Lamport requiere que se envíen O(N) mensajes entre los nodos del sistema, siendo N el número de nodos.
+
+(V) 10.- El algoritmo de sincronización de relojes de Berkeley requiere 3(N-1) mensajes para coordinar los relojes de un sistema formado por N nodos.
+
+(V) 11.- Si sincronizamos los relojes de 3 nodos, siendo uno de ellos el servidor, mediante el algoritmo de Berkeley utilizaremos más mensajes que si empleamos el algoritmo de Christian.
+
+(F) 12.- Suponga un sistema formado por 3 nodos, N1, N2 y N3. Si un evento 'a' que se ejecuta en el nodo N1, tiene como reloj lógico de Lamport L(a) = 5, sabemos que su reloj vectorial será [5,x,y], para algún valor de 'x' e 'y'.
+
+(V) 13.- Suponga que tenemos un sistema formado por 5 nodos, de los cuales uno de ellos ha fallado y no se recupera. Suponga además, que en este sistema ocurren particiones, que dejan aislados a 2 nodos del resto durante varios minutos, para recuperarse la conectividad total pasados esos minutos de aislamiento. Si en este sistema ejecutamos el algoritmo de consenso distribuido tolerante a fallos visto en clase, los 4 nodos que permanecen activos alcanzarán consenso antes o después.
+
+(F) 14.- Para ejecutar el algoritmo de consenso distribuido tolerante a fallos visto en clase, necesitamos de un protocolo de pertenencia a grupos.
+
+(V) 15.- Sabemos que es posible construir un orden total entre los eventos de un sistema distribuido, si empleamos los relojes de Lamport más el número de nodo. De forma análoga, también podemos lograr un orden total entre los eventos de un sistema distribuido, si empleamos relojes vectoriales, más el número de nodo donde se ejecutan estos eventos.

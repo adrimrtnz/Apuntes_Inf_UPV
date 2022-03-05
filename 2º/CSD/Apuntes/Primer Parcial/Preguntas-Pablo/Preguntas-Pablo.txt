@@ -1,0 +1,94 @@
+Preguntas Teoría, temas 1,2,3,4,5
+---------------------------------
+
+Observe las implementaciones de "Caja", "MyMonitor", "MyCondition", "Test" y "Test2".
+La implementación de "MyMonitor" y "MyCondition" es un intento de implementar monitores de Lampson-Redell mediante semáforos, con la posibilidad de tener más de una variable condición por monitor.
+La implementación de "Caja" es un intento de implementar un buffer acotado utilizable para solucionar el problema del productor consumidor, empleando un monitor de tipo "MyMonitor". Observe que "Caja" extiende de "MyMonitor".
+Todo el código proporcionado compila correctamente.
+
+Notas a la implementación:
+* El método "acquireUninterruptibly" de "Semaphore" es equivalente a "acquire", con la salvedad de que no es interrumpible.
+* El método "release (n)" de "Semaphore" es equivalente a hacer "n" llamadas a "release".
+
+
+
+(V) 1.- Observe la implementación del programa "Test2". Ignore la implementación que se proporciona de "Caja" y suponga que "Caja" es una implementación correcta de un buffer acotado típica en problemas de tipo productor-consumidor. En este supuesto, el programa principal terminará, pues todos los hilos que se han creado, terminarán.
+
+(V) 2.- Dada la implementación del programa "Test2", junto con las implementaciones de "Caja", "MyMonitor" y "MyCondition", observe que se trata la excepción "InterruptedException" en varios lugares. Sin embargo, podemos afirmar que esta excepción nunca se va a producir al ejecutar "Test2".
+
+(V) 3.- La implementación de "Caja", "MyMonitor" y "MyCondition", soluciona correctamente el problema del productor-consumidor. Es decir, si varios hilos utilizan los métodos "put" y "get" de "Caja", no se producen condiciones de carrera en el buffer acotado y se implementa correctamente la sincronización condicional.
+
+(V) 4.- La excepción "IllegalMonitorStateException" se produce en los monitores estándar de Java cuando se utilizan de forma incorrecta las llamadas a notify, notifyAll y wait. En particular, se produce la excepción cuando se utilizan estas llamadas en métodos que no estén etiquetados con la palabra "synchronized". La implementación que se proporciona de "MyMonitor" y "MyCondition" es compatible con este aspecto, pues se emitirá la excepción "IllegalMonitorStateException" si se utilizan las llamadas "await" o "signalAll" desde código que no esté protegido por el monitor.
+
+(F) 5.- La implementación de la clase MyMonitor es incorrecta, debido a que pueden producirse condiciones de carrera en el acceso a la variable "owner".
+
+(V) 6.- Observe la implementación de los métodos "await" y "signalAll" de la clase "MyCondition". Podemos afirmar que las implementaciones son correctas dada la semántica habitual de variables condición para monitores de Lampson-Redell.
+
+(F) 7.- La implementación dada de "MyCondition" y "MyMonitor" no es correcta si varios hilos utilizan al mismo tiempo cierta variable condición de tipo "MyCondition". Concretamente, si tuviéramos varios hijos suspendidos en la llamada "await", y otro hijo hiciera una llamada a "signalAll" se despertarían a todos estos hilos y en este caso sería posible que más de un hijo ejecutara código dentro del monitor.
+
+(F) 8.- En la clase "MyMonitor" se hace uso de una variable "AtomicReference" para almacenar una referencia al Thread que actualmente está dentro del monitor. No es realmente necesario emplear "AtomicReference". Podríamos emplear directamente una variable de tipo "Thread" para almacenar el hilo que está en cada momento dentro del monitor, sin que por ello se produjeran condiciones de carrera.
+
+(F) 9.- Pueden ocurrir condiciones de carrera en el acceso a la variable "nwait" dentro de la clase "MyCondition", pues el acceso a esta variable se hace sin protección de cerrojos, monitores o semáforos.
+
+(F) 10.- Observe la implementación del método "runMonitor" de la clase "MyMonitor". Podemos afirmar que no tiene ninguna ventaja hacer uso de "runMonitor" respecto a utilizar "enterMonitor" y "exitMonitor". Observe a título de ejemplo el uso que se hace de cada uno de estos métodos en la clase "Caja".
+
+(V) 11.- Si ejecutamos el programa "Test", veremos siempre todos los mensajes "get: " por la consola en orden, desde 0 a 9, y es posible que veamos en algún caso los mensajes "consumidor esperando" y/o "productor esperando" intercalados con los mensajes "get: ".
+
+(V) 12.- Si ejecutamos el programa "Test", es posible que se imprima por la consola "consumidor esperando" más de una vez.
+
+(V) 13.- Si ejecutamos el programa "Test2", es posible que se imprima por la consola "consumidor esperando" más de 10 veces.
+
+(V) 14.- Si ejecutamos el programa "Test", es posible que se imprima por la consola "productor esperando" más de 5 veces.
+
+(F) 15.- Al ejecutar el programa Test2, es posible que produzcan interbloqueos, debido a que los métodos de "MyMonitor" están etiquetados con la palabra "protected" y además se emplean semáforos dentro de esa misma clase.
+
+(F) 16.- Al ejecutar el programa "Test2", es posible que termine antes de que veamos por la consola los 20 mensajes de tipo "get", pues el programa principal no llama a "join", tal y como se hace en el programa "Test".
+
+(F) 17.- Al ejecutar el programa "Test2", veremos por la consola siempre los mensajes "get" en orden, desde el 1 hasta el 20. Adicionalmente, es posible que veamos mensajes de tipo "consumidor esperando" o "productor esperando" intercalados entre los mensajes de tipo "get".
+
+(V) 18.- Al ejecutar el programa "Test2", es posible que veamos 3 mensajes consecutivos de tipo "consumidor esperando"
+
+(F) 19.- Al ejecutar el programa "Test2", es posible que veamos 4 mensajes consecutivos de tipo "consumidor esperando"
+
+(F) 20.- Al ejecutar el programa "Test", es posible que veamos 2 mensajes consecutivos de tipo "consumidor esperando"
+
+(V) 21. Dada la implementación de MyCondition y "MyMonitor", suponga que cierto programa hace dos llamadas consecutivas a "enterMonitor". En este caso, se producirá la excepción "IllegalMonitorStateException".
+
+(V) 22.- Observe que la implementación de "Caja" hace uso de una única variable condición. Podríamos haber implementado "Caja" haciendo uso de 2 variables condición: las típicas "novacio" y "nolleno" que se han visto en varias actividades. Para ello bastaría con modificar la clase "Caja", para que emplee 2 variables de tipo "MyCondition".
+
+(V) 23.- Si ejecutamos "Test", siempre veremos "bye" como último mensaje del programa.
+
+(F) 24.- Si ejecutamos "Test2", siempre veremos "bye" como último mensaje del programa.
+
+(V) 25.- Podemos implementar monitores empleando semáforos. Análogamente, podríamos implementar semáforos empleando monitores.
+
+(V) 26.- La implementación proporcionada en "MyMonitor", tiene la siguiente ventaja respecto a los monitores estándar de Java: Sería posible que una clase que extienda de MyMonitor, entre al monitor en cierto método de su clase y salga del monitor en un método diferente de la misma clase.
+
+(F) 27.- Los monitores estándar de Java tienen la ventaja de permitir una única variable condición, respecto a la implementación de "MyMonitor".
+
+(F) 28.- Respecto a la implementación proporcionada en "MyMonitor", la implementación de monitores estándar de Java  tiene la ventaja de contar con la palabra reservada "synchronized", que ayuda al programador a no olvidarse de proteger secciones críticas, pues en caso de no hacerlo, el compilador lo advierte.
+
+(F) 29.- Con la implementación de "MyMonitor" pueden darse interbloqueos si empleamos monitores de forma anidada, cosa que no ocurre con los monitores estándar de Java.
+
+(F) 30.- El uso del método "runMonitor" que se hace en la clase "Caja" es incorrecto, pues este método debe recibir un "Runnable" y estamos pasando una expresión lambda.
+
+
+Preguntas práctica 3
+---------------------
+
+(V) 1.- En el problema de las hormigas, tal y como lo hacemos en la práctica 3, se pueden producir interbloqueos en las versiones 0, 1 y 2 del Territorio.
+
+(F) 2.- La implementación del Territorio vista en la práctica 3, en su última versión, soluciona los interbloqueos detectando los ciclos de espera mutua
+
+
+(V) 3.- La solución a los interbloqueos vista en la práctica 3, podría producir falsos positivos. Es decir, sería posible que una hormiga tarde mucho en avanzar debido a que esté esperando a otras hormigas y se decida hacerla cambiar de dirección, cuando realmente no había interbloqueo.
+
+
+(F) 4.- Si en el problema de las hormigas tenemos muy pocas hormigas (por ejemplo pocas unidades) en un territorio muy grande (centenares de filas y columnas), es más eficiente tener una Variable condición por celda, que tener una única variable condición por todo el territorio.
+
+
+(F) 5.- Si tenemos una única variable condición por celda, se producirán menos interbloqueos entre hormigas a si tenemos una única variable condición por todo el territorio.
+
+(F) 6.- La práctica 3 de las hormigas la hemos implementado haciendo uso de semáforos.
+
+(V) 7.- La práctica 3 de las hormigas la hemos implementado haciendo uso de ReentrantLock.

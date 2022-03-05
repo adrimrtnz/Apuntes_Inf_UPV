@@ -20,8 +20,6 @@
 
 ![image-20220223115558247](C:\Users\adri_\OneDrive\UPV\2º\RED\CUATRIMESTRE_B\Teoría\Tema 6 - El nivel de red\img\exe11-01.jpg)
 
-
-
 ![image-20220223115917902](C:\Users\adri_\OneDrive\UPV\2º\RED\CUATRIMESTRE_B\Teoría\Tema 6 - El nivel de red\img\exe11-02.jpg)
 
 ![image-20220223115957380](C:\Users\adri_\OneDrive\UPV\2º\RED\CUATRIMESTRE_B\Teoría\Tema 6 - El nivel de red\img\exe11-03.jpg)
@@ -84,7 +82,25 @@ En este ejemplo son 8 redes las que se han agrupado y por tanto no es correcta. 
 
 ![image-20220223124941852](C:\Users\adri_\OneDrive\UPV\2º\RED\CUATRIMESTRE_B\Teoría\Tema 6 - El nivel de red\img\A4-12.jpg)
 
-## Continuación Teoría (IPv6)
+## Ejercicio E10
 
-* Se impulsó por la necesidad de direcciones IP más largas, ya que se estaba agotando el espacio de direccionamiento IPv4.
-* IPv6 tiene soporte para seguridad.
+| Paso | N'        | D(B), p(B) | D(C), p(c) | D(D), p(D) | D(E), p(E) | D(F), p(F) | D(G), p(G) |
+| ---- | --------- | ---------- | ---------- | ---------- | ---------- | ---------- | ---------- |
+| 0    | A         | **4,A**    | $\infty$   | **1,A**    | 6,A        | $\infty$   | $\infty$   |
+| 1    | A,D       | -          | **3,D**    | -          | **5,D**    | **2,D**    | $\infty$   |
+| 2    | A,D,F     | -          | -          | -          | -          | -          | -          |
+| 3    | A,D,F,C   | -          | -          | -          | -          | -          | **6,C**    |
+| 4    | A,D,F,G   | -          | -          | -          | -          | -          | -          |
+| 5    | A,D,F,G,E | -          | -          | -          | -          | -          | -          |
+
+```mermaid
+flowchart LR
+    A((A)) -.4.-> B((B))
+    A -.1.-> D((D))
+    D -.2.-> C((C))
+    D -.4.-> E((E))
+    D -.1.-> F((F))
+    C -.3.-> G((G))
+```
+
+## Ejercicio E12

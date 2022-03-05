@@ -61,8 +61,6 @@ El nivel de red se encarga de ambos problemas. Este nivel tiene **dos tareas**.
 
 ![image-20220224185921984](C:\Users\adri_\OneDrive\UPV\2º\RED\CUATRIMESTRE_B\Teoría\Tema 6 - El nivel de red\img\Tema6_01.jpg)
 
-
-
 ## 2. El protocolo IPv4
 
 IP es el protocolo central de la pila de protocolos TCP/IP. La unidad básica de transferencia de datos es el **datagrama**. 
@@ -82,14 +80,14 @@ IP realiza las funciones de encaminamiento y determina las reglas de intercambio
 
 ![Formato de un datagrama IP](C:\Users\adri_\OneDrive\UPV\2º\RED\CUATRIMESTRE_B\Teoría\Tema 6 - El nivel de red\img\Tema6_02.jpg)
 
-| Etiqueta                     | Descripción                                                  |
-| ---------------------------- | ------------------------------------------------------------ |
-| Versión del protocolo IP     | 4 bits, actualmente IPv4                                     |
-| Longitud de la cabecera      | 4 bits, tamaño de la cabecera del datagrama en **palabras de 32 bits**. |
-| Longitud total del datagrama | Incluye cabecera y datos. Tamaño máximo 65.535 bytes (64K - 1) |
+| Etiqueta                     | Descripción                                                                                                                                                                                                                                                                                                                            |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Versión del protocolo IP     | 4 bits, actualmente IPv4                                                                                                                                                                                                                                                                                                               |
+| Longitud de la cabecera      | 4 bits, tamaño de la cabecera del datagrama en **palabras de 32 bits**.                                                                                                                                                                                                                                                                |
+| Longitud total del datagrama | Incluye cabecera y datos. Tamaño máximo 65.535 bytes (64K - 1)                                                                                                                                                                                                                                                                         |
 | Tipo de servicio (TOS)       | 3 bits para la prioidad, 4 bits para el tipo de servicio y un bit a cero. Los bits de tipo de servicio permiten al usuario solocitar las condiciones deseadas, aunque no se garantiza el tipo de servicio solicitado. ![servicios](C:\Users\adri_\OneDrive\UPV\2º\RED\CUATRIMESTRE_B\Teoría\Tema 6 - El nivel de red\img\Tema6_03.jpg) |
-| Fragmentación                | En el nivel de enlace cada protocolo maneja un tamaño máximo de trama, limitando el tamaño de su campo de datos: **MTU** (*Maximum Transfer Unit*) |
-| Tiempo de vida (TTL)         | Los datagramas tienen un tiempo limitado de permanencia en Internet. El TTL se inicializa en origen y se decrementa cada vez que el datagrama atraviesa un router (valor inicial recomendado = 64). Al llegar a cero el datagrama se descarta. |
+| Fragmentación                | En el nivel de enlace cada protocolo maneja un tamaño máximo de trama, limitando el tamaño de su campo de datos: **MTU** (*Maximum Transfer Unit*)                                                                                                                                                                                     |
+| Tiempo de vida (TTL)         | Los datagramas tienen un tiempo limitado de permanencia en Internet. El TTL se inicializa en origen y se decrementa cada vez que el datagrama atraviesa un router (valor inicial recomendado = 64). Al llegar a cero el datagrama se descarta.                                                                                         |
 
 Se recomienda el uso de los siguientes valores para el tipo de servicio, dependiendo de la aplicación:
 
@@ -122,9 +120,29 @@ La función encargada del algoritmo de enrutamiento en un router se comunica con
 
 En las **redes SDN** (*Software-Defined Networking*) se dice que la red está "definida por software" porque el controlador que calcula las tablas de reenvío y que interacciona con los routers está implementado en software.
 
+En los algoritmos de enrutamiento la red se representa mediante un grafo:
+
+* **Vértices** del grafo son los **routers**.
+* **Aristas** del grafo son los **enlaces del router**.
+
+### Criterios para la clasificación de algoritmos
+
+Dos cuestiones fundamentales sobre el algoritmo de enrutamiento:
+
+* **Escalabilidad**: Algoritmos por vector de distancias y estados del enlace como máximo para 100 routers.
+* **Centralizado o distribuido**: Depende de dónde se calculen las tablas. Los algoritmos centralizados son difíciles de escalar, todas nuestras propuestas serán de **algoritmos distribuidos**.
+
+Como otro criterio para la clasificación se pueden dividir dependiendo de la frecuencia de actualización de rutas:
+
+* **Estáticos**: suelen actualizarse manualmente.
+* **Dinámicos**: son sensibles a cambios en el tráfico o en la topología de la red.
+
+Los algoritmos de enrutamiento empleados en **Internet** suelen ser **dinámicos**.
+
+### 4.2 Enrutamiento por estado del enlace
+
 ## 5. Enrutamiento en Internet
 
 ### OSPF
 
 ### BGP
-

@@ -1,0 +1,31 @@
+# Preguntas de la práctica 2
+
+1- Si la clase LefthandedPhilo se ha implementado correctamente, se evitará el interbloqueo siempre que haya al menos un filósofo de clase LefthandedPhilo y al menos uno de la clase Philo.
+(V)
+
+2- Una forma de solucionar el problema de interbloqueo en esta práctica consiste en eliminar el retardo desde que un filósofo coge uno de sus tenedores hasta que coge el otro.
+(F)
+
+3- La clase BothOrNonePhilo se puede implementar haciendo que el filósofo invoque los métodos takeL y takeR del objeto Table, pero sin retardo entre ellos.
+(F)
+
+4- En la solución 3 (todo o nada), si un filósofo no puede coger un tenedor, todos los filósofos sueltan sus tenedores.
+(F)
+
+5- Todas las soluciones al problema de interbloqueo en esta práctica rompen alguna condición de Coffman.
+(V)
+
+6- Una o más soluciones al problema de interbloqueo en esta práctica rompe la condición de espera circular.
+(V)
+
+7- Una o más soluciones al problema de interbloqueo en esta práctica rompe la condición de exclusión mutua.
+(F)
+
+8- En la solución 4 (capacidad limitada) cada filósofo invoca una sola vez el método enter del objeto Table.
+(F)
+
+9- Para evitar interbloqueos, bastaría con que uno solo de los filósofos cogiera ambos tenedores a la vez.
+(V)
+ 
+
+

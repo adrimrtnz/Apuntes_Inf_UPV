@@ -1,0 +1,36 @@
+:asig   CSD
+:titulo Propuesta Juansa
+:temas  Tema 8
+:fecha  Mayo 2021
+:grupos -
+:intro  Indica si cada una de las siguientes afirmaciones es verdadera (V) o falsa (F). En cada cuestión las afirmaciones comparten un mismo enunciado, pero son independientes entre sí (el número de afirmaciones ciertas en una cuestión puede variar de 0 a 4). Las cuestiones sobre RMI hacen referencia al código adjunto (ejRMI)
+
+En relación con el ejemplo de código RMI del fichero ejRMI:
+- 1.- Todos los objetos remotos se registran en el servidor de nombres
++ 2.- En la llamada "a.newB(c,d);" el objeto c se pasa por referencia
+- 3.- En la llamada "a.newB(c,d);" el objeto d se pasa por referencia
++ 4.- El orden en el que deben arrancarse las partes es rmiregistry, java C2, java C1
+- 5.- El código está incompleto, porque no se define el proxy ni el skeleton
+- 6.- El objeto creado mediante "a.newB(c,d)" reside en el nodo del invocante (C2)
++ 7.- El objeto "OBJ" se accede de forma remota aunque lancemos C1 y C2 en terminales disintos sobre la misma máquina
++ 8.- Si creamos varias instancias de C2 (lanzamos varias instancias de C2 en terminales distintos), todas ellas comparten una única instancia de IA
+
+En relación con los servicios web
++ 9.- REST utiliza distintos de mensajes http para asociar operaciones básicas de acceso, creación, actualización y borrado a solicitudes sobre recursos
+- 10.- En REST, para representar la información intercambiada en los mensajes se utiliza un formato binario transparente al programador
++ 11.- REST expone recursos, a los cuales accedemos mediante URIs estructuradas de forma jerárquica
++ 12.- REST implanta cooperación entre aplicaciones utilizando la infraestructura web, siguiendo un modelo petición-respuesta
+- 13.- SOAP+WSDL se basa en mensajes de texto basados en JSON
+- 14.- En REST el tipo de operación se indica añadiendo a la URL '?op=...'
++ 15.- El codigo de respuesta del mensaje http indica el estado de finalizacion de la operacion
++ 16.- Los argumentos se especifican como pares clave=valor al final de la URL con la sintaxis '?k=v&...'
+
+En relación con JMS
++ 17.- JMS se considera persistente, porque no resulta necesario que el receptor esté activo en el momento en que se envía un mensaje.
+- 18.- JMS requiere un elevado acoplamiento entre los componentes
+- 19.- JMS se considera sincrónico, porque el envío de un mensaje requiere que el proceso emisor permanezca suspendido esperando alguna confirmación del receptor.
++ 20.- En JMS utilizamos JMSContext para crear los mensajes
+- 21.- En JMS se definen como destinos de los mensajes las clases JMSProducer y JMSConsumer
+- 22.- Una cola permiten difundir un mismo mensaje a varios consumidores 
+- 23.- El formato de los mensajes es transparente al programador
++ 24.- JMS no requiere el uso de un broker

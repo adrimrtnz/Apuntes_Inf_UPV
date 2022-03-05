@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=EntradaHashNodo
+comment0.text=\r\n\ Nodo\ de\ una\ Lista\ Enlazada\ Directa\ \r\n\ con\ la\ que\ se\ implementa\ una\ cubeta\ de\ una\ TablaHash\:\ \r\n\ TIENE\ la\ clave\ y\ el\ valor\ de\ una\ Entrada\ \r\n\ y\ TIENE\ una\ referencia\ al\ siguiente\ nodo\r\n
+comment1.params=c\ v\ s
+comment1.target=EntradaHashNodo(java.lang.Object,\ java.lang.Object,\ ejemplos.tema3.EntradaHashNodo)
+comment2.params=
+comment2.target=java.lang.String\ toString()
+numComments=3

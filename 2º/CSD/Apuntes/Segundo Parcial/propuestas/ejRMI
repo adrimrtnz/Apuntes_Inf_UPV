@@ -1,0 +1,44 @@
+interface IA extends Remote {
+	IB newB(IC c, ID d) throws RemoteException;
+}
+interface IB extends Remote {...}
+interface IC extends Remote {...}
+interface ID {...}
+
+---- C1.java
+import java.rmi.*;
+import java.rmi.registry.*;
+import java.rmi.server.*;
+
+class A extends UnicastRemoteObject implements IA {
+	IB newB(IC c, ID d) throws RemoteException {
+		// ...
+		return new B();
+	}
+}
+class B extends UnicastRemoteObject implements IB {...}
+
+public class C1 {
+	public static void main(String[] arg) trhows Exception {
+		Registry reg = LocateRegistry.getRegistry("localhost",1099);
+		reg.rebind("OBJ",new A());
+	}
+}
+
+---- C2.java
+import java.rmi.*;
+import java.rmi.registry.*;
+import java.rmi.server.*;
+
+class C extends UnicastRemoteObject implements IC {...}
+class D implements ID {...}
+
+public class C2 {
+	public static void main(String[] arg) trhows Exception {
+		Registry reg = LocateRegistry.getRegistry("localhost",1099);
+		IA a = (IA) reg.lookup("OBJ");
+		IC c = new C();			
+		ID d = new D();			
+		IB b = a.newB(c,d);
+	}
+}

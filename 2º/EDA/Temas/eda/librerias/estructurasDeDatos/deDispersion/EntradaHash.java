@@ -1,4 +1,4 @@
-package ejemplos.tema3;
+package librerias.estructurasDeDatos.deDispersion;
 
 /**
  * Nodo de una Lista con PI 

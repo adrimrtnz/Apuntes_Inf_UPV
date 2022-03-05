@@ -5,6 +5,8 @@ public abstract class Pool {
     
     protected int nk;
     protected int ni;
+    protected int cap;
+    protected int ki;
 
     public abstract void init(int ki, int cap);
     public abstract void kidSwims() throws InterruptedException;

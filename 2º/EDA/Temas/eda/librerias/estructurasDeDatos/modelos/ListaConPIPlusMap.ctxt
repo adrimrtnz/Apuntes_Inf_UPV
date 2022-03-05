@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=ListaConPIPlusMap
+comment1.params=
+comment1.target=void\ eliminarRepetidos()
+comment1.text=\ elimina\ los\ elementos\ repetidos\ de\ una\ ListaConPI,\ \r\ndejando\ \u00FAnicamente\ su\ 1\u00AA\ aparici\u00F3n
+comment2.params=otra
+comment2.target=void\ diferencia(ListaConPI)
+comment2.text=elimina\ los\ elementos\ de\ una\ ListaConPI\ que\ est\u00E1n\ en\ otra\ *
+numComments=3

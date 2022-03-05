@@ -123,8 +123,16 @@ public class FXMLDocumentController implements Initializable {
     // you must initialize here all related with the object 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        circleFigure.scaleXProperty().bind(slider.valueProperty());
-        circleFigure.scaleYProperty().bind(slider.valueProperty());
+        // Hacer un link da error de funcionamiento, hay que hacer un listener
+        //circleFigure.scaleXProperty().bind(slider.valueProperty());
+        //circleFigure.scaleYProperty().bind(slider.valueProperty());
+        
+        slider.valueProperty().addListener(
+                (ob, oldV, newV) -> {
+                    circleFigure.setScaleX((double) newV);
+                    circleFigure.setScaleY((double) newV);
+                }
+        );
         circleFigure.fillProperty().bind(colorPicker.valueProperty());  
     }    
 

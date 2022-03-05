@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=Territorio
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Territorio\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=N
+comment1.target=Territorio(int)
+comment2.params=x0\ y0\ x\ y
+comment2.target=void\ desplaza(int,\ int,\ int,\ int)
+numComments=3

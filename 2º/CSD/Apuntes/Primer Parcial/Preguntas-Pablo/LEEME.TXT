@@ -1,0 +1,10 @@
+* 7 preguntas de la práctica 3.
+
+* 30 preguntas de teoría, sobre el mismo código. Se pueden colocar en úna unica batería, para que salgan unas 20 preguntas. También pueden colocarse en varias baterías. Todas las preguntas van sobre el mismo código. Es un código un poco extenso, que toca monitores, semáforos, hilos, join, interrupt, condiciones de carrera, variables atómicas y de todo un poco. Se debe dedicar un poco de tiempo a entender, pero se amortiza, al ser muchas preguntas.
+
+* En la carpeta "java", está el código fuente de los 5 ficheros a mostrar.
+* En la carpeta "images", está el código fuente en formato imagen: 5 ficheros.
+* En la carpeta "images2", hay 2 ficheros de imagen que contienen el código fuente otra vez, pero sólo 2 ficheros, en lugar de 5.
+
+
+

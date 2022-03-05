@@ -1,0 +1,30 @@
+Si en la aplicación chat distribuido no se ejecutan sus componentes en el orden adecuado, los componentes que tienen dependencia de otro cuya ejecución no ha sido completada producirán una excepción
+(V)
+En el chat distribuido ChatConfiguration determina el nombre del servidor y los canales que se crearán por defecto
+(F)
+En el chat distribuido las clases principales ChatClientCSD, ChatServer, ChatChannel heredan de UnicastRemoteObject
+(F)
+En el chat distribuido los proxys de objetos remotos son interfaces que heredan de la clase abstracta Remote
+(V)
+
+En el chat distribuido cada ChatClientCSD sólo puede tener un ChatUser y cada ChatServer sólo puede tener un ChatChannel
+(F)
+Un objeto de la clase ChatChannel guarda una lista con todos los ChatClientCSD que están conectados a ese canal
+(F)
+Un objeto de la clase ChatChannel siempre almacena a los usuarios conectados desde que hacen un join() hasta que ejecutan un leave() en ese ChatChannel
+(F)
+Cuando se envía un mensaje a los ChatUser, se pasan a través de ChatClientCSD que a su vez los envía al ChatUser
+(F)
+Cuando se envía un mensaje a los ChatUser,se usa el método sendMessage de ChatUser donde se pasa por parámetro como proxy IChatMessage
+(V)
+Cada vez que un ChatUser se une a un canal, ChatChannel notifica a los usuarios pertenecientes a ese canal a través de un método específico de ChatClientCSD para notificar nuevas incorporaciones
+(F)
+El papel del servidor de nombres en el chat distribuido es registrar objetos ChatServer, y que sean accesibles para cualquier ChatClientCSD
+(V)
+
+
+
+
+
+
+
