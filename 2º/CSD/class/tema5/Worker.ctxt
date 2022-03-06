@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Worker
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Worker\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=start\ done
+comment1.target=Worker(java.util.concurrent.CountDownLatch,\ java.util.concurrent.CountDownLatch)
+comment2.params=
+comment2.target=void\ run()
+comment3.params=
+comment3.target=void\ doWork()
+numComments=4

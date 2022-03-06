@@ -103,7 +103,11 @@ El campo **protocolo** indica el protocolo al que corresponden los datos:
 | ICMP      | 1                         |
 | UDP       | 17                        |
 
-  El **checksum** incluye sólo la cabecera. 
+> El número de protocolo es el elemento que enlaza las capas de red y de transporte, mientras que el número de puerto es el componente que enlaza las capas de transporte y de aplicación.
+
+
+
+El **checksum** incluye sólo la cabecera. 
 
 El campo de **opciones** se utiliza raramente. Tiene longitud variable y permite especificar:
 

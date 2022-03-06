@@ -159,3 +159,7 @@ class BufferOk implements Buffer {
     }
 }
 ```
+
+## Executors
+
+Con la interfaz **Executor**, Java nos ofrece un entorno para la creación y gestión de hilos con la que ejecutar taras de una forma muy flexible. Por ejemplo, con `SingleThreadExecutor` permite utilizar un solo hilo de trabajo que garantiza que las tareas se ejecutan de forma secuencial, y que no habrá más de una tarea activa en un momento dado. También ofrece *Thread-pools*, que permiten un conjunto de hilos (pool), e ir reutilizándolos para ejecutar diferentes tareas cada vez, previdiendo así el consumo desmedido de recursos.

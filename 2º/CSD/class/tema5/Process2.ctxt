@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=Process2
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Process2\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=i\ s
+comment1.target=Process2(int,\ java.util.concurrent.Semaphore)
+comment2.params=
+comment2.target=void\ busy()
+comment3.params=s
+comment3.target=void\ msg(java.lang.String)
+comment4.params=
+comment4.target=void\ noncritical()
+comment5.params=
+comment5.target=void\ critical()
+comment6.params=
+comment6.target=void\ run()
+comment7.params=args
+comment7.target=void\ main(java.lang.String[])
+numComments=8
