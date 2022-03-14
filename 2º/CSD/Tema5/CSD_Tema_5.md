@@ -16,6 +16,7 @@ Limitaciones relacionadas con la **sincronización condicional**:
 
 1. Sólo podrá existir una única condición en cada monitor.
 2. Se utiliza la variante de Lampson y Redell.
+   * El programador está obligado a utilizar una estructura del tipo: `while(expresión lógica) wait();` para consultar el estado del monituro y suspenderse.
 
 ## Biblioteca java.util.concurrent
 

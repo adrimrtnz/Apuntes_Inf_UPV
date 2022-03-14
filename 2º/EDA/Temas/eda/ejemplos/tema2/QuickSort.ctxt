@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=QuickSort
+comment0.text=\r\n\ class\ QuickSort.\r\n\ \r\n\ @author\ FTG\ \r\n\ @version\ 1.0\r\n
+comment1.params=v
+comment1.target=void\ quickSort(java.lang.Comparable[])
+comment2.params=v\ i\ d
+comment2.target=void\ quickSort(java.lang.Comparable[],\ int,\ int)
+comment3.params=v\ i\ d
+comment3.target=int\ particion(java.lang.Comparable[],\ int,\ int)
+comment4.params=v\ i\ d
+comment4.target=java.lang.Comparable\ medianaDeTres(java.lang.Comparable[],\ int,\ int)
+comment5.params=v\ i\ d
+comment5.target=void\ intercambiar(java.lang.Comparable[],\ int,\ int)
+comment6.params=v\ k
+comment6.target=java.lang.Comparable\ seleccionRapida(java.lang.Comparable[],\ int)
+comment7.params=v\ k\ i\ d
+comment7.target=void\ seleccionRapida(java.lang.Comparable[],\ int,\ int,\ int)
+numComments=8

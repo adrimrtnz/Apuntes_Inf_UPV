@@ -105,8 +105,6 @@ El campo **protocolo** indica el protocolo al que corresponden los datos:
 
 > El número de protocolo es el elemento que enlaza las capas de red y de transporte, mientras que el número de puerto es el componente que enlaza las capas de transporte y de aplicación.
 
-
-
 El **checksum** incluye sólo la cabecera. 
 
 El campo de **opciones** se utiliza raramente. Tiene longitud variable y permite especificar:
@@ -144,6 +142,18 @@ Como otro criterio para la clasificación se pueden dividir dependiendo de la fr
 Los algoritmos de enrutamiento empleados en **Internet** suelen ser **dinámicos**.
 
 ### 4.2 Enrutamiento por estado del enlace
+
+### 4.3. Enrutamiento por Vector de Distancia
+
+### Comparación de ambos enrutamientos
+
+> Extraido de Kurose
+
+**Complejidad del mensaje:** El algoritmo de *Estado del enlace* requiere que cada nodo conozca el coste de cada enlace de la red. Cuando los costes de los enlaces cambian, el algoritmo de vector de distancia popagará los resultados del  coste del enlace que ha cambiado sólo si el nuevo coste de enlace da lugar a una ruta de coste mínimo distinta para uno de los nodos conectados a dicho enlace.
+
+**Velocidad de convergencia:** El de estado de enlace tiene un coste de $O(N^2)$  que requiere enviar $O(N \cdot E)$ mensajes. El algoritmo de vector de distancia puede converger lentamente y pueden aparecer bucles de enrutamiento mientras está convergiendo. Este algoritmo también subre el problema de la cuenta hasta infinito.
+
+**Robustez:** En estado de enlaces, un router podría difundir un coste incorrecto para uno de sus enlaces conectados (pero no para todos). Con este algoritmo un nodo solo calcula so propia tabla de reenvío, mientras que otros nodos realizan cálculos similares por sí mismos. Esto significa que los cálculos de rutas son hasta cierto punto independientes en *Estado del Enlace*, porporcionando mayor grado de robustez.
 
 ## 5. Enrutamiento en Internet
 

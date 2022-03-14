@@ -15,7 +15,7 @@ public class LimitedTable extends RegularTable { //max 4 in dinning-room
         }
         state.enter(id);
         counter++;
-        // al soltar los palillos se está haciendo el notifyAll() al dejar los palillos.
+        // al soltar los palillos se está haciendo el notifyAll()
     }
     
     public synchronized void exit(int id)  {
