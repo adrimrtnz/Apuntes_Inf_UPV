@@ -55,8 +55,10 @@ public class Terrain2 implements Terrain {
             Pos p = v.getPos(a);
             
             while (v.occupied(dest)) {
-                c[dest.x][dest.y].await(); 
-                v.retry(a);
+                try{
+                    c[dest.x][dest.y].await(); 
+                    v.retry(a);
+                } catch (InterruptedException e) {}
             }
             
             v.go(a); 

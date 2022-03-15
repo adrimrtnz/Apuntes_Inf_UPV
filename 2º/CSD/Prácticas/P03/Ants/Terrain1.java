@@ -47,8 +47,10 @@ public class Terrain1 implements Terrain {
             Pos dest=v.dest(a); 
             
             while (v.occupied(dest)) {
-                c.await(); 
-                v.retry(a);
+                try {
+                    c.await(); 
+                    v.retry(a);
+                } catch (InterruptedException e) {}
             }
             
             v.go(a); 
