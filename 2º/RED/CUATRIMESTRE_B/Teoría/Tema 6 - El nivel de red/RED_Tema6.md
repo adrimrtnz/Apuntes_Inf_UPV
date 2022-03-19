@@ -157,6 +157,26 @@ Los algoritmos de enrutamiento empleados en **Internet** suelen ser **dinámicos
 
 ## 5. Enrutamiento en Internet
 
-### OSPF
+### Open Shortest Path First (OSPF)
 
-### BGP
+> Protocolo de enrutamiento interno del sistema autónomo
+
+### Border Gateway Protocol (BGP)
+
+> Protocolo de enrutamiento entre sistemas autónomos
+
+BGP es un protocolo descentralizado y asíncrono, en la línea del enrutamiento por vector de distancia. 
+
+En BGP, los paquetes no se enrutan hacia una dirección de destino específica, sino hacia prefijos CIDR (Classless Inter-Domain Routing).
+
+Como protocolo de enrutamiento entre sistemas autónomos, BGP proporciona a cada router mecanismos para:
+
+1. Obtener de los sitemas autónomos vecinos información acerca de la alcanzabilidad de los prefijos.
+
+2. Determinar las "mejores" rutas hacia los distintos prefijos.
+
+En un sistema autónomo, cada router puede ser:
+
+* **Router de pasarela:** aquel que está situado en la frontera de un sistema autónomo y se conecta directamente a uno o más routers de otros sistemas autónomos.
+
+* **Router interno:** solamente está conectado a hosts y routers pertenecientes a su propio sistema autónomo.
