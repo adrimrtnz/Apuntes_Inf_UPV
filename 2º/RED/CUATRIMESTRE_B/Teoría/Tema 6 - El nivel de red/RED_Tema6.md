@@ -59,7 +59,7 @@ El nivel de red se encarga de ambos problemas. Este nivel tiene **dos tareas**.
 * **Routing (enrutamiento)**: Calcula la ruta a tomar por los paquetes de origen a destino. Se calculan meciante **algoritmos de enrutamiento**.
 * En ocasiones se emplea el término **encaminamiento** indistintamente para ambas tareas.
 
-![image-20220224185921984](C:\Users\adri_\OneDrive\UPV\2º\RED\CUATRIMESTRE_B\Teoría\Tema 6 - El nivel de red\img\Tema6_01.jpg)
+![image-20220224185921984](.\img\Tema6_01.jpg)
 
 ## 2. El protocolo IPv4
 
@@ -78,20 +78,20 @@ IP realiza las funciones de encaminamiento y determina las reglas de intercambio
 
 #### Formato datagrama IP
 
-![Formato de un datagrama IP](C:\Users\adri_\OneDrive\UPV\2º\RED\CUATRIMESTRE_B\Teoría\Tema 6 - El nivel de red\img\Tema6_02.jpg)
+![Formato de un datagrama IP](.\img\Tema6_02.jpg)
 
 | Etiqueta                     | Descripción                                                                                                                                                                                                                                                                                                                            |
 | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Versión del protocolo IP     | 4 bits, actualmente IPv4                                                                                                                                                                                                                                                                                                               |
 | Longitud de la cabecera      | 4 bits, tamaño de la cabecera del datagrama en **palabras de 32 bits**.                                                                                                                                                                                                                                                                |
 | Longitud total del datagrama | Incluye cabecera y datos. Tamaño máximo 65.535 bytes (64K - 1)                                                                                                                                                                                                                                                                         |
-| Tipo de servicio (TOS)       | 3 bits para la prioidad, 4 bits para el tipo de servicio y un bit a cero. Los bits de tipo de servicio permiten al usuario solocitar las condiciones deseadas, aunque no se garantiza el tipo de servicio solicitado. ![servicios](C:\Users\adri_\OneDrive\UPV\2º\RED\CUATRIMESTRE_B\Teoría\Tema 6 - El nivel de red\img\Tema6_03.jpg) |
+| Tipo de servicio (TOS)       | 3 bits para la prioidad, 4 bits para el tipo de servicio y un bit a cero. Los bits de tipo de servicio permiten al usuario solocitar las condiciones deseadas, aunque no se garantiza el tipo de servicio solicitado. ![servicios](.\img\Tema6_03.jpg) |
 | Fragmentación                | En el nivel de enlace cada protocolo maneja un tamaño máximo de trama, limitando el tamaño de su campo de datos: **MTU** (*Maximum Transfer Unit*)                                                                                                                                                                                     |
 | Tiempo de vida (TTL)         | Los datagramas tienen un tiempo limitado de permanencia en Internet. El TTL se inicializa en origen y se decrementa cada vez que el datagrama atraviesa un router (valor inicial recomendado = 64). Al llegar a cero el datagrama se descarta.                                                                                         |
 
 Se recomienda el uso de los siguientes valores para el tipo de servicio, dependiendo de la aplicación:
 
-![recomendaciones de servicios - INFORMATIVO](C:\Users\adri_\OneDrive\UPV\2º\RED\CUATRIMESTRE_B\Teoría\Tema 6 - El nivel de red\img\Tema6_04.jpg)
+![recomendaciones de servicios - INFORMATIVO](.\img\Tema6_04.jpg)
 
 #### Otros campos
 
@@ -113,6 +113,20 @@ El campo de **opciones** se utiliza raramente. Tiene longitud variable y permite
 * Confidencialidad del datagrama.
 * Registro de la ruta (RR).
 * etc.
+
+#### Direccionamiento CIDR (Classless Inter-Domain Routing)
+
+Cuando hay que encaminar un datagrama, para averiguar la ruta se sigue el proceso siguiente de reenvío:
+
+1. Para cada línea de la tabla de encaminamiento, se realiza un AND lógico entre la **dirección IP destino** del datagrama y la **máscara de res**. IP conpara el resultado con la **Red Destino** y marca todas las rutoas en las que se producen coincidencia.
+
+2. De la lista de rutas coincidentes IP selecciona la ruta que tiene más bits en la mascara. Esta es la ruta más específica y se conoce como la **ruta de máxima coincidencia** (*longest matching*).
+
+3. Si hay varias rutas de máxima coincidencia, se usa la ruta con menor **métrica**. Si hay varias con la misma métrica se usa una cualquiera de ellas.
+
+> Una **métrica** es un valor que se asigna a una ruta IP para una interfaz de red determinada. Identifica el costo asociado al uso de esa ruta. Por ejemplo, la métrica se puede valorar en términos de velocidad de vínculo, recuento de saltos o retraso de tiempo[^1].
+
+[^1]: [La característica Métrica automática para rutas IPv4 - Windows Server | Microsoft Docs](https://docs.microsoft.com/es-es/troubleshoot/windows-server/networking/automatic-metric-for-ipv4-routes#:~:text=Una%20m%C3%A9trica%20es%20un%20valor,saltos%20o%20retraso%20de%20tiempo.)
 
 ## 3. El protocolo IPv6
 
