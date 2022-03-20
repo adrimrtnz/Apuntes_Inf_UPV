@@ -59,7 +59,7 @@ El nivel de red se encarga de ambos problemas. Este nivel tiene **dos tareas**.
 * **Routing (enrutamiento)**: Calcula la ruta a tomar por los paquetes de origen a destino. Se calculan meciante **algoritmos de enrutamiento**.
 * En ocasiones se emplea el término **encaminamiento** indistintamente para ambas tareas.
 
-![image-20220224185921984](.\img\Tema6_01.jpg)
+![image-20220224185921984](img/Tema6_01.jpg)
 
 ## 2. El protocolo IPv4
 
@@ -78,20 +78,20 @@ IP realiza las funciones de encaminamiento y determina las reglas de intercambio
 
 #### Formato datagrama IP
 
-![Formato de un datagrama IP](.\img\Tema6_02.jpg)
+![Formato de un datagrama IP](img/Tema6_02.jpg)
 
-| Etiqueta                     | Descripción                                                                                                                                                                                                                                                                                                                            |
-| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Versión del protocolo IP     | 4 bits, actualmente IPv4                                                                                                                                                                                                                                                                                                               |
-| Longitud de la cabecera      | 4 bits, tamaño de la cabecera del datagrama en **palabras de 32 bits**.                                                                                                                                                                                                                                                                |
-| Longitud total del datagrama | Incluye cabecera y datos. Tamaño máximo 65.535 bytes (64K - 1)                                                                                                                                                                                                                                                                         |
-| Tipo de servicio (TOS)       | 3 bits para la prioidad, 4 bits para el tipo de servicio y un bit a cero. Los bits de tipo de servicio permiten al usuario solocitar las condiciones deseadas, aunque no se garantiza el tipo de servicio solicitado. ![servicios](.\img\Tema6_03.jpg) |
-| Fragmentación                | En el nivel de enlace cada protocolo maneja un tamaño máximo de trama, limitando el tamaño de su campo de datos: **MTU** (*Maximum Transfer Unit*)                                                                                                                                                                                     |
-| Tiempo de vida (TTL)         | Los datagramas tienen un tiempo limitado de permanencia en Internet. El TTL se inicializa en origen y se decrementa cada vez que el datagrama atraviesa un router (valor inicial recomendado = 64). Al llegar a cero el datagrama se descarta.                                                                                         |
+| Etiqueta                     | Descripción                                                                                                                                                                                                                                          |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Versión del protocolo IP     | 4 bits, actualmente IPv4                                                                                                                                                                                                                             |
+| Longitud de la cabecera      | 4 bits, tamaño de la cabecera del datagrama en **palabras de 32 bits**.                                                                                                                                                                              |
+| Longitud total del datagrama | Incluye cabecera y datos. Tamaño máximo 65.535 bytes (64K - 1)                                                                                                                                                                                       |
+| Tipo de servicio (TOS)       | 3 bits para la prioidad, 4 bits para el tipo de servicio y un bit a cero. Los bits de tipo de servicio permiten al usuario solocitar las condiciones deseadas, aunque no se garantiza el tipo de servicio solicitado. ![servicios](img/Tema6_03.jpg) |
+| Fragmentación                | En el nivel de enlace cada protocolo maneja un tamaño máximo de trama, limitando el tamaño de su campo de datos: **MTU** (*Maximum Transfer Unit*)                                                                                                   |
+| Tiempo de vida (TTL)         | Los datagramas tienen un tiempo limitado de permanencia en Internet. El TTL se inicializa en origen y se decrementa cada vez que el datagrama atraviesa un router (valor inicial recomendado = 64). Al llegar a cero el datagrama se descarta.       |
 
 Se recomienda el uso de los siguientes valores para el tipo de servicio, dependiendo de la aplicación:
 
-![recomendaciones de servicios - INFORMATIVO](.\img\Tema6_04.jpg)
+![recomendaciones de servicios - INFORMATIVO](img/Tema6_04.jpg)
 
 #### Otros campos
 
@@ -127,6 +127,52 @@ Cuando hay que encaminar un datagrama, para averiguar la ruta se sigue el proces
 > Una **métrica** es un valor que se asigna a una ruta IP para una interfaz de red determinada. Identifica el costo asociado al uso de esa ruta. Por ejemplo, la métrica se puede valorar en términos de velocidad de vínculo, recuento de saltos o retraso de tiempo[^1].
 
 [^1]: [La característica Métrica automática para rutas IPv4 - Windows Server | Microsoft Docs](https://docs.microsoft.com/es-es/troubleshoot/windows-server/networking/automatic-metric-for-ipv4-routes#:~:text=Una%20m%C3%A9trica%20es%20un%20valor,saltos%20o%20retraso%20de%20tiempo.)
+
+#### Fragmentación IP
+
+A la hora de calcular la cnatidad de datos IP que caben en una trama hay que tener en cuenta:
+
+1. Que la cabecera IP ocupa 20 Bytes, si no lleva opciones, como es habitaul. El resto de la MTU es lo que queda disponible para los datos IP.
+
+2. La cantidad de datos que se incluye en cada fragmento, exceptuando el último, debe ser **múltiplo de 8**, debido a la forma en que se expresa el desplazamiento del fragmento (bloques de 64 Bytes).
+
+> Cabe destacar que cuando se usan tamaños típicos de MTU, como 576, no todo cuadra bien. En este caso tendríamos $576-20=556$ y $556\div 8=69.5$. Es decir, no es divisible entre 8. Entonces, en estos casos, buscaremos el múltiplo de 8 más cercano al tamaño máximo. En este ejemplo sólo se podrían aprovechar 552 ($69 \times 8$) de los 556 bytes disponibles en la MTU, para que la división dé un valor exacto.  En el caso de una secuencia de fragmentos, el desplazamiento real sería múltiplo de 552 pero aparecería expresado en el campo de desplazamiento en múltiplos de 69.
+
+
+
+#### DHCP - Dynamic Host Configuration Protocol
+
+DHCP permite hacer una asignación automática de direcciones IP. Además de la asignación de direcciones IP a los nodos, DHCP también permite que un nodo obtenga información adicional necesaria para el funcionamiento de Internet:
+
+- Dirección IP.
+
+- Máscara de subred.
+
+- Dirección del router asignado (gateway).
+
+- Dirección de su servidor DNS local.
+
+Aunque se estudie este protocolo junto con el nivel de red de la pila de protocolos TCP/IP, **DHCP es un protocolo de nivel de aplicación** que se apoya en el protocolo UDP. DHCP permite que dos partes se comuniquen:
+
+- **Cliente DHCP:** nodo que se conecta a una subred y solicita dirección IP.
+
+- **Servidor DHCP:** nodo que se encarga de gestionar el bloque de direcciones IP de una organización. El servidor DHCP se identifica mediante el **puerto 67**.
+
+##### Funcionamiento del protocolo DHCP
+
+Cuando un nodo arranca y no tiene todavía configuración IP, tendrá que pasar por cuatro etapas para conseguirla:
+
+1. **Etapa de descubrimiento:**
+
+2. **Etapa de ofrecimiento:**
+
+3. **Etapa de Petición DHCP:**
+
+4. **Etapa de confirmación:**
+
+##### Agente retransmisor DHCP
+
+Lo mensajes DHCP se envían por difusión mediante la dirección destino 255.255.255.255. Las difusiones realizadas de esta forma son filtradas por los routers y, por tanto, no pueden alcanzar a destinos externos a la red local donde se haya originado la difusión. Esto supon que, en principio, se requerirá un servidor DHCP en cada red que deseara utilizar el servicio. Para evitar este requerimiento pueden emplearse agentes retransmisores DHCP (*DHCP relay agent*). Son dispositivos que reciben las solicitudes de los clientes enviadas cono difusiones y las reenvían en modo unicast a la dirección del servidor DHCP. Se puede configurar como agente retransmisor el router de salida de la red, o bien un host que esté en la misma red que el cliente DHCP.
 
 ## 3. El protocolo IPv6
 
