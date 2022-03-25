@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=GestorDePacientes
+comment1.params=
+comment1.target=GestorDePacientes()
+comment2.params=x
+comment2.target=java.lang.String\ darCita(Paciente)
+comment3.params=
+comment3.target=java.lang.String\ toString()
+numComments=4

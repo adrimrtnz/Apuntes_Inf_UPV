@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.target=LEGCola
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ LEGCola\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=LEGCola()
+comment2.params=e
+comment2.target=void\ encolar(java.lang.Object)
+comment3.params=
+comment3.target=java.lang.Object\ desencolar()
+comment3.text=\ SII\ \!esVacia()\:\ \r\nobtiene\ y\ elimina\ de\ una\ Cola\ el\ Elemento\ que\ ocupa\ su\ principio\ *
+comment4.params=
+comment4.target=java.lang.Object\ primero()
+comment4.text=\ SII\ \!esVacia()\:\ \r\n\ \ obtiene\ el\ Elemento\ que\ ocupa\ el\ principio\ de\ una\ Cola,\ \ \r\nel\ primero\ en\ orden\ de\ insercion\ *
+comment5.params=
+comment5.target=boolean\ esVacia()
+comment5.text=comprueba\ si\ una\ Cola\ esta\ vacia\ *
+comment6.params=
+comment6.target=java.lang.String\ toString()
+comment6.text=\ obtiene\ un\ String\ con\ los\ Elementos\ de\ una\ Cola\ en\ orden\ FIFO,\ \r\n\ \ o\ de\ insercion,\ y\ con\ el\ formato\ que\ se\ usa\ en\ el\ estandar\ de\ Java.\ \r\n\ \ Asi,\ por\ ejemplo,\ si\ se\ tiene\ una\ Cola\ con\ los\ Integer\ del\ 1\ al\ 4,\ \r\n\ \ en\ orden\ FIFO,\ toString\ devuelve\ [1,\ 2,\ 3,\ 4];\ \r\n\ \ si\ la\ Cola\ esta\ vacia,\ entonces\ devuelve\ []\ \r\n
+numComments=7

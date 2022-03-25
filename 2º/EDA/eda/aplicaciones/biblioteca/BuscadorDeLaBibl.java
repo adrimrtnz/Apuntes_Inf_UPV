@@ -216,6 +216,7 @@ public class BuscadorDeLaBibl {
             indices.siguiente();
         }
         
+        if (out.esVacia()) return null;
         return out;
     }
 }    
