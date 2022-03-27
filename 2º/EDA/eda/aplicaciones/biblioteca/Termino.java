@@ -56,6 +56,7 @@ public class Termino {
      *                   + this.termino.charAt[n-1]
      *  Si NO es la primera vez que se aplica el metodo, devuelve this.valorHash 
      */
+    @Override
     public int hashCode() { 
         int res = this.valorHash;
         if (res != 0) { return res; }
@@ -76,6 +77,7 @@ public class Termino {
      *  eficiente, i.e. SOLO ejecuta el metodo equals de String 
      *  cuando los valores Hash de uno y otro Termino son iguales
      */
+    @Override
     public boolean equals(Object otro) {
         return otro instanceof Termino &&
             this.valorHash == ((Termino) otro).valorHash &&

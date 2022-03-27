@@ -75,7 +75,10 @@ public class TestOrdenacion {
                 
                 //  A completar:  
                 //  Temporizacion de mergeSort2
-                
+                t1 = System.nanoTime();
+                Ordenacion.mergeSort2(aux2);
+                t2 = System.nanoTime();
+                tacum2 += t2 - t1;
                 
                 t1 = System.nanoTime();
                 Ordenacion.quickSort(aux3);
@@ -133,14 +136,18 @@ public class TestOrdenacion {
                 aux1 = crearAleatorioString(talla, charIgual);
                 aux2 = Arrays.copyOf(aux1, aux1.length);
                 aux3 = Arrays.copyOf(aux1, aux1.length);
-                                             
+                
                 t1 = System.nanoTime();
                 Ordenacion.mergeSort1(aux1);
                 t2 = System.nanoTime();
-                tacum1 += t2 - t1;    
+                tacum1 += t2 - t1;
                 
                 // A completar: 
-                // Temporizacion de mergeSort2                               
+                // Temporizacion de mergeSort2
+                t1 = System.nanoTime();
+                Ordenacion.mergeSort2(aux2);
+                t2 = System.nanoTime();
+                tacum2 += t2 - t1;
                                                                 
                 t1 = System.nanoTime();
                 Ordenacion.quickSort(aux3);
@@ -166,8 +173,15 @@ public class TestOrdenacion {
      * @return String[]
      */    
     public static String[] crearAleatorioString(int talla, int n) {
-        /*MODIFICAR*/
-        return null;
+        String[] out = new String[talla];
+        
+        GeneradorDeString g = new GeneradorDeString(n);
+        
+        for (int i = 0; i < talla; i++) {
+            out[i] = g.generar();
+        }
+        
+        return out;
     }
     
     public static void main(String[] args) {

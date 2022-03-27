@@ -234,3 +234,27 @@ Diseñar una interfaz de usuario para un tipo de usuario es fácil. Diseñar una
 * Aplicar el diseño multi-capa a la ayuda on-line, mensajes de error y tutoriales.
 
 * Idealmente permitir al usuario configurar el entorno: contenido de los menús, nivel de realimentación, densidad de la información, o ritmo de interacción.
+
+#### Ánalisis de la competencia
+
+Un análisis competitivo es un camino fácil y rápido para establecer un punto de partida en el diseño.
+
+* Actividades.
+
+* Revisar las versiones previas de la aplicación y compararlas con las de la competencia.
+
+* Desde el punto de vista de la usabilidad, buscaremos buenas ideas de interfaz de usuario para aplicarlas a nuestro diseño.
+
+#### Análisis de Tareas
+
+Despues de identificar a los usuarios, debemos entender los objetivos que tienen al usar el sistema.
+
+El análisis de tareas es una actividad que estudia qué debe hacer un sistema y la funcionalidad que debe ofrecer a los usuarios para que alcancen sus objetivos.
+
+Terminología:
+
+* **Objetivo:** resultado final a obtener.
+
+* **Tarea:** conunto estructurado de actividades realizadas en algún orden.
+
+* **Acción:** operación o paso individual de una tarea.

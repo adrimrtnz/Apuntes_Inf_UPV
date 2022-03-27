@@ -77,7 +77,9 @@ public class TablaHash<C, V> implements Map<C, V> {
         int pos = indiceHash(c);
         ListaConPI<EntradaHash<C,V>> cubeta = elArray[pos];
         V valor = null;
-        /*COMPLETAR*/
+        if (!cubeta.esFin()) {
+            valor = cubeta.recuperar().valor;
+        }
         return valor;
     }
     
@@ -89,7 +91,11 @@ public class TablaHash<C, V> implements Map<C, V> {
         int pos = indiceHash(c);
         ListaConPI<EntradaHash<C,V>> cubeta = elArray[pos];
         V valor = null;
-        /*COMPLETAR*/
+        if (!cubeta.esFin()) {
+            valor = cubeta.recuperar().valor;
+            cubeta.eliminar();
+            talla--;
+        }
         return valor;
     }
         
@@ -108,7 +114,15 @@ public class TablaHash<C, V> implements Map<C, V> {
         int pos = indiceHash(c);
         ListaConPI<EntradaHash<C,V>> cubeta = elArray[indiceHash(c)];
         V antiguoValor = null;
-        /*COMPLETAR*/
+        
+        if (cubeta.esFin()) {
+            cubeta.insertar(new EntradaHash<C,V>(c,v));
+            talla++;
+        } else {
+            antiguoValor = cubeta.recuperar().valor;
+            cubeta.recuperar().valor = v;
+        }
+        
         return antiguoValor;
     }
      
@@ -128,7 +142,12 @@ public class TablaHash<C, V> implements Map<C, V> {
      */
     public ListaConPI<C> claves() {
         ListaConPI<C> l = new LEGListaConPI<C>();
-        /*COMPLETAR*/
+        
+        for (int i = 0; i < elArray.length; i++) {
+            for (elArray[i].inicio(); !elArray[i].esFin(); elArray[i].siguiente()) {
+                l.insertar(elArray[i].recuperar().clave);
+            }
+        }
         return l;
     }
     
@@ -139,7 +158,11 @@ public class TablaHash<C, V> implements Map<C, V> {
     // un coste INDEPENDIENTE de la talla del problema
     // NO hace falta calcular con un bucle la longitud media de las cubetas!!!
     public final double factorDeCarga() {
-        return 0; /*CAMBIAR / COMPLETAR*/
+        return (double) talla / elArray.length;
+    }
+    
+    public int numeroColisiones(C c) {
+        return elArray[indiceHash(c)].talla();
     }
     
     /*******************************
@@ -150,7 +173,9 @@ public class TablaHash<C, V> implements Map<C, V> {
     // RECUERDA: se usa la clase StringBuilder porque es mas eficiente
     public final String toString() {
         StringBuilder res = new StringBuilder();
-        /*COMPLETAR*/
+        for (ListaConPI<EntradaHash<C, V>> cubeta : elArray) 
+            for (cubeta.inicio(); !cubeta.esFin(); cubeta.siguiente()) 
+                res.append(cubeta.recuperar() + "\n"); 
         return res.toString(); 
     }
 }

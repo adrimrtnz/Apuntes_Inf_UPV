@@ -9,6 +9,7 @@ package ejemplos.tema2;
  */
 public class Hanoi
 {
+    // El coste de hanoi es 2^n-1
     static void hanoi(int n, String origen, String auxiliar, String destino) {
         if (n == 1) {
             moverDisco(origen, destino);

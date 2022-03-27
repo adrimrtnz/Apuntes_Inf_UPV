@@ -200,7 +200,6 @@ public class BuscadorDeLaBibl {
      *  de la BD, o null si no existe ninguno.
      */
     public ListaConPI<Termino> hapax() {
-        /* COMPLETAR */
         ListaConPI<Termino> out = new LEGListaConPI<>();
         ListaConPI<Termino> indices = index.claves();
         

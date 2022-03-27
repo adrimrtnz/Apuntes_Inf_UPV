@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=DireccionHTTP
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ DireccionHTTP\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=DireccionHTTP()
+comment2.params=o
+comment2.target=boolean\ equals(java.lang.Object)
+comment3.params=
+comment3.target=int\ hashCode()
+numComments=4

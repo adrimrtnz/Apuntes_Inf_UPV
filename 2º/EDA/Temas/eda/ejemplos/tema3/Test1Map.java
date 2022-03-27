@@ -38,11 +38,12 @@ public class Test1Map {
         String[] palabrasDelTexto = texto.split(" +");
         Map<String, String> m = new TablaHash<>(texto.length());
         
-        for (int i = 0; i < palabrasDelTexto.length; i++) 
+        for (int i = 0; i < palabrasDelTexto.length; i++) {
             // OJO: LO MÁS BARATO SERIA 
             // d.insertar(palabrasDelTexto[i].toLowerCase(), 
             // palabrasDelTexto[i].toLowerCase());
             m.insertar(palabrasDelTexto[i].toLowerCase(), ""); 
+        }
         
         // OJO: nos piden mostrar las palabras distintas que aparecen, 
         // que NO son las Entradas del Map sino SOLO sus claves

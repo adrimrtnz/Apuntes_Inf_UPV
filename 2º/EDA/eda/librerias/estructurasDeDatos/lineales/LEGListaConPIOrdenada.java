@@ -8,6 +8,7 @@ package librerias.estructurasDeDatos.lineales;
  */
 public class LEGListaConPIOrdenada<E extends Comparable<E>> extends LEGListaConPI<E>
 {
+    @Override
     public void insertar(E e) {
         inicio();
         while(!esFin() && e.compareTo(recuperar()) > 0) {
