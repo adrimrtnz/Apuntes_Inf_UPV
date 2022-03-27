@@ -1,39 +1,48 @@
 package librerias.estructurasDeDatos.modelos;
 
 /**
- * Modelo de una Lista Con Punto de Interes, o de Acceso Secuencial 
- * a los Elementos de una Coleccion
+ * Modelo de una Lista Con Punto de Interes (PI), 
+ * o de Acceso Secuencial a los Elementos de una
+ * Coleccion
  *  
+ * @version Febrero 2019
+ * @param <E> tipo de los datos de Lista
  */
 
 public interface ListaConPI<E> {
-// metodos Modificadores del estado de la Lista Con PI:
-    /** inserta e en una Lista antes del Elemento que ocupa su PI, 
-     * que permanece inalterado 
-     */
+
+    // Metodos Modificadores del estado de una Lista
+    /** Inserta e en una Lista antes del Elemento que ocupa su PI, 
+     *  que permanece inalterado */
     void insertar(E e);
     
     /** SII !esFin(): 
-     * elimina de una Lista el Elemento que ocupa su PI, 
-     * que permanece inalterado 
-     */
+     *  elimina de una Lista el Elemento que ocupa su PI, 
+     *  que permanece inalterado */
     void eliminar();
     
-// metodos Modificadores del estado del PI de la Lista:
-    /** situa el PI de una Lista en su inicio **/
+    // Metodos Modificadores del estado del PI de una Lista
+    /** Situa el PI de una Lista en su inicio */
     void inicio();
-    /** SII !esFin(): avanza el PI de una Lista **/
+    
+    /** SII !esFin(): 
+     *  avanza el PI de una Lista */
     void siguiente();
-    /** situa el PI de una Lista en su fin **/
+    
+    /** Situa el PI de una Lista en su fin */
     void fin();
     
-// metodos Consultores del estado de la Lista Con PI:
-    /** SII !esFin(): obtiene el Elemento que ocupa el PI de una Lista **/
+    // Metodos Consultores del estado de una Lista
+    /** SII !esFin(): 
+     *  obtiene el Elemento que ocupa el PI de una Lista */
     E recuperar();
-    /** comprueba si el PI de una Lista esta en su fin **/
+    
+    /** Comprueba si el PI de una Lista esta en su fin */
     boolean esFin();
-    /** comprueba si una Lista Con PI esta vacia **/
+    
+    /** Comprueba si una Lista Con PI esta vacia */
     boolean esVacia();
-    /** devuelve la talla de una Lista, o su numero de elementos **/
+    
+    /** Devuelve la talla, o numero de elementos, de una Lista */
     int talla();
 }

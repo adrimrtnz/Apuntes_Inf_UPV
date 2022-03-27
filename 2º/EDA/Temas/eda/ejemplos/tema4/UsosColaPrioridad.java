@@ -20,7 +20,17 @@ public class UsosColaPrioridad {
      *  ordene un array v de elementos Comparable. 
      */
     public static <E extends Comparable<E>> void cPSort(E[] v) {
-        // COMPLETAR
+        
+        // NOTA: En esta implementación la pos 0 del Montículo no se gasta
+        ColaPrioridad<E> cP = new MonticuloBinario<>(v.length + 1); 
+        
+        for (int i = 0; i < v.length; i++) {
+            cP.insertar(v[i]);
+        }
+        
+        for (int i = 0; i < v.length; i++) {
+            v[i] = cP.eliminarMin();
+        }
     }
     
     /** Problema 2:
@@ -33,7 +43,21 @@ public class UsosColaPrioridad {
     public static <E extends Comparable<E>> ListaConPI<E> cPFusionar(
         ColaPrioridad<E> cP1, ColaPrioridad<E> cP2) 
     {
-        // COMPLETAR
+        ListaConPI<E> res = new LEGListaConPI<>();
+        
+        while (!cP1.esVacia() && !cP1.esVacia()) {
+            if (cP1.recuperarMin().compareTo(cP1.recuperarMin()) < 0) {
+                res.insertar(cP1.eliminarMin());
+            }
+            else {
+                res.insertar(cP2.eliminarMin());
+            }
+        }
+        
+        while(!cP1.esVacia()) { res.insertar(cP1.eliminarMin()); }
+        while(!cP2.esVacia()) { res.insertar(cP2.eliminarMin()); }
+        
+        return res;
     }
     
     /** Problema 3:
@@ -44,7 +68,16 @@ public class UsosColaPrioridad {
      *  en orden ascendente, esta acotada por un epsilon dado. 
      */
     public static boolean cPEsLineal(ColaPrioridad<Double> cP, double epsilon) {
-        // COMPLETAR
+        
+        double a = cP.eliminarMin();
+        
+        while (!cP.esVacia()) {
+            double b = cP.eliminarMin();
+            if (b - a > epsilon) { return false; }
+            a = b;
+        }
+        
+        return true;
     }
     
     /** Problema 4:
@@ -56,7 +89,14 @@ public class UsosColaPrioridad {
     public static <E extends Comparable<E>> ColaPrioridad<E> cPTopK(
         E[] v, int k) 
     {
-        // COMPLETAR
+        // la pos 0 no se gasta y una se va a poner y eliminar
+        ColaPrioridad<E> cP = new MonticuloBinario<E>(k + 2);
+        
+        for (int i = 0; i < v.length; i++) {
+            cP.insertar(v[i]);
+            if (i >= k) { cP.eliminarMin(); }
+        }
+        return cP;
     }
     
 }

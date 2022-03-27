@@ -4,7 +4,11 @@ package librerias.estructurasDeDatos.modelos;
  * Modelo Diccionario SIN claves repetidas, o Map: Busqueda Dinamica 
  * de una Entrada de Clave dada en una Coleccion, para recuperar el 
  * Valor asociado a esta 
+ * @param <C>, el tipo de sus Claves
+ * @param <V>, el tipo de sus Valores
  * 
+ * @author (EDA) 
+ * @version (Curso 2018-2019)
  */
 
 public interface Map<C, V> {
@@ -34,3 +38,4 @@ public interface Map<C, V> {
     /** devuelve una ListaConPI con las talla() Claves de un Map */
     ListaConPI<C> claves();
 }
+

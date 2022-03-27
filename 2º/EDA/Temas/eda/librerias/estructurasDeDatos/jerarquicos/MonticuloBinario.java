@@ -42,8 +42,8 @@ public class MonticuloBinario<E extends Comparable<E>>
         // PASO 2. Insertar e en su posicion de insercion ordenada
         elArray[posIns] = e;
     }
-	
-	protected int reflotar(E e, int posIns) {
+    
+    protected int reflotar(E e, int posIns) {
         while (posIns > 1 && e.compareTo(elArray[posIns / 2]) < 0) { 
             elArray[posIns] = elArray[posIns / 2]; 
             posIns = posIns / 2;
@@ -151,5 +151,170 @@ public class MonticuloBinario<E extends Comparable<E>>
             hundir(i);
         }
     } 
-
+    
+    
+    /**
+     * Ejercicio 5: Implementar un método de instancia, hayMenoresQue que,
+     * en tiempo constante, compruebe si existen elementos menores que e
+     * en el montículo.
+     */
+    
+    public boolean hayMenoresQue(E e) {
+        if (talla == 0) { return false; }
+        return elArray[1].compareTo(e) < 0; 
+    }
+    
+    /**
+     * Ejercicio 6: Implementar un método de instancia hayMayoresQue, que
+     * comprueba si existen elementos mayores que e en el montículo.
+     */
+    public boolean hayMayoresQue(E e) {
+        int pos1aHoja = talla / 2 + 1;
+        
+        for (int i = pos1aHoja; i <= talla; i++) {
+            if (elArray[i].compareTo(e) > 0) { return true; }
+        }
+        
+        return false;
+    }
+    
+    /**
+     * Ejercicio 7: Implementar un método de instancia, estaEn que compruebe
+     * si el elemento e está en el montículo
+     */
+    public boolean estaEn(E e) {
+        // NOTA: importante recordar que en el montículo
+        // la pos 0 NO se gasta
+        return estaEn(e, 1);
+    }
+    
+    private boolean estaEn(E e, int i) {
+        if ( i > talla || elArray[i].compareTo(e) > 0) { 
+            return false; 
+        }
+        if (elArray[i].compareTo(e) == 0) {
+            return true;
+        }
+        
+        return estaEn(e, i*2) || estaEn(e, i*2 + 1);
+    }
+    
+    /**
+     * Ejercicio 8: Implementar un método de instancia, borrarHojasEnRango
+     * que borre hojas del montículo que están dentro del rango genérico
+     * y no vacío.
+     */
+    public void borrarHojasEnRango(E x, E y) {
+        // PASO 1: Recorrer SOLO las hojas del Heap,
+        // borrar por niveles las que están en [x, y]
+        int n = talla;
+        for (int i = n; i > n/2; i--) {
+            if (elArray[i].compareTo(x) >= 0 && elArray[i].compareTo(y) <= 0) {
+                if (i < talla) { elArray[i] = elArray[talla]; }
+                talla--;
+            }
+        }
+        
+        // PASO 2: ¿Es Heap tras borrar las hojas en [x,y]?
+        // Si no lo es, "arreglar" el Array
+        arreglar();
+    }
+    
+    
+    /**
+     * Ejercicio 9:
+     */
+    public E eliminar(int k) {
+        E aux = elArray[k];
+        elArray[k] = elArray[talla--];
+        
+        /* OPCIÓN MENOS EFICIENTE
+        arreglar();
+        */
+       
+        int pos = k;
+        E compK = elArray[k];
+        pos = reflotar(compK, pos);
+        elArray[pos] = compK;
+        
+        if (pos == k) { hundir(pos); }
+        return aux;
+    }
+    
+    /**
+     * Ejercicio 10:
+     */
+    public int igualesAlMinimo() {
+        return igualesAlMinimo(1);
+    }
+    
+    private int igualesAlMinimo(int i) {
+        if (i > talla || elArray[i].compareTo(elArray[1]) > 0) { return 0; }
+        else if (elArray[i].compareTo(elArray[1]) == 0) { 
+            return 1 + igualesAlMinimo(i*2) + igualesAlMinimo(i*2 + 1); 
+        }
+        return 0 + igualesAlMinimo(i*2) + igualesAlMinimo(i*2 + 1);
+    }
+    
+    
+    /**
+     * Ejercicio 11: Diseñar un método (estático) esHeap que con el menor coste
+     * posible, compruebe si un array v es un Heap
+     */
+    public static <E extends Comparable<E>> boolean esHeap(E[] v) {
+        
+        // Empieza a comprobar por las hojas, no por las raíz
+        int n = v.length - 1;
+        for(int i = n; i > 1; i--) {
+            if (v[i/2].compareTo(v[i]) > 0) { return false; }
+        }
+        
+        return true;
+    }
+    
+    /**
+     * Ejercicio 12:
+     */
+    public int menoresQue(E e) {
+        return menoresQue(e, 1);
+    }
+    
+    private int menoresQue(E e, int i) {
+        if (i > talla || elArray[i].compareTo(e) >= 0) { return 0; }
+        
+        return 1 + 
+            menoresQue(e, i*2) + 
+            menoresQue(e, i*2 + 1);
+    }
+    
+    /**
+     * Ejercicio 13:
+     */
+    public E eliminar1aHoja() {
+        int primeraHoja = talla / 2 + 1;
+        return eliminar(primeraHoja);
+    }
+    
+    /**
+     * Ejercicio 14: Diseñar un método estático, genérico e 
+     * iterativo heapSort que ordene ascendentemente un array v
+     * usando un montículo (diferente a cPSort()
+     */
+    public static <E extends Comparable<E>> void heapSort(E[] v) {
+        /* // Esto es cPSort
+        ColaPrioridad<E> aux = new MonticuloBinario<>(v.length + 1);
+        
+        for (int i = 0; i < v.length; i++) {
+            aux.insertar(v[i]);
+        }
+        
+        for (int i = 0; i < v.length; i++) {
+            v[i] = aux.eliminarMin();
+        }
+        */
+       
+       for (int i = v.length / 2; i >= 0; i--) {
+           hundirMax(v, i, v.length);
+       }
+    }
 }

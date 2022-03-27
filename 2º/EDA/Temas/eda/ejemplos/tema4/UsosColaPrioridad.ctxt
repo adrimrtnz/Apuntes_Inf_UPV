@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=UsosColaPrioridad
+comment0.text=\r\n\ class\ UsosColaPrioridad.\r\n\ \r\n\ @author\ FTG\ \r\n\ @version\ 1.0\r\n
+comment1.params=v
+comment1.target=void\ cPSort(java.lang.Comparable[])
+comment1.text=\ Problema\ 1\:\ \r\n\ \ Disenyar\ un\ metodo\ estatico\ e\ iterativo\ cPSort\ \r\n\ \ que,\ con\ la\ ayuda\ de\ una\ Cola\ de\ Prioridad,\ \r\n\ \ ordene\ un\ array\ v\ de\ elementos\ Comparable.\ \r\n
+comment2.params=cP1\ cP2
+comment2.target=librerias.estructurasDeDatos.modelos.ListaConPI\ cPFusionar(librerias.estructurasDeDatos.modelos.ColaPrioridad,\ librerias.estructurasDeDatos.modelos.ColaPrioridad)
+comment2.text=\ Problema\ 2\:\r\n\ \ Disenyar\ un\ metodo\ estatico,\ generico\ e\ iterativo\ cPFusionar\ \r\n\ \ que\ devuelva\ una\ ListaConPI\ con\ los\ datos\ de\ 2\ Colas\ de\ Prioridad\ dadas,\ \r\n\ \ cP1\ y\ cP2,\ ordenados\ ascendentemente.\ \r\n\ \ El\ metodo\ no\ puede\ usar\ ninguna\ EDA\ auxiliar\ para\ calcular\ su\ resultado\ \r\n\ \ y,\ ademas,\ cP1\ y\ cP2\ deben\ quedar\ vacias\ al\ concluir\ su\ ejecucion.\r\n
+comment3.params=cP\ epsilon
+comment3.target=boolean\ cPEsLineal(librerias.estructurasDeDatos.modelos.ColaPrioridad,\ double)
+comment3.text=\ Problema\ 3\:\r\n\ \ Disenyar\ un\ metodo\ estatico\ e\ iterativo\ cPEsLineal\ \r\n\ \ que\ determine\ si\ un\ conjunto\ de\ valores\ reales\ se\ ajusta\ (aprox.)\ \r\n\ \ a\ una\ funcion\ lineal\ creciente\ usando\ el\ siguiente\ algoritmo\:\ \r\n\ \ comprobar\ si\ la\ diferencia\ entre\ todo\ par\ de\ valores\ consecutivos,\ \r\n\ \ en\ orden\ ascendente,\ esta\ acotada\ por\ un\ epsilon\ dado.\ \r\n
+comment4.params=v\ k
+comment4.target=librerias.estructurasDeDatos.modelos.ColaPrioridad\ cPTopK(java.lang.Comparable[],\ int)
+comment4.text=\ Problema\ 4\:\r\n\ \ Disenyar\ un\ metodo\ estatico,\ generico\ e\ iterativo\ cPTopK\ \r\n\ \ que,\ dado\ un\ array\ de\ datos\ v\ y\ un\ entero\ k,\ \r\n\ \ devuelva\ una\ Cola\ de\ Prioridad\ con\ los\ k\ mejores\ (Top\ K)\ datos\ de\ v.\ \r\n\ \ El\ metodo\ debe\ tener\ un\ coste\ O(X\ log\ k),\ siendo\ X\ la\ longitud\ de\ v.\r\n
+numComments=5

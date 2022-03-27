@@ -102,7 +102,7 @@ Los entornos gráficos en PC se popularizaron a partor de Windows 3.0 (1990):
 
 ## Objetivos
 
-* Estudiar el Diseño Centrado en el Usuario (DCU o *Human Centered Design - HDC* por sus siglas en inglés ).
+* Estudiar el Diseño Centrado en el Usuario (DCU o *Human Centered Design - HCD* por sus siglas en inglés ).
 
 * Conocer los procesos para la recogida y especificación de requisitos.
 

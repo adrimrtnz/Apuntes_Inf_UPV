@@ -1,12 +1,19 @@
 package librerias.estructurasDeDatos.deDispersion;
 
 /**
- * Nodo de una Lista con PI 
- * con la que se implementa una cubeta de una TablaHash: 
- * TIENE la clave y el valor de una Entrada
+ * Representa un elemento de la Lista con PI que implementa   
+ * una cubeta de una TablaHash, esto es una Entrada o par
+ * (clave, valor)
+ * 
+ * @param <C>, el tipo de la clave
+ * @param <V>, el tipo del valor asociado a una clave
+ * 
+ * @author (EDA)
+ * @version (Curso 2018/19)
  */
 
-class EntradaHash<C, V> {    
+class EntradaHash<C, V> {
+    
     protected C clave;
     protected V valor;
 

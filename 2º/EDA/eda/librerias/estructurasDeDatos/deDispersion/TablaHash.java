@@ -236,11 +236,11 @@ public class TablaHash<C, V> implements Map<C, V> {
      *  cubetas de una Tabla Hash Enlazada */
     public final double desviacionTipica() {
         double[] tallas = new double [elArray.length];
-        double m = 0;
-        double sum = 0;
+        double m = .0;
+        double sum = .0;
     
         for (int i = 0; i < elArray.length; i++) {
-            tallas[i] += (int) elArray[i].talla();
+            tallas[i] = elArray[i].talla();
             m += tallas[i];
         }
         
