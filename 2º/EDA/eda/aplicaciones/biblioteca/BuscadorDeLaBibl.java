@@ -203,16 +203,13 @@ public class BuscadorDeLaBibl {
         ListaConPI<Termino> out = new LEGListaConPI<>();
         ListaConPI<Termino> indices = index.claves();
         
-        indices.inicio();
-        while(!indices.esFin()) 
+        for (indices.inicio(); !indices.esFin(); indices.siguiente()) 
         {
             Termino t = indices.recuperar();
             if (index.recuperar(t).talla() == 1) 
             {
                out.insertar(t);                 
             }
-            
-            indices.siguiente();
         }
         
         if (out.esVacia()) return null;

@@ -29,7 +29,7 @@ public class TablaHash<C, V> implements Map<C, V> {
     /** El valor (boolean) que indica si una Tabla Hash realiza 
      *  Rehashing cuando su factor de carga supera FC_ESTANDAR
      */
-    public static final boolean REHASHING = true; // en Parte 1 vale false;
+    public static final boolean REHASHING = false; // en Parte 1 vale false;
     
     // UN array de Listas Con PI de EntradaHash<C, V> elArray:
     // - elArray[h] representa una cubeta, o lista de    
@@ -298,4 +298,36 @@ public class TablaHash<C, V> implements Map<C, V> {
         }        
         return res;        
     }
+    
+    /**
+     * Ejercicio Examen Lab1
+     */
+    public ListaConPI<C> clavesColisionadas() {
+        ListaConPI<C> c = claves();
+        ListaConPI<C> res = new LEGListaConPI();
+        
+        for(c.inicio(); !c.esFin(); c.siguiente()) {
+            C aux = c.recuperar();
+
+            ListaConPI<EntradaHash<C, V>> cubeta = localizar(aux);
+            if (cubeta.talla() > 1) {
+                res.insertar(aux);
+            }
+        }
+        
+        return res;
+    }
+    
+    public static void main(String[] args) {
+        TablaHash<Integer,Integer> tabla = new TablaHash(8);
+        for(int i=0;i<20;i++){
+            tabla.insertar(i,i);
+        }
+        ListaConPI<Integer> colisionadas = tabla.clavesColisionadas();
+        StringBuilder str = new StringBuilder();
+        for (colisionadas.inicio(); !colisionadas.esFin(); colisionadas.siguiente())
+            str.append(colisionadas.recuperar()+" ");
+        System.out.println("Claves colisionadas: "+str.toString());
+    }
+
 }

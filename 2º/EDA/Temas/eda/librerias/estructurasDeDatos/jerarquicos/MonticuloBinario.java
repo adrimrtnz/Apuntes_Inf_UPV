@@ -250,10 +250,8 @@ public class MonticuloBinario<E extends Comparable<E>>
     
     private int igualesAlMinimo(int i) {
         if (i > talla || elArray[i].compareTo(elArray[1]) > 0) { return 0; }
-        else if (elArray[i].compareTo(elArray[1]) == 0) { 
-            return 1 + igualesAlMinimo(i*2) + igualesAlMinimo(i*2 + 1); 
-        }
-        return 0 + igualesAlMinimo(i*2) + igualesAlMinimo(i*2 + 1);
+
+        return 1 + igualesAlMinimo(i*2) + igualesAlMinimo(i*2 + 1);
     }
     
     
@@ -313,8 +311,5 @@ public class MonticuloBinario<E extends Comparable<E>>
         }
         */
        
-       for (int i = v.length / 2; i >= 0; i--) {
-           hundirMax(v, i, v.length);
-       }
     }
 }
