@@ -1,6 +1,8 @@
-// CSD feb 2015 Juansa Sendra
+// 2022 Adrián Martínez
 
-public class Pool2 extends Pool{ //max kids/instructor
+public class Pool2 extends Pool{ 
+    //max kids/instructor
+    
     public void init(int ki, int cap) {
         this.nk = 0;
         this.ni = 0;

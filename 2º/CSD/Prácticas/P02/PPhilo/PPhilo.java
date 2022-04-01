@@ -36,10 +36,9 @@ public class PPhilo extends JPanel implements ActionListener {
             // tienen que haber diestros y zurdos
             t = new RegularTable(sman);
             for (i=0; i<5; i++) {
-                if(i%2 == 0)
-                    philo[i] = new Philo(i,cycles,delay,t); 
-                else
-                    philo[i] = new LefthandedPhilo(i, cycles, delay, t);
+                philo[i] = i%2==0 ? new Philo(i,cycles,delay,t) :
+                                    new LefthandedPhilo(i, cycles, delay, t);
+
             }
             break;
         case 3: 

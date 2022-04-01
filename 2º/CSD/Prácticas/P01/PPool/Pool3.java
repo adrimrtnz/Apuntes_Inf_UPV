@@ -1,6 +1,7 @@
-// CSD feb 2015 Juansa Sendra
+// 2022 Adrián Martínez
 
-public class Pool3 extends Pool{ //max capacity
+public class Pool3 extends Pool{ 
+    //max capacity
     
       
     public void init(int ki, int cap) {
@@ -47,6 +48,7 @@ public class Pool3 extends Pool{ //max capacity
         }
         
         ni--;
+        notifyAll();
         log.resting(); 
     }
 }

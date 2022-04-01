@@ -1,6 +1,7 @@
-// CSD feb 2013 Juansa Sendra
+// 2022 Adrián Martínez
 
-public class Pool4 extends Pool { //kids cannot enter if there are instructors waiting to exit
+public class Pool4 extends Pool { 
+    //kids cannot enter if there are instructors waiting to exit
     
     private int instructorWaiting;
     
