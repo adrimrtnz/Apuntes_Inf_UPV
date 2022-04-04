@@ -11,12 +11,12 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="216.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.DatosPersonaControlador">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="159.0" prefWidth="437.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.DatosPersonaControlador">
    <bottom>
-      <HBox alignment="BOTTOM_RIGHT" prefHeight="41.0" prefWidth="589.0" spacing="10.0" BorderPane.alignment="CENTER">
+      <HBox alignment="BOTTOM_RIGHT" prefHeight="41.0" prefWidth="527.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Salvar" />
-            <Button mnemonicParsing="false" text="Cancelar" />
+            <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#saveAction" text="Salvar" />
+            <Button fx:id="calcelBtn" mnemonicParsing="false" onAction="#calcelAction" text="Cancelar" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -31,19 +31,19 @@
          <children>
             <GridPane alignment="CENTER" hgap="5.0" prefHeight="159.0" prefWidth="600.0" vgap="5.0">
                <columnConstraints>
-                  <ColumnConstraints hgrow="NEVER" maxWidth="167.0" minWidth="40.0" prefWidth="64.0" />
-                  <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="343.0" />
-                  <ColumnConstraints hgrow="NEVER" maxWidth="168.0" minWidth="10.0" prefWidth="52.0" />
+                  <ColumnConstraints hgrow="NEVER" maxWidth="167.0" minWidth="40.0" prefWidth="82.66666666666667" />
+                  <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="308.0" />
+                  <ColumnConstraints hgrow="NEVER" maxWidth="168.0" minWidth="10.0" prefWidth="35.33331298828125" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="73.33333333333334" minHeight="10.0" prefHeight="66.6666768391927" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="90.66665649414062" minHeight="10.0" prefHeight="73.33332316080728" vgrow="SOMETIMES" />
                </rowConstraints>
                <padding>
                   <Insets bottom="4.0" left="4.0" right="4.0" top="10.0" />
                </padding>
                <children>
-                  <TextField fx:id="txtNombre" prefWidth="440.0" GridPane.columnIndex="1">
+                  <TextField fx:id="nombrefxID" prefWidth="440.0" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets right="10.0" />
                      </GridPane.margin>
@@ -61,7 +61,7 @@
                         <Insets left="15.0" />
                      </padding>
                   </Label>
-                  <TextField fx:id="txtApellido" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="apellidosfxID" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets right="10.0" />
                      </GridPane.margin>

@@ -33,4 +33,9 @@ public class Persona {
 	public final void setApellidos(final java.lang.String Apellidos) {
 		this.ApellidosProperty().set(Apellidos);
 	}
+        
+        @Override
+        public String toString() {
+            return this.Nombre.getValue() + " " + this.Apellidos.getValue();
+        }
 }

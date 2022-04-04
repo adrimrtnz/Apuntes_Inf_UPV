@@ -5,7 +5,6 @@
  */
 package modelo;
 
-import java.util.ArrayList;
 import javafx.scene.control.ListCell;
 
 /**
@@ -18,12 +17,10 @@ public class PersonListCell extends ListCell<Persona>
     protected void updateItem(Persona item, boolean empty) {
         super.updateItem(item, empty);
         
-        if (item == null || empty) 
-        {
+        if (item == null || empty) {
             setText(null);
         }
-        else
-        {   
+        else {   
             setText(item.getApellidos() + ", " + item.getNombre());
         }
     }
