@@ -306,15 +306,14 @@ public class TablaHash<C, V> implements Map<C, V> {
         ListaConPI<C> c = claves();
         ListaConPI<C> res = new LEGListaConPI();
         
-        for(c.inicio(); !c.esFin(); c.siguiente()) {
-            C aux = c.recuperar();
-
-            ListaConPI<EntradaHash<C, V>> cubeta = localizar(aux);
-            if (cubeta.talla() > 1) {
-                res.insertar(aux);
+        for(ListaConPI<EntradaHash<C, V>> cubeta: elArray){
+            //Si la talla de la cubeta>1 se ha producido colision
+            if (cubeta.talla()>1){
+                for (cubeta.inicio(), cubeta.siguiente();!cubeta.esFin();cubeta.siguiente()){
+                    res.insertar(cubeta.recuperar().clave);
+                }
             }
         }
-        
         return res;
     }
     

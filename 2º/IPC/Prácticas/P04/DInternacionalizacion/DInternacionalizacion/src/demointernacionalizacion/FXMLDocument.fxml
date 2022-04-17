@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="demointernacionalizacion.FXMLDocumentController">
+   <bottom>
+      <HBox prefHeight="44.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <left>
+      <VBox prefHeight="331.0" prefWidth="38.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <VBox prefHeight="331.0" prefWidth="120.0" BorderPane.alignment="CENTER" />
+   </right>
+   <top>
+      <HBox prefHeight="39.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="%Menu.Fichero">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="%Menu.Cerrar" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="%Menu.Editar">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="%Menu.Borrar" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="%Menu.Ayuda">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#acercaDe" text="%Menu.Acercade" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <MenuButton mnemonicParsing="false" text="%Boton.lenguaje">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#cambioSpain" text="%opcion.espanyol">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+                           <image>
+                              <Image url="@../imagenes/spain.png" />
+                           </image>
+                           <viewport>
+                              <Rectangle2D height="32.0" width="32.0" />
+                           </viewport>
+                        </ImageView>
+                     </graphic>
+                  </MenuItem>
+                <MenuItem mnemonicParsing="false" onAction="#cambioUK" text="%opcion.ingles">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagenes/united-kingdom32.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </MenuItem>
+              </items>
+            </MenuButton>
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <Label fx:id="mensajeinicial" text="%mensaje.bienvenida" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>
