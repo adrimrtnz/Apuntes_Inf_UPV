@@ -6,18 +6,20 @@ Estas notas son correspondientes a los cursos a partir de 2º del grado. En el r
 
 ## Acerca del formato Markdown
 
-Se pueden visualizar directamente a través del navegador, sin embargo no se verán correctamente las expresiones matemáticas expresadas en LaTeX. Si se desea la visualización correcta de los archivos, recomiendo usar [Typora](https://typora.io/), un editor de Markdown gratuito que permite el uso de temas e importar el archivo Markdown tanto a PDF y HTML entre otros.
+Se pueden visualizar directamente a través del navegador, sin embargo no se verán correctamente las expresiones matemáticas expresadas en LaTeX. Si se desea la visualización correcta de los archivos, se puede usar un editor de markdown como el propio de Visual Studio Code, o [MarkText](https://github.com/marktext/marktext), un editor de Markdown gratuito que permite el uso de temas e importar el archivo `.md` tanto a PDF y HTML entre otros.
 
-Para ver correctamente las expresiones LaTeX *inline* usando [Typora](https://typora.io/) hay que marcar la opción:
 
-* Archivo\Preferencias\Markdown\Soporte de sintaxis\Ecuación en línea.
 
 ## Asignaturas
 
 ### 2º Curso
 
+* **CSD**: Concurrencia y Sistemas Distribuidos.
+* **DYP**: Deontología y Profesionalismo.
+* **EDA**: Estructuras de Datos y Algoritmos.
 * **ETC**: Estructura de Computadores.
 * **FSO**: Fundamentos de Sistemas Operativos.
+* **IPC**: Interfaces Persona-Computador.
 * **LTP**: Lenguajes, tecnologías y paradigmas de programación.
 * **RED**: Redes de Computadores.
 * **TAL**: Teoría de autómatas y lenguajes Formales.
