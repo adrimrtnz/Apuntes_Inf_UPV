@@ -118,9 +118,6 @@ public class VistaListaControlador implements Initializable {
             }
         });
 
-
-
-
     }     
         
 }

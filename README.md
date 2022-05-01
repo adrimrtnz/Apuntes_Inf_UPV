@@ -8,8 +8,6 @@ Estas notas son correspondientes a los cursos a partir de 2º del grado. En el r
 
 Se pueden visualizar directamente a través del navegador, sin embargo no se verán correctamente las expresiones matemáticas expresadas en LaTeX. Si se desea la visualización correcta de los archivos, se puede usar un editor de markdown como el propio de Visual Studio Code, o [MarkText](https://github.com/marktext/marktext), un editor de Markdown gratuito que permite el uso de temas e importar el archivo `.md` tanto a PDF y HTML entre otros.
 
-
-
 ## Asignaturas
 
 ### 2º Curso

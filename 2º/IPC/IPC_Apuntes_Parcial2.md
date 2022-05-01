@@ -25,3 +25,7 @@ Dos tipos de guías de estilo:
 * Personalizadas.
 
 # Tema 5: Factores Humanos
+
+
+
+# Tema 6: Estilos de interacción
