@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=VerticeCoste
+comment0.text=\r\n\ \ Clase\ VerticeCoste\r\n\ \r\n\ \ Clase\ auxiliar,\ usada\ en\ el\ algoritmo\ de\ Dijkstra\ (pagina\ 53,\ tema\ 6)\r\n\ \ Entradas\ para\ la\ cola\ de\ prioridad\:\ pares\ (codigo\ vertice,\ coste)\r\n
+comment1.params=cod\ cost
+comment1.target=VerticeCoste(int,\ double)
+comment2.params=v
+comment2.target=int\ compareTo(librerias.estructurasDeDatos.grafos.VerticeCoste)
+numComments=3
