@@ -47,7 +47,7 @@ __start:
     li $t1, 0x02                        
     sb $t1, 0($t0)                      # Activa las interrupciones
 
-    li $t1, 0x103
+    li $t1, 0x103                       # Desenmascara la interrupción de teclado en CP0
     mtc0 $t1, $12
 
 
