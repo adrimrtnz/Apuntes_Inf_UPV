@@ -1,0 +1,37 @@
+----------------------
+Instrucciones rápidas:
+----------------------
+1.- Instalar artemis en cierto directorio "XXX"
+
+https://activemq.apache.org/components/artemis/download/
+Descargamos --> apache-artemis-2.17.0-bin.tar.gz
+tar xvf apache-artemis-2.17.0-bin.tar.gz
+cd apache-artemis*
+pwd --> esto es "XXX"
+
+2.- Descomprimir nuestro software y copiar script de instalación
+
+tar xvf DistributedChatJMS*tgz
+cd DistributedChat
+cp install-artemis-csd.sh "XXX"/bin
+
+3.- Configurar y lanzar artemis
+
+cd "XXX"/bin
+bash install-artemis-csd.sh 12500 "YYY"
+cd "YYY"
+artemis run
+
+4.- Compilar y Lanzar nuestro programas
+
+cd DistributedChat
+javac -cp lib/*:.: *java
+java -cp lib/*:.: ChatServerJMS url=localhost:12500
+java -cp lib/*:.: ChatClientJMS url=localhost:12500
+
+-----------------------
+para ayuda:
+-----------------------
+java ChatClientJMS help
+java ChatServerJMS help
+
