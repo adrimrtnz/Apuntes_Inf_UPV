@@ -105,11 +105,12 @@ public class ChatRobot implements MessageListener
         ChatMessageImpl msg = new ChatMessageImpl(botUser, ch, botWelcomeMsg);
         ch.sendMessage(msg);
 
-        /*
+        
         String botPrivateMsg = "Hi, I'm a Bot";
         ChatMessageImpl privateMsg = new ChatMessageImpl(botUser, users[1], botPrivateMsg);
         ch.sendMessage(privateMsg);
-        */
+        
+        
    }
 
    public static void main (String args [])  {

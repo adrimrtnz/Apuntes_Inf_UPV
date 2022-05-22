@@ -47,7 +47,13 @@ fin:
 	
 	
 getchar:			# $v0 = getchar()
-### A COMPLETAR: código de la función
+	la $t0, 0xffff0000
+	
+espera2:
+	lw $t1, 0($t0)
+	andi $t1, $t1, 1
+	beqz $t1, espera2
+	lb $v0, t($t0)
 
 
 
