@@ -95,5 +95,28 @@ En muchas aplicaciones distribuidas no es necesario que los nodos tengan sus rel
 
 ## Lección 6: Consenso
 
-## Lección 7: Algoritmos de consenso en presencia de fallos
+**Definición del Problema del Consenso:** No es necesario que los nodos conozcan quién (Nodo "j") ha propuesto el valor propuesto y consensuado, pero es necesario que tal nodo exista.
 
+* El acuerdo debe haber surgido adoptando la estimación de algún nodo.
+
+* **No es consenso** decidir un valor "derivado" o generado a partir de las estimaciones.
+  
+  * En esos casos se trata de problemas diferentes a consenso.
+
+Toda solución correcta del consenso debe cumplir las siguientes condiciones:
+
+* Viveza: 
+  
+  * Terminación: todo nodo correcto tarde o temprano decide algún valor.
+
+* Seguridad:
+  
+  * Integridad uniforme: todo nodo decide como máximo una vez.
+  
+  * Acuerdo: ningún par de nodos correctos decide de manera diferente.
+  
+  * Validez uniforme: si un nodo decide **v**, entonces **v** fue propuesto por algún nodo.
+
+
+
+## Lección 7: Algoritmos de consenso en presencia de fallos

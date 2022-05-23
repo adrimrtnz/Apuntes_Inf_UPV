@@ -6,10 +6,10 @@ import librerias.estructurasDeDatos.lineales.LEGListaConPI;
 import librerias.estructurasDeDatos.lineales.ArrayCola;
 
 // EN LA SEGUNDA SESION: incluir los siguientes import: 
-/*import librerias.estructurasDeDatos.modelos.UFSet;
+import librerias.estructurasDeDatos.modelos.UFSet;
 import librerias.estructurasDeDatos.jerarquicos.ForestUFSet;
 import librerias.estructurasDeDatos.modelos.ColaPrioridad;
-import librerias.estructurasDeDatos.jerarquicos.MonticuloBinarioR0;*/
+import librerias.estructurasDeDatos.jerarquicos.MonticuloBinarioR0;
 
 /** Clase abstracta Grafo: Base de la jerarquia Grafo, que define el 
  *  comportamiento de un grafo.<br> 
@@ -202,7 +202,8 @@ public abstract class Grafo {
       *                   si el grafo no es Conexo
      */ 
     public Arista[] kruskal() {       
-        /*COMPLETAR EN LA SEGUNDA SESION*/
+        ColaPrioridad<Arista> aristasFactibles = new MonticuloBinarioR0<>(numVertices());
+        //UFSet cc = new ForestUFSet();
         return null;
     }
 }
