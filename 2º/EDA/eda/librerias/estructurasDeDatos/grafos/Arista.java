@@ -5,7 +5,7 @@ package librerias.estructurasDeDatos.grafos;
  *  @version noviembre 2021
  */
  
-public class Arista implements Comparable {
+public class Arista implements Comparable<Arista> {
     
     // UNA Arista TIENE UN vertice origen y UN vertice destino:
     protected int origen;
@@ -58,8 +58,7 @@ public class Arista implements Comparable {
         return "(" + origen + ", " + destino + ", " + peso + ")";   
     }
     
-    public int compareTo(Object o) {
-        Arista a = (Arista) o;
+    public int compareTo(Arista a) {
         return (this.peso < a.peso) ? -1 : (this.peso > a.peso ? 1 : 0);
     }
 }

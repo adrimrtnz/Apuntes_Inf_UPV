@@ -201,9 +201,40 @@ public abstract class Grafo {
       *                   los numV vertices con coste minimo, o null 
       *                   si el grafo no es Conexo
      */ 
-    public Arista[] kruskal() {       
-        ColaPrioridad<Arista> aristasFactibles = new MonticuloBinarioR0<>(numVertices());
-        //UFSet cc = new ForestUFSet();
-        return null;
+    public Arista[] kruskal() {
+        Arista[] aristas = new Arista[numVertices() - 1];
+        int cardinal = 0;
+        
+        ColaPrioridad<Arista> aristasFactibles = new MonticuloBinarioR0<>();
+        UFSet cc = new ForestUFSet(numVertices());
+        
+        // Primero llenamos la cola de todas las aristasFactibles
+        // con los adyacentes de cada nodo y sus pesos.
+        for (int i = 0; i < numVertices(); i++) {
+            ListaConPI<Adyacente> l = adyacentesDe(i);
+            
+            for (l.inicio(); !l.esFin(); l.siguiente()) {
+                Adyacente ad = l.recuperar();
+                aristasFactibles.insertar(
+                    new Arista(i, ad.getDestino(), ad.getPeso() )
+                );
+            }
+        }
+        
+        
+        while(cardinal < numVertices() - 1 && !aristasFactibles.esVacia()) {
+            Arista a = aristasFactibles.eliminarMin();
+            int src = cc.find(a.origen);    // clase de equivalencia del nodo origen
+            int dst = cc.find(a.destino);   // clase de equivalencia del nodo destino
+            
+            // mientras la arista recuperada no forme un ciclo (pertenezcan
+            // a la misma clase de equivalencia) la añadimos a aristas.
+            if(src != dst) {
+                aristas[cardinal++] = a;
+                cc.union(src, dst);
+            }
+        }
+        
+        return cardinal == (numVertices()-1) ? aristas : null;
     }
 }
