@@ -26,8 +26,6 @@ Dos tipos de guías de estilo:
 
 # Tema 5: Factores Humanos
 
-
-
 # Tema 6: Estilos de interacción
 
 # Tema 7: Usabilidad
@@ -47,7 +45,7 @@ Un prototipo es un primer o temprano ejemplo que se utiliza como modelo de lo qu
 ## Motivación
 
 > "El prototipado es una estrategia para manejar eficientemente cosas que son difíciles de predecir."
->
+> 
 > **Scott Klemmer**
 
 * El prototipado anima a la creación de múltiples opciones y permite a los diseñadores avanzar, demostrar y evaluar diseños.
@@ -62,8 +60,6 @@ Un prototipo es un primer o temprano ejemplo que se utiliza como modelo de lo qu
     * Muestra la organización de pantalla, pero no la tipografía, el color o los gráficos.
     * Se concentra en la funcionalidad, el comportamiento y la prioridad de contenidos.
     * Conecta la estructura conceptual subyacente con el diseño conceptual.
-
-
 
 ## Evaluación de prototipos
 
@@ -82,3 +78,15 @@ La técnica del **mago de Oz** nos permite evaluar la interacción del usuario c
 * Es fácil prototipar algo que no se puede construir:
   * Por ejemplo, un sistema de reconocimiento de voz perfecto: hay que ser realista e incluir alguna estrategia de corrección de errores.
 * Si se quiere que los usuarios crean que es un sistema real, se tendrá que construir algún tipo de control remoto, que permita al mago estar escondido.
+
+# Tema 9: Evaluación de la interfaz
+
+## Objetivos
+
+* Estudiar las diferencias técnicas de la evaluación de la usabilidad.
+
+* Entender las características de cada tipo de evaluación, y ser capaz de seleccionar la técnica adecuada para ccada proyecto.
+
+* Conocer cómo organizar tipos de técnica de evaluación experta.
+
+* Entender los tipos de evaluación que se realizan a lo largo del ciclo de vida de un sistema.
