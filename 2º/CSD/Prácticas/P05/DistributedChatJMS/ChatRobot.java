@@ -142,12 +142,13 @@ public class ChatRobot {
 
 	    // STEP 4: Finally run the ChatRobot "forever", processing messages as they arrive in the channel
 	    //4.a Create a consumer for the channel queue
+		JMSConsumer channelConsumer = ctx.createConsumer(channelTopic);
+
 	    while (true) {
 			System.out.println("Waiting for clients to join ...");
 
-			consumer = ctx.createConsumer(channelTopic);
 			//4.b The consumer waits for a message. 
-			ObjectMessage message = (ObjectMessage) consumer.receive();
+			ObjectMessage message = (ObjectMessage) channelConsumer.receive();
 			AMessage bmsg = (AMessage) message.getObject();
 
 
