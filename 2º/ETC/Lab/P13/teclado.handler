@@ -13,6 +13,7 @@
 
 			.kdata
 var1:	.word 0xFFFFFFFF
+contexto: .word 0 0 0 0
 
 #############################################################
 ##                  CÓDIGO DEL MANEJADOR                   ##
@@ -20,18 +21,37 @@ var1:	.word 0xFFFFFFFF
 
           .ktext 0x80000080
 
-    ## Preserva el contexto del programa de usuario
-    ## (nada de momento)
+    ## Preserva el contexto del programa de usuario ($t0, $a0, $v0, $at)
+    .set noat
+    sw $at, 0($k1)
+    .set at
+
+    sw $t0, 4($k1)
+    sw $a0, 8($k1)
+    sw $v0, 16($k1)
 
     ## Identifica y trata excepciones
-    ## (nada de momento)
+    li $v0, 11
+    li $a0, '*'
+    syscall
+
+    li $t0, 0xffff0000
+    lw $a0, 4($t0)
 
     ## Restaura el contexto
-    ## (nada de momento)
+    .set noat
+    lw $at, 0($k1)
+    .set at
+    
+    lw $t0, 4($k1)
+    lw $a0, 8($k1)
+    lw $v0, 16($k1)
 
     ## Restaura el modo usuario y vuelve al programa
-    ## (falta algo)
-	rfe
+    #$14 tiene la dirección de la instrucción (PC) donde se produce la excepción
+    
+    mfc0 $k0, $14       
+	rfe                 
 	jr $k0 
 
 #############################################################
@@ -43,6 +63,7 @@ var1:	.word 0xFFFFFFFF
 __start: 
     ## Código de inicio
     la $t0, 0xFFFF0000                  # Carga DB del teclado
+    la $k1, contexto
 
     li $t1, 0x02                        
     sb $t1, 0($t0)                      # Activa las interrupciones
