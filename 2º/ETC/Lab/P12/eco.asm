@@ -2,13 +2,13 @@
 
 #-------------------------------------------------#
 #
-#  PRÁCTICA 12: SINCRONIZACIÓN POR PRUEBA DE ESTADO
+#  PRï¿½CTICA 12: SINCRONIZACIï¿½N POR PRUEBA DE ESTADO
 # 
 #-------------------------------------------------#
 
 # ACTIVIDAD 3:  Completar las funciones:
-#    char getchar() - obtiene el carácter del teclado
-#    void putchar(char c) - imprime un carácter por la consola
+#    char getchar() - obtiene el carï¿½cter del teclado
+#    void putchar(char c) - imprime un carï¿½cter por la consola
 
 # Segmento de datos
 
@@ -16,7 +16,7 @@
 
 #-------------------------------------------------#
 
-# Segmento de código ("text")
+# Segmento de cï¿½digo ("text")
 	.text
     	.globl __start	
 
@@ -24,49 +24,49 @@
 
 __start:			
 
-	li $a0, 'P'		# 
-	jal putchar		# putchar('P')
-	li $a0, '1'		# 
-	jal putchar		# putchar('1')
-	li $a0, '2'		# 
-	jal putchar		# putchar('2')
-	li $a0, 13		# carácter de retorno ('\n')
-	jal putchar		# putchar('\n')
+	li $a0, 'P'			# 
+	jal putchar			# putchar('P')
+	li $a0, '1'			# 
+	jal putchar			# putchar('1')
+	li $a0, '2'			# 
+	jal putchar			# putchar('2')
+	li $a0, 13			# carcter de retorno ('\n')
+	jal putchar			# putchar('\n')
 	
 bucle:
-	jal getchar		# $v0 = getchar()
+	jal getchar			# $v0 = getchar()
 	move $a0, $v0		#
 	li $t0, 0x1b      	# detecto ESC (0x1b = 27)
 	beq $a0, $t0, fin
-	jal putchar		# putchar($a0)
+	jal putchar			# putchar($a0)
 	b bucle
 fin:	
 	li $v0, 10
-	syscall			# exit
+	syscall				# exit
 	
 	
 	
-getchar:			# $v0 = getchar()
+getchar:				# $v0 = getchar()
 	la $t0, 0xffff0000
 	
-espera2:
+esperaTeclado:
 	lw $t1, 0($t0)
 	andi $t1, $t1, 1
-	beqz $t1, espera2
-	lb $v0, t($t0)
+	beqz $t1, esperaTeclado
 
+	lb $v0, 4($t0)
 
-
-
-###
 	jr $ra
 
 
-putchar:			# putchar($a0)
-### A COMPLETAR: código de la función
+putchar:				# putchar($a0)
+	la $t0, 0xffff0008
 
+esperaConsola:
+	lw $t1, 0($t0)
+	andi $t1, $t1, 1
+	beqz $t1, esperaConsola
 
+	sb $a0, 4($t0)		# guarda caracter leido en registro de datos de consola
 
-
-###
 	jr $ra

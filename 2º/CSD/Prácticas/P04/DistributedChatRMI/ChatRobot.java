@@ -63,7 +63,7 @@ public class ChatRobot implements MessageListener
            System.out.println(RemoteUtils.remote2String(srv));
            
        } catch (Exception e) {
-           System.out.println("Something went wrong: " + e);
+           System.out.println("Something went wrong: " + e.getMessage());
        }
 
        // if we didn't find it, raise exception
