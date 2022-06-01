@@ -1,5 +1,7 @@
 package librerias.estructurasDeDatos.grafos;
 
+import librerias.estructurasDeDatos.modelos.ListaConPI; 
+
 /** 
  *  Clase GrafoNoDirigido
  *  
@@ -49,5 +51,110 @@ public class GrafoNoDirigido extends GrafoDirigido {
     /** Ejemplo 3, pagina 12, tema 6 */
     public int gradoEntrada(int i) {
         return gradoSalida(i);
+    }
+    
+    ////////////////////////////////////////////////////////////////////
+    //                         EJERCICIOS                             //
+    ////////////////////////////////////////////////////////////////////
+    
+    public int getVerticeReceptivo() {
+        for (int i = 0; i < numV; i++) {
+            if (elArray[i].talla() == numV - 1) { return i; }
+        }
+        
+        return -1;
+    }
+    
+    public boolean esSumidero(int i) { return false; }
+    public int getSumideroU() { return -1; }
+    
+    public boolean esCompleto() {
+        return 2 * numA == numV * (numV - 1);   
+    }
+    
+    public boolean esConexo() {
+        visitados = new int[numVertices()];
+        ordenVisita = 0;
+        
+        recorridoDFS(0);
+        
+        /* // Versión menos eficiente
+        for (int i = 0; i < numVertices(); i++) {
+            if (visitados[i] == 0) { return false; }
+        }
+        */
+        
+        return ordenVisita == numVertices();
+    }
+    
+    protected void recorridoDFS(int v) {
+        visitados[v] = 1;
+        ordenVisita++;
+        ListaConPI<Adyacente> l = adyacentesDe(v);
+        
+        for (l.inicio(); !l.esFin(); l.siguiente()) {
+            int w = l.recuperar().getDestino();
+            
+            if (visitados[w] == 0) {
+                recorridoDFS(w);
+            }
+        }
+    }
+    
+    public String toStringCC() {
+        String res = "";
+        int cc = 0;
+        visitados = new int[numVertices()];
+        
+        for (int v = 0; v < numVertices(); v++) {
+            if (visitados[v] == 0) {
+                cc++;
+                res += "[" + toStringCC(v) + "] ";
+            }
+        }
+        
+        return cc + " " + res;
+    }
+    
+    protected String toStringCC(int v) {
+        visitados[v] = 1;
+        String res = "" + v;
+        
+        ListaConPI<Adyacente> l = adyacentesDe(v);
+        
+        for(l.inicio(); !l.esFin(); l.siguiente()) {
+            int w = l.recuperar().getDestino();
+            
+            if (visitados[w] == 0) {
+                res += " " + toStringCC(w);;
+            }
+        }
+        
+        return res;
+    }
+    
+    public String[] spanningTree() {
+        String[] sTree = new String[numVertices() - 1];
+        visitados = new int[numVertices()];
+        ordenVisita = 0;
+        
+        spanningTree(0, sTree);
+        
+        if (ordenVisita != numVertices() - 1) { return null; }
+        return sTree;
+    }
+    
+    protected void spanningTree(int v, String[] sTree) {
+        visitados[v] = 1;
+        ListaConPI<Adyacente> l = adyacentesDe(v);
+        
+        for (l.inicio(); !l.esFin(); l.siguiente()) {
+            int w = l.recuperar().getDestino();
+            
+            if (visitados[w] == 0) {
+                sTree[ordenVisita++] = "(" + v + ", " + w + ")";
+                spanningTree(w, sTree);
+            }
+        }
     }
 }

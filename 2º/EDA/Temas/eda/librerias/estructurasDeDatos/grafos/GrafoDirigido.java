@@ -476,4 +476,36 @@ public class GrafoDirigido extends Grafo {
         
         return true;
     }
+    
+    public int getVerticeReceptivo() {
+        int[] gradosEntrada = getArrayGradosEntrada();
+        
+        for (int i = 0; i < gradosEntrada.length; i++) {
+            if (gradosEntrada[i] == numV - 1) { 
+                return i;
+            }
+        }
+        
+        return -1;
+    }
+    
+    public boolean esSumidero(int v) {
+        return gradoEntrada(v) > 0 && gradoSalida(v) == 0;
+    }
+    
+    public int getSumideroU() {
+        int[] gradoEntrada = getArrayGradosEntrada();
+        
+        for (int i = 0; i < numV; i++) {
+            if(elArray[i].talla() == 0 && gradoEntrada[i] == numV - 1) {
+                return i;
+            }
+        }
+        
+        return -1;
+    }
+    
+    public boolean esCompleto() {
+        return numA == numV * (numV - 1);   
+    }
 }

@@ -47,7 +47,7 @@ public abstract class Grafo {
     public abstract boolean existeArista(int i, int j);
     
     /** Devuelve el peso de la arista (i,j) de un grafo, 
-	 *  0 si dicha arista no esta en el grafo.
+     *  0 si dicha arista no esta en el grafo.
      *  @param i    Vertice origen
      *  @param j    Vertice destino
      *  @return double Peso de la arista (i,j), 0 si no existe.
@@ -92,4 +92,32 @@ public abstract class Grafo {
         }
         return res;      
     }  
+    
+    ////////////////////////////////////////////////////////////////////
+    //                         EJERCICIOS                             //
+    ////////////////////////////////////////////////////////////////////
+    
+    public int[] finDelDFS() {
+        int[] res = new int[numVertices()]; 
+        ordenVisita = 0;
+        visitados = new int[numVertices()];
+        
+        for (int v = 0; v < numVertices(); v++) {  
+            if (visitados[v] == 0) finDelDFS(v, res);
+        }
+        
+        return res;
+    } 
+    
+    protected void finDelDFS(int v, int[] res) { 
+        visitados[v] = 1;
+        ListaConPI<Adyacente> l = adyacentesDe(v);
+        
+        for (l.inicio(); !l.esFin(); l.siguiente()) {
+            int w = l.recuperar().getDestino();
+            if (visitados[w] == 0) finDelDFS(w, res);
+        }
+        
+        res[ordenVisita++] = v; 
+    } 
 }
