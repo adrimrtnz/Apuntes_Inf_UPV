@@ -77,7 +77,26 @@ public class UsosMapOrdenado {
      *  Usar un Map Ordenado como EDA auxiliar.
      */
     public static boolean hayDosQueSuman(Integer[] v, int k) {
-        // COMPLETAR
+        MapOrdenado<Integer, Integer> m = new ABBMapOrdenado<>();
+        
+        for (int i = 0; i < v.length; i++) {
+            m.insertar(v[i], v[i]);
+        }
+        
+        Integer min = m.recuperarMin();
+        
+        if (min > k/2) { return false; }
+        
+        Integer max = m.recuperarMax();
+        
+        for (int i = 0; i < v.length; i++) {
+            if (min + max == k)     { return true; }
+            else if (min + max < k) { min = m.sucesor(min); }
+            else                    { max = m.predecesor(max); }
+        }
+        
         return false;
     }
+    
+
 }
