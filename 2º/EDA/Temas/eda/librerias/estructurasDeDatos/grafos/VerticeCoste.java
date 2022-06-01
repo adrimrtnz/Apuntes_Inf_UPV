@@ -20,8 +20,6 @@ class VerticeCoste implements Comparable<VerticeCoste> {
     // Establece la prioridad: un vertice es mas prioritario que otro
     // si el coste de alcanzarlo es menor
     public int compareTo(VerticeCoste v) {
-        if (coste < v.coste) { return -1; }
-        if (coste > v.coste) { return 1; }
-        return 0;
+        return (coste < v.coste) ? -1 : ((coste > v.coste) ? 1 : 0);
     }
 }

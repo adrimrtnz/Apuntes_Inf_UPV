@@ -205,7 +205,7 @@ public class GrafoDirigido extends Grafo {
         }
     }
     
-    /** paginas 40, 41 y 42, tema 6 */
+    /** paginas 41, 42 y 43, tema 6 */
     // atributos "auxiliares"
     protected double[] distanciaMin; 
     protected int[] caminoMin; 
@@ -214,13 +214,18 @@ public class GrafoDirigido extends Grafo {
     public void caminosMinimosSinPesos(int v) {
         caminoMin = new int[numVertices()]; 
         distanciaMin = new double[numVertices()];
+        
+        // Inicialización del array de distancias mínimas a INFINITO
         for (int i = 0; i < numVertices(); i++) { 
             distanciaMin[i] = INFINITO;
             caminoMin[i] = -1;        
         } 
+        
         distanciaMin[v] = 0;
         q = new ArrayCola<Integer>(); 
         q.encolar(v);
+        
+        // Como se trata de encontrar el camino mínimo, usamos BFS
         while (!q.esVacia()) {
             int u = q.desencolar(); 
             ListaConPI<Adyacente> l = adyacentesDe(u);
@@ -235,7 +240,7 @@ public class GrafoDirigido extends Grafo {
         }
     }  
 
-    /** paginas 45 y 46, tema 6 */
+    /** paginas 46 y 47, tema 6 */
     
     /** SII v != w AND 0 <= v < numVertices() AND  0 <= w < numVertices() 
      *  devuelve una ListaConPI con los vÃ©rtices del camino mÃ­nimo 
@@ -260,7 +265,7 @@ public class GrafoDirigido extends Grafo {
         return res;
     }
 
-    /** paginas 47, 53 y 54, tema 6 */
+    /** paginas 48, 54 y 55, tema 6 */
     
     /** SII v != w AND 0 <= v < numVertices() AND  0 <= w < numVertices() 
      *  devuelve una ListaConPI con los vÃ©rtices del camino 
@@ -273,16 +278,19 @@ public class GrafoDirigido extends Grafo {
     
     public void dijkstra(int u) {
         distanciaMin = new double[numVertices()]; 
-        caminoMin = new int[numVertices()];        
+        caminoMin = new int[numVertices()];  
+        
         for (int i = 0; i < numVertices(); i++) {
             distanciaMin[i] = INFINITO; 
             caminoMin[i] = -1; 
         }
+        
         distanciaMin[u] = 0;
         visitados = new int[numVertices()];
         ColaPrioridad<VerticeCoste> qP;
         qP = new MonticuloBinario<VerticeCoste>(); 
         qP.insertar(new VerticeCoste(u, 0));
+        
         // mientras haya vertices por explorar
         while (!qP.esVacia()) { 
             // siguiente vertice a explorar es el de menor distancia
@@ -305,37 +313,44 @@ public class GrafoDirigido extends Grafo {
         }
     }
     
-    /** pagina 60, tema 6 */
+    /** pagina 61, tema 6 */
     /* SII el Grafo es un DAG */
     public int[] ordenTopologicoDFS() {
         int[] res = new int[numVertices()]; 
         ordenVisita = 0;
         visitados = new int[numVertices()];
+        
         for (int v = 0; v < numVertices(); v++) {
             if (visitados[v] == 0) ordenTopologicoDFS(v, res);  
         }
+        
         return res;
     }
     
     protected void ordenTopologicoDFS(int v, int[] res) { 
         visitados[v] = 1;
         ListaConPI<Adyacente> l = adyacentesDe(v);
+        
         for (l.inicio(); !l.esFin(); l.siguiente()) {
             int w = l.recuperar().getDestino();
             if (visitados[w] == 0) ordenTopologicoDFS(w, res);         
         }
+        
         visitados[v] = 2;
         res[numVertices() - 1 - ordenVisita] = v; 
         ordenVisita++;
     }  
 
-    /** pagina 64, tema 6 */
+    /** pagina 65, tema 6 */
     // SII el Grafo es un Digrafo ...
     public boolean hayCicloDFS() {
         boolean ciclo = false; 
         visitados = new int[numVertices()];
-        for (int v = 0; v < numVertices() && !ciclo; v++) 
+        
+        for (int v = 0; v < numVertices() && !ciclo; v++) {
             if (visitados[v] == 0) ciclo = hayAristaHADFS(v); 
+        }
+            
         return ciclo;
     }
     
@@ -343,25 +358,29 @@ public class GrafoDirigido extends Grafo {
         boolean aristaHA = false; 
         visitados[v] = 1;
         ListaConPI<Adyacente> l = adyacentesDe(v);
+        
         for (l.inicio(); !l.esFin() && !aristaHA; l.siguiente()) {
             int w = l.recuperar().getDestino();
             if (visitados[w] == 0) aristaHA = hayAristaHADFS(w); 
             else if (visitados[w] == 1) aristaHA = true;          
         }
+        
         visitados[v] = 2;
         return aristaHA;
     }  
 
-    /** paginas 65 y 66, tema 6 */
+    /** paginas 66 y 67, tema 6 */
     // SII el Grafo es Dirigido ...
     public int[] hayCicloyOrdenTopologicoDFS() {
         int[] res = new int[numVertices()]; 
         ordenVisita = 0; 
         visitados = new int[numVertices()]; 
         boolean ciclo = false; 
+        
         for (int v = 0; v < numVertices() && !ciclo; v++) {
             if (visitados[v] == 0) ciclo = hayCicloyOrdenTopologicoDFS(v, res); 
         }
+        
         if (!ciclo) return res; 
         return null; 
     }
@@ -370,6 +389,7 @@ public class GrafoDirigido extends Grafo {
         boolean aristaHA = false; 
         visitados[v] = 1; 
         ListaConPI<Adyacente> l = adyacentesDe(v);
+        
         for (l.inicio(); !l.esFin() && !aristaHA; l.siguiente()) {
             int w = l.recuperar().getDestino();
             if (visitados[w] == 0) {
@@ -379,9 +399,81 @@ public class GrafoDirigido extends Grafo {
                 aristaHA = true;
             }
         }
+        
         visitados[v] = 2;
         res[numVertices() - 1 - ordenVisita] = v; 
         ordenVisita++;
+        
         return aristaHA;
-    }    
+    }   
+    
+    ////////////////////////////////////////////////////////////////////
+    //                         EJERCICIOS                             //
+    ////////////////////////////////////////////////////////////////////
+    
+    public int grado() {
+        // PASO 1: almacenar en gradoV[i] el grado de cada vértice i
+        int[] gradoV = getArrayGrados();
+        
+        // PASO 2: calcular el (primer) máximo del array gradoV
+        return maximo(gradoV);
+    }
+    
+    protected int[] getArrayGrados() {
+        int[] grados = new int[numV];
+        
+        for (int i = 0; i < numV; i++) {
+            ListaConPI<Adyacente> l = elArray[i];
+            
+            // Actualizar grado vértice i con grado de salida
+            grados[i] += l.talla();
+            
+            // Actualizar grado vértices adyacentes a i
+            // con "parte" de su grado de entrada
+            for (l.inicio(); !l.esFin(); l.siguiente()) {
+                grados[l.recuperar().getDestino()]++;
+            }
+        }
+        
+        return grados;
+    }
+    
+    protected int maximo(int[] v) {
+        int max = v[0];
+        
+        for (int i = 1; i < v.length; i++) {
+            if (v[i] > max) {
+                max = v[i];
+            }
+        }
+        
+        return max;
+    }
+    
+    public double aristaMayorPeso() {
+        double res = -1;
+        
+        for (int i = 0; i < numV; i++) {
+            ListaConPI<Adyacente> l = adyacentesDe(i);
+            
+            for (l.inicio(); !l.esFin(); l.siguiente()) {
+                double a = l.recuperar().getPeso();
+                
+                if (a > res) { res = a; }
+            }
+        }
+        
+        return res;
+    }
+    
+    public boolean esRegular() {    
+        int[] grados = getArrayGrados();
+        int gradoV = grados[0];
+        
+        for (int i = 1; i < grados.length; i++) {
+            if (grados[i] != gradoV) { return false; }
+        }
+        
+        return true;
+    }
 }
