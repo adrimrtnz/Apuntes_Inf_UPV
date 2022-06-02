@@ -237,4 +237,41 @@ public abstract class Grafo {
         
         return cardinal == (numVertices()-1) ? aristas : null;
     }
+    
+    public String laberinto() {
+        String sol = "";
+        int[] res = new int[numVertices()];
+        visitados = new int[numVertices()];
+        ordenVisita = 0;
+        
+        if(laberinto(0, res)) {
+            for (int i = ordenVisita - 1; i <= 0; i--) {
+                sol += res[i] + " ";
+            } 
+        }
+        
+        return sol;
+    }
+    
+    private boolean laberinto(int v, int[] res) {
+        
+        if (v == numVertices() - 1) {
+            res[ordenVisita++] = v;
+            return true;
+        }
+        
+        ListaConPI<Adyacente> l = adyacentesDe(v);
+        
+        for(l.inicio(); !l.esFin(); l.siguiente()) {
+            int w = l.recuperar().getDestino();
+            
+            if(visitados[w] == 0 && laberinto(w, res)) {
+                visitados[w] = 1;
+                res[ordenVisita++] = w;
+                return true;
+            }
+        }
+        
+        return false;
+    }
 }

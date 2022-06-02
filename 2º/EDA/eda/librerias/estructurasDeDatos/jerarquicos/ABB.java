@@ -1,6 +1,7 @@
 package librerias.estructurasDeDatos.jerarquicos;
 
 import librerias.estructurasDeDatos.modelos.Cola;
+import librerias.estructurasDeDatos.modelos.ListaConPI;
 import librerias.estructurasDeDatos.lineales.ArrayCola;
 import librerias.util.Ordenacion;
 
@@ -344,5 +345,22 @@ public class ABB<E extends Comparable<E>> {
             toArrayInOrden(v, actual.der, auxPos);    
         }
     }
-
+    
+    public boolean contiene(ListaConPI<E> lpi) {
+        lpi.inicio();
+        contiene(lpi, raiz);
+        return lpi.esFin();
+    }
+    
+    private void contiene(ListaConPI<E> lpi, NodoABB<E> actual) {
+        if(actual != null && !lpi.esFin()) {
+            contiene(lpi, actual.izq); // In-Orden
+            
+            if (!lpi.esFin()) {
+                int resCmp = lpi.recuperar().compareTo(actual.dato);
+                if (resCmp == 0) { lpi.siguiente(); }
+                if (resCmp >= 0) { contiene(lpi, actual.der); }
+            }
+        }
+    }
 }

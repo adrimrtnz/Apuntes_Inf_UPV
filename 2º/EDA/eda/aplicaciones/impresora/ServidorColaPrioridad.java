@@ -50,7 +50,6 @@ public class ServidorColaPrioridad implements ServidorDeImpresion {
      *  @return int (seg.)
      */
     public int imprimirTrabajo() { 
-        /*COMPLETAR*/
         Trabajo t = cP.eliminarMin();
         int tiempoImpresion = 
             (int) (Math.round(60.0 * t.getNumPaginas() / PAGINAS_POR_MINUTO));

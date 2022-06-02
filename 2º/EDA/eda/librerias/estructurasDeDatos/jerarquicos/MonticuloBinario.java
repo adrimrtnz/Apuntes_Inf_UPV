@@ -66,6 +66,7 @@ public class MonticuloBinario<E extends Comparable<E>>
     @SuppressWarnings("unchecked")
     protected void duplicarArray() {
         E[] nuevo = (E[]) new Comparable[elArray.length * 2];
+        // arraycopy(src, srcPos, dst, dstPos, length);
         System.arraycopy(elArray, 1, nuevo, 1, talla);
         elArray = nuevo;
     }  
