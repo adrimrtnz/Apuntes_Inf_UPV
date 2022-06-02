@@ -274,4 +274,41 @@ public abstract class Grafo {
         
         return false;
     }
+    
+    public int primeraRaiz() {
+        // Inicialización del DFS de this.Grafo
+        visitados = new int[numVertices()];
+        ordenVisita = 0;
+        
+        // Ejecución del DFS de this.Grafo, en la que SE
+        // DEBE devolver su 1er vértice raíz tan pronto
+        // se encuentre (via return) y se DEBEn actualizar
+        // las variables inicializadas visitados y ordenVisita
+        for(int v = 0; v < numVertices(); v++) {
+            primeraRaiz(v);
+            
+            if(ordenVisita == numVertices()) {
+                return v;
+            } else {
+                visitados = new int[numVertices()];
+                ordenVisita = 0;
+            }
+        }
+        
+        return -1;
+    }
+    
+    private void primeraRaiz(int v) {
+        visitados[v] = 1;
+        ordenVisita++;
+        
+        ListaConPI<Adyacente> l = adyacentesDe(v);
+        int w = l.recuperar().getDestino();
+        
+        for(l.inicio(); !l.esFin(); l.siguiente()) {
+            if (visitados[w] == 0) {
+                primeraRaiz(w);
+            }
+        }
+    }
 }
