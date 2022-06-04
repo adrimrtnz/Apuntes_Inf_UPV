@@ -311,4 +311,22 @@ public abstract class Grafo {
             }
         }
     }
+    
+    public int[] gradosMST() {
+        Arista[] a = kruskal();
+        
+        if (a == null) { return null; }
+        
+        else {
+            int[] res = new int[numVertices()];
+            
+            for(int i = 0; i < a.length; i++) {
+                Arista ar = a[i];
+                res[ar.origen] += 1;
+                res[ar.destino] += 1;
+            }
+            
+            return res;
+        }
+    }
 }
