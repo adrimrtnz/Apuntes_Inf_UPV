@@ -102,31 +102,18 @@ public class EditorPredictivo extends ABB<String> {
     public ListaConPI<String> recuperarSucesores(String prefijo, int n) {       
         
         ListaConPI<String> res = new LEGListaConPI<>();
-
         
         if (recuperar(prefijo) != null) {
             res.insertar(prefijo);
             n--;
         }
         
-        
         String pal;
         for(pal = sucesor(prefijo); n>0 && pal != null && pal.startsWith(prefijo); n--) {
             res.insertar(pal);
             pal = sucesor(pal);
         }
-        
-        /*
-        String pal = sucesor(prefijo);
-        while(n > 0) {
-            if (pal != null && pal.startsWith(prefijo)) {
-                res.insertar(pal);
-            }
-            else { break; }
-            n--;
-            pal = sucesor(pal);
-        }*/
-        
+
         return res;    
     }
 }

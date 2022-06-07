@@ -20,15 +20,15 @@
 # segmento de datos
 
 		.data	
-retorn:		.word 0
-bondia:		.asciiz "MIMOS v."
+retorn:			.word 0
+bondia:			.asciiz "MIMOS v."
 buffer_int: 	.ascii "          " # No tocar. Buffer de printf_integer
 
 #-------------------------------------------------#
 
 # Segmento de c�digo ("text")
 	.text
-    	.globl main	
+    .globl main	
 
 main:
 # Guarda adre�a de retorn
@@ -67,7 +67,8 @@ print_string: # $a0: puntero a string acabado en \0
 	move $t0,$a0
 	lb $a0,0($t0)
 	beq $a0,$zero,$L4
-$L3:	li $v0,print_char 
+$L3:	
+	li $v0,print_char 
 	syscall
 	addiu $t0,$t0,1
 	lb $a0,0($t0)
@@ -84,8 +85,9 @@ print_NL:	# sense par�metres: escriu NL
 
 #-------------------------------------------------
 
-printf_integer: # $a0: valor entero
-        	move $t0,$a0	# dividendo inicial
+printf_integer: 
+	# $a0: valor entero
+    move $t0,$a0		# dividendo inicial
 	li $t1,0          	# cuenta de cifras
 	li $t2,10         	# divisor
 

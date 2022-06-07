@@ -143,9 +143,10 @@ llamada:
 
 print_char:
 	li $t0, 0xffff0008
-$L0:	lb $t1, 0($t0)   		# leo palabra de estado de la consola
+$L0:	
+	lb $t1, 0($t0)   		# leo palabra de estado de la consola
 	andi $t1, $t1, 1
-	beq $t1,$zero,$L0
+	beq $t1,$zero,$L0		# Si no está READY -> wait
 	sb $a0, 4($t0) 
 	b retexc
 

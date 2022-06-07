@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=UsosMapOrdenado
+comment0.text=\r\n\ class\ UsosMapOrdenado.\r\n\ \r\n\ @author\ FTG\ \r\n\ @version\ 1.0\r\n
+comment1.params=m
+comment1.target=librerias.estructurasDeDatos.modelos.ListaConPI\ entradas(librerias.estructurasDeDatos.modelos.MapOrdenado)
+comment1.text=\ Dise\u00C3\u00B1ar\ un\ metodo\ estatico,\ generico\ e\ iterativo\ entradas\ \r\n\ \ que\ devuelva\ una\ ListaConPI\ con\ las\ Entradas\ de\ un\ Map\ m\ \r\n\ \ ordenadas\ ascendentemente.\ \r\n
+comment2.params=v
+comment2.target=void\ mapSort(java.lang.Comparable[])
+comment2.text=\ Dise\u00C3\u00B1ar\ un\ metodo\ estatico,\ generico\ e\ iterativo\ mapSort\ \r\n\ \ que,\ con\ la\ ayuda\ de\ un\ MapOrdenado,\ \r\n\ \ ordene\ los\ elementos\ (Comparable)\ de\ un\ array\ v.\ \ \r\n
+comment3.params=v\ k
+comment3.target=boolean\ hayDosQueSuman(java.lang.Integer[],\ int)
+comment3.text=\ Dise\u00C3\u00B1ar\ un\ metodo\ estatico,\ generico\ e\ iterativo\ hayDosQueSuman\ \r\n\ \ que,\ dados\ un\ array\ v\ de\ enteros\ y\ un\ entero\ k,\ \r\n\ \ determine\ si\ existen\ en\ v\ dos\ numeros\ cuya\ suma\ sea\ k.\ \r\n\ \ Usar\ un\ Map\ Ordenado\ como\ EDA\ auxiliar.\r\n
+numComments=4

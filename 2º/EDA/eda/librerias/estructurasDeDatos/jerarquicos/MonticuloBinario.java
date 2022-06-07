@@ -1,6 +1,8 @@
 package librerias.estructurasDeDatos.jerarquicos;
 
 import librerias.estructurasDeDatos.modelos.ColaPrioridad;
+import librerias.estructurasDeDatos.modelos.ListaConPI;
+import librerias.estructurasDeDatos.lineales.LEGListaConPI;
 
 /** Clase MonticuloBinario: representa un Heap con Raiz en 1.
  * 
@@ -66,6 +68,7 @@ public class MonticuloBinario<E extends Comparable<E>>
     @SuppressWarnings("unchecked")
     protected void duplicarArray() {
         E[] nuevo = (E[]) new Comparable[elArray.length * 2];
+        // arraycopy(src, srcPos, dst, dstPos, length);
         System.arraycopy(elArray, 1, nuevo, 1, talla);
         elArray = nuevo;
     }  
@@ -102,5 +105,32 @@ public class MonticuloBinario<E extends Comparable<E>>
             } else { esHeap = true; }
         }
         elArray[posActual] = aHundir;
+    }
+    
+    protected int listaMenoresQue(E e, ListaConPI<E> l, int i) {
+        if (i > talla || elArray[i].compareTo(e) >= 0) return 0;
+        l.insertar(elArray[i]);
+        return 1 + listaMenoresQue(e, l, 2*i) + listaMenoresQue(e, l, 2*i + 1);
+    }
+    
+    public ListaConPI<E> caminoDesdeLaMenorHoja() {
+        ListaConPI<E> lpi = new LEGListaConPI<E>();
+        
+        // 1º paso, obtención de la posición de la hoja menor:
+        int posMenor = talla / 2 + 1;
+        for (int i = posMenor + 1; i <= talla; i++) {
+            if (elArray[posMenor].compareTo(elArray[i]) > 0) {
+                posMenor = i;
+            }
+        }
+        
+        // 2º paso, construcción del camino desde la hoja menor:
+        while(posMenor >= 1) {
+            lpi.inicio();
+            lpi.insertar(elArray[posMenor]);
+            posMenor = posMenor / 2;
+        }
+        
+        return lpi;
     }
 }

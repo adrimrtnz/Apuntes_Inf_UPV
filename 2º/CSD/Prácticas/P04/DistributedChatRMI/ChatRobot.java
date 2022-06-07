@@ -63,7 +63,7 @@ public class ChatRobot implements MessageListener
            System.out.println(RemoteUtils.remote2String(srv));
            
        } catch (Exception e) {
-           System.out.println("Something went wrong: " + e);
+           System.out.println("Something went wrong: " + e.getMessage());
        }
 
        // if we didn't find it, raise exception
@@ -105,11 +105,12 @@ public class ChatRobot implements MessageListener
         ChatMessageImpl msg = new ChatMessageImpl(botUser, ch, botWelcomeMsg);
         ch.sendMessage(msg);
 
-        /*
+        
         String botPrivateMsg = "Hi, I'm a Bot";
         ChatMessageImpl privateMsg = new ChatMessageImpl(botUser, users[1], botPrivateMsg);
         ch.sendMessage(privateMsg);
-        */
+        
+        
    }
 
    public static void main (String args [])  {

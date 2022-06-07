@@ -37,8 +37,7 @@ espera: # Espera bit R == 1
 ### Lee el registro de datos del teclado, leer este registro provoca R=0	
 	lw $t2,4($t0)
 
-	li $t3, 0xFF
-	and $t2, $t2, $t3
+	andi $t2, $t2, 0xFF
 	beq $t2,$s0,salida # Comprueba si se ha pulsado la tecla ESC
 
 	sw $t2, CHAR
