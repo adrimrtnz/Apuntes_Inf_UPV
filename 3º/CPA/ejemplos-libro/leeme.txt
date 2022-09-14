@@ -1,0 +1,119 @@
+﻿/********************************************************************
+* Francisco Almeida, Domingo Giménez, José Miguel Mantas, Antonio M. Vidal:
+* Introducción a la programación paralela,
+* Paraninfo Cengage Learning, 2008
+*********************************************************************/
+
+Los programas que se incluyen aquí corresponden al los códigos
+que aparecen en el libro de Introducción a la Programación Paralela
+(capítulos 3, 4 y 6), y tienen una finalidad
+pedagógica, por lo que no están optimizados y en muchos 
+casos no resuelven problemas generales sino que hay restricciones
+en los tamaños de problemas que se pueden resolver y en el número de 
+threads o procesos que se pueden utilizar.
+En los textos correspondientes del libro se comentan estas
+restricciones. En algunos casos se proponen modificaciones para
+eliminar las restricciones y para obtener algoritmos con mejores
+prestaciones. En otos casos se incluye como ejercicio la eliminación
+de las restricciones.
+
+El lector puede utilizar estos programas para practicar las nociones
+básicas de programación en OpenMP y MPI (capítulo 3), del análisis
+experimental de algoritmos paralelos (capítulo 4) y de esquemas
+algorítmicos paralelos (capítulo 6), y como punto de partida para
+algunos de los ejercicios de implementación.
+
+El tamaño de los problemas aparece en algunos casos como
+constante en el código del programa, y en otros se pasa como parámetro.
+Normalmente se aclara este aspecto en los códigos por medio de
+comentarios.
+
+En algunos códigos hay partes con compilación condicional.
+Estas partes se pueden compilar para comprobar el buen funcionamiento
+del programa o para seguir su ejecución.
+Si se compila con la opción -DDEBUG se compilan esas partes.
+
+La toma de tiempos se hace con funciones distintas (omp_get_wtime,
+MPI_Wtime y gettimeoffday) en distintos códigos.
+
+En muchos casos los códigos continenen funciones que se repiten en
+varios de ellos. Estas funciones se podrían haber incluido en ficheros
+separados y evitar su repetición, pero se ha preferido incluirlas en
+cada uno de los ficheros por facilitar a los usuarios el poder 
+experimental con cada código de forma individual.
+En algunos casos aparecen funciones que no se usan en la función main
+pero que el usuario podría utilizar en sus experimentos. 
+Por ejemplo, funciones de generación de datos aleatorios o de una forma
+determinada.
+
+** OpenMP
+
+Para compilar los programas de OpenMP es necesario un compilador
+de C que admita directivas OpenMP. El gcc versión 4 admite OpenMP,
+con opción de compilación -fopenmp:
+
+gcc programa.c -fopenmp [otras opciones, como las de optimización (-O3)
+o de librería matemática (-lm)]
+
+Es posible tener otro compilador, como el icc en el que la
+opción de compilación es -openmp.
+
+La determinación del número de threads a poner en marcha se
+hace antes de la ejecución del programa asignando el
+valor a la variable de entorno OMP_NUM_THREADS:
+
+export OMP_NUM_THREADS=3
+
+En algunos de los programas se indica el número de threads con
+un argumento del programa, y se utiliza la función
+omp_set_num_threads para determinar el número de threads dentro 
+del programa.
+
+** MPI
+
+Dependiendo del MPI de que se disponga la forma de compilar y de
+ejecutar puede variar, pero con mpich y lammpi (los dos gratuitos)
+la compilación es:
+
+mpicc programa.c [opciones de compilación]
+
+y la ejecución puede ser:
+
+mpirun -np p ejecutable argumentos
+
+en mpich y lammpi, se ponen en marcha p procesos con el código
+"ejecutable", y los procesos se asignan a los procesadores
+en la forma por defecto que esté establecida en el sistema
+
+mpirun -np p -machinefile ficherodemaquinas ejecutable argumentos
+
+los p procesos se asignan a los procesadores según el orden establecido
+en el ficherodemaquinas
+
+mpirun n0,0,1,1,2,2 ejecutable argumentos
+
+pondría 6 procesos, dos en cada uno de los nodos 0, 1 y 2
+(es válido en lammpi)
+
+** Capítulo 3
+
+En este capítulo se explican las nociones básicas de OpenMP y MPI.
+Los ejemplos de ese capítulo son ejemplos básicos con los que
+experimentar con las directivas y funciones de los dos entornos.
+En el capítulo se explica con algo más de detalle su funcionamiento
+general, pero para utilizar una versión determinada (gcc, icc,
+mpich, lammpi...) se debería consultar la información correspondiente
+en internet en sus páginas web o en los manuales. En este capítulo
+se incluyen algunas direcciones web.
+
+** Capítulo 4
+
+Se incluyen los ejemplos utilizados en ese capítulo para los estudios
+experimentales.
+
+** Capítulo 6
+
+En este capítulo se analizan algunos esquemas algorítmicos paralelos.
+La finalidad del capítulo es comprender los esquemas y practicar
+con posibles implementaciones de ellos, por lo que de un mismo 
+algoritmo se suelen presentar implementaciones OpenMP y MPI.
