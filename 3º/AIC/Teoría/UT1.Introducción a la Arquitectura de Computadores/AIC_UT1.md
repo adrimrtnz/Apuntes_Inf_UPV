@@ -53,7 +53,9 @@ $$
 
 
 ## Tema 1.3: Diseño de los juegos de instrucción
-> No le compiles la vida al tío del compilador
+> No le compliques la vida al tío del compilador
+
+
 
 ---
 
