@@ -39,3 +39,21 @@
 * **Arquitectura Cliente/Servidor:** El sistema puede ser visto como un conjunto de servicios que se proporcionan a los clientes por parte de los servidores. Los servidores y los clientes se tratan de forma diferente.
 
 * **Arquitectura de objetos distribuidos:** El sistema puede ser visto como un conjunto de objetos que interaccionan y cuya localización es irrelevante. No hay distinción entre un proveedor de servicios y el usuario de estos servicios.
+
+### Niveles vs. Capas
+**Capa** (layer) hace referencia a una segmentación lógica de la solución, mientras que **nivel** (tier) se refiere a la segmentación o ubicación física.
+
+## Arquitectura multicapa
+Un **sistema por capas** es un conjunto ordenado de subsistemas, cada uno de los cuales está construido en términos de los que tiene por debajo, y proporciona la base de la implementación de aquellos que estén por encima de él.
+
+* Los objetos de cada capa pueden ser independientes (recomendado) aunque suelen haber dependencias entre objetos de distintas capas.
+
+* Existe una relación **cliente/servidor** entre las capas **inferiores** (que proporcionan servicios) y las capas **superiores** (que consumen dichos servicio).
+
+Las arquitecturas basadas en capas pueden ser **abiertas** o **cerradas** según la dependencia existente entre capas.
+
+* **Abiertas:** una capa puede utilizar características de cualquier capa a cualquier nivel.
+
+* **Cerradas:** una capa sólo utiliza características de su capa inmediatamente inferior.
+
+Se recomienda trabajar con arquitecturas **cerradas**, ya que reducen las dependencias entre capas y permiten que los cambios se hagan con facilidad porque la interfaz de una de ellas sólo afecta a la capa siguiente.
