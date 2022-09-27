@@ -14,13 +14,11 @@ double f(double x)
 double calcula_integral1(double a, double b, int n)
 {
    double h, s=0, result;
-   int i, nhilos;
-
-   nhilos = omp_get_num_threads();
-   printf("Numero de hilos: %d\n", nhilos);
-
+   int i;
+   
    h=(b-a)/n;
 
+   #pragma omp parallel for reduction(+:s)
    for (i=0; i<n; i++) {
       s+=f(a+h*(i+0.5));
    }
@@ -37,6 +35,7 @@ double calcula_integral2(double a, double b, int n)
 
    h=(b-a)/n;
 
+   #pragma omp parallel for private(x) reduction(+:s)
    for (i=0; i<n; i++) {
       x=a;
       x+=h*(i+0.5);
@@ -61,6 +60,14 @@ int main(int argc, char *argv[])
    else n=100000;
    a=0;
    b=1;
+
+   #pragma omp parallel
+   {
+      int id = omp_get_thread_num();
+      if (id == 0) {
+         printf("Numero de hilos: %d\n", omp_get_num_threads());
+      }
+   }
 
    variante=atoi(argv[1]);
    switch (variante) {
