@@ -1,5 +1,6 @@
 (defglobal ?*height* = 5)
 (defglobal ?*width* = 5)
+(defglobal ?*max_bombillas* = 3)
 
 ;; =========================================================
 ;; ===                      FUNCIONES                   ====
@@ -20,14 +21,9 @@
 
 	(assert (altura-maxima ?*height*))
 	(assert (anchura-maxima ?*width*))
-	(assert (robot 1 1))
-	(assert (almacen 2 3))
-	(assert (farola 3 5 1))	;; (farola X Y BOMBILLAS_ROTAS)
-	(assert (farola 4 3 2))
-	(assert (farola 5 5 3))
-	(assert (farola 2 1 3))
-	(assert (necesito 0))
-	(assert (tengo 0))
+	(assert (bombillas-maximas ?*max_bombillas*))
+
+	(assert (robot 1 1 almacen 2 3 farola 3 5 2 farola 4 3 3 farola 5 5 2 tengo 0 necesito 0 nivel 0))
 )
 
 
@@ -36,78 +32,49 @@
 ;; =========================================================
 
 (defrule arriba
-	?robot <- (robot ?x0 ?y0)
-	?farola <- (farola ?x1 ?y1 ?b)
-	(test (or 
-		(neq (+ ?y0 1) ?y1)
-		(neq ?x0 ?x1)
-		(eq ?b 0)
-	))
-	(test (< ?y0 ?*height*))
-=>
-	(retract ?robot)
-	(assert (robot ?x0 (+ ?y0 1)))
-)
+	?f1 <- (robot ?x ?y $?r1 farola ?xf ?yf $?r2 nivel ?n)
 
-(defrule derecha
-	?robot <- (robot ?x0 ?y0)
-	?farola <- (farola ?x1 ?y1 ?b)
-	(test (or 
-		(neq (+ ?x0 1) ?x1) 
-		(neq ?y0 ?y1)
-		(eq ?b 0)
-	))
-	(test (< ?x0 ?*width*))
-=>
-	(retract ?robot)
-	(assert (robot (+ ?x0 1) ?y0))
-)
-
-(defrule abajo
-	?robot <- (robot ?x0 ?y0)
-	?farola <- (farola ?x1 ?y1 ?b)
-	(test (or 
-		(neq (- ?y0 1) ?y1) 
-		(neq ?x0 ?x1)
-		(eq ?b 0)
-	))
-	(test (> ?y0 1))
-=>
-	(retract ?robot)
-	(assert (robot ?x0 (- ?y0 1)))
-)
-
-(defrule izquierda
-	?robot <- (robot ?x0 ?y0)
-	?farola <- (farola ?x1 ?y1 ?b)
-	(test (or 
-		(neq (- ?x0 1) ?x1) 
-		(neq ?y0 ?y1)
-		(eq ?b 0)
-	))
-	(test (> ?x0 1))
-=>
-	(retract ?robot)
-	(assert (robot (- ?x0 1) ?y0))
-)
-
-(defrule farola_estropeada(declare (salience 10))
-	?robot <- (robot ?x ?y)
-	?farola <- (farola ?xf ?yf ?b)
-	?tengo <- (tengo ?t)
-
-	(test (or 
-		(eq (+ ?x 1) ?xf)
-		(eq (- ?x 1) ?xf)
-		(eq (+ ?y 1) ?yf)
-		(eq (- ?y 1) ?yf)
+	; COMPROBAR QUE SI SE MUEVE NO ESTÉ EN LA MISMA POSICIÓN QUE UNA FAROLA CON BOMBILLAS POR REPARAR
+	(test (not
+		(and (= (+ ?y 1) ?yf) (= ?x ?xf))	
 	))
 	
-	(test (> ?b 0))
-	(test (= ?b ?t))
+	; COMPROBAR QUE NO SE SALE DE LA CUADRÍCULA
+	(test (< ?y ?*height*))
 =>
-	(retract ?farola))
-	(retract ?tengo))
-	(assert (tengo 0))
-	(assert (farola ?xf ?yf 0))
+	(assert (robot ?x (+ ?y 1) $?r1 farola ?xf ?yf $?r2 nivel (+ ?n 1)))
+)
+
+
+(defrule derecha
+
+=>
+
+)
+
+
+(defrule abajo
+
+=>
+	
+)
+
+
+(defrule izquierda
+
+=>
+
+)
+
+
+(defrule objetivo 
+	(declare (salience 100))
+	
+	?f1 <- ($? almacen ? ? $?r tengo ?t $? nivel ?n)
+
+	(test (= (length$ $?r) 0))
+	(test (= ?t 0))
+=>
+	(printout t "SOLUCIÓN ENCONTRADA EN EL NIVEL " ?n crlf)
+	(halt)
 )
