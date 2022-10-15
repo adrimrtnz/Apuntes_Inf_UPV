@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <math.h>
+#include <omp.h>
+#include <limits.h>
 
 typedef unsigned long long Entero_grande;
 #define N 100000000ULL
@@ -24,8 +26,17 @@ int primo(Entero_grande n)
 int main()
 {
   Entero_grande i, n;
+  int hilo, nhilos;
 
   n = 2; /* Por el 1 y el 2 */
+
+  #pragma omp parallel
+  {
+    if (omp_get_thread_num() == 0)
+      printf("Número de hilos: %d\n", omp_get_num_threads());
+  }
+
+  #pragma omp parallel for reduction(+:n)
   for (i = 3; i <= N; i += 2)
     if (primo(i)) n++;
 
