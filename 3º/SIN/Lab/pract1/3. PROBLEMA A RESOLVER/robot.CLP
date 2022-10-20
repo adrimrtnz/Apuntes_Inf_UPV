@@ -17,14 +17,16 @@
 	       then   (set-strategy breadth)
 	       else   (set-strategy depth))
 
-        (printout t " Ejecuta (run) para poner en marcha el programa " crlf)
+    (printout t " Ejecuta (run) para poner en marcha el programa " crlf)
+	
 	(assert (profundidad-maxima ?prof))
-
 	(assert (altura-maxima ?*height*))
 	(assert (anchura-maxima ?*width*))
 	(assert (bombillas-maximas ?*max_bombillas*))
 	(assert (almacen 2 3))
+	(assert (capacidad 1 2 3))
 
+	; ESTADO INICIAL DEL PROBLEMA
 	(assert (robot 1 1 0 farola 3 5 2 farola 4 3 3 farola 5 5 2 nivel 0))
 )
 
@@ -112,17 +114,19 @@
 (defrule recoger
 	?f1 <- (robot ?x ?y ?t $?farolas nivel ?n)
 	?f2 <- (almacen ?xa ?ya)
+	(capacidad $? ?b $?)
+
 	(profundidad-maxima ?prof)
 	
-	(test (< ?t ?*max_bombillas*))
+	(test (<= (+ ?t ?b) 3))
 	(test (and 
 		(= ?x ?xa)
 		(= ?y ?ya)
 	))
 
-	(test (< ?n ?prof))
+	(test (< ?n ?prof))	
 =>
-	(assert (robot ?x ?y (+ ?t 1) $?farolas nivel (+ ?n 1)))
+	(assert (robot ?x ?y (+ ?t ?b) $?farolas nivel (+ ?n 1)))
 	(bind ?*nodos_gen* (+ ?*nodos_gen* 1))
 )
 
