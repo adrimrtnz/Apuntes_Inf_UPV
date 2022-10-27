@@ -137,7 +137,7 @@ void realign( int w,int h,Byte a[] ) {
 
 int main(int argc,char *argv[]) {
   char *in, *out = "";
-  int   w, h;
+  int   w, h, nh;
   Byte *a;
 
   if (argc<2) {
@@ -154,6 +154,7 @@ int main(int argc,char *argv[]) {
   if ( a == NULL ) return 1;
 
   realign( w,h,a );
+
 
   if ( out[0] != '\0' ) write_ppm(out,w,h,a);
 

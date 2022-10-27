@@ -1,4 +1,4 @@
 # Tema 4: Modelado Orientado a Objetos con UML
 
-> Un modelo es una simplificaciÃ³n de la realidad
+> Un modelo es una simplificación de la realidad
 

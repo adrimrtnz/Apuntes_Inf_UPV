@@ -99,55 +99,70 @@ void realign( int w,int h,Byte a[] ) {
     return;
   }
 
-  // Part 1. Find optimal offset of each line with respect to the previous line
-  t1 = omp_get_wtime();
-  for ( y = 1 ; y < h ; y++ ) {
+    // Part 1. Find optimal offset of each line with respect to the previous line
+    //if (omp_get_thread_num() == 0)
+    t1 = omp_get_wtime();
 
-    // Find offset of line y that produces the minimum distance between lines y and y-1
-    dmin = distance( w, &a[3*(y-1)*w], &a[3*y*w], INT_MAX ); // offset=0
-    bestoff = 0;
-    for ( off = 1 ; off < w ; off++ ) {
-      d  = distance( w-off, &a[3*(y-1)*w], &a[3*(y*w+off)], dmin );
-      d += distance( off, &a[3*(y*w-off)], &a[3*y*w], dmin-d );
-      // Update minimum distance and corresponding best offset
-      if ( d < dmin ) { dmin = d; bestoff = off; }
-    }
-    voff[y] = bestoff;
-  }
-  t1 = omp_get_wtime() - t1;
-
-  // Part 2. Convert offsets from relative to absolute and find maximum offset of any line
-  t2 = omp_get_wtime();
-  max = 0;
-  voff[0] = 0;
-  for ( y = 1 ; y < h ; y++ ) {
-    voff[y] = ( voff[y-1] + voff[y] ) % w;
-    d = voff[y] <= w / 2 ? voff[y] : w - voff[y];
-    if ( d > max ) max = d;
-  }
-  t2 = omp_get_wtime() - t2;
-
-  // Part 3. Shift each line to its place, using auxiliary buffer v
-  t3 = omp_get_wtime();
-  v = malloc( 3 * max * sizeof(Byte) );
-  if ( v == NULL )
-    fprintf(stderr,"ERROR: Not enough memory for v\n");
-  else {
+    #pragma parallel for private(dmin, bestoff, off, d) schedule(runtime)
     for ( y = 1 ; y < h ; y++ ) {
-      cyclic_shift( w, &a[3*y*w], voff[y], v );
+
+      // Find offset of line y that produces the minimum distance between lines y and y-1
+      dmin = distance( w, &a[3*(y-1)*w], &a[3*y*w], INT_MAX ); // offset=0
+      bestoff = 0;
+      for ( off = 1 ; off < w ; off++ ) {
+        d  = distance( w-off, &a[3*(y-1)*w], &a[3*(y*w+off)], dmin );
+        d += distance( off, &a[3*(y*w-off)], &a[3*y*w], dmin-d );
+        // Update minimum distance and corresponding best offset
+        if ( d < dmin ) { dmin = d; bestoff = off; }
+      }
+      voff[y] = bestoff;
     }
-    free(v);
-  }
-  t3 = omp_get_wtime() - t3;
+
+    t1 = omp_get_wtime() - t1;
+
+    // Part 2. Convert offsets from relative to absolute and find maximum offset of any line
+    t2 = omp_get_wtime();
+    max = 0;
+    voff[0] = 0;
+    for ( y = 1 ; y < h ; y++ ) {
+      voff[y] = ( voff[y-1] + voff[y] ) % w;
+      d = voff[y] <= w / 2 ? voff[y] : w - voff[y];
+      if ( d > max ) max = d;
+    }
+    //if (omp_get_thread_num() == 0)
+    t2 = omp_get_wtime() - t2;
+
+    // Part 3. Shift each line to its place, using auxiliary buffer v
+    t3 = omp_get_wtime();
+    #pragma omp parallel private(v)
+    {
+      v = malloc( 3 * max * sizeof(Byte) );
+      if ( v == NULL )
+        fprintf(stderr,"ERROR: Not enough memory for v\n");
+      else {
+        #pragma omp for schedule(runtime)
+        for ( y = 1 ; y < h ; y++ ) {
+          cyclic_shift( w, &a[3*y*w], voff[y], v );
+        }
+      free(v);
+      }
+    }
+    
+  //if (omp_get_thread_num() == 0)
+  t3 = omp_get_wtime() - t3;    
+
+  int nh;
+  #pragma omp parallel
+  nh = omp_get_num_threads();
+
+  printf("Tiempo (%d hilo%s): %.2f segundos ( %.2f + %.2f )\n",nh,nh==1?"":"s", t1+t2+t3, t1, t3);
 
   free(voff);
-
-  printf("Time in realign(): (%f + %f + %f) = %fs\n", t1, t2, t3, (t1+t2+t3));
 }
 
 int main(int argc,char *argv[]) {
   char *in, *out = "";
-  int   w, h;
+  int   w, h, nh;
   Byte *a;
 
   if (argc<2) {
@@ -171,3 +186,4 @@ int main(int argc,char *argv[]) {
 
   return 0;
 }
+

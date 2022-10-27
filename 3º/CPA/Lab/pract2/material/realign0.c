@@ -140,14 +140,14 @@ void realign( int w,int h,Byte a[] ) {
   }
   t3 = omp_get_wtime() - t3;
 
-  free(voff);
+  printf("Time (%.2f + %.2f + %.2f) = %.2f\n", t1, t2, t3, t1+t2+t3);
 
-  printf("Time in realign(): (%f + %f + %f) = %fs\n", t1, t2, t3, (t1+t2+t3));
+  free(voff);
 }
 
 int main(int argc,char *argv[]) {
   char *in, *out = "";
-  int   w, h;
+  int   w, h, nh;
   Byte *a;
 
   if (argc<2) {
@@ -163,7 +163,16 @@ int main(int argc,char *argv[]) {
   a = read_ppm(in,&w,&h);
   if ( a == NULL ) return 1;
 
+  #pragma omp parallel
+  {
+    nh = omp_get_num_threads();
+  }
+
+  double t = omp_get_wtime();
   realign( w,h,a );
+  t = omp_get_wtime() - t;
+
+  printf("Total time in realign function with %d threads: %.2fs\n", nh, t);
 
   if ( out[0] != '\0' ) write_ppm(out,w,h,a);
 
@@ -171,3 +180,4 @@ int main(int argc,char *argv[]) {
 
   return 0;
 }
+

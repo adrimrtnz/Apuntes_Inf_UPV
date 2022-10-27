@@ -8,7 +8,7 @@
 ;; =========================================================
 
 (deffunction inicio ()
-        (reset)
+    (reset)
 	(printout t "Profundidad Maxima:= " )
 	(bind ?prof (read))
 	(printout t "Tipo de Busqueda " crlf "    1.- Anchura" crlf "    2.- Profundidad" crlf )
@@ -23,7 +23,7 @@
 	(assert (altura-maxima ?*height*))
 	(assert (anchura-maxima ?*width*))
 	(assert (bombillas-maximas ?*max_bombillas*))
-	(assert (almacen 2 3))
+	(assert (ALMACENES almacen 2 3))
 	(assert (capacidad 1 2 3))
 
 	; ESTADO INICIAL DEL PROBLEMA
@@ -35,21 +35,22 @@
 ;; ===                       REGLAS                     ====
 ;; =========================================================
 
-(defrule arriba
-	?f1 <- (robot ?x ?y ?b $?farolas nivel ?n)
+(defrule recoger
+	?f1 <- (robot ?x ?y ?t $?farolas nivel ?n)
+	?f2 <- (ALMACENES $? almacen ?xa ?ya $?)
+	(capacidad $? ?b $?)
+
 	(profundidad-maxima ?prof)
 	
-	; COMPROBAR QUE SI SE MUEVE NO ESTÉ EN LA MISMA POSICIÓN QUE UNA FAROLA CON BOMBILLAS POR REPARAR
-	(test (not
-		(member$ (create$ farola ?x (+ ?y 1)) $?farolas)	
+	(test (<= (+ ?t ?b) 3))
+	(test (and 
+		(= ?x ?xa)
+		(= ?y ?ya)
 	))
-	
-	; COMPROBAR QUE NO SE SALE DE LA CUADRÍCULA
-	(test (< ?y ?*height*))
-	
-	(test (< ?n ?prof))
+
+	(test (< ?n ?prof))	
 =>
-	(assert (robot ?x (+ ?y 1) ?b ?farolas nivel (+ ?n 1)))
+	(assert (robot ?x ?y (+ ?t ?b) $?farolas nivel (+ ?n 1)))
 	(bind ?*nodos_gen* (+ ?*nodos_gen* 1))
 )
 
@@ -58,7 +59,7 @@
 	?f1 <- (robot ?x ?y ?b $?farolas nivel ?n)
 	(profundidad-maxima ?prof)
 
-	; COMPROBAR QUE SI SE MUEVE NO ESTÉ EN LA MISMA POSICIÓN QUE UNA FAROLA CON BOMBILLAS POR REPARAR
+	; COMPROBAR QUE SI SE MUEVE NO ESTÁ EN LA MISMA POSICIÓN QUE UNA FAROLA CON BOMBILLAS POR REPARAR
 	(test (not
 		(member$ (create$ farola (+ ?x 1) ?y) $?farolas)	
 	))
@@ -72,31 +73,11 @@
 	(bind ?*nodos_gen* (+ ?*nodos_gen* 1))
 )
 
-
-(defrule abajo
-	?f1 <- (robot ?x ?y ?b $?farolas nivel ?n)
-	(profundidad-maxima ?prof)
-
-	; COMPROBAR QUE SI SE MUEVE NO ESTÉ EN LA MISMA POSICIÓN QUE UNA FAROLA CON BOMBILLAS POR REPARAR
-	(test (not
-		(member$ (create$ farola ?x (- ?y 1)) $?farolas)	
-	))
-	
-	; COMPROBAR QUE NO SE SALE DE LA CUADRÍCULA
-	(test (> ?y 1))
-
-	(test (< ?n ?prof))
-=>
-	(assert (robot ?x (- ?y 1) ?b ?farolas nivel (+ ?n 1)))
-	(bind ?*nodos_gen* (+ ?*nodos_gen* 1))	
-)
-
-
 (defrule izquierda
 	?f1 <- (robot ?x ?y ?b $?farolas nivel ?n)
 	(profundidad-maxima ?prof)
 
-	; COMPROBAR QUE SI SE MUEVE NO ESTÉ EN LA MISMA POSICIÓN QUE UNA FAROLA CON BOMBILLAS POR REPARAR
+	; COMPROBAR QUE SI SE MUEVE NO ESTÁ EN LA MISMA POSICIÓN QUE UNA FAROLA CON BOMBILLAS POR REPARAR
 	(test (not
 		(member$ (create$ farola (- ?x 1) ?y) $?farolas)	
 	))
@@ -111,22 +92,40 @@
 )
 
 
-(defrule recoger
-	?f1 <- (robot ?x ?y ?t $?farolas nivel ?n)
-	?f2 <- (almacen ?xa ?ya)
-	(capacidad $? ?b $?)
+(defrule abajo
+	?f1 <- (robot ?x ?y ?b $?farolas nivel ?n)
+	(profundidad-maxima ?prof)
 
+	; COMPROBAR QUE SI SE MUEVE NO ESTÁ EN LA MISMA POSICIÓN QUE UNA FAROLA CON BOMBILLAS POR REPARAR
+	(test (not
+		(member$ (create$ farola ?x (- ?y 1)) $?farolas)	
+	))
+	
+	; COMPROBAR QUE NO SE SALE DE LA CUADRÍCULA
+	(test (> ?y 1))
+
+	(test (< ?n ?prof))
+=>
+	(assert (robot ?x (- ?y 1) ?b ?farolas nivel (+ ?n 1)))
+	(bind ?*nodos_gen* (+ ?*nodos_gen* 1))	
+)
+
+
+(defrule arriba
+	?f1 <- (robot ?x ?y ?b $?farolas nivel ?n)
 	(profundidad-maxima ?prof)
 	
-	(test (<= (+ ?t ?b) 3))
-	(test (and 
-		(= ?x ?xa)
-		(= ?y ?ya)
+	; COMPROBAR QUE SI SE MUEVE NO ESTÁ EN LA MISMA POSICIÓN QUE UNA FAROLA CON BOMBILLAS POR REPARAR
+	(test (not
+		(member$ (create$ farola ?x (+ ?y 1)) $?farolas)	
 	))
-
-	(test (< ?n ?prof))	
+	
+	; COMPROBAR QUE NO SE SALE DE LA CUADRÍCULA
+	(test (< ?y ?*height*))
+	
+	(test (< ?n ?prof))
 =>
-	(assert (robot ?x ?y (+ ?t ?b) $?farolas nivel (+ ?n 1)))
+	(assert (robot ?x (+ ?y 1) ?b ?farolas nivel (+ ?n 1)))
 	(bind ?*nodos_gen* (+ ?*nodos_gen* 1))
 )
 

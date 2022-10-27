@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <omp.h>
 
 #define max(a, b) ((a) > (b) ? (a) : (b))
 #define min(a, b) ((a) < (b) ? (a) : (b))
@@ -152,7 +153,13 @@ int main()
   for (i = 1; i < n; i++)
     ImgDst[i] = ImgDst[i - 1] + m;
 
+
+  double t = omp_get_wtime();
   rc = Filtro(NUM_PASOS, DIST_RADIO, ImgOrg, ImgDst, n, m);
+  t = omp_get_wtime() - t;
+
+  printf("Tiempo de ejecucion secuencial bucle i %f segundos\n", t);
+
   if (rc) { printf("Error al aplicar el filtro\n"); return 2; }
 
   rc = escribe_ppm(IMAGEN_SALIDA, ImgDst, n, m);
