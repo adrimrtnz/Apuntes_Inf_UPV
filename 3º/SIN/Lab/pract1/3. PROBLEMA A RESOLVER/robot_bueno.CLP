@@ -1,4 +1,4 @@
-;; Realizado por Adrian Martínez Martínez y Marcial Carreras Arencibia
+;; Grupo 3ºD, Adrian Martínez Martínez y Marcial Carreras Arencibia
 
 ;; =================================================
 ;; ===     TERMINOLOGIA DE ANALISIS DE HECHOS   ====
@@ -73,12 +73,9 @@
 )
 
 
-
-
 ;; ===================================
 ;; ===     REGLAS DE MOVIMIENTO   ====
 ;; ===================================
-
 
 (defrule derecha
     ?f1 <- (robot ?rx ?ry ?rb ff $?farolas nivel ?nivel)

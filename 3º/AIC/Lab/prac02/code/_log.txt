@@ -1,0 +1,131 @@
+Ciclo: 4, Señal: corto MEMaEXalu_s; Rdst dadd r1,r28,%disp[x](en MEM) == Rfte dadd r4,r1,128(en EX)
+Ciclo: 10, Señal: corto WBaEXalu_i; Rdst ld r12,0(r1)(en WB) == Rfte dadd r12,r10,r12(en EX)
+Ciclo: 11, Señal: corto MEMaEXalu_s; Rdst dadd r12,r10,r12(en MEM) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 11, Señal: corto WBaEXalu_i; Rdst ld r14,0(r2)(en WB) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 13, Señal: corto WBaMEM; Rdst dadd r14,r12,r14(en WB) == Rfte sd r14,0(r3)(en MEM)
+Ciclo: 15, Señal: corto WBaEXalu_i; Rdst dadd r1,r1,8(en WB) == Rfte seq r5,r4,r1(en EX)
+Ciclo: 16, Señal: corto MEMaIDcomp_s; Rdst seq r5,r4,r1(en MEM) == Rfte beqz r5,loop(en ID)
+Ciclo: 16, Señal: IFnop; Instrucción seq r5,r4,r1
+Ciclo: 16, Señal: Salto Efectivo; Instrucción beqz r5,loop
+Ciclo: 21, Señal: corto WBaEXalu_i; Rdst ld r12,0(r1)(en WB) == Rfte dadd r12,r10,r12(en EX)
+Ciclo: 22, Señal: corto MEMaEXalu_s; Rdst dadd r12,r10,r12(en MEM) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 22, Señal: corto WBaEXalu_i; Rdst ld r14,0(r2)(en WB) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 24, Señal: corto WBaMEM; Rdst dadd r14,r12,r14(en WB) == Rfte sd r14,0(r3)(en MEM)
+Ciclo: 26, Señal: corto WBaEXalu_i; Rdst dadd r1,r1,8(en WB) == Rfte seq r5,r4,r1(en EX)
+Ciclo: 27, Señal: corto MEMaIDcomp_s; Rdst seq r5,r4,r1(en MEM) == Rfte beqz r5,loop(en ID)
+Ciclo: 27, Señal: IFnop; Instrucción seq r5,r4,r1
+Ciclo: 27, Señal: Salto Efectivo; Instrucción beqz r5,loop
+Ciclo: 32, Señal: corto WBaEXalu_i; Rdst ld r12,0(r1)(en WB) == Rfte dadd r12,r10,r12(en EX)
+Ciclo: 33, Señal: corto MEMaEXalu_s; Rdst dadd r12,r10,r12(en MEM) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 33, Señal: corto WBaEXalu_i; Rdst ld r14,0(r2)(en WB) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 35, Señal: corto WBaMEM; Rdst dadd r14,r12,r14(en WB) == Rfte sd r14,0(r3)(en MEM)
+Ciclo: 37, Señal: corto WBaEXalu_i; Rdst dadd r1,r1,8(en WB) == Rfte seq r5,r4,r1(en EX)
+Ciclo: 38, Señal: corto MEMaIDcomp_s; Rdst seq r5,r4,r1(en MEM) == Rfte beqz r5,loop(en ID)
+Ciclo: 38, Señal: IFnop; Instrucción seq r5,r4,r1
+Ciclo: 38, Señal: Salto Efectivo; Instrucción beqz r5,loop
+Ciclo: 43, Señal: corto WBaEXalu_i; Rdst ld r12,0(r1)(en WB) == Rfte dadd r12,r10,r12(en EX)
+Ciclo: 44, Señal: corto MEMaEXalu_s; Rdst dadd r12,r10,r12(en MEM) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 44, Señal: corto WBaEXalu_i; Rdst ld r14,0(r2)(en WB) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 46, Señal: corto WBaMEM; Rdst dadd r14,r12,r14(en WB) == Rfte sd r14,0(r3)(en MEM)
+Ciclo: 48, Señal: corto WBaEXalu_i; Rdst dadd r1,r1,8(en WB) == Rfte seq r5,r4,r1(en EX)
+Ciclo: 49, Señal: corto MEMaIDcomp_s; Rdst seq r5,r4,r1(en MEM) == Rfte beqz r5,loop(en ID)
+Ciclo: 49, Señal: IFnop; Instrucción seq r5,r4,r1
+Ciclo: 49, Señal: Salto Efectivo; Instrucción beqz r5,loop
+Ciclo: 54, Señal: corto WBaEXalu_i; Rdst ld r12,0(r1)(en WB) == Rfte dadd r12,r10,r12(en EX)
+Ciclo: 55, Señal: corto MEMaEXalu_s; Rdst dadd r12,r10,r12(en MEM) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 55, Señal: corto WBaEXalu_i; Rdst ld r14,0(r2)(en WB) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 57, Señal: corto WBaMEM; Rdst dadd r14,r12,r14(en WB) == Rfte sd r14,0(r3)(en MEM)
+Ciclo: 59, Señal: corto WBaEXalu_i; Rdst dadd r1,r1,8(en WB) == Rfte seq r5,r4,r1(en EX)
+Ciclo: 60, Señal: corto MEMaIDcomp_s; Rdst seq r5,r4,r1(en MEM) == Rfte beqz r5,loop(en ID)
+Ciclo: 60, Señal: IFnop; Instrucción seq r5,r4,r1
+Ciclo: 60, Señal: Salto Efectivo; Instrucción beqz r5,loop
+Ciclo: 65, Señal: corto WBaEXalu_i; Rdst ld r12,0(r1)(en WB) == Rfte dadd r12,r10,r12(en EX)
+Ciclo: 66, Señal: corto MEMaEXalu_s; Rdst dadd r12,r10,r12(en MEM) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 66, Señal: corto WBaEXalu_i; Rdst ld r14,0(r2)(en WB) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 68, Señal: corto WBaMEM; Rdst dadd r14,r12,r14(en WB) == Rfte sd r14,0(r3)(en MEM)
+Ciclo: 70, Señal: corto WBaEXalu_i; Rdst dadd r1,r1,8(en WB) == Rfte seq r5,r4,r1(en EX)
+Ciclo: 71, Señal: corto MEMaIDcomp_s; Rdst seq r5,r4,r1(en MEM) == Rfte beqz r5,loop(en ID)
+Ciclo: 71, Señal: IFnop; Instrucción seq r5,r4,r1
+Ciclo: 71, Señal: Salto Efectivo; Instrucción beqz r5,loop
+Ciclo: 76, Señal: corto WBaEXalu_i; Rdst ld r12,0(r1)(en WB) == Rfte dadd r12,r10,r12(en EX)
+Ciclo: 77, Señal: corto MEMaEXalu_s; Rdst dadd r12,r10,r12(en MEM) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 77, Señal: corto WBaEXalu_i; Rdst ld r14,0(r2)(en WB) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 79, Señal: corto WBaMEM; Rdst dadd r14,r12,r14(en WB) == Rfte sd r14,0(r3)(en MEM)
+Ciclo: 81, Señal: corto WBaEXalu_i; Rdst dadd r1,r1,8(en WB) == Rfte seq r5,r4,r1(en EX)
+Ciclo: 82, Señal: corto MEMaIDcomp_s; Rdst seq r5,r4,r1(en MEM) == Rfte beqz r5,loop(en ID)
+Ciclo: 82, Señal: IFnop; Instrucción seq r5,r4,r1
+Ciclo: 82, Señal: Salto Efectivo; Instrucción beqz r5,loop
+Ciclo: 87, Señal: corto WBaEXalu_i; Rdst ld r12,0(r1)(en WB) == Rfte dadd r12,r10,r12(en EX)
+Ciclo: 88, Señal: corto MEMaEXalu_s; Rdst dadd r12,r10,r12(en MEM) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 88, Señal: corto WBaEXalu_i; Rdst ld r14,0(r2)(en WB) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 90, Señal: corto WBaMEM; Rdst dadd r14,r12,r14(en WB) == Rfte sd r14,0(r3)(en MEM)
+Ciclo: 92, Señal: corto WBaEXalu_i; Rdst dadd r1,r1,8(en WB) == Rfte seq r5,r4,r1(en EX)
+Ciclo: 93, Señal: corto MEMaIDcomp_s; Rdst seq r5,r4,r1(en MEM) == Rfte beqz r5,loop(en ID)
+Ciclo: 93, Señal: IFnop; Instrucción seq r5,r4,r1
+Ciclo: 93, Señal: Salto Efectivo; Instrucción beqz r5,loop
+Ciclo: 98, Señal: corto WBaEXalu_i; Rdst ld r12,0(r1)(en WB) == Rfte dadd r12,r10,r12(en EX)
+Ciclo: 99, Señal: corto MEMaEXalu_s; Rdst dadd r12,r10,r12(en MEM) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 99, Señal: corto WBaEXalu_i; Rdst ld r14,0(r2)(en WB) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 101, Señal: corto WBaMEM; Rdst dadd r14,r12,r14(en WB) == Rfte sd r14,0(r3)(en MEM)
+Ciclo: 103, Señal: corto WBaEXalu_i; Rdst dadd r1,r1,8(en WB) == Rfte seq r5,r4,r1(en EX)
+Ciclo: 104, Señal: corto MEMaIDcomp_s; Rdst seq r5,r4,r1(en MEM) == Rfte beqz r5,loop(en ID)
+Ciclo: 104, Señal: IFnop; Instrucción seq r5,r4,r1
+Ciclo: 104, Señal: Salto Efectivo; Instrucción beqz r5,loop
+Ciclo: 109, Señal: corto WBaEXalu_i; Rdst ld r12,0(r1)(en WB) == Rfte dadd r12,r10,r12(en EX)
+Ciclo: 110, Señal: corto MEMaEXalu_s; Rdst dadd r12,r10,r12(en MEM) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 110, Señal: corto WBaEXalu_i; Rdst ld r14,0(r2)(en WB) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 112, Señal: corto WBaMEM; Rdst dadd r14,r12,r14(en WB) == Rfte sd r14,0(r3)(en MEM)
+Ciclo: 114, Señal: corto WBaEXalu_i; Rdst dadd r1,r1,8(en WB) == Rfte seq r5,r4,r1(en EX)
+Ciclo: 115, Señal: corto MEMaIDcomp_s; Rdst seq r5,r4,r1(en MEM) == Rfte beqz r5,loop(en ID)
+Ciclo: 115, Señal: IFnop; Instrucción seq r5,r4,r1
+Ciclo: 115, Señal: Salto Efectivo; Instrucción beqz r5,loop
+Ciclo: 120, Señal: corto WBaEXalu_i; Rdst ld r12,0(r1)(en WB) == Rfte dadd r12,r10,r12(en EX)
+Ciclo: 121, Señal: corto MEMaEXalu_s; Rdst dadd r12,r10,r12(en MEM) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 121, Señal: corto WBaEXalu_i; Rdst ld r14,0(r2)(en WB) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 123, Señal: corto WBaMEM; Rdst dadd r14,r12,r14(en WB) == Rfte sd r14,0(r3)(en MEM)
+Ciclo: 125, Señal: corto WBaEXalu_i; Rdst dadd r1,r1,8(en WB) == Rfte seq r5,r4,r1(en EX)
+Ciclo: 126, Señal: corto MEMaIDcomp_s; Rdst seq r5,r4,r1(en MEM) == Rfte beqz r5,loop(en ID)
+Ciclo: 126, Señal: IFnop; Instrucción seq r5,r4,r1
+Ciclo: 126, Señal: Salto Efectivo; Instrucción beqz r5,loop
+Ciclo: 131, Señal: corto WBaEXalu_i; Rdst ld r12,0(r1)(en WB) == Rfte dadd r12,r10,r12(en EX)
+Ciclo: 132, Señal: corto MEMaEXalu_s; Rdst dadd r12,r10,r12(en MEM) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 132, Señal: corto WBaEXalu_i; Rdst ld r14,0(r2)(en WB) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 134, Señal: corto WBaMEM; Rdst dadd r14,r12,r14(en WB) == Rfte sd r14,0(r3)(en MEM)
+Ciclo: 136, Señal: corto WBaEXalu_i; Rdst dadd r1,r1,8(en WB) == Rfte seq r5,r4,r1(en EX)
+Ciclo: 137, Señal: corto MEMaIDcomp_s; Rdst seq r5,r4,r1(en MEM) == Rfte beqz r5,loop(en ID)
+Ciclo: 137, Señal: IFnop; Instrucción seq r5,r4,r1
+Ciclo: 137, Señal: Salto Efectivo; Instrucción beqz r5,loop
+Ciclo: 142, Señal: corto WBaEXalu_i; Rdst ld r12,0(r1)(en WB) == Rfte dadd r12,r10,r12(en EX)
+Ciclo: 143, Señal: corto MEMaEXalu_s; Rdst dadd r12,r10,r12(en MEM) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 143, Señal: corto WBaEXalu_i; Rdst ld r14,0(r2)(en WB) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 145, Señal: corto WBaMEM; Rdst dadd r14,r12,r14(en WB) == Rfte sd r14,0(r3)(en MEM)
+Ciclo: 147, Señal: corto WBaEXalu_i; Rdst dadd r1,r1,8(en WB) == Rfte seq r5,r4,r1(en EX)
+Ciclo: 148, Señal: corto MEMaIDcomp_s; Rdst seq r5,r4,r1(en MEM) == Rfte beqz r5,loop(en ID)
+Ciclo: 148, Señal: IFnop; Instrucción seq r5,r4,r1
+Ciclo: 148, Señal: Salto Efectivo; Instrucción beqz r5,loop
+Ciclo: 153, Señal: corto WBaEXalu_i; Rdst ld r12,0(r1)(en WB) == Rfte dadd r12,r10,r12(en EX)
+Ciclo: 154, Señal: corto MEMaEXalu_s; Rdst dadd r12,r10,r12(en MEM) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 154, Señal: corto WBaEXalu_i; Rdst ld r14,0(r2)(en WB) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 156, Señal: corto WBaMEM; Rdst dadd r14,r12,r14(en WB) == Rfte sd r14,0(r3)(en MEM)
+Ciclo: 158, Señal: corto WBaEXalu_i; Rdst dadd r1,r1,8(en WB) == Rfte seq r5,r4,r1(en EX)
+Ciclo: 159, Señal: corto MEMaIDcomp_s; Rdst seq r5,r4,r1(en MEM) == Rfte beqz r5,loop(en ID)
+Ciclo: 159, Señal: IFnop; Instrucción seq r5,r4,r1
+Ciclo: 159, Señal: Salto Efectivo; Instrucción beqz r5,loop
+Ciclo: 164, Señal: corto WBaEXalu_i; Rdst ld r12,0(r1)(en WB) == Rfte dadd r12,r10,r12(en EX)
+Ciclo: 165, Señal: corto MEMaEXalu_s; Rdst dadd r12,r10,r12(en MEM) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 165, Señal: corto WBaEXalu_i; Rdst ld r14,0(r2)(en WB) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 167, Señal: corto WBaMEM; Rdst dadd r14,r12,r14(en WB) == Rfte sd r14,0(r3)(en MEM)
+Ciclo: 169, Señal: corto WBaEXalu_i; Rdst dadd r1,r1,8(en WB) == Rfte seq r5,r4,r1(en EX)
+Ciclo: 170, Señal: corto MEMaIDcomp_s; Rdst seq r5,r4,r1(en MEM) == Rfte beqz r5,loop(en ID)
+Ciclo: 170, Señal: IFnop; Instrucción seq r5,r4,r1
+Ciclo: 170, Señal: Salto Efectivo; Instrucción beqz r5,loop
+Ciclo: 175, Señal: corto WBaEXalu_i; Rdst ld r12,0(r1)(en WB) == Rfte dadd r12,r10,r12(en EX)
+Ciclo: 176, Señal: corto MEMaEXalu_s; Rdst dadd r12,r10,r12(en MEM) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 176, Señal: corto WBaEXalu_i; Rdst ld r14,0(r2)(en WB) == Rfte dadd r14,r12,r14(en EX)
+Ciclo: 178, Señal: corto WBaMEM; Rdst dadd r14,r12,r14(en WB) == Rfte sd r14,0(r3)(en MEM)
+Ciclo: 180, Señal: corto WBaEXalu_i; Rdst dadd r1,r1,8(en WB) == Rfte seq r5,r4,r1(en EX)
+Ciclo: 181, Señal: corto MEMaIDcomp_s; Rdst seq r5,r4,r1(en MEM) == Rfte beqz r5,loop(en ID)
+Ciclo: 184, Señal: IFstall; Instrucción trap 0
+Ciclo: 185, Señal: IFstall; Instrucción trap 0
+Ciclo: 186, Señal: IFstall; Instrucción trap 0
+Ciclo: 187, Señal: IFstall; Instrucción trap 0

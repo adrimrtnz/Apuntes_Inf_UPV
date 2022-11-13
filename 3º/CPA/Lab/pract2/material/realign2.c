@@ -123,7 +123,6 @@ void realign( int w,int h,Byte a[] ) {
     #pragma omp master
     t1 = omp_get_wtime() - t1;
 
-    #pragma omp barrier
     // Part 2. Convert offsets from relative to absolute and find maximum offset of any line
     #pragma omp single 
     {
@@ -140,7 +139,6 @@ void realign( int w,int h,Byte a[] ) {
       t2 = omp_get_wtime() - t2;
     }
 
-    #pragma omp barrier
     // Part 3. Shift each line to its place, using auxiliary buffer v
     #pragma omp master
     t3 = omp_get_wtime();
@@ -150,7 +148,7 @@ void realign( int w,int h,Byte a[] ) {
      if ( v == NULL )
       fprintf(stderr,"ERROR: Not enough memory for v\n");
      else {
-      #pragma omp for private(a) schedule(runtime)
+      #pragma omp for schedule(runtime)
       for ( y = 1 ; y < h ; y++ ) {
         cyclic_shift( w, &a[3*y*w], voff[y], v );
       }

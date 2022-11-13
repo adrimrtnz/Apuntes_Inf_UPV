@@ -100,10 +100,9 @@ void realign( int w,int h,Byte a[] ) {
   }
 
     // Part 1. Find optimal offset of each line with respect to the previous line
-    //if (omp_get_thread_num() == 0)
     t1 = omp_get_wtime();
 
-    #pragma parallel for private(dmin, bestoff, off, d) schedule(runtime)
+    #pragma omp parallel for private(dmin, bestoff, off, d) schedule(runtime)
     for ( y = 1 ; y < h ; y++ ) {
 
       // Find offset of line y that produces the minimum distance between lines y and y-1
@@ -117,7 +116,6 @@ void realign( int w,int h,Byte a[] ) {
       }
       voff[y] = bestoff;
     }
-
     t1 = omp_get_wtime() - t1;
 
     // Part 2. Convert offsets from relative to absolute and find maximum offset of any line
@@ -147,9 +145,7 @@ void realign( int w,int h,Byte a[] ) {
       free(v);
       }
     }
-    
-  //if (omp_get_thread_num() == 0)
-  t3 = omp_get_wtime() - t3;    
+    t3 = omp_get_wtime() - t3;    
 
   int nh;
   #pragma omp parallel
