@@ -76,11 +76,11 @@ void fase_busqueda(
             IF_IDn.IR = lee_mem_instruc(mmem, PC); /* Busca la siguiente instrucciÃ³n */
         } else {
             /* DirecciÃ³n de acceso a memoria de instrucciones desalineada */
-            fprintf(stderr, "\nAtención (IF): acceso desalineado al segmento de instrucciones Ciclo=%u PC=%"PRId64"\n", Ciclo + 1, PC);
+            fprintf(stderr, "\nAtenciï¿½n (IF): acceso desalineado al segmento de instrucciones Ciclo=%u PC=%"PRId64"\n", Ciclo + 1, PC);
         }
     } else {
         /*** ExcepciÃ³n en el acceso a la memoria de instrucciones */
-        fprintf(stderr, "\nAtención (IF): acceso fuera del segmento de instrucciones Ciclo=%u PC=%"PRId64"\n", Ciclo + 1, PC);
+        fprintf(stderr, "\nAtenciï¿½n (IF): acceso fuera del segmento de instrucciones Ciclo=%u PC=%"PRId64"\n", Ciclo + 1, PC);
 
     } /* endif */
 
@@ -113,8 +113,16 @@ void fase_busqueda(
                         break;
 
         case pnt3:
-            
-              /* INSERTAR CÓDIGO */
+              /* INSERTAR CÃ“DIGO */
+              if (EX_MEM.cond) {
+                SaltoEfectivo = SI;
+                PCn = EX_MEM.ALUout;
+                IFnop = SI;
+                IDnop = SI;
+                EXnop = SI;
+              } else {
+                PCn = PC + 4;
+              }
 
             break;
 
@@ -163,7 +171,7 @@ int fase_decodificacion() {
     word i;
 
     /*************************************/
-    /*  Cuerpo función                   */
+    /*  Cuerpo funciï¿½n                   */
     /*************************************/
 
     WAW = NO;
@@ -184,7 +192,7 @@ int fase_decodificacion() {
 
 
     if inst_int(IF_ID.IR.codop) {
-        /* Instrucción entera */
+        /* Instrucciï¿½n entera */
 
         detectar_riesgos_control();
         detectar_riesgos_datos();

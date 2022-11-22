@@ -54,23 +54,34 @@ void write_ppm(char file[],int w,int h,Byte *c) {
 // The computation is abandoned if the difference reaches or exceeds c,
 // returning the partially computed difference in that case
 int distance( int n, Byte a1[], Byte a2[], int c ) {
-  int i, d,e;
+  int d,e;
   n *= 3; // 3 bytes per pixel (red, green, blue)
   d = 0;
 
-  volatile int aux = 1;
 
-  #pragma omp parallel for private(e) reduction(+:d)
-  for ( i = 0 ; i < n && aux ; i++ ) {
-    e = (int)a1[i] - a2[i];
-    if ( e >= 0 ) {
-        d += e; 
+  // hacer un reparto a mano
+  #pragma omp parallel
+  {
+    int nh = omp_get_num_threads();
+    int id = omp_get_thread_num();
+
+    #pragma omp single
+    c = c / nh;
+
+    #pragma omp for private(e) reduction(+:d)
+    for (int i = id ; i < n; i += nh ) {
+      if (d < c) {
+        e = (int)a1[i] - a2[i];
+        if ( e >= 0 ) {
+            d += e; 
+        }
+        else {
+          d -= e;
+        }
+      }
     }
-    else {
-      d -= e;
-    }
-    aux = d < c; 
   }
+  
   return d;
 }
 
@@ -89,29 +100,31 @@ void cyclic_shift( int n, Byte a[], int p, Byte v[] ) {
     {
       if ( p <= n / 2 ) { // right to left
         
-        #pragma omp for
+        #pragma omp for private(i)
         for ( i = 0 ; i < p ; i++ ) 
           v[i] = a[i];
 
         // Este NO se puede paralelizar
+        #pragma omp single
         for ( i = p ; i < n ; i++ ) 
           a[i-p] = a[i];
 
-        #pragma omp for
+        #pragma omp for private(i)
         for ( i = 0 ; i < p  ; i++ ) 
           a[d+i] = v[i];
 
       } else { // left to right
 
-        #pragma omp for
+        #pragma omp for private(i)
         for ( i = 0 ; i < d ; i++ ) 
           v[i] = a[p+i];
 
         // Este NO se puede paralelizar
+        #pragma omp single
         for ( i = p-1 ; i >= 0 ; i-- ) 
           a[i+d] = a[i];
 
-        #pragma omp for
+        #pragma omp for private(i)
         for ( i = 0 ; i < d  ; i++ ) 
           a[i] = v[i];
       }

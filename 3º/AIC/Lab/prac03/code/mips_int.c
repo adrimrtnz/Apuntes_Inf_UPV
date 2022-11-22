@@ -308,29 +308,24 @@ dword mux_ALUsup(dword npc, dword ra, dword mem, dword wb) {
                 case cortocircuito:
                     /* Los cortocircuitos desde MEM tienen prioridad sobre WB, ya
                        que la instruccion que hay en MEM es mas moderna */
-                                        /* WBtoEX */
                     
-              /* INSERTAR CÓDIGO */
-
-                    /* if (...) {
-                            ...
-                            WBaEXalu_s = SI;
-                            result = wb;
-                        }
-                     */
-                    WBaEXalu_s = SI;
-                    result = wb;
+                    /* WBtoEX */
+                    /* INSERTAR CÓDIGO */
+                    if (escribe_Rdst(MEM_WB.IR) && (lee_Rfte1(ID_EX.IR) && 
+                       (MEM_WB.IR.Rdestino == ID_EX.IR.Rfuente1))
+                     ) {
+                        WBaEXalu_s = SI;
+                        result = wb;
+                    }
 
                     /* MEMtoEX */
-                    
-              /* INSERTAR CÓDIGO */
-
-                    /* if (...) {
-                            ...
-                            MEMaEXalu_s = SI;
-                            result = mem;
-                        }
-                     */
+                    /* INSERTAR CÓDIGO */
+                    if (escribe_Rdst(EX_MEM.IR) && (lee_Rfte1(ID_EX.IR) && 
+                       (EX_MEM.IR.Rdestino == ID_EX.IR.Rfuente1))) 
+                       {
+                        WBaEXalu_s = SI;
+                        result = mem;
+                    }
                     break;
             }
     }
@@ -701,12 +696,6 @@ void detectar_riesgos_datos(void) {
     switch (solucion_riesgos_datos) {
         case parada:
             /* Riesgo entre EX e ID */
-            /* if (...) {
-                    Señal=SI
-                    ...
-               }
-             */
-            
             /* INSERTAR CÓDIGO */
             // Recordar que la comprobación hay que hacerla entre IF-ID y entre
             // IF-EX. El primer if es el primer caso, el segundo, el segundo caso
@@ -718,13 +707,7 @@ void detectar_riesgos_datos(void) {
                 IDstall = SI;
             }
 
-            /* Riesgo entre MEM e ID */
-            /* if (...) {
-                    Señal=SI
-                    ...
-               }
-             */
-            
+            /* Riesgo entre MEM e ID */            
             /* INSERTAR CÓDIGO */
             if(escribe_Rdst(EX_MEM.IR) &&
                 ((lee_Rfte1(IF_ID.IR) && (IF_ID.IR.Rfuente1 == EX_MEM.IR.Rdestino)) || 
@@ -739,15 +722,14 @@ void detectar_riesgos_datos(void) {
 
 
         case cortocircuito:
-            /* Riesgo entre LOAD en EX e ID */
-            /* if (...) {
-                    Señal=SI
-                    ...
-            }
-             */
-            
+            /* Riesgo entre LOAD en EX e ID */           
             /* INSERTAR CÓDIGO */
-        
+            if (es_load(ID_EX.IR) &&
+                ((lee_Rfte1(IF_ID.IR) && (IF_ID.IR.Rfuente1 == ID_EX.IR.Rdestino)) || 
+                 (lee_Rfte2(IF_ID.IR) && (IF_ID.IR.Rfuente2 == ID_EX.IR.Rdestino)))) {
+                    IDstall = SI;
+                    IFstall = SI;
+            }
 
             break;
         default:
