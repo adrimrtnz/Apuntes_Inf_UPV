@@ -6,7 +6,7 @@ let salida  = zmq.socket('push')
 conecta(salida, hostServidor, portPipeline)
 conecta(entrada,hostServidor, portDifusion)
 entrada.subscribe('')
-entrada.on('message', (nick,m) => {console.log('['+nick+'] '+m)})
+entrada.on('message', (nick,m) => { console.log('['+nick+'] '+m)})
 
 process.stdin.resume()
 process.stdin.setEncoding('utf8')

@@ -27,7 +27,7 @@ Byte *read_ppm(char file[],int *width,int *height) {
       a=(Byte*)malloc(n*sizeof(Byte));
       if (a==NULL) {
         fprintf(stderr,"ERROR: Could not allocate memory for %d bytes.\n",(int)n);
-      } else{
+      } else {
         fread(a,1,n,f);
       }
     }
@@ -54,23 +54,18 @@ void write_ppm(char file[],int w,int h,Byte *c) {
 // The computation is abandoned if the difference reaches or exceeds c,
 // returning the partially computed difference in that case
 int distance( int n, Byte a1[], Byte a2[], int c ) {
-  int d,e;
+  int i,d,e;
   n *= 3; // 3 bytes per pixel (red, green, blue)
   d = 0;
 
 
   // hacer un reparto a mano
-  #pragma omp parallel
+  #pragma omp parallel private(i,e) reduction(+:d)
   {
     int nh = omp_get_num_threads();
     int id = omp_get_thread_num();
 
-    #pragma omp single
-    c = c / nh;
-
-    #pragma omp for private(e) reduction(+:d)
-    for (int i = id ; i < n; i += nh ) {
-      if (d < c) {
+    for (int i = id ; i < n && d < c; i += nh ) {
         e = (int)a1[i] - a2[i];
         if ( e >= 0 ) {
             d += e; 
@@ -78,7 +73,6 @@ int distance( int n, Byte a1[], Byte a2[], int c ) {
         else {
           d -= e;
         }
-      }
     }
   }
   
