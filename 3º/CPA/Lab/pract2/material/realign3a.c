@@ -89,7 +89,7 @@ void cyclic_shift( int n, Byte a[], int p, Byte v[] ) {
     {
       if ( p <= n / 2 ) { // right to left
         
-        #pragma omp for private(i)
+        #pragma omp for
         for ( i = 0 ; i < p ; i++ ) 
           v[i] = a[i];
 
@@ -98,13 +98,13 @@ void cyclic_shift( int n, Byte a[], int p, Byte v[] ) {
         for ( i = p ; i < n ; i++ ) 
           a[i-p] = a[i];
 
-        #pragma omp for private(i)
+        #pragma omp for
         for ( i = 0 ; i < p  ; i++ ) 
           a[d+i] = v[i];
 
       } else { // left to right
 
-        #pragma omp for private(i)
+        #pragma omp for
         for ( i = 0 ; i < d ; i++ ) 
           v[i] = a[p+i];
 
@@ -113,7 +113,7 @@ void cyclic_shift( int n, Byte a[], int p, Byte v[] ) {
         for ( i = p-1 ; i >= 0 ; i-- ) 
           a[i+d] = a[i];
 
-        #pragma omp for private(i)
+        #pragma omp for
         for ( i = 0 ; i < d  ; i++ ) 
           a[i] = v[i];
       }
