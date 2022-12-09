@@ -124,7 +124,7 @@ void fase_ISS_alum() {
     /*** Lanza la instruccion */
 
     switch (I_OP) {
-                    case OP_FP_L_D:
+        case OP_FP_L_D:
             /*** Busca un hueco en el tampón de lectura */
             for (s = INICIO_BUFFER_CARGA; s <= FIN_BUFFER_CARGA; s++)
                 if (!LB[s].ocupado) break;
@@ -161,7 +161,7 @@ void fase_ISS_alum() {
             RB[b].completado = NO;
 
             /*** Reserva del registro destino */
-                            Rfp[I_D].rob = b; // OP_FP_LD
+            Rfp[I_D].rob = b; // OP_FP_LD
 
             /*** VISUALIZACION ***/
             LB[s].estado = PENDIENTE;
@@ -177,31 +177,61 @@ void fase_ISS_alum() {
             /*** Busca un hueco en el tampón de escritura */
             
               /* INSERTAR CÓDIGO */
+              for (s = INICIO_BUFFER_ALMACEN; s <= FIN_BUFFER_ALMACEN; s++)
+                if (!SB[s].ocupado) break;
+              
+              if (s > FIN_BUFFER_ALMACEN) return;
 
 
             /*** Reserva el tampón de escritura */
             
               /* INSERTAR CÓDIGO */
+              SB[s].ocupado = SI;
+              SB[s].OP = I_OP;
+              SB[s].rob = b;
 
 
             /*** Operando 1 (en Rint) ***/
             
               /* INSERTAR CÓDIGO */
+              if (Rint[I_S1].rob == MARCA_NULA) {
+                SB[s].V1 = Rint[I_S1].valor;
+                SB[s].Q1 = MARCA_NULA;
+              } else if (RB[Rint[I_S1].rob].completado) {
+                SB[s].V1 = RB[Rint[I_S1].rob].valor;
+                SB[s].Q1 = MARCA_NULA;
+              } else {
+                SB[s].Q1 = Rint[I_S1].rob;
+              }
 
 
             /*** Operando 2 (en Rfp) ***/
+            /* INSERTAR CÓDIGO */
+            if (Rfp[I_S2].rob == MARCA_NULA) {
+                SB[s].V2 = Rfp[I_S2].valor;
+                SB[s].Q2 = MARCA_NULA;
+              } else if (RB[Rfp[I_S2].rob].completado) {
+                SB[s].V2 = RB[Rfp[I_S2].rob].valor;
+                SB[s].Q2 = MARCA_NULA;
+              } else {
+                SB[s].Q2 = Rfp[I_S2].rob;
+              }
             
-              /* INSERTAR CÓDIGO */
 
 
             /*** Desplazamiento */
             
               /* INSERTAR CÓDIGO */
+              SB[s].desplazamiento = I_INM;
 
 
             /*** Reserva la entrada del ROB */
             
               /* INSERTAR CÓDIGO */
+              RB[b].ocupado = SI;
+              RB[b].OP = I_OP;
+              RB[b].dest = s;
+              RB[b].completado = NO;
 
 
             /*** VISUALIZACION ***/
@@ -221,32 +251,62 @@ void fase_ISS_alum() {
             /*** Busca un hueco en la estación de reserva */
             
               /* INSERTAR CÓDIGO */
+              for (s = INICIO_RS_SUMREST; s <= FIN_RS_SUMREST; s++)
+                if (!RS[s].ocupado) break;
+
+              if (s > FIN_RS_SUMREST) return;
 
 
             /*** Reserva la estación de reserva */
             
               /* INSERTAR CÓDIGO */
+              RS[s].ocupado = SI;
+              RS[s].OP = I_OP;
+              RS[s].rob = b;
 
 
             /*** Operando 1 (en Rfp) ***/
             
               /* INSERTAR CÓDIGO */
+              if (Rfp[I_S1].rob == MARCA_NULA) {
+                  RS[s].V1 = Rfp[I_S1].valor;
+                  RS[s].Q1 = MARCA_NULA;
+              } else if (RB[Rfp[I_S1].rob].completado) {
+                  RS[s].V1 = RB[Rfp[I_S1].rob].valor;
+                  RS[s].Q1 = MARCA_NULA;
+              } else {
+                  RS[s].Q1 = Rfp[I_S1].rob;
+              } /* endif */
 
 
             /*** Operando 2 (en Rfp) ***/
+            if (Rfp[I_S2].rob == MARCA_NULA) {
+                  RS[s].V2 = Rfp[I_S2].valor;
+                  RS[s].Q2 = MARCA_NULA;
+              } else if (RB[Rfp[I_S2].rob].completado) {
+                  RS[s].V2 = RB[Rfp[I_S2].rob].valor;
+                  RS[s].Q2 = MARCA_NULA;
+              } else {
+                  RS[s].Q2 = Rfp[I_S2].rob;
+              } /* endif */
             
               /* INSERTAR CÓDIGO */
+             // RS[s].Q2 = MARCA_NULA;
 
 
             /*** Reserva la entrada del ROB */
             
               /* INSERTAR CÓDIGO */
+              RB[b].ocupado = SI;
+              RB[b].OP = I_OP;
+              RB[b].dest = I_D;
+              RB[b].completado = NO;
 
 
             /*** Reserva del registro destino */
             
               /* INSERTAR CÓDIGO */
-
+              Rfp[I_D].rob = b;
 
 
             /*** VISUALIZACION ***/
@@ -260,34 +320,58 @@ void fase_ISS_alum() {
                     case OP_FP_MUL_D:
         case OP_FP_DIV_D:
             /*** Busca un hueco en la estación de reserva */
-            
-              /* INSERTAR CÓDIGO */
+            /* INSERTAR CÓDIGO */
+            for (s = INICIO_RS_MULTDIV; s <= FIN_RS_MULTDIV; s++)
+                if (!RS[s].ocupado) break;
+
+            if (s > FIN_RS_MULTDIV) return;
 
 
             /*** Reserva el operador virtual */
-            
-              /* INSERTAR CÓDIGO */
+            /* INSERTAR CÓDIGO */
+            RS[s].ocupado = SI;
+            RS[s].OP = I_OP;
+            RS[s].rob = b;
 
 
             /*** Operando 1 ***/
-            
-              /* INSERTAR CÓDIGO */
+            /* INSERTAR CÓDIGO */
+            if (Rfp[I_S1].rob == MARCA_NULA) {
+                RS[s].V1 = Rfp[I_S1].valor;
+                RS[s].Q1 = MARCA_NULA;
+            } else if (RB[Rfp[I_S1].rob].completado) {
+                RS[s].V1 = RB[Rfp[I_S1].rob].valor;
+                RS[s].Q1 = MARCA_NULA;
+            } else {
+                  RS[s].Q1 = Rfp[I_S1].rob;
+            } /* endif */
+
 
 
             /*** Operando 2 ***/
-            
-              /* INSERTAR CÓDIGO */
+            /* INSERTAR CÓDIGO */
+            if (Rfp[I_S2].rob == MARCA_NULA) {
+                RS[s].V2 = Rfp[I_S2].valor;
+                RS[s].Q2 = MARCA_NULA;
+            } else if (RB[Rfp[I_S2].rob].completado) {
+                RS[s].V2 = RB[Rfp[I_S2].rob].valor;
+                RS[s].Q2 = MARCA_NULA;
+            } else {
+                  RS[s].Q2 = Rfp[I_S2].rob;
+            } /* endif */
 
 
             /*** Reserva la entrada del ROB */
-            
-              /* INSERTAR CÓDIGO */
+            /* INSERTAR CÓDIGO */
+            RB[b].ocupado = SI;
+            RB[b].OP = I_OP;
+            RB[b].dest = I_D;
+            RB[b].completado = NO;
 
 
             /*** Reserva del registro destino */
-            
-              /* INSERTAR CÓDIGO */
-
+            /* INSERTAR CÓDIGO */
+            Rfp[I_D].rob = b;
 
 
             /*** VISUALIZACION ***/
