@@ -1,0 +1,66 @@
+
+*** CONFIGURACIÓN ***
+
+  Grado superescalar: 
+        ISSUE:        8
+        BUSES:        8
+        COMMIT:       8
+  Reorder Buffer:     128
+  E.R. Suma/Resta:    128
+  E.R. Mult/Div:      128
+  E.R. Enteros:       256
+  Buffer lectura:     128
+  Buffer escritura:   128
+  Tipo predictor:     BTB 2 bits con saturacion
+  Buffer predictor:   2
+  Registros:          32
+
+                    Cantidad   Latencia  Tipo
+                    --------   --------  ----
+  Oper. Suma/Resta:    8           4     CONV
+  Oper. Mult/Div:      8           7     CONV
+  Oper. Enteros:       8           1     CONV
+  Oper. Memoria:       8           2     CONV
+
+*** MEMORIA ***
+
+begin  end    size  region
+------ ------ ----- -------------------------
+000000-001000 01000 [reserved]
+001000-001040 00040 [text]
+001000-001040 00040     [<daxpy64.s> : text]
+002000-002608 00608 [data]
+002000-002608 00608     [<daxpy64.s> : data]
+00fff8-010000 00008 [stack]
+
+*** EJECUCIÓN ***
+
+
+*** ESTADISTICAS ***
+
+Ciclos:               170
+Instrucciones:        646
+CPI / IPC:           0.26 / 3.80
+Ops C.F:              128
+Ops C.F./ciclo:      0.75
+Saltos:
+    Accedidos:         68
+    Encontrados:       67
+    Ejecutados:        64
+    Acertados:         62
+
+Ocupación de recursos:
+               Max / TAM  % max  % med
+  RS Enteros:   11 / 256   (  4% -   2%)
+  RS S/R C.F.:   9 / 128   (  7% -   5%)
+  RS M/D C.F.:   7 / 128   (  5% -   4%)
+  RS Carga:      6 / 128   (  4% -   3%)
+  RS Almac.:    11 / 128   (  8% -   6%)
+  Op Enteros:    5 /   8   ( 62% -  24%)
+  Op S/R C.F.:   2 /   8   ( 25% -  19%)
+  Op M/D C.F.:   4 /   8   ( 50% -  34%)
+  Op Mem (AC):   3 /   8   ( 37% -  14%)
+  Op Mem:        3 /   8   ( 37% -  29%)
+  RB:           90 / 128   ( 70% -  54%)
+
+

@@ -33,6 +33,7 @@ double inf_norma(int m, int n, double *A)
   }
   return max;
 }
+
 void escala(int m, int n, double *A, double e)
 {
   for (m *= n; m > 0; m--)

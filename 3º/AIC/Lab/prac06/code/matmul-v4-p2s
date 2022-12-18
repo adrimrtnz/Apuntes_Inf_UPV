@@ -1,0 +1,66 @@
+
+*** CONFIGURACIÓN ***
+
+  Grado superescalar: 
+        ISSUE:        4
+        BUSES:        4
+        COMMIT:       4
+  Reorder Buffer:     128
+  E.R. Suma/Resta:    64
+  E.R. Mult/Div:      64
+  E.R. Enteros:       128
+  Buffer lectura:     64
+  Buffer escritura:   64
+  Tipo predictor:     BTB 2 bits con saturacion
+  Buffer predictor:   3
+  Registros:          32
+
+                    Cantidad   Latencia  Tipo
+                    --------   --------  ----
+  Oper. Suma/Resta:    4           4     CONV
+  Oper. Mult/Div:      4           7     CONV
+  Oper. Enteros:       4           1     CONV
+  Oper. Memoria:       4           2     CONV
+
+*** MEMORIA ***
+
+begin  end    size  region
+------ ------ ----- -------------------------
+000000-001000 01000 [reserved]
+001000-001088 00088 [text]
+001000-001088 00088     [<matmul.s> : text]
+002000-002278 00278 [data]
+002000-002278 00278     [<matmul.s> : data]
+00fff8-010000 00008 [stack]
+
+*** EJECUCIÓN ***
+
+
+*** ESTADISTICAS ***
+
+Ciclos:              1389
+Instrucciones:       2098
+CPI / IPC:           0.66 / 1.51
+Ops C.F:              250
+Ops C.F./ciclo:      0.18
+Saltos:
+    Accedidos:        518
+    Encontrados:      504
+    Ejecutados:       155
+    Acertados:        121
+
+Ocupación de recursos:
+               Max / TAM  % max  % med
+  RS Enteros:   14 / 128   ( 10% -   6%)
+  RS S/R C.F.:   5 /  64   (  7% -   4%)
+  RS M/D C.F.:   4 /  64   (  6% -   3%)
+  RS Carga:      7 /  64   ( 10% -   5%)
+  RS Almac.:     6 /  64   (  9% -   5%)
+  Op Enteros:    4 /   4   (100% -  44%)
+  Op S/R C.F.:   1 /   4   ( 25% -   8%)
+  Op M/D C.F.:   2 /   4   ( 50% -  19%)
+  Op Mem (AC):   3 /   4   ( 75% -  11%)
+  Op Mem:        3 /   4   ( 75% -  19%)
+  RB:           74 / 128   ( 57% -  35%)
+
+
