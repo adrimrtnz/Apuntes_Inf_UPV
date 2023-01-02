@@ -14,20 +14,24 @@ function dispatch(client, message) {
 	if (ready.length) new_task(ready.shift(), client, message)
 	else 			  pending.push([client,message])
 }
+
 function new_task(worker, client, message) {
 	traza('new_task','client message',[client,message])
 	working[worker] = setTimeout(()=>{failure(worker,client,message)}, ans_interval)
 	backend.send([worker,'', client,'', message])
 }
+
 function failure(worker, client, message) {
 	traza('failure','client message',[client,message])
 	failed[worker] = true
 	dispatch(client, message)
 }
+
 function frontend_message(client, sep, message) {
 	traza('frontend_message','client sep message',[client,sep,message])
 	dispatch(client, message)
 }
+
 function backend_message(worker, sep1, client, sep2, message) {
 	traza('backend_message','worker sep1 client sep2 message',[worker,sep1,client,sep2,message])
 	if (failed[worker]) return  // ignore messages from failed nodes
