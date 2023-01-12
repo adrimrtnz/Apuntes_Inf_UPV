@@ -166,13 +166,17 @@ int printVec(double *ppdVec, int n, char *header)
 /* Returns the process that owns row i */
 int owner(int i, int p, int mb) {
    /* Block distribution */
-   return i/mb;
+  //  return i/mb;
+   /*Ciclic distribution*/
+   return i % p;
 }
 
 /* Returns the local index of row i in the local matrix of its owner process */
 int localIndex(int i, int p, int mb) {
    /* Block distribution */
-   return i%mb;
+  //  return i%mb;
+   /*Ciclic distribution*/
+   return i / p;
 }
 
 /* Returns the number of local rows in the process iproc */
@@ -181,14 +185,14 @@ int numLocalRows(int n, int mb, int p, int iproc) {
    /* Comment out the code for the distribution that is not wanted */
    
    /* Block distribution */
-   mloc = MIN(mb, n - mb * iproc);
-   if (mloc < 0) mloc = 0;
-   return mloc;
+  //  mloc = MIN(mb, n - mb * iproc);
+  //  if (mloc < 0) mloc = 0;
+  //  return mloc;
 
    /* Cyclic distribution */
-   //mloc = n/p;
-   //if (iproc < n%p) mloc++;
-   //return mloc;
+   mloc = n/p;
+   if (iproc < n%p) mloc++;
+   return mloc;
 }
 
 /* LU factorization
@@ -341,8 +345,11 @@ int main(int argc, char *argv[])
   /* STEP 2: Distribute data (A, b) */
   MPI_Bcast(b, n, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
-  MPI_Scatter(A[0], mb * n, MPI_DOUBLE,
-              Aloc[0], mb * n, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+  // Repartición cíclica de las filas en vez de por bloques 
+  for (i = 0; i < mb; i++) {
+    MPI_Scatter(A[i*p], n, MPI_DOUBLE, 
+               Aloc[i], n, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+  }
 
 #ifdef VERBOSE
   rc = printMat(Aloc, mloc, n, "\nMatrix A");

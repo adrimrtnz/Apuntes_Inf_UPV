@@ -22,7 +22,9 @@ int main(int argc,char *argv[])
      bytes and a maximum size of NMAX bytes*/
   if (argc==2) n = atoi(argv[1]);
   else n = 100;
-  if (n<0 || n>NMAX) n=NMAX;  
+  if (n<0 || n>NMAX) n=NMAX;
+
+  char  *buff = malloc(n*sizeof(char));
 
 
   /* COMPLETE: Get current time, using MPI_Wtime() */
@@ -33,18 +35,11 @@ int main(int argc,char *argv[])
      message back to P0. The data sent is taken from array buf and received into
      the same array. */
   for (int i = 0; i < NREPS; i++) {
-      if (myid == 0) {
-          MPI_Send(buf, n, MPI_BYTE, 1, 0, MPI_COMM_WORLD);
-          MPI_Recv(buf, n, MPI_BYTE, 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-          // MPI_Sendrecv_replace(buf, 1, MPI_BYTE, 1, 0, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-      } else if (myid == 1) {
-          MPI_Recv(buf, n, MPI_BYTE, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-          MPI_Send(buf, n, MPI_BYTE, 0, 0, MPI_COMM_WORLD);
-          // MPI_Sendrecv_replace(buf, 1, MPI_BYTE, 0, 0, 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-
-      }
-      // MPI_Sendrecv_replace(&buf, 1, MPI_BYTE, (myid + 1) % numprocs, 0, myid, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-    
+    if (myid == 0) {
+        MPI_Sendrecv_replace(buff, n, MPI_BYTE, 1, 0, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+    } else if (myid == 1) {
+        MPI_Sendrecv_replace(buff, n, MPI_BYTE, 0, 0, 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+    }
   }
 
 

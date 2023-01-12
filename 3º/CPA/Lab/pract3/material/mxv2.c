@@ -137,22 +137,25 @@ int main(int argc, char *argv[])
   /* COMMUNICATIONS */
   /* Distribute M by blocks of columns and x by blocks of rows (nb columns/rows for each
    * process ) */
-  if (me == 0) {
-    /* For process 0, copy the data */
-    for (j = 0; j < nb; j++) {
-      for (i = 0; i < n; i++)
-        Mloc(i, j) = M(i, j);
-      xloc1[j] = x[j];
-    }
-    /* For other processes, send the data */
-    for (proc = 1; proc < num_procs; proc++) {
-      MPI_Send(&M[proc*sz], sz, MPI_DOUBLE, proc, 13, MPI_COMM_WORLD);
-      MPI_Send(&x[proc*nb], nb, MPI_DOUBLE, proc, 25, MPI_COMM_WORLD);
-    }
-  } else {
-    MPI_Recv(Mloc, sz, MPI_DOUBLE, 0, 13, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-    MPI_Recv(xloc1, nb, MPI_DOUBLE, 0, 25, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-  }
+  // if (me == 0) {
+  //   /* For process 0, copy the data */
+  //   for (j = 0; j < nb; j++) {
+  //     for (i = 0; i < n; i++)
+  //       Mloc(i, j) = M(i, j);
+  //     xloc1[j] = x[j];
+  //   }
+  //   /* For other processes, send the data */
+  //   for (proc = 1; proc < num_procs; proc++) {
+  //     MPI_Send(&M[proc*sz], sz, MPI_DOUBLE, proc, 13, MPI_COMM_WORLD);
+  //     MPI_Send(&x[proc*nb], nb, MPI_DOUBLE, proc, 25, MPI_COMM_WORLD);
+  //   }
+  // } else {
+  //   MPI_Recv(Mloc, sz, MPI_DOUBLE, 0, 13, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+  //   MPI_Recv(xloc1, nb, MPI_DOUBLE, 0, 25, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+  // }
+
+  MPI_Scatter(M, sz, MPI_DOUBLE, Mloc, sz, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+  MPI_Scatter(x, nb, MPI_DOUBLE, xloc1, nb, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
   nLoc = n - me * nb;
   if (nLoc > nb)
@@ -191,7 +194,7 @@ int main(int argc, char *argv[])
       /* Send xloc2, receive xloc1 */
       MPI_Send(xloc2, n, MPI_DOUBLE, 0, 49, MPI_COMM_WORLD);
       MPI_Recv(xloc1, nb, MPI_DOUBLE, 0, 53, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-    }
+    }    
   } /* end of the iter loop */
 
 #define ABS(a) ((a) >= 0 ? (a) : -(a))

@@ -136,24 +136,29 @@ int main(int argc, char *argv[])
   /* COMMUNICATIONS */
   /* Distribute M and v by blocks of rows (mb rows for each process)
    * and send the initial x to all */
-  if (me == 0) {
-    /* For process 0, copy the data */
-    for (i = 0; i < mb; i++) {
-      for (j = 0; j < n; j++)
-        Mloc(i, j) = M(i, j);
-      vloc[i] = v[i];
-    }
-    /* For other processes, send the data */
-    for (proc = 1; proc < num_procs; proc++) {
-      MPI_Send(&M[proc*sz], sz, MPI_DOUBLE, proc, 13, MPI_COMM_WORLD);
-      MPI_Send(&v[proc*mb], mb, MPI_DOUBLE, proc, 89, MPI_COMM_WORLD);
-      MPI_Send(x, n, MPI_DOUBLE, proc, 25, MPI_COMM_WORLD);
-    }
-  } else {
-    MPI_Recv(Mloc, sz, MPI_DOUBLE, 0, 13, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-    MPI_Recv(vloc, mb, MPI_DOUBLE, 0, 89, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-    MPI_Recv(x, n, MPI_DOUBLE, 0, 25, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-  }
+  // if (me == 0) {
+  //   /* For process 0, copy the data */
+  //   for (i = 0; i < mb; i++) {
+  //     for (j = 0; j < n; j++)
+  //       Mloc(i, j) = M(i, j);
+  //     vloc[i] = v[i];
+  //   }
+  //   // /* For other processes, send the data */
+  //   for (proc = 1; proc < num_procs; proc++) {
+  //     MPI_Send(&M[proc*sz], sz, MPI_DOUBLE, proc, 13, MPI_COMM_WORLD);
+  //     MPI_Send(&v[proc*mb], mb, MPI_DOUBLE, proc, 89, MPI_COMM_WORLD);
+  //     MPI_Send(x, n, MPI_DOUBLE, proc, 25, MPI_COMM_WORLD);
+  //   }
+
+  // } else {
+  //   MPI_Recv(Mloc, sz, MPI_DOUBLE, 0, MPI_ANY_TAG, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+  //   MPI_Recv(vloc, mb, MPI_DOUBLE, 0, MPI_ANY_TAG, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+  //   MPI_Recv(x, n, MPI_DOUBLE, 0, MPI_ANY_TAG, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+  // }
+
+  MPI_Scatter(M, sz, MPI_DOUBLE, Mloc, sz, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+  MPI_Scatter(v, mb, MPI_DOUBLE, vloc, mb, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+  MPI_Bcast(x, n, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
   mLoc = n - me * mb;
   if (mLoc > mb)

@@ -138,7 +138,7 @@ int fractal_newton(double x1, double x2, double y1, double y2,
   int j, ni, max;
   double complex z0;
   double ix, iy;
-  int next_row, num_row, rows_done, proc;
+  int next_row, num_row, rows_done=0, proc;
   Byte B[W]; /* buffer for one row of the image */
   MPI_Status status;
   MPI_Request request;
@@ -158,19 +158,23 @@ int fractal_newton(double x1, double x2, double y1, double y2,
     }
 
     /* While there are rows to be received */
-    for ( rows_done = 0 ; rows_done < h ; rows_done++ ) {
+    while (rows_done < h) {
       /* Receive a computed row from any process */
-      MPI_Irecv(B, w, MPI_BYTE, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD,
-               &request);
+      MPI_Irecv(B, w, MPI_BYTE, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &request);
       
       while(MPI_Test(&request, &received, &status), !received && next_row < h) {
         for ( j = 0 ; j < w ; j++ ) {
-          z0 = (x1 + ix*j) + (y1 + iy*num_row)*I;
+          z0 = (x1 + ix*j) + (y1 + iy*next_row)*I;
           ni = newton(z0, tol, maxiter);
           if ( ni > max ) max = ni;
-          A(num_row,j) = ni;
+          A(next_row,j) = ni;
         }
+        next_row++;
+        rows_done++;
       }
+
+      if(!received)
+        MPI_Wait(&request, &status);
 
       /* Get the process index and the row number */
       proc = status.MPI_SOURCE;
@@ -181,6 +185,7 @@ int fractal_newton(double x1, double x2, double y1, double y2,
       next_row++;
       /* Copy the row received into its place in the image */
       memcpy(&A(num_row, 0), B, w);
+      rows_done++;
     }
 
   } else {
