@@ -8,9 +8,13 @@
 void multMat_ijk( int n, float *A, float *B, float *C ) {
     int i,j,k;
     /* ijk */
-    for( i = 0; i < n; i++ )
+    // for( i = 0; i < n; i++ )
+    //     for( j = 0; j < n; j++ )
+    //         for( k = 0; k < n; k++ )
+    //             C[i+j*n] += A[k+j*n]*B[i+k*n];
+    for( k = 0; k < n; k++ )
         for( j = 0; j < n; j++ )
-            for( k = 0; k < n; k++ )
+            for( i = 0; i < n; i++ )
                 C[i+j*n] += A[k+j*n]*B[i+k*n];
 }
 

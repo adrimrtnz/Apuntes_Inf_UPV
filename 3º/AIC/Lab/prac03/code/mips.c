@@ -101,7 +101,7 @@ void fase_busqueda(
             if (EX_MEM.cond) {
                                 SaltoEfectivo = SI;
                 PCn = EX_MEM.ALUout;
-                            } else {
+            } else {
                 PCn = PC + 4;
             }
             break;

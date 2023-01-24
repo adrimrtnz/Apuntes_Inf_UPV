@@ -178,9 +178,9 @@ void fase_ISS_alum() {
             
               /* INSERTAR CÓDIGO */
               for (s = INICIO_BUFFER_ALMACEN; s <= FIN_BUFFER_ALMACEN; s++)
-                if (!SB[s].ocupado) break;
+                if (!SB[s].ocupado) break; /* comprueba si está libre */
               
-              if (s > FIN_BUFFER_ALMACEN) return;
+              if (s > FIN_BUFFER_ALMACEN) return; /* Si no hay entrada libre en el RB nos vamos */
 
 
             /*** Reserva el tampón de escritura */
@@ -188,7 +188,7 @@ void fase_ISS_alum() {
               /* INSERTAR CÓDIGO */
               SB[s].ocupado = SI;
               SB[s].OP = I_OP;
-              SB[s].rob = b;
+              SB[s].rob = b; /* b = hueco libre del ROB */
 
 
             /*** Operando 1 (en Rint) ***/
@@ -216,8 +216,6 @@ void fase_ISS_alum() {
               } else {
                 SB[s].Q2 = Rfp[I_S2].rob;
               }
-            
-
 
             /*** Desplazamiento */
             

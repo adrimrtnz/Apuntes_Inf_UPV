@@ -719,8 +719,6 @@ void detectar_riesgos_datos(void) {
 
             break;
 
-
-
         case cortocircuito:
             /* Riesgo entre LOAD en EX e ID */           
             /* INSERTAR CÓDIGO */

@@ -8,9 +8,14 @@
 #define BLOCKSIZE 256
 
 void multMat_blocking( int n, float *A, float *B, float *C ) {
-    
-              /* INSERTAR CÓDIGO */
-
+    int bj, bk, i, j, k;
+    /* INSERTAR CÓDIGO */
+    for( bj = 0; bj < n; bj += BLOCKSIZE )
+        for( bk = 0; bk < n; bk += BLOCKSIZE )
+            for( j = bj; j < bj + BLOCKSIZE; j++ )
+                for( k = bk; k < bk + BLOCKSIZE; k++ )
+                    for( i = 0; i < n; i++ )
+                        C[i+j*n] += A[k+j*n]*B[i+k*n];
 }
 
 void multMat_ijk( int n, float *A, float *B, float *C ) {
@@ -24,7 +29,6 @@ void multMat_ijk( int n, float *A, float *B, float *C ) {
 
 int main( int argc, char **argv ) {
     int i,n;
-
     float *A = (float *)malloc( NMAX*NMAX * sizeof(float));
     float *B = (float *)malloc( NMAX*NMAX * sizeof(float));
     float *C = (float *)malloc( NMAX*NMAX * sizeof(float));

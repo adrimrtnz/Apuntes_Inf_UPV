@@ -1,5 +1,5 @@
         ; z = a*x + y
-        ; Tamaño de los vectores: 64 palabras
+        ; Tamaï¿½o de los vectores: 64 palabras
         ; Vector x
 	.data
 x:      .double 0,1,2,3,4,5,6,7,8,9
@@ -24,13 +24,13 @@ z:      .space 480
         ; Escalar a
 a:      .double 1
 
-        ; El código
+        ; El cï¿½digo
 	.text
 
 start:
-        dadd r1, r0, x          ; r1 contiene la dirección de x
-        dadd r2, r0, y          ; r2 contiene la dirección de y
-        dadd r3, r0, z          ; r3 contiene la dirección de z
+        dadd r1, r0, x          ; r1 contiene la direcciï¿½n de x
+        dadd r2, r0, y          ; r2 contiene la direcciï¿½n de y
+        dadd r3, r0, z          ; r3 contiene la direcciï¿½n de z
         l.d f0, a(r0)           ; f0 contiene a
         dadd r4,r1,#480         ; 60 elementos double son 480 bytes
 

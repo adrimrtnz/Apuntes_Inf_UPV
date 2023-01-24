@@ -10,7 +10,7 @@ if(cluster.isMaster) {
     let numReqs = 0;
     setInterval(() => { console.log("numReqs = ", numReqs); }, 1000);
     function messageHandler(msg) {
-        if (msg.cmd && msg.cmd == 'notifyRequest') numReqs++
+        if (msg.cmd && msg.cmd == 'notify') numReqs++
     }
 
     for (let i=0; i < numCPUs; i++) {
@@ -33,6 +33,7 @@ if(cluster.isMaster) {
     server = http.createServer(
         function (request, response){
         response.writeHead(200, {'Content-type': 'text/plain'});
+        process.send({ cmd: 'notify'});
         response.end('Hello World!');
        });    
     server.listen(port);

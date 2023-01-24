@@ -8,10 +8,13 @@
 
 void transpose_blocking( int n, int *dst, int *src ) {
     int bi,bj,i,j;
-
-    for( bi = 0; bi < n; bi += BLOCKSIZE )
         
-              /* INSERTAR CÓDIGO */
+    /* INSERTAR CÓDIGO */
+    for( bi = 0; bi < n; bi += BLOCKSIZE )
+        for( bj = 0; bj < n; bj += BLOCKSIZE )
+            for( i = bi; i < bi + BLOCKSIZE; i++ )
+                for( j = bj; j < bj + BLOCKSIZE; j++ )
+                    dst[j+i*n] = src[i+j*n];
 
 }
 
