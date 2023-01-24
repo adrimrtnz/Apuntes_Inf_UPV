@@ -21,3 +21,12 @@ Se pueden visualizar directamente a través del navegador, sin embargo no se ver
 * **LTP**: Lenguajes, tecnologías y paradigmas de programación.
 * **RED**: Redes de Computadores.
 * **TAL**: Teoría de autómatas y lenguajes Formales.
+
+### 3º Curso
+
+* **AIC**: Arquitectura e ingeniería de computadores
+* **TSR**: Tecnología de sistemas de información en red.
+* **BDA**: Bases de datos y sistemas de información.
+* **ISW**: Ingeniería del software.
+* **CPA**: Computación paralela.
+* **SIN**: Sistemas inteligentes.

@@ -12,6 +12,7 @@ Hyperloop/*
 *.ppsx
 *.png
 *.http*
+*.o
 
 /2º/IPC/Prácticas/P02/IPC_FXML_Practica2/build/
 /2º/IPC/Prácticas/P02/IPC_FXML_Practica2/dist/

@@ -1,0 +1,1 @@
+# Tema 2: Memoria Compartida. Diseño Básico de algoritmos paralelos.

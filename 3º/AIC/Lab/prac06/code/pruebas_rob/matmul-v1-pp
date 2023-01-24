@@ -1,0 +1,70 @@
+*** Generando traza para predictor perfecto/clarividente ... ***
+*** EJECUCIÓN ***
+
+..*** Traza generada... ***
+
+*** CONFIGURACIÓN ***
+
+  Grado superescalar: 
+        ISSUE:        1
+        BUSES:        1
+        COMMIT:       1
+  Reorder Buffer:     128
+  E.R. Suma/Resta:    16
+  E.R. Mult/Div:      16
+  E.R. Enteros:       32
+  Buffer lectura:     16
+  Buffer escritura:   16
+  Tipo predictor:     Perfecto
+  Buffer predictor:   2
+  Registros:          32
+
+                    Cantidad   Latencia  Tipo
+                    --------   --------  ----
+  Oper. Suma/Resta:    1           4     CONV
+  Oper. Mult/Div:      1           7     CONV
+  Oper. Enteros:       1           1     CONV
+  Oper. Memoria:       1           2     CONV
+
+*** MEMORIA ***
+
+begin  end    size  region
+------ ------ ----- -------------------------
+000000-001000 01000 [reserved]
+001000-001088 00088 [text]
+001000-001088 00088     [<matmul.s> : text]
+002000-002278 00278 [data]
+002000-002278 00278     [<matmul.s> : data]
+00fff8-010000 00008 [stack]
+
+*** EJECUCIÓN ***
+
+.
+*** ESTADISTICAS ***
+
+Ciclos:              2123
+Instrucciones:       2098
+CPI / IPC:           1.01 / 0.99
+Ops C.F:              250
+Ops C.F./ciclo:      0.12
+Saltos:
+    Accedidos:        156
+    Encontrados:      156
+    Ejecutados:       155
+    Acertados:        155
+
+Ocupación de recursos:
+               Max / TAM  % max  % med
+  RS Enteros:    7 /  32   ( 21% -  11%)
+  RS S/R C.F.:   2 /  16   ( 12% -   7%)
+  RS M/D C.F.:   2 /  16   ( 12% -   6%)
+  RS Carga:      3 /  16   ( 18% -   8%)
+  RS Almac.:     2 /  16   ( 12% -   9%)
+  Op Enteros:    1 /   1   (100% -  68%)
+  Op S/R C.F.:   1 /   1   (100% -  23%)
+  Op M/D C.F.:   1 /   1   (100% -  41%)
+  Op Mem (AC):   1 /   1   (100% -  18%)
+  Op Mem:        1 /   1   (100% -  37%)
+  RB:           24 / 128   ( 18% -  18%)
+
+
