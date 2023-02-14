@@ -30,3 +30,10 @@ Se pueden visualizar directamente a través del navegador, sin embargo no se ver
 * **ISW**: Ingeniería del software.
 * **CPA**: Computación paralela.
 * **SIN**: Sistemas inteligentes.
+
+* **AIN**: Agentes inteligentes.
+* **CMC**: Computabilidad y Complejidad.
+* **GPR**: Gestión de proyectos.
+* **PER**: Percepción.
+* **SAR**: Sistemas de Almacenamiento y Recuperación de la Información.
+* **TOP**: Tecnicas de Optimización (Investigación Operativa).
