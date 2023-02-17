@@ -4,15 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "52f19435e45784cc",
+        "id": "9a4bb29494a32e8b",
         "type": "tabs",
         "children": [
           {
-            "id": "58288d04d3c0cfcc",
+            "id": "c185df2b1eb2c9bc",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "3º/GPR/Proyecto/1. Acta de Constitución de Proyecto.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -65,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "dbe8e090d8592f92",
@@ -81,6 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "3º/GPR/Proyecto/1. Acta de Constitución de Proyecto.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "3º/GPR/Proyecto/1. Acta de Constitución de Proyecto.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +125,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "3º/GPR/Proyecto/1. Acta de Constitución de Proyecto.md"
+              }
             }
           }
         ]
@@ -138,6 +147,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "58288d04d3c0cfcc",
-  "lastOpenFiles": []
+  "active": "c185df2b1eb2c9bc",
+  "lastOpenFiles": [
+    "3º/GPR/Proyecto/1. Acta de Constitución de Proyecto.md",
+    "3º/AIN/Tema 2.md",
+    "Untitled.canvas"
+  ]
 }
