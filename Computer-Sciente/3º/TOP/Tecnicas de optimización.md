@@ -6,8 +6,11 @@
 
 
 ## Temario
+
 [[1. Optimización y toma de decisiones]]
 [[2. Formulación de modelos de programación lineal]]
+[[3. Métodos de programación lineal]]
+
 
 ## Bibliografía
 

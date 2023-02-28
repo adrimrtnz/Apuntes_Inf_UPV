@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 #! -*- encoding: utf8 -*-
 
+# Autor: Adrián Martínez
+
 # 1.- Pig Latin
 
 import re
@@ -29,19 +31,25 @@ class Translator():
         :param word: la palabra que se debe pasar a Pig Latin
         :return: la palabra traducida
         """
+        # patrón para encontrar las vocales (aquí se considera 'y' como vocal)
         re_vowels = r'[aeiouAEIOUyY]'
+        #patrón para encontrar los signos de puntuación
         re_punct = r'[.,;?!]'
 
+        # Si el primer caracter de la palabra no es alfanumérico, se deja como está
         if not word[0].isalpha():
             new_word = word
         else:
+            # Si empieza por vocal, se añade 'yay' al final y se mantien mayúsculas de la palabra original
             if re.search(re_vowels, word).span()[0] == 0:
                 new_word = (word + 'yay').upper() if word.isupper() else (word + 'yay')
             else:
-                v_index = re.search(re_vowels, word).span()[0]
-                p_index = re.search(re_punct, word)
+                v_index = re.search(re_vowels, word).span()[0]                              # índice de la primera vocal
+                p_index = re.search(re_punct, word)                                         # índice del signo de puntuación si lo hay
                 p_index = p_index.span()[0] if p_index else len(word)
-                aux_word = word[v_index:p_index] + word[:v_index] + 'ay' + word[p_index:]
+                aux_word = word[v_index:p_index] + word[:v_index] + 'ay' + word[p_index:]   # se forma la palabra traducida
+
+                # mantenemos las mayúsculas de la palabra original
                 new_word = aux_word.upper() if word.isupper() else (aux_word.capitalize() if word[0].isupper() else aux_word.lower()) 
 
         return new_word
@@ -53,11 +61,14 @@ class Translator():
         :param sentence: la frase que se debe pasar a Pig Latin
         :return: la frase traducida
         """
+        # separamos cada linea del fichero en sus diferentes palabras y las traducimos una a una
         words = sentence.split()
         words = [self.translate_word(word) for word in words]
 
+        # juntamos las palabras traducidas de nuevo
         new_sentence = ' '.join(words)
 
+        # devolvemos la traducción de la linea de entrada
         return new_sentence
 
     def translate_file(self, filename:Text):
@@ -71,14 +82,16 @@ class Translator():
         if not isfile(filename):
             print(f'{filename} no existe o no es un nombre de fichero', file=sys.stderr)
 
-        # Devuelve la posición del último punto en el nombre del archivo
-        last_dot = filename.rfind('.')  
+        # se genera un archivo de salida con el mismo nombre que el archivo original, añadiendo '_latin' al nombre
+        first_dot = filename.find('.')  
         in_file = open(filename)
-        out_file = open(filename[:last_dot] + '_latin' + filename[last_dot:], 'w')
+        out_file = open(filename[:first_dot] + '_latin' + filename[first_dot:], 'w')
 
+        # traduce cada fila del fichero y escribe la traducción en el archivo de salida
         for sentence in in_file:
             out_file.write(self.translate_sentence(sentence) + '\n')
 
+        # cerramos los ficheros
         in_file.close()
         out_file.close()
 

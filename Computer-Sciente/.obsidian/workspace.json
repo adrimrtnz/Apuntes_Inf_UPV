@@ -8,12 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "23ccc30e082be187",
+            "id": "bd141837091f1407",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "3º/CMC/Temas/2. La Máquina de Turing.md",
+                "file": "3º/TOP/Temas/3. Métodos de programación lineal.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "dbe8e090d8592f92",
@@ -85,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "3º/CMC/Temas/2. La Máquina de Turing.md",
+                "file": "3º/TOP/Temas/3. Métodos de programación lineal.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "3º/CMC/Temas/2. La Máquina de Turing.md",
+                "file": "3º/TOP/Temas/3. Métodos de programación lineal.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "3º/CMC/Temas/2. La Máquina de Turing.md"
+                "file": "3º/TOP/Temas/3. Métodos de programación lineal.md"
               }
             }
           }
@@ -146,8 +147,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "23ccc30e082be187",
+  "active": "bd141837091f1407",
   "lastOpenFiles": [
+    "3º/TOP/Tecnicas de optimización.md",
+    "3º/TOP/Temas/3. Métodos de programación lineal.md",
+    "3º/TOP/Temas/1. Optimización y toma de decisiones.md",
+    "3º/TOP/Temas/2. Formulación de modelos de programación lineal.md",
     "3º/CMC/Temas/2. La Máquina de Turing.md",
     "3º/AIN/Temas/2. Conceptos fundamentales.md",
     "3º/AIN/Temas/3. Razonamiento práctico.md",
@@ -155,8 +160,6 @@
     "3º/CMC/Computabilidad y Complejidad.md",
     "3º/SAR/Temas/2. Índices Invertidos. Términos y Consultas.md",
     "3º/SAR/Temas/1. Introducción a la Recuperación de Información.md",
-    "3º/SAR/Sistemas de Almacenamiento y Recuperación de la Información.md",
-    "3º/TOP/Tecnicas de optimización.md",
-    "3º/TOP/Temas/2. Formulación de modelos de programación lineal.md"
+    "3º/SAR/Sistemas de Almacenamiento y Recuperación de la Información.md"
   ]
 }
