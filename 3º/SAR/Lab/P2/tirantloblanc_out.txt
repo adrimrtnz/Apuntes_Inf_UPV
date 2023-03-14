@@ -1,0 +1,6 @@
+Lines: 18695
+Number words (including stopwords): 167242
+Vocabulary size: 7151
+Number of symbols: 686860
+Number of different symbols: 61
+Words (alphabetical order):

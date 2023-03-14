@@ -4,16 +4,28 @@
     "type": "split",
     "children": [
       {
-        "id": "100e357465cc6284",
+        "id": "7435dd670e021476",
         "type": "tabs",
         "children": [
           {
-            "id": "bd141837091f1407",
+            "id": "457679e27db2a27d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "3º/TOP/Temas/3. Métodos de programación lineal.md",
+                "file": "3º/CMC/Temas/2. La Máquina de Turing.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "d529045b4ead71d7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "3º/CMC/Conceptos/Jerarquía de Chomsky.md",
                 "mode": "source",
                 "source": false
               }
@@ -86,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "3º/TOP/Temas/3. Métodos de programación lineal.md",
+                "file": "3º/CMC/Temas/2. La Máquina de Turing.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "3º/TOP/Temas/3. Métodos de programación lineal.md",
+                "file": "3º/CMC/Temas/2. La Máquina de Turing.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "3º/TOP/Temas/3. Métodos de programación lineal.md"
+                "file": "3º/CMC/Temas/2. La Máquina de Turing.md"
               }
             }
           }
@@ -147,17 +159,24 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "bd141837091f1407",
+  "active": "457679e27db2a27d",
   "lastOpenFiles": [
-    "3º/TOP/Tecnicas de optimización.md",
-    "3º/TOP/Temas/3. Métodos de programación lineal.md",
-    "3º/TOP/Temas/1. Optimización y toma de decisiones.md",
-    "3º/TOP/Temas/2. Formulación de modelos de programación lineal.md",
+    "3º/CMC/Conceptos/Jerarquía de Chomsky.md",
     "3º/CMC/Temas/2. La Máquina de Turing.md",
+    "Jerarquías.md",
+    "3º/CMC/Computabilidad y Complejidad.md",
+    "[Jerarquías.md",
+    "[[Jerarquías.md",
+    "3º/CMC/Untitled.md",
+    "3º/CMC/Conceptos",
+    "3º/TOP/Temas/3. Métodos de programación lineal.md",
+    "3º/PER/Temas",
+    "3º/TOP/Temas/2. Formulación de modelos de programación lineal.md",
+    "3º/TOP/Tecnicas de optimización.md",
+    "3º/TOP/Temas/1. Optimización y toma de decisiones.md",
     "3º/AIN/Temas/2. Conceptos fundamentales.md",
     "3º/AIN/Temas/3. Razonamiento práctico.md",
     "3º/AIN/Agentes Inteligentes.md",
-    "3º/CMC/Computabilidad y Complejidad.md",
     "3º/SAR/Temas/2. Índices Invertidos. Términos y Consultas.md",
     "3º/SAR/Temas/1. Introducción a la Recuperación de Información.md",
     "3º/SAR/Sistemas de Almacenamiento y Recuperación de la Información.md"

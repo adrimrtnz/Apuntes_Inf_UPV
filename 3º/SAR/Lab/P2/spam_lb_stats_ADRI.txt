@@ -1,0 +1,152 @@
+Lines: 11
+Number words (including stopwords): 77
+Vocabulary size: 22
+Number of symbols: 324
+Number of different symbols: 23
+Words (alphabetical order):
+	a: 2
+	and: 12
+	aux: 1
+	bacon: 6
+	baked: 1
+	beans: 1
+	brandy: 1
+	crevettes: 1
+	egg: 9
+	fried: 1
+	garnished: 1
+	lobster: 1
+	mornay: 1
+	on: 1
+	pate: 1
+	sauce: 1
+	sausage: 4
+	spam: 27
+	thermidor: 1
+	top: 1
+Words (by frequency):
+	spam: 27
+	and: 12
+	egg: 9
+	bacon: 6
+	sausage: 4
+	a: 2
+	with: 2
+	aux: 1
+	baked: 1
+	beans: 1
+	brandy: 1
+	crevettes: 1
+	fried: 1
+	garnished: 1
+	lobster: 1
+	mornay: 1
+	on: 1
+	pate: 1
+	sauce: 1
+	thermidor: 1
+Symbols (alphabetical order):
+	a: 63
+	b: 10
+	c: 8
+	d: 17
+	e: 25
+	f: 3
+	g: 23
+	h: 4
+	i: 5
+	k: 1
+	l: 2
+	m: 29
+	n: 23
+	o: 11
+	p: 29
+	r: 9
+	s: 40
+	t: 9
+	u: 7
+	v: 1
+Symbols (by frequency):
+	a: 63
+	s: 40
+	m: 29
+	p: 29
+	e: 25
+	g: 23
+	n: 23
+	d: 17
+	o: 11
+	b: 10
+	r: 9
+	t: 9
+	c: 8
+	u: 7
+	i: 5
+	h: 4
+	f: 3
+	l: 2
+	w: 2
+	y: 2
+Prefixes (by frequency):
+	sp-: 27
+	spa-: 27
+	an-: 12
+	eg-: 9
+	ba-: 7
+	bac-: 6
+	baco-: 6
+	sa-: 5
+	sau-: 5
+	saus-: 4
+	wi-: 2
+	wit-: 2
+	au-: 1
+	bak-: 1
+	bake-: 1
+	be-: 1
+	bea-: 1
+	bean-: 1
+	br-: 1
+	bra-: 1
+Suffixes (by frequency):
+	-am: 27
+	-pam: 27
+	-nd: 12
+	-gg: 9
+	-acon: 6
+	-con: 6
+	-on: 6
+	-age: 4
+	-ge: 4
+	-sage: 4
+	-ed: 3
+	-ith: 2
+	-th: 2
+	-aked: 1
+	-andy: 1
+	-ans: 1
+	-ate: 1
+	-auce: 1
+	-ay: 1
+	-ce: 1
+Word pairs (by alphabetical order):
+	$ egg: 5
+	$ lobster: 1
+	$ spam: 5
+	a fried: 1
+	a mornay: 1
+	and a: 1
+	and bacon: 2
+	and spam: 9
+	aux crevettes: 1
+	bacon $: 2
+	bacon and: 2
+	bacon sausage: 2
+	baked beans: 1
+	beans spam: 1
+	brandy and: 1
+	crevettes with: 1
+	egg and: 3
+	egg bacon: 2
+	egg on: 1
+	egg sausage: 2
