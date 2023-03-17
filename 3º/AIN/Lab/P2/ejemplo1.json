@@ -1,0 +1,41 @@
+{
+    "host": "gtirouter.dsic.upv.es",
+    "manager": "amarmar4_m",
+    "service": "amarmar",
+    "axis": [
+        {
+            "rank": "BDISoldier",
+            "name": "soldier_eje_mylogin",
+            "password": "secret"
+        },
+        {
+            "rank": "BDIMedic",
+            "name": "medic_eje_mylogin",
+            "password": "secret",
+			"amount": 2
+        },
+        {
+            "rank": "BDIFieldOp",
+            "name": "fieldops_eje_mylogin",
+            "password": "secret"
+        }
+    ],
+    "allied": [
+        {
+            "rank": "BDISoldier",
+            "name": "soldier_aliado_mylogin",
+            "password": "secret"
+        },
+        {
+            "rank": "BDIMedic",
+            "name": "medic_aliado_mylogin",
+            "password": "secret",
+            "amount": 2
+        },
+        {
+            "rank": "BDIFieldOp",
+            "name": "fieldops_aliado_mylogin",
+            "password": "secret"
+        }
+    ]
+}

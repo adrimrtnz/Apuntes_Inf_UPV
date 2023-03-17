@@ -116,7 +116,7 @@ class Monkey():
 
     def generate_sentences(self, n:Optional[int], nsentences:int=10, prefix:Optional[str]=None):
         prefix = prefix if prefix else ''
-        prefix = self.r2.sub(' ', prefix)           # limpia el prefijo
+        prefix = self.r2.sub(' ', prefix)                       # limpia el prefijo
         prefix = prefix.split()
         prefix[0:0] = ['$' for _ in range(n-1-len(prefix))]     # inserta n-1 '$' al principio de la frase
         first_words = ' '.join(prefix)

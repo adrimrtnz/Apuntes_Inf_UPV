@@ -1,0 +1,21 @@
+{
+    "host": "gtirouter.dsic.upv.es",
+    "manager": "amarmar4_m",
+    "service": "amarmar4",
+    "axis": [
+        {
+            "rank": "BDISoldier",
+            "name": "Metge_Poderos",
+            "password": "secret",
+			"amount": 3
+        }
+    ],
+    "allied": [
+        {
+            "rank": "BDISoldier",
+            "name": "Soldado_Chetado",
+            "password": "secret",
+            "amount": 3
+        }
+    ]
+}
