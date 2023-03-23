@@ -1,0 +1,39 @@
+{
+    "host": "gtirouter.dsic.upv.es",
+    "manager": "amarmar4m",
+    "manager_password": "secret",
+    "service": "amarmar4s",
+    "service_password": "secret",
+    "axis": [
+		{
+            "rank": "BDISoldier",
+            "name": "luchador_yourlogin_z",
+            "password": "secret",
+            "amount": 20,
+            "asl": "luchador.asl"
+        },
+        {
+            "rank": "BDISoldier",
+            "name": "El_puto_puente",
+            "password": "secret",
+            "amount": 1,
+            "asl": "brawler.asl"
+        }
+    ],
+     "allied": [
+                {
+            "rank": "invencibleM.BDIMInvencible",
+            "name": "medic_yourlogin_z",
+            "password": "secret",
+            "amount": 1,
+            "asl": "medic_arena.asl"
+        }, 
+        {
+            "rank": "invencibleF.BDIFInvencible",
+            "name": "fieldop_yourlogin",
+            "password": "secret",
+            "amount": 3,
+            "asl": "fieldop_arena.asl"
+        }
+   ]
+  }
