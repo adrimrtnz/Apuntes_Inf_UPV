@@ -31,8 +31,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -99,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "3º/CMC/Conceptos/Jerarquía de Chomsky.md",
+                "file": "3º/CMC/Temas/2. La Máquina de Turing.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "3º/CMC/Conceptos/Jerarquía de Chomsky.md",
+                "file": "3º/CMC/Temas/2. La Máquina de Turing.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -139,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "3º/CMC/Conceptos/Jerarquía de Chomsky.md"
+                "file": "3º/CMC/Temas/2. La Máquina de Turing.md"
               }
             }
           }
@@ -160,10 +159,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "d529045b4ead71d7",
+  "active": "457679e27db2a27d",
   "lastOpenFiles": [
-    "3º/CMC/Temas/2. La Máquina de Turing.md",
     "3º/CMC/Conceptos/Jerarquía de Chomsky.md",
+    "3º/CMC/Temas/2. La Máquina de Turing.md",
     "Jerarquías.md",
     "3º/CMC/Computabilidad y Complejidad.md",
     "[Jerarquías.md",
