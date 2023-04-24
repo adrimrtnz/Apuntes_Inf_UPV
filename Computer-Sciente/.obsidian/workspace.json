@@ -13,13 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "3º/CMC/Conceptos/Jerarquía de Chomsky.md",
+                "file": "3º/SAR/Sistemas de Almacenamiento y Recuperación de la Información.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "4e6b05520b173982",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "3º/CMC/Temas/3.Funciones mu-Recursivas.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -86,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "3º/CMC/Conceptos/Jerarquía de Chomsky.md",
+                "file": "3º/CMC/Temas/3.Funciones mu-Recursivas.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "3º/CMC/Conceptos/Jerarquía de Chomsky.md",
+                "file": "3º/CMC/Temas/3.Funciones mu-Recursivas.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "3º/CMC/Conceptos/Jerarquía de Chomsky.md"
+                "file": "3º/CMC/Temas/3.Funciones mu-Recursivas.md"
               }
             }
           }
@@ -147,12 +160,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "d529045b4ead71d7",
+  "active": "4e6b05520b173982",
   "lastOpenFiles": [
     "3º/CMC/Temas/2. La Máquina de Turing.md",
+    "3º/CMC/Temas/3.Funciones mu-Recursivas.md",
+    "3º/SAR/Sistemas de Almacenamiento y Recuperación de la Información.md",
+    "3º/CMC/Computabilidad y Complejidad.md",
     "3º/CMC/Conceptos/Jerarquía de Chomsky.md",
     "Jerarquías.md",
-    "3º/CMC/Computabilidad y Complejidad.md",
     "[Jerarquías.md",
     "[[Jerarquías.md",
     "3º/CMC/Untitled.md",
@@ -166,7 +181,6 @@
     "3º/AIN/Temas/3. Razonamiento práctico.md",
     "3º/AIN/Agentes Inteligentes.md",
     "3º/SAR/Temas/2. Índices Invertidos. Términos y Consultas.md",
-    "3º/SAR/Temas/1. Introducción a la Recuperación de Información.md",
-    "3º/SAR/Sistemas de Almacenamiento y Recuperación de la Información.md"
+    "3º/SAR/Temas/1. Introducción a la Recuperación de Información.md"
   ]
 }
