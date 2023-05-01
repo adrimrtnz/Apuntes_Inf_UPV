@@ -1,0 +1,24 @@
+1. Fundamentos teóricos
+--Inteligencia Artificial
+--Agentes inteligentes
+--Aprendizaje por refuerzo
+--Videojuegos y sus características
+--Interacción humano-computadora en videojuego
+
+
+2. Modelado de agentes inteligentes en videojuegos
+--Tipos de agentes inteligentes
+--Diseño de agentes inteligentes para diferentes tipos de videojuegos
+--Técnicas de aprendizaje por refuerzo para agentes inteligentes en videojuegos
+
+
+3. Retos y limitaciones de los agentes inteligentes en videojuegos
+--Limitaciones de la IA en videojuegos
+--Desafíos para el diseño y entrenamiento de agentes inteligentes en videojuegos
+--Ética en el uso de agentes inteligentes en videojuegos
+
+4. Aplicaciones y beneficios de los agentes inteligentes en videojuegos
+--Mejora de la experiencia de usuario
+--Automatización de tareas en videojuegos
+--Simulación de comportamientos humanos en videojuegos
+--Investigación en videojuegos y ciencias cognitivas

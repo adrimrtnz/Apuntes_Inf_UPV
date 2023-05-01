@@ -2,7 +2,10 @@
 
 threshold_ammo(20).
 threshold_health(25).
-flashed.
+
++coward
+<-
+  .goto([10,0,10]).
 
 +flag(F): team(200)
 <-
@@ -15,17 +18,12 @@ flashed.
   +patroll_point(0);
   .print("Got control points:", C).
 
-+flash : not(flashed)
++health(X): threshold_health(Y) & X < Y
 <-
-  +flashed;
-  ?velocity([X,Y,Z]);
-  -+velocity([2+X,2+Y,2+Z]).
-
-+get_health : health(X) & threshold_health(Y) & X < Y
-<-
-  ?base(B);
-  +goto(B);
-  -patrolling.
+  //?base(B);
+  //+goto(B);
+  //-patrolling.
+  -+coward.
 
 +patrol : not(patrolling) & pack_taken(T,N)
 <-

@@ -7,30 +7,30 @@
     "axis": [
 		{
             "rank": "BDISoldier",
-            "name": "luchador_yourlogin_z",
+            "name": "luch_z",
             "password": "secret",
             "amount": 20,
             "asl": "luchador.asl"
         },
         {
             "rank": "BDISoldier",
-            "name": "El_puto_puente",
+            "name": "AMARMAR4",
             "password": "secret",
             "amount": 1,
-            "asl": "brawler.asl"
+            "asl": "amarmar4.asl"
         }
     ],
      "allied": [
                 {
             "rank": "invencibleM.BDIMInvencible",
-            "name": "medic_yourlogin_z",
+            "name": "med_z",
             "password": "secret",
             "amount": 1,
             "asl": "medic_arena.asl"
         }, 
         {
             "rank": "invencibleF.BDIFInvencible",
-            "name": "fieldop_yourlogin",
+            "name": "fop_z",
             "password": "secret",
             "amount": 3,
             "asl": "fieldop_arena.asl"
