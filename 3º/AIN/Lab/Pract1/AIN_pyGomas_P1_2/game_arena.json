@@ -1,0 +1,16 @@
+{
+    "host": "gtirouter.dsic.upv.es",
+    "manager": "m_ccc",
+    "manager_password": "secret",
+    "service": "s_ccc",
+    "service_password": "secret",
+    "axis": [
+        {
+            "rank": "BDISoldier",
+            "name": "AMARMAR4",
+            "password": "secret",
+            "amount": 1,
+            "asl": "amarmar4.asl"
+        }
+    ]
+  }

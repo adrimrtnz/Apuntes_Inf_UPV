@@ -1,4 +1,4 @@
-//EJEMPLO LUCHADOR 
+//Alumno: Adrian Martinez Martinez
 
 threshold_ammo(20).
 threshold_health(25).
@@ -49,15 +49,16 @@ threshold_health(25).
   vaya a por él por encima de todo
 */
 +packs_in_fov(ID,Type,Angle,Distance,Health,Position)
-: Type == 1002 & not get_ammo(Position) & not enemies_in_fov(E)
+: Type == 1002 & not get_ammo(Position) & not friends_in_fov(ID,Type,Angle,Distance,Health,Position)
 <-
   ?ammo(X);
   ?threshold_ammo(Y);
+  ?position(P);
   
   if (X < Y) {
     .print("Veo pack AMMO y voy a por ello AMMO: ", X);
     .look_at(Position);
-    +get_ammo(Position);
+    +get_ammo(P);
     -patrolling;
   }.
 
@@ -68,7 +69,7 @@ threshold_health(25).
   
 
 +packs_in_fov(ID,Type,Angle,Distance,Health,Position)
-: Type == 1001 & not get_health(Position) & not enemies_in_fov(E)
+: Type == 1001 & not get_health(Position) & not friends_in_fov(ID,Type,Angle,Distance,Health,Position)
 <-
   ?threshold_health(X);
   ?health(Y);
