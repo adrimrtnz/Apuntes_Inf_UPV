@@ -1,5 +1,6 @@
 ---
 title: "TOP - Práctica 8"
+autor: "Adrin Martínez"
 output: html_notebook
 ---
 

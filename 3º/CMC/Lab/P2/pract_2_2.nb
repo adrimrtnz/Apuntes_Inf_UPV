@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     31382,        869]
-NotebookOptionsPosition[     30343,        842]
-NotebookOutlinePosition[     30855,        860]
-CellTagsIndexPosition[     30812,        857]
+NotebookDataLength[     13286,        321]
+NotebookOptionsPosition[     12287,        295]
+NotebookOutlinePosition[     12763,        312]
+CellTagsIndexPosition[     12720,        309]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -46,8 +46,8 @@ Cell[BoxData[
      RowBox[{"{", 
       RowBox[{
       "Q", ",", "\[CapitalSigma]", ",", "\[Delta]", ",", "S", ",", "i", ",", 
-       " ", "sol", ",", "j", ",", " ", "CharColorRules", ",", " ", "aux"}], 
-      "}"}], ",", "\[IndentingNewLine]", 
+       " ", "f", ",", "j", ",", " ", "aux"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
      RowBox[{
       RowBox[{"Q", "=", 
        RowBox[{"AFD", "[", 
@@ -62,16 +62,9 @@ Cell[BoxData[
        RowBox[{"Union", "[", 
         RowBox[{"Q", ",", "\[CapitalSigma]"}], "]"}]}], ";", 
       "\[IndentingNewLine]", 
-      RowBox[{"sol", "=", 
-       RowBox[{"{", "S", "}"}]}], ";", "\[IndentingNewLine]", 
-      RowBox[{"CharColorRules", " ", "=", " ", 
-       RowBox[{"{", 
-        RowBox[{"f", "->", "White"}], "}"}]}], ";", "\[IndentingNewLine]", 
-      RowBox[{"PrependTo", "[", 
-       RowBox[{
-        RowBox[{"sol", "[", 
-         RowBox[{"[", "1", "]"}], "]"}], ",", "f"}], "]"}], ";", 
-      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"f", "=", 
+       RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
       RowBox[{"(*", " ", 
        RowBox[{
         RowBox[{"Si", " ", "no", " ", "es", " ", "unidireccional"}], ",", " ", 
@@ -85,40 +78,6 @@ Cell[BoxData[
            RowBox[{"[", "1", "]"}], "]"}], "]"}], "!=", "3"}], ",", " ", 
         RowBox[{"Return", "[", "False", "]"}]}], "]"}], ";", 
       "\[IndentingNewLine]", "\[IndentingNewLine]", 
-      RowBox[{"For", "[", 
-       RowBox[{
-        RowBox[{"i", "=", "1"}], ",", 
-        RowBox[{"i", "<=", 
-         RowBox[{"Length", "[", "S", "]"}]}], ",", 
-        RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", "\t", 
-        RowBox[{
-         RowBox[{"AppendTo", "[", 
-          RowBox[{"sol", ",", 
-           RowBox[{"{", 
-            RowBox[{"S", "[", 
-             RowBox[{"[", "i", "]"}], "]"}], "}"}]}], "]"}], ";", 
-         "\[IndentingNewLine]", "\t", 
-         RowBox[{"AppendTo", "[", 
-          RowBox[{"CharColorRules", ",", " ", 
-           RowBox[{
-            RowBox[{"S", "[", 
-             RowBox[{"[", "i", "]"}], "]"}], "->", " ", 
-            RowBox[{"ColorData", "[", 
-             RowBox[{"2", ",", "i"}], "]"}]}]}], "]"}], ";", 
-         "\[IndentingNewLine]", "\t", 
-         RowBox[{"For", "[", 
-          RowBox[{
-           RowBox[{"j", "=", "1"}], ",", 
-           RowBox[{"j", "<=", 
-            RowBox[{"Length", "[", "S", "]"}]}], ",", 
-           RowBox[{"j", "++"}], ",", "\[IndentingNewLine]", "\t", 
-           RowBox[{"AppendTo", "[", 
-            RowBox[{
-             RowBox[{"sol", "[", 
-              RowBox[{"[", 
-               RowBox[{"i", "+", "1"}], "]"}], "]"}], ",", "_"}], "]"}]}], 
-          "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}],
-       ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
       RowBox[{"For", "[", 
        RowBox[{
         RowBox[{"i", "=", "1"}], ",", 
@@ -149,18 +108,12 @@ Cell[BoxData[
                RowBox[{"Length", "[", "aux", "]"}], " ", ">", " ", "0"}], ",",
                "\[IndentingNewLine]", 
               RowBox[{"(*", "Then", "*)"}], "\[IndentingNewLine]", 
-              RowBox[{
-               RowBox[{"sol", "[", 
-                RowBox[{"[", 
-                 RowBox[{
-                  RowBox[{"i", "+", "1"}], ",", 
-                  RowBox[{"j", "+", "1"}]}], "]"}], "]"}], " ", "=", " ", 
-               RowBox[{"aux", "[", 
-                RowBox[{"[", 
-                 RowBox[{"1", ",", "3"}], "]"}], "]"}]}], ",", 
+              RowBox[{"AppendTo", "[", 
+               RowBox[{"f", ",", 
+                RowBox[{"aux", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}]}], "]"}], ",", 
               "\[IndentingNewLine]", 
               RowBox[{"(*", "Else", "*)"}], "\[IndentingNewLine]", 
-              "\[IndentingNewLine]", 
               RowBox[{"(*", 
                RowBox[{
                 RowBox[{
@@ -198,32 +151,24 @@ Cell[BoxData[
                     RowBox[{"[", "j", "]"}], "]"}]}], "]"}]}]}], ",", 
                  "\[IndentingNewLine]", 
                  RowBox[{
-                  RowBox[{"sol", "[", 
-                   RowBox[{"[", 
+                  RowBox[{"AppendTo", "[", 
+                   RowBox[{"f", ",", 
+                    RowBox[{"{", 
                     RowBox[{
-                    RowBox[{"i", "+", "1"}], ",", 
-                    RowBox[{"j", "+", "1"}]}], "]"}], "]"}], " ", "=", " ", 
-                  RowBox[{"S", "[", 
-                   RowBox[{"[", "j", "]"}], "]"}]}]}], "\[IndentingNewLine]", 
-                "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}]}], 
-          "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}],
-       ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
-      RowBox[{"(*", 
-       RowBox[{
-        RowBox[{"Print", "[", "CharColorRules", "]"}], ";", 
-        "\[IndentingNewLine]", 
-        RowBox[{"Print", "[", 
-         RowBox[{"ArrayPlot", "[", 
-          RowBox[{"sol", ",", " ", 
-           RowBox[{"ColorRules", "->", "CharColorRules"}], ",", " ", 
-           RowBox[{"Mesh", "->", "True"}], ",", " ", 
-           RowBox[{"PlotLegends", "->", "Automatic"}]}], "]"}], "]"}], ";"}], 
-       "*)"}], "\[IndentingNewLine]", 
+                    RowBox[{"S", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}], ",", 
+                    RowBox[{"S", "[", 
+                    RowBox[{"[", "j", "]"}], "]"}], ",", 
+                    RowBox[{"S", "[", 
+                    RowBox[{"[", "j", "]"}], "]"}]}], "}"}]}], "]"}], ";"}]}],
+                 "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]",
+              "]"}]}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+       "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
       RowBox[{"Return", "[", 
-       RowBox[{
-        RowBox[{"ResourceFunction", "[", "\"\<CharacterArrayPlot\>\"", "]"}], 
-        "[", "sol", "]"}], "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}], 
-  ";"}]], "Input",
+       RowBox[{"{", 
+        RowBox[{"S", ",", "f"}], "}"}], "]"}], ";"}]}], "\[IndentingNewLine]",
+     "]"}]}], ";"}]], "Input",
  CellChangeTimes->{{3.892945083756562*^9, 3.8929450913037*^9}, 
    3.892945157679983*^9, {3.8929452120170517`*^9, 3.89294543058806*^9}, {
    3.892945567033268*^9, 3.892945607256383*^9}, {3.892945652454566*^9, 
@@ -251,9 +196,12 @@ Cell[BoxData[
    3.892958072704658*^9}, {3.8929581178466425`*^9, 3.892958124871292*^9}, 
    3.89295817088414*^9, {3.892958267091241*^9, 3.8929583100048485`*^9}, {
    3.892958354286862*^9, 3.8929584086558266`*^9}, {3.89295849102715*^9, 
-   3.8929585009788823`*^9}, {3.8929585375173817`*^9, 3.8929585425369854`*^9}},
- CellLabel->
-  "In[294]:=",ExpressionUUID->"8fe27fe4-a422-4088-8cca-0a51406b845c"],
+   3.8929585009788823`*^9}, {3.8929585375173817`*^9, 
+   3.8929585425369854`*^9}, {3.8933986388196154`*^9, 3.8933988010616465`*^9}, 
+   3.8933988639262133`*^9, {3.8933989047963943`*^9, 3.8933989836426783`*^9}, {
+   3.893399032220248*^9, 3.8933990325368147`*^9}, {3.893399108603253*^9, 
+   3.8933991132120514`*^9}},
+ CellLabel->"In[24]:=",ExpressionUUID->"8fe27fe4-a422-4088-8cca-0a51406b845c"],
 
 Cell[CellGroupData[{
 
@@ -281,568 +229,72 @@ Cell[BoxData[{
        RowBox[{"{", 
         RowBox[{"r", ",", "b", ",", "r"}], "}"}]}], "}"}], ",", "q", ",", 
      RowBox[{"{", "r", "}"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{"AFDtoAC", "[", "AFD", "]"}]}], "Input",
+ RowBox[{
+  RowBox[{"AC", " ", "=", " ", 
+   RowBox[{"AFDtoAC", "[", "AFD", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", "AC"}], "Input",
  CellChangeTimes->{{3.8929454346392097`*^9, 3.892945553071458*^9}, {
    3.8929458533824887`*^9, 3.8929459255596275`*^9}, {3.892946060096926*^9, 
    3.8929461221210804`*^9}, 3.8929554156139345`*^9, {3.892956260333845*^9, 
-   3.89295626053837*^9}},
- CellLabel->
-  "In[295]:=",ExpressionUUID->"73c13dfa-42ca-4eaa-b872-45579474d5e9"],
+   3.89295626053837*^9}, {3.893399175236142*^9, 3.8933991810432577`*^9}},
+ CellLabel->"In[27]:=",ExpressionUUID->"73c13dfa-42ca-4eaa-b872-45579474d5e9"],
 
 Cell[BoxData[
- GraphicsBox[{
-   {GrayLevel[
-     NCache[
-      Rational[11, 14], 0.7857142857142857]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[1, 2], Rational[-3, 2]}, {0.5, -1.5}]], 
-    InsetBox[
-     StyleBox["\<\"f\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {1, -1}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[13, 14], 0.9285714285714286]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[3, 2], Rational[-3, 2]}, {1.5, -1.5}]], 
-    InsetBox[
-     StyleBox["\<\"a\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {2, -1}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[6, 7], 0.8571428571428571]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[5, 2], Rational[-3, 2]}, {2.5, -1.5}]], 
-    InsetBox[
-     StyleBox["\<\"b\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {3, -1}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[5, 7], 0.7142857142857143]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[7, 2], Rational[-3, 2]}, {3.5, -1.5}]], 
-    InsetBox[
-     StyleBox["\<\"p\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {4, -1}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[9, 14], 0.6428571428571429]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[9, 2], Rational[-3, 2]}, {4.5, -1.5}]], 
-    InsetBox[
-     StyleBox["\<\"q\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {5, -1}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[4, 7], 0.5714285714285714]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[11, 2], Rational[-3, 2]}, {5.5, -1.5}]], 
-    InsetBox[
-     StyleBox["\<\"r\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {6, -1}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[13, 14], 0.9285714285714286]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[1, 2], Rational[-5, 2]}, {0.5, -2.5}]], 
-    InsetBox[
-     StyleBox["\<\"a\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {1, -2}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[13, 14], 0.9285714285714286]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[3, 2], Rational[-5, 2]}, {1.5, -2.5}]], 
-    InsetBox[
-     StyleBox["\<\"a\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {2, -2}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[6, 7], 0.8571428571428571]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[5, 2], Rational[-5, 2]}, {2.5, -2.5}]], 
-    InsetBox[
-     StyleBox["\<\"b\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {3, -2}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[1, 2], 0.5]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[7, 2], Rational[-5, 2]}, {3.5, -2.5}]], 
-    InsetBox[
-     StyleBox["\<\"_\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {4, -2}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[1, 2], 0.5]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[9, 2], Rational[-5, 2]}, {4.5, -2.5}]], 
-    InsetBox[
-     StyleBox["\<\"_\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {5, -2}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[1, 2], 0.5]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[11, 2], Rational[-5, 2]}, {5.5, -2.5}]], 
-    InsetBox[
-     StyleBox["\<\"_\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {6, -2}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[6, 7], 0.8571428571428571]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[1, 2], Rational[-7, 2]}, {0.5, -3.5}]], 
-    InsetBox[
-     StyleBox["\<\"b\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {1, -3}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[13, 14], 0.9285714285714286]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[3, 2], Rational[-7, 2]}, {1.5, -3.5}]], 
-    InsetBox[
-     StyleBox["\<\"a\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {2, -3}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[6, 7], 0.8571428571428571]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[5, 2], Rational[-7, 2]}, {2.5, -3.5}]], 
-    InsetBox[
-     StyleBox["\<\"b\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {3, -3}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[1, 2], 0.5]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[7, 2], Rational[-7, 2]}, {3.5, -3.5}]], 
-    InsetBox[
-     StyleBox["\<\"_\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {4, -3}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[1, 2], 0.5]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[9, 2], Rational[-7, 2]}, {4.5, -3.5}]], 
-    InsetBox[
-     StyleBox["\<\"_\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {5, -3}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[1, 2], 0.5]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[11, 2], Rational[-7, 2]}, {5.5, -3.5}]], 
-    InsetBox[
-     StyleBox["\<\"_\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {6, -3}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[5, 7], 0.7142857142857143]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[1, 2], Rational[-9, 2]}, {0.5, -4.5}]], 
-    InsetBox[
-     StyleBox["\<\"p\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {1, -4}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[4, 7], 0.5714285714285714]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[3, 2], Rational[-9, 2]}, {1.5, -4.5}]], 
-    InsetBox[
-     StyleBox["\<\"r\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {2, -4}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[9, 14], 0.6428571428571429]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[5, 2], Rational[-9, 2]}, {2.5, -4.5}]], 
-    InsetBox[
-     StyleBox["\<\"q\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {3, -4}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[5, 7], 0.7142857142857143]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[7, 2], Rational[-9, 2]}, {3.5, -4.5}]], 
-    InsetBox[
-     StyleBox["\<\"p\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {4, -4}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[9, 14], 0.6428571428571429]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[9, 2], Rational[-9, 2]}, {4.5, -4.5}]], 
-    InsetBox[
-     StyleBox["\<\"q\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {5, -4}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[4, 7], 0.5714285714285714]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[11, 2], Rational[-9, 2]}, {5.5, -4.5}]], 
-    InsetBox[
-     StyleBox["\<\"r\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {6, -4}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[9, 14], 0.6428571428571429]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[1, 2], Rational[-11, 2]}, {0.5, -5.5}]], 
-    InsetBox[
-     StyleBox["\<\"q\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {1, -5}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[5, 7], 0.7142857142857143]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[3, 2], Rational[-11, 2]}, {1.5, -5.5}]], 
-    InsetBox[
-     StyleBox["\<\"p\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {2, -5}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[4, 7], 0.5714285714285714]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[5, 2], Rational[-11, 2]}, {2.5, -5.5}]], 
-    InsetBox[
-     StyleBox["\<\"r\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {3, -5}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[5, 7], 0.7142857142857143]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[7, 2], Rational[-11, 2]}, {3.5, -5.5}]], 
-    InsetBox[
-     StyleBox["\<\"p\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {4, -5}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[9, 14], 0.6428571428571429]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[9, 2], Rational[-11, 2]}, {4.5, -5.5}]], 
-    InsetBox[
-     StyleBox["\<\"q\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {5, -5}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[4, 7], 0.5714285714285714]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[11, 2], Rational[-11, 2]}, {5.5, -5.5}]], 
-    InsetBox[
-     StyleBox["\<\"r\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {6, -5}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[4, 7], 0.5714285714285714]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[1, 2], Rational[-13, 2]}, {0.5, -6.5}]], 
-    InsetBox[
-     StyleBox["\<\"r\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {1, -6}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[4, 7], 0.5714285714285714]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[3, 2], Rational[-13, 2]}, {1.5, -6.5}]], 
-    InsetBox[
-     StyleBox["\<\"r\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {2, -6}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[4, 7], 0.5714285714285714]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[5, 2], Rational[-13, 2]}, {2.5, -6.5}]], 
-    InsetBox[
-     StyleBox["\<\"r\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {3, -6}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[5, 7], 0.7142857142857143]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[7, 2], Rational[-13, 2]}, {3.5, -6.5}]], 
-    InsetBox[
-     StyleBox["\<\"p\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {4, -6}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[9, 14], 0.6428571428571429]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[9, 2], Rational[-13, 2]}, {4.5, -6.5}]], 
-    InsetBox[
-     StyleBox["\<\"q\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {5, -6}]}, 
-   {GrayLevel[
-     NCache[
-      Rational[4, 7], 0.5714285714285714]], EdgeForm[GrayLevel[0.85]], 
-    RectangleBox[NCache[{Rational[11, 2], Rational[-13, 2]}, {5.5, -6.5}]], 
-    InsetBox[
-     StyleBox["\<\"r\"\>",
-      StripOnInput->False,
-      LineColor->GrayLevel[0],
-      FrontFaceColor->GrayLevel[0],
-      BackFaceColor->GrayLevel[0],
-      GraphicsColor->GrayLevel[0],
-      FontSize->Large,
-      FontWeight->Bold,
-      FontColor->GrayLevel[0]], {6, -6}]}},
-  AlignmentPoint->Center,
-  AspectRatio->Automatic,
-  Axes->False,
-  AxesLabel->None,
-  AxesOrigin->Automatic,
-  AxesStyle->{},
-  Background->None,
-  BaseStyle->{},
-  BaselinePosition->Automatic,
-  ColorOutput->Automatic,
-  ContentSelectable->Automatic,
-  CoordinatesToolOptions:>Automatic,
-  DisplayFunction->Identity,
-  Epilog->{},
-  FormatType->TraditionalForm,
-  Frame->False,
-  FrameLabel->None,
-  FrameStyle->{},
-  FrameTicks->Automatic,
-  FrameTicksStyle->{},
-  GridLines->None,
-  GridLinesStyle->{},
-  ImageMargins->0.,
-  ImagePadding->All,
-  ImageSize->Automatic,
-  ImageSizeRaw->Automatic,
-  LabelStyle->{},
-  Method->Automatic,
-  PlotLabel->None,
-  PlotRange->All,
-  PlotRangeClipping->False,
-  PlotRangePadding->Automatic,
-  PlotRegion->Automatic,
-  PreserveImageOptions->Automatic,
-  Prolog->{},
-  RotateLabel->True,
-  Ticks->Automatic,
-  TicksStyle->{}]], "Output",
- CellChangeTimes->{3.8929585460233192`*^9},
- CellLabel->
-  "Out[296]=",ExpressionUUID->"c6e1fd4a-3afa-4fd6-a65e-235ce153e624"]
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"a", ",", "b", ",", "p", ",", "q", ",", "r"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"a", ",", "a", ",", "a"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"a", ",", "b", ",", "b"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"b", ",", "a", ",", "a"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"b", ",", "b", ",", "b"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"p", ",", "a", ",", "r"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"p", ",", "b", ",", "q"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"p", ",", "p", ",", "p"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"p", ",", "q", ",", "q"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"p", ",", "r", ",", "r"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"q", ",", "a", ",", "p"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"q", ",", "b", ",", "r"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"q", ",", "p", ",", "p"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"q", ",", "q", ",", "q"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"q", ",", "r", ",", "r"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"r", ",", "a", ",", "r"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"r", ",", "b", ",", "r"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"r", ",", "p", ",", "p"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"r", ",", "q", ",", "q"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"r", ",", "r", ",", "r"}], "}"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.8929585460233192`*^9, 3.8933988080509276`*^9, 3.893398913007532*^9, {
+   3.893398949223946*^9, 3.893398978090398*^9}, 3.8933990370909357`*^9, {
+   3.893399160054983*^9, 3.8933991817236576`*^9}},
+ CellLabel->"Out[29]=",ExpressionUUID->"c1387ee6-b54f-4533-a226-d254b04b210d"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1152., 579.6},
-WindowMargins->{{
-  Automatic, -5.399999999999864}, {-5.399999999999977, Automatic}},
+WindowSize->{1141.2, 573.6},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 FrontEndVersion->"13.2 for Microsoft Windows (64-bit) (November 18, 2022)",
 StyleDefinitions->FrontEnd`FileName[{"Report"}, "StandardReport.nb", 
   CharacterEncoding -> "UTF-8"],
@@ -864,10 +316,10 @@ Cell[580, 22, 165, 3, 96, "Title",ExpressionUUID->"57729aaf-b387-4380-bf10-73528
 Cell[748, 27, 204, 3, 41, "Author",ExpressionUUID->"5123e258-3689-488a-bf66-ac2bfa4f6941"],
 Cell[CellGroupData[{
 Cell[977, 34, 158, 3, 69, "Section",ExpressionUUID->"e48263ee-8fca-4fc0-8f91-abf015d2c882"],
-Cell[1138, 39, 10012, 216, 782, "Input",ExpressionUUID->"8fe27fe4-a422-4088-8cca-0a51406b845c"],
+Cell[1138, 39, 7896, 164, 534, "Input",ExpressionUUID->"8fe27fe4-a422-4088-8cca-0a51406b845c"],
 Cell[CellGroupData[{
-Cell[11175, 259, 1190, 30, 59, "Input",ExpressionUUID->"73c13dfa-42ca-4eaa-b872-45579474d5e9"],
-Cell[12368, 291, 17935, 546, 427, "Output",ExpressionUUID->"c6e1fd4a-3afa-4fd6-a65e-235ce153e624"]
+Cell[9059, 207, 1319, 32, 78, "Input",ExpressionUUID->"73c13dfa-42ca-4eaa-b872-45579474d5e9"],
+Cell[10381, 241, 1866, 49, 113, "Output",ExpressionUUID->"c1387ee6-b54f-4533-a226-d254b04b210d"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
