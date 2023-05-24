@@ -1,0 +1,20 @@
+python SAR_Crawler.py --out-base-filename out.json --initial-url https://es.wikipedia.org/wiki/Videojuego
+python SAR_Crawler.py --out-base-filename out.json --batch-size 25 --initial-url https://es.wikipedia.org/wiki/Videojuego
+python SAR_Crawler.py --out-base-filename out.json --batch-size 25 --initial-url https://es.wikipedia.org/wiki/Videojuego --document-limit 100
+python SAR_Crawler.py --out-base-filename out.json --batch-size 25 --initial-url https://es.wikipedia.org/wiki/Videojuego --document-limit 104
+
+python SAR_Indexer.py refs/100 100_simple.bin
+python SAR_Searcher.py 100_simple.bin -T ./results/test_100.txt 
+python SAR_Searcher.py 100_simple.bin -S -T ./results/test_100_stem.txt 
+python SAR_Searcher.py 100_simple.bin -L ./results/test_100-L.txt
+
+python SAR_Indexer.py refs/100 100_simple.bin -S
+
+python SAR_Indexer.py refs/100 100_simple.bin -S -M
+
+python SAR_Indexer.py refs/100 100_simple.bin -S -M -P
+
+python SAR_Searcher.py 100_simple.bin -Q 'precisión AND NOT exhaustividad'
+
+python SAR_Searcher.py 100_simple.bin -Q 'precisión AND NOT exhaustividad' -N
+python SAR_Searcher.py 100_simple.bin -Q "precisión AND NOT exhaustividad AND summary:artificial" -N

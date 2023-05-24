@@ -1,0 +1,98 @@
+#
+# MINIMO
+#
+
+casa	35
+cosa	26
+NOT casa	261
+casa AND cosa	6
+casa AND NOT cosa	29
+precisión	28
+precisión AND exhaustividad	3
+precisión OR exhaustividad	29
+precisión AND NOT exhaustividad	25
+NOT precisión OR NOT exhaustividad	293
+de	295
+isla	35
+valencia	20
+sanidad	2
+cultura	41
+videojuegos	38
+videojuegos OR cultura	73
+videojuegos OR NOT videojuegos	296
+isla AND valencia	8
+isla AND NOT valencia	27
+NOT pero	119
+isla AND NOT valencia AND NOT pero	11
+NOT isla AND NOT valencia AND NOT pero	96
+isla AND valencia AND pero	4
+isla OR valencia	47
+isla OR NOT valencia	284
+NOT isla OR valencia	269
+NOT isla OR NOT valencia	288
+NOT isla OR NOT valencia AND pero	173
+NOT isla OR NOT valencia AND NOT pero	115
+NOT isla OR NOT valencia OR NOT pero	292
+años	142
+google	31
+cultura	41
+google OR cultura	66
+años AND google	19
+años AND cultura	33
+
+
+#
+# MULTIFIELD
+#
+
+búsqueda	58
+recuperación	33
+title:información	4
+summary:búsqueda	11
+summary:recuperación	17
+section-name:historia	94
+section-name:precisión	2
+NOT section-name:precisión	294
+title:información AND summary:búsqueda	2
+title:información AND summary:recuperación	3
+title:información AND búsqueda	2
+title:información AND recuperación	3
+title:información AND summary:recuperación AND section-name:precisión	2
+title:información AND summary:recuperación OR section-name:precisión	3
+title:información AND summary:recuperación AND NOT section-name:precisión	1
+almacenamiento	54
+programación	109
+Oric	5
+all:almacenamiento	54
+all:programación	109
+all:Oric	5
+title:almacenamiento	1
+title:programación	16
+title:Oric	2
+summary:almacenamiento	15
+summary:programación	74
+summary:Oric	3
+section-name:historia	94
+title:almacenamiento AND summary:almacenamiento	1
+title:almacenamiento OR summary:almacenamiento	15
+summary:Oric AND NOT title:Oric	1
+summary:almacenamiento AND section-name:historia	6
+
+
+#
+# PERMUTERM
+#
+
+casa	35
+cesa	3
+cisa	0
+cosa	26
+cusa	1
+casa OR cesa OR cisa OR cosa OR cusa	58
+c?sa	58
+c*sa	98
+c*sa AND c?sa	58
+c*sa OR c?sa	98
+c*sa AND NOT c?sa	40
+ma?a AND NOT mata	36
+bar*na OR val*cia OR pa*s	231

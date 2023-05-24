@@ -1,0 +1,192 @@
+#
+# MINIMO
+#
+
+casa	253
+cosa	72
+NOT casa	1121
+casa AND cosa	20
+casa AND NOT cosa	233
+precisión	96
+precisión AND exhaustividad	6
+precisión OR exhaustividad	97
+precisión AND NOT exhaustividad	90
+NOT precisión OR NOT exhaustividad	1368
+de	1373
+isla	242
+valencia	139
+sanidad	22
+cultura	176
+videojuegos	138
+videojuegos OR cultura	285
+videojuegos OR NOT videojuegos	1374
+isla AND valencia	73
+isla AND NOT valencia	169
+NOT pero	602
+isla AND NOT valencia AND NOT pero	81
+NOT isla AND NOT valencia AND NOT pero	441
+isla AND valencia AND pero	34
+isla OR valencia	308
+isla OR NOT valencia	1308
+NOT isla OR valencia	1205
+NOT isla OR NOT valencia	1301
+NOT isla OR NOT valencia AND pero	738
+NOT isla OR NOT valencia AND NOT pero	563
+NOT isla OR NOT valencia OR NOT pero	1340
+años	790
+google	301
+cultura	176
+google OR cultura	436
+años AND google	156
+años AND cultura	155
+
+
+#
+# PARENTESIS
+#
+precisión	96
+precisión AND exhaustividad	6
+precisión OR exhaustividad	97
+precisión AND NOT exhaustividad	90
+NOT precisión OR NOT exhaustividad	1368
+NOT (precisión AND exhaustividad)	1368
+NOT precisión AND NOT exhaustividad	1277
+NOT (NOT precisión AND NOT exhaustividad)	97
+años AND google OR cultura	296
+años AND (google OR cultura)	275
+(google OR cultura) AND años	275
+años AND NOT (google OR cultura)	515
+años AND (NOT google AND NOT cultura)	515
+NOT (google OR cultura) AND años	515
+(psoe OR pp OR CiU)	263
+(economía OR política)	481
+(psoe OR pp OR CiU) AND (economía OR política)	137
+NOT (psoe OR pp OR CiU) AND (economía OR política)	344
+mujer	243
+mujer AND ((psoe OR pp OR CiU) AND (economía OR política))	60
+mujer AND (NOT (psoe OR pp OR CiU) AND (economía OR política))	135
+
+
+
+
+#
+# MULTIFIELD
+#
+
+búsqueda	279
+recuperación	124
+title:información	15
+summary:búsqueda	71
+summary:recuperación	34
+section-name:historia	370
+section-name:precisión	4
+NOT section-name:precisión	1370
+title:información AND summary:búsqueda	3
+title:información AND summary:recuperación	4
+title:información AND búsqueda	7
+title:información AND recuperación	9
+title:información AND summary:recuperación AND section-name:precisión	2
+title:información AND summary:recuperación OR section-name:precisión	6
+title:información AND summary:recuperación AND NOT section-name:precisión	2
+almacenamiento	188
+programación	315
+Oric	5
+all:almacenamiento	188
+all:programación	315
+all:Oric	5
+title:almacenamiento	1
+title:programación	34
+title:Oric	2
+summary:almacenamiento	50
+summary:programación	171
+summary:Oric	3
+section-name:historia	370
+title:almacenamiento AND summary:almacenamiento	1
+title:almacenamiento OR summary:almacenamiento	50
+summary:Oric AND NOT title:Oric	1
+summary:almacenamiento AND section-name:historia	18
+
+
+
+# POSITIONAL
+
+
+"recuperación de información"	38
+"búsqueda de información"	15
+"búsqueda y recuperación de información"	4
+base AND de AND datos	354
+"base de datos"	184
+"base de" AND "de datos"	237
+"base de" AND "de datos" AND NOT "base de datos"	53
+"casa de"	101
+"casa de papel"	5
+"documentos recuperados"	8
+"fin de semana"	19
+fin AND de AND semana	99
+fin AND de AND semana AND país	85
+"fin de semana"	19
+"fin de semana" AND país	14
+medalla AND de AND oro	49
+"medalla de oro"	37
+deporte AND "medalla de oro"	13
+"medalla de oro" AND NOT deporte	24
+"nada de nada"	0
+
+
+
+# STEMMING
+
+
+
+#
+# PERMUTERM
+#
+
+casa	253
+cesa	24
+cisa	0
+cosa	72
+cusa	1
+casa OR cesa OR cisa OR cosa OR cusa	322
+c?sa	322
+c*sa	528
+c*sa AND c?sa	322
+c*sa OR c?sa	528
+c*sa AND NOT c?sa	206
+ma?a AND NOT mata	206
+bar*na OR val*cia OR pa*s	1108
+
+
+
+#
+# DE TODO UN POCO
+#
+
+cosa	72
+"cosa"	72
+"fin de semana"	19
+"el país"	284
+summary:"todo el mundo"	34
+summary:"todo el" AND summary:"el mundo"	37
+(NOT summary:"todo el mundo") AND (summary:"todo el" AND summary:"el mundo")	3
+summary:todo AND summary:el AND summary:mundo	53
+(NOT summary:"todo el mundo") AND (summary:todo AND summary:el AND summary:mundo)	19
+"fin de semana" AND summary:"el mundo"	3
+"fin de semana" AND (summary:el AND summary:mundo)	8
+title:búsqueda AND title:y AND title:recuperación AND title:información	2
+title:"recuperación de información"	2
+"fin de semana" AND (restaurantes OR hoteles)	2
+(title:información OR title:Google)	97
+casa AND (title:información OR title:Google)	5
+c*sa AND (title:información OR title:Google)	14
+title:agosto OR (summary:economía AND "banco")	34
+title:agosto OR (summary:economía AND banco)	34
+title:agosto OR (summary:economía AND NOT banco)	43
+title:agosto OR (summary:economía AND NOT "banco")	43
+"fin de semana" AND (title:python OR section-name:historia)	9
+title:información AND summary:recuperación AND NOT section-name:precisión	2
+title:lengua	1
+title:lenguaje	27
+title:informa AND summary:"sistemas de"	0
+title:información AND summary:"sistemas de"	7
+title:infor* AND summary:"sistemas de"	10
