@@ -1,0 +1,45 @@
+{
+    "host": "gtirouter.dsic.upv.es",
+    "manager": "m_logimar",
+    "manager_password": "secret",
+    "service": "s_logimar",
+    "service_password": "secret",
+    "axis": [
+		{
+            "rank": "BDISoldier",
+            "name": "axis_logimar",
+            "password": "secret",
+            "amount": 10,
+            "asl": "bdisoldier_axis.asl"
+        }
+    ],
+     "allied": [
+        {
+            "rank": "Soldados.General",
+            "name": "general_allied_logimar",
+            "password": "secret",
+            "amount": 1,
+            "asl": "bdigeneral.asl"
+        },
+		{
+            "rank": "BDISoldier",
+            "name": "allied_logimar",
+            "password": "secret",
+            "amount": 6,
+            "asl": "bdisoldier.asl"
+        },
+        {
+            "rank": "BDIMedic",
+            "name": "medic_allied_logimar",
+            "amount":2,
+            "password": "secret",
+            "asl": "bdimedic.asl"
+        },
+         {
+            "rank": "BDIFieldOp",
+            "name": "fieldop_allied_logimar",
+            "password": "secret",
+            "asl": "bdifieldop.asl"
+        }
+   ]
+  }
