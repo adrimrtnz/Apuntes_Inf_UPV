@@ -5,8 +5,18 @@ threshold_health(25).
 
 +flag (F): team(100)
   <-
+  ?base(B);
+  .create_control_points(B, 100, 1, C);
+  .nth(0,C,P);
   .get_service("general");
   .get_backups;
+  .goto(P).
+
++target_reached(T): team(100) & not goint_to_flag
+  <-
+  +goint_to_flag;
+  .print("target_reached");
+  ?flag(F);
   .goto(F).
 
 +flag_taken: team(100)
@@ -71,6 +81,11 @@ threshold_health(25).
 
 //+friends_in_fov(ID,Type,Angle,Distance,Health,Position)
 
++health(X): X < 15 & tengo_bandera
+<-
+// Mandar posición
+.print("Soy el portador y voy a morir").
+
 +health(X): threshold_health(Y) & X < Y & not cureMe
   <-
   +cureMe;
@@ -81,6 +96,7 @@ threshold_health(25).
   **/
   // Meter la petición de botiquín
   +avrakedabra.
+
 +health(X): threshold_health(Y) & X > Y & cureMe
  <-
   -cureMe.
@@ -125,4 +141,5 @@ threshold_health(25).
   avrakedabra & not friends_in_fov(ID_F,Type_F,Angle,Distance_F,Health_F,Position_F)
   <-
   ?ammo(A);
+  .print("avrakedabra");
   .shoot(A,Position).

@@ -104,11 +104,15 @@ threshold_health(25).
   +selectingMedic;
   ?posMedic(B);
   ?idMedic(I);
-  .closestMedic(Pos, B, Medic);
-  .nth(0,Medic,AAA);
-  .nth(AAA,I,A);
-  .send(A, tell, youCure);
-  .send(AAA, tell, elseCure);
+  .length(B, Bl);
+
+  if (Bl > 0) {
+    .closestMedic(Pos, B, Medic);
+    .nth(0,Medic,AAA);
+    .nth(AAA,I,A);
+    .send(A, tell, youCure);
+    .send(I, tell, elseCure); // Esto hay que revisarlo
+  };
   -posMedic(_);
   -idMedic(_);
   -selectingMedic;
