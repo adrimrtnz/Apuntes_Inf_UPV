@@ -18,21 +18,8 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "4e6b05520b173982",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "3º/CMC/Temas/3.Funciones mu-Recursivas.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -107,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "3º/CMC/Temas/3.Funciones mu-Recursivas.md",
+                "file": "3º/SAR/Sistemas de Almacenamiento y Recuperación de la Información.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -124,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "3º/CMC/Temas/3.Funciones mu-Recursivas.md",
+                "file": "3º/SAR/Sistemas de Almacenamiento y Recuperación de la Información.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -147,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "3º/CMC/Temas/3.Funciones mu-Recursivas.md"
+                "file": "3º/SAR/Sistemas de Almacenamiento y Recuperación de la Información.md"
               }
             }
           }
@@ -168,10 +155,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "4e6b05520b173982",
+  "active": "d529045b4ead71d7",
   "lastOpenFiles": [
-    "3º/CMC/Temas/2. La Máquina de Turing.md",
     "3º/CMC/Temas/3.Funciones mu-Recursivas.md",
+    "3º/CMC/Temas/2. La Máquina de Turing.md",
     "3º/SAR/Sistemas de Almacenamiento y Recuperación de la Información.md",
     "3º/CMC/Computabilidad y Complejidad.md",
     "3º/CMC/Conceptos/Jerarquía de Chomsky.md",

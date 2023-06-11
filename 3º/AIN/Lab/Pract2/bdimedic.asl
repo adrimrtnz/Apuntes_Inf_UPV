@@ -1,5 +1,5 @@
 //TEAM_ALLIED 
-
+//un commit
 threshold_ammo(20).
 threshold_health(25).
 
@@ -25,6 +25,7 @@ threshold_health(25).
   .get_service("general");
   ?general(G);
   ?position(P);
+  +tengo_bandera;
   .send(G, tell, tenemos_bandera(P));
   .print("Mando mensaje a General: ", G);
   ?base(B);
@@ -34,12 +35,12 @@ threshold_health(25).
 
 +tenemos_bandera(Pos)[source(G)]: not tengo_bandera
  <-
-   .goto(Pos);
-   -+flag(Pos).
-
+   .goto(Pos).
+   //-+flag(Pos).
+   
 +heading(H): exploring
   <-
-  .reload;
+  .cure;
   .wait(2000);
   .turn(0.375).
 
@@ -70,13 +71,46 @@ threshold_health(25).
   +avrakedabra.
 
 +enemies_in_fov(ID,Type,Angle,Distance,Health,Position) : 
-  not friends_in_fov(ID_F,Type_F,Angle,Distance_F,Health_F,Position_F) 
-  <-
-  .shoot(3,Position).
-
-+enemies_in_fov(ID,Type,Angle,Distance,Health,Position) : 
   avrakedabra & not friends_in_fov(ID_F,Type_F,Angle,Distance_F,Health_F,Position_F)
   <-
   ?ammo(A);
   .print("avrakedabra");
   .shoot(A,Position).
+
++enemies_in_fov(ID,Type,Angle,Distance,Health,Position) : 
+  not friends_in_fov(ID_F,Type_F,Angle,Distance_F,Health_F,Position_F) 
+  <-
+  .shoot(3,Position).
+
+/**
++ir_a(Pos)[source(A)]
+<-
+  .print("MEDICO :: Recibo mensaje de: '", A, "' para ir a: ", Pos);
+  +ayudando;
+  .goto(Pos).
+  // Mejoras
+    // Comprobar si A tiene autoridad sobre el soldado
+    // Hacer caso sólo si tengo salud, armamento o las dos cosas
+    // Revisar antes otras tareas pendientes **/
+
+// recibo del general una petición de ayuda
++cureMe(Pos)[source(A)]: not curing(_,_)
+ <-
+ ?position(P);
+ .send(A,tell, stillAlive(Pos));
+ +curing(A,Pos);
+ -cureMe(_).
+
+// me eligen para curar a un soldado
++youCure[source(A)]: curing(A,Pos)
+<-
+ .goto(Pos).
+
+// eligen a otro médico
++elseCure[source(A)]: curing(A, Pos)
+ <-
+ -curing(A,Position).
+
++target_reached(T):curing(A,T)
+ <-
+ .cure.

@@ -76,15 +76,15 @@ threshold_health(25).
   <-
   +avrakedabra.
 
-// si veo un amigo no disparo
-+enemies_in_fov(_,_,Angle,_,_,Position): not friends_in_fov(ID,Type,Angle,Distance,Health,Position_F) 
-  <-
-  .shoot(3,Position).
-
 +enemies_in_fov(_,_,Angle,_,_,Position) : avrakedabra & not friends_in_fov(ID,Type,Angle,Distance,Health,Position_F)
   <-
   ?ammo(A);
   .shoot(A,Position).
+
+// si veo un amigo no disparo
++enemies_in_fov(_,_,Angle,_,_,Position): not friends_in_fov(ID,Type,Angle,Distance,Health,Position_F) 
+  <-
+  .shoot(3,Position).
 
 // llega una solicitud de ayuda médica
 +cureMe(Pos)[source(A)]: not askforcure & not selectMedic
@@ -92,34 +92,40 @@ threshold_health(25).
   .get_medics;
   +askforcure;
   ?myMedics(M);
-  +posMedic([]); // lista de posiciones de los médicos
-  +idMedic([]); // lista de los IDs de los médicos
-  .send(M,tell,cureMe(Pos));
-  .wait(1000);
-  !!selectMedic(Pos).
+  .length(M,Ml)
+  if(Ml>1){
+   .wait(1000);
+   !!selectMedic(Pos);
+  };
+  if(M1==1){
+    .send(M,tell,cureMe(Pos));
+  };
+  if(M1==0){
+    .print("No quedan médicos vivos");
+  }.
 
 // eligo el médico más cercano
 +!selectMedic(Pos): askforcure & not selectingMedic
   <-
   +selectingMedic;
-  ?posMedic(B);
-  ?idMedic(I);
-  .length(B, Bl);
-
-  if (Bl > 0) {
-    .closestMedic(Pos, B, Medic);
+  .get_medics;
+  ?myMedics(M);  //compruebo de nuevo si hay médicos vivos
+  .length(M, Ml);
+  .send(M,tell,damePos);
+  // falta recoger posiciones de los médicos
+  if (Ml > 1) {
+    .closestFriend(Pos, M, Medic);
     .nth(0,Medic,AAA);
     .nth(AAA,I,A);
     .send(A, tell, youCure);
-    .send(I, tell, elseCure); // Esto hay que revisarlo
-  };
-  -posMedic(_);
-  -idMedic(_);
+    .delete1()
+
+  } 
   -selectingMedic;
   -askforcure.
 
 // un médico me confirma que sigue vivo
-+stillAlive(Pos)[source(A)]: askforcure & not selectMedic
+/**+stillAlive(Pos)[source(A)]: askforcure & not selectMedic
  <- 
  .wait(500);
  //los medicos vivos se añaden a la lista
@@ -129,7 +135,7 @@ threshold_health(25).
  ?idMedic(I);
  .concat(I,[A],I1); 
  -+idMedic(I1);
- -stillAlive(Pos).
+ -stillAlive(Pos). **/
 
 //llega una solicitud de munición
 +askAmmo(Pos)[source(A)]: not askForAmmo & not selectOp
@@ -139,7 +145,7 @@ threshold_health(25).
  .get_fieldops;
  ?myFieldops(F);
  +posOp([]);
- //+IDOp([]);
+ +idOp([]);
  .send(F,tell,askAmmo(Pos));
  .wait(1000); // esperando respuesta de los operativos
  !!selectOp(Pos).
@@ -147,5 +153,18 @@ threshold_health(25).
 +!selectOp(Pos): askForAmmo & not selectOp
  <-
  +selectOp;
- .wait(500).
+ .wait(500);
+ ?posOp(P);
+ ?idOp(I);
+ .length(P,P1);
+ if(P1>0){
+   .closestOp(Pos,P,Op); 
+   .nth(0,Op,BBB);
+   .nth(BBB,I,B1); 
+   .send(B1,tell,youHelp);
+
+
+ }
+ -askForAmmo;
+ -selectOp;
  

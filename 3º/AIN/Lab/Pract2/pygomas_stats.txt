@@ -1,17 +1,17 @@
 Winner Team: AXIS!
-Duration: [0:05:56.488114]
+Duration: [19505 days, 9:24:37.418796]
 Statistics for ALLIED TEAM
 	-GENERAL:
-		* Alive:       	3
-		* Avrg. Health:	96.66666666666667
+		* Alive:       	0
+		* Avrg. Health:	0
 	-OBJECTIVE:
-		* Times Taken: 	1
+		* Times Taken: 	0
 		* Times Lost:  	0
 	-SHOTS:
-		* EnemyHit:    	529
-		* TeamHit:     	51
-		* FailedHit:   	75
-		* TOTAL:       	655
+		* EnemyHit:    	0
+		* TeamHit:     	0
+		* FailedHit:   	0
+		* TOTAL:       	0
 	-MEDIC PACKS:
 		* Delivered:   	0
 		* Team Taken:  	0
@@ -27,28 +27,28 @@ Statistics for ALLIED TEAM
 	-EFICIENCY:
 		* Medic:       	0
 		* FieldOps:    	0
-		* Army:        	0.9923664122137404
+		* Army:        	0
 	-ANTI-EFICIENCY:
 		* Medic:       	0
 		* FieldOps:    	0
-		* Army:        	0.058823529411764705
+		* Army:        	0
 
 Statistics for AXIS TEAM
 	-GENERAL:
-		* Alive:       	5
-		* Avrg. Health:	34.6
+		* Alive:       	0
+		* Avrg. Health:	0
 	-OBJECTIVE:
 		* Times Taken: 	0
-		* Times Lost:  	1
+		* Times Lost:  	0
 	-SHOTS:
-		* EnemyHit:    	417
+		* EnemyHit:    	0
 		* TeamHit:     	0
-		* FailedHit:   	39
-		* TOTAL:       	456
+		* FailedHit:   	0
+		* TOTAL:       	0
 	-MEDIC PACKS:
-		* Delivered:   	10
+		* Delivered:   	0
 		* Team Taken:  	0
-		* Enemy Taken: 	3
+		* Enemy Taken: 	0
 		* Not Taken:   	0
 
 	-AMMO PACKS:
@@ -58,11 +58,11 @@ Statistics for AXIS TEAM
 		* Not Taken:   	0
 
 	-EFICIENCY:
-		* Medic:       	1.0
+		* Medic:       	0
 		* FieldOps:    	0
-		* Army:        	0.993421052631579
+		* Army:        	0
 	-ANTI-EFICIENCY:
-		* Medic:       	0.3
+		* Medic:       	0
 		* FieldOps:    	0
 		* Army:        	0
 

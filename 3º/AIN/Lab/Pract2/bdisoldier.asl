@@ -100,12 +100,13 @@ threshold_health(25).
 +health(X): threshold_health(Y) & X > Y & cureMe
  <-
   -cureMe.
+  
 
 
 +cureMe
  <-
   -+posMedic([]); // lista de posiciones de los médicos
-  //-+IDMedic([]); // lista de los IDs de los médicos
+  -+idMedic([]); // lista de los IDs de los médicos
   .get_service("general");
   ?general(G);
   ?position(Pos);
@@ -125,17 +126,12 @@ threshold_health(25).
 +askAmmo
  <-
  -+posOp([]);
- //-+IDOp([]);
+ -+idOp([]);
  .get_service("general");
  ?general(G);
  ?position(Pos);
  .send(G,tell,askAmmo(Pos));
  .wait(1500).
- 
-+enemies_in_fov(ID,Type,Angle,Distance,Health,Position) : 
-  not friends_in_fov(ID_F,Type_F,Angle,Distance_F,Health_F,Position_F) 
-  <-
-  .shoot(3,Position).
 
 +enemies_in_fov(ID,Type,Angle,Distance,Health,Position) : 
   avrakedabra & not friends_in_fov(ID_F,Type_F,Angle,Distance_F,Health_F,Position_F)
@@ -143,3 +139,9 @@ threshold_health(25).
   ?ammo(A);
   .print("avrakedabra");
   .shoot(A,Position).
+
++enemies_in_fov(ID,Type,Angle,Distance,Health,Position) : 
+  not friends_in_fov(ID_F,Type_F,Angle,Distance_F,Health_F,Position_F) 
+  <-
+  .shoot(3,Position).
+

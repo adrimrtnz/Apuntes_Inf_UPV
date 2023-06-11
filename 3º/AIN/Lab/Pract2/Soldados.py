@@ -20,56 +20,34 @@ class General(BDITroop):
     def add_custom_actions(self,actions):
         super().add_custom_actions(actions)
 
-        @actions.add_function(".closestMedic",(tuple, tuple, ))
-        def _closest_medic(soldP,medics):
+        @actions.add_function(".closestFriend",(tuple, tuple, ))
+        def _closest_friend(soldP,friends):
             '''
+            Devuelve el soldado amigo más cercano, podemos usar esta función
+            pasándole una lista de médicos, una lista de fieldops o backups
+
             Recibe dos parametros:
                 soldP: Posicion de la posición del soldado.
-                medics: La lista de las posiciones de los médicos.
+                friends: La lista de las posiciones de los soldados amigos que pasemos.
             
             return: La posición del médico más cercano.
             '''
             dist = [] #lista de distancias a cada médico
 
             #calculamos la distancia Euclidea 
-            for pos in medics:
-                dist+= [math.sqrt(
+            for pos in friends:
+                dist += [math.sqrt(
                         math.pow(pos[0] - soldP[0], 2)
                         + math.pow(pos[2] - soldP[2], 2)
                         )]
                 
             #elegimos al médico más cercano
-            medic=[]; 
+            friend=[]; 
             distS = tuple(sorted(dist))
             if distS:
-                medic+=[dist.index(distS[0])]
-            return tuple(medic)
-        
-        @actions.add_function(".closestFieldOp",(tuple, tuple, ))
-        def _closest_field_op(soldP,fielops):
-            '''
-            Recibe dos parametros:
-                soldP: Posicion de la posición del soldado.
-                fielops: La lista de las posiciones de los fieldops.
-            
-            return: La posición del fieldop más cercano.
-            '''
-            dist = [] #lista de distancias a cada médico
-
-            #calculamos la distancia Euclidea 
-            for pos in fielops:
-                dist+= [math.sqrt(
-                        math.pow(pos[0] - soldP[0], 2)
-                        + math.pow(pos[2] - soldP[2], 2)
-                        )]
-                
-            #elegimos al médico más cercano
-            fieldop=[]; 
-            distS = tuple(sorted(dist))
-            if distS:
-                fieldop+=[dist.index(distS[0])]
-            return tuple(fieldop)
-        
+                friend+= friends[dist.index(distS[0])]
+            return tuple(friend)
+    
 
 class Tropa(BDITroop):
     def add_custom_actions(self,actions):
