@@ -1,0 +1,5 @@
+pygomas manager -np 22 -j m_logimar@gtirouter.dsic.upv.es -sj s_logimar@gtirouter.dsic.upv.es -m map_01
+
+pygomas run -g pygomas.json
+
+pygomas render

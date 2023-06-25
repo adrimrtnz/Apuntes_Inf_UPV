@@ -1,0 +1,11 @@
+conda activate pygomas
+
+pygomas manager -j amarmar4m@gtirouter.dsic.upv.es -m map_arena -sj amarmar4s@gtirouter.dsic.upv.es -np 25
+
+pygomas manager -j amarmar4m@localhost -m map_arena -sj amarmar4s@localhost -np 25
+
+pygomas manager -j m_ccc@gtirouter.dsic.upv.es -m map_arena -sj s_ccc@gtirouter.dsic.upv.es -np 1
+
+pygomas run -g game_arena.json
+
+pygomas render

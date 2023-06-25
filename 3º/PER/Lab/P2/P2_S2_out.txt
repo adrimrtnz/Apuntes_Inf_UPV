@@ -1,0 +1,161 @@
+---PARAMS: n_components=2 max_depth=8, min_samples_leaf=16, max_bins=64, learning_rate=0.1, l2_regularization=0, ACC=47.63%
+---La NUEVA PRECISIÓN MÁXIMA de Pipeline(steps=[('pca', PCA(n_components=2)),
+                ('histgradientboostingclassifier',
+                 HistGradientBoostingClassifier(l2_regularization=0,
+                                                max_bins=64, max_depth=8,
+                                                min_samples_leaf=16))]) es 47.63%
+
+
+---PARAMS: n_components=2 max_depth=8, min_samples_leaf=16, max_bins=64, learning_rate=0.1, l2_regularization=0.1, ACC=47.79%
+---La NUEVA PRECISIÓN MÁXIMA de Pipeline(steps=[('pca', PCA(n_components=2)),
+                ('histgradientboostingclassifier',
+                 HistGradientBoostingClassifier(l2_regularization=0.1,
+                                                max_bins=64, max_depth=8,
+                                                min_samples_leaf=16))]) es 47.79%
+
+
+---PARAMS: n_components=2 max_depth=8, min_samples_leaf=16, max_bins=64, learning_rate=0.1, l2_regularization=0.2, ACC=47.84%
+---La NUEVA PRECISIÓN MÁXIMA de Pipeline(steps=[('pca', PCA(n_components=2)),
+                ('histgradientboostingclassifier',
+                 HistGradientBoostingClassifier(l2_regularization=0.2,
+                                                max_bins=64, max_depth=8,
+                                                min_samples_leaf=16))]) es 47.84%
+
+
+---PARAMS: n_components=2 max_depth=8, min_samples_leaf=32, max_bins=64, learning_rate=0.1, l2_regularization=0, ACC=47.97%
+---La NUEVA PRECISIÓN MÁXIMA de Pipeline(steps=[('pca', PCA(n_components=2)),
+                ('histgradientboostingclassifier',
+                 HistGradientBoostingClassifier(l2_regularization=0,
+                                                max_bins=64, max_depth=8,
+                                                min_samples_leaf=32))]) es 47.97%
+
+
+---PARAMS: n_components=2 max_depth=8, min_samples_leaf=64, max_bins=64, learning_rate=0.2, l2_regularization=1, ACC=48.13%
+---La NUEVA PRECISIÓN MÁXIMA de Pipeline(steps=[('pca', PCA(n_components=2)),
+                ('histgradientboostingclassifier',
+                 HistGradientBoostingClassifier(l2_regularization=1,
+                                                learning_rate=0.2, max_bins=64,
+                                                max_depth=8,
+                                                min_samples_leaf=64))]) es 48.13%
+
+
+---PARAMS: n_components=2 max_depth=32, min_samples_leaf=256, max_bins=64, learning_rate=0.1, l2_regularization=0.2, ACC=48.21%
+---La NUEVA PRECISIÓN MÁXIMA de Pipeline(steps=[('pca', PCA(n_components=2)),
+                ('histgradientboostingclassifier',
+                 HistGradientBoostingClassifier(l2_regularization=0.2,
+                                                max_bins=64, max_depth=32,
+                                                min_samples_leaf=256))]) es 48.21%
+
+
+
+---La NUEVA PRECISIÓN MÁXIMA de Pipeline(steps=[('pca', PCA(n_components=8)),
+                ('histgradientboostingclassifier',
+                 HistGradientBoostingClassifier(l2_regularization=0.7,
+                                                learning_rate=0.2, max_bins=64,
+                                                max_depth=128,
+                                                min_samples_leaf=256))]) es 90.93%
+
+
+---PARAMS: n_components=16 max_depth=8, min_samples_leaf=16, max_bins=64, learning_rate=0.1, l2_regularization=0, ACC=95.01%
+---La NUEVA PRECISIÓN MÁXIMA de Pipeline(steps=[('pca', PCA(n_components=16)),
+                ('histgradientboostingclassifier',
+                 HistGradientBoostingClassifier(l2_regularization=0,
+                                                max_bins=64, max_depth=8,
+                                                min_samples_leaf=16))]) es 95.01%
+
+    
+---PARAMS: n_components=16 max_depth=8, min_samples_leaf=16, max_bins=64, learning_rate=0.1, l2_regularization=0.1, ACC=95.16%
+---La NUEVA PRECISIÓN MÁXIMA de Pipeline(steps=[('pca', PCA(n_components=16)),
+                ('histgradientboostingclassifier',
+                 HistGradientBoostingClassifier(l2_regularization=0.1,
+                                                max_bins=64, max_depth=8,
+                                                min_samples_leaf=16))]) es 95.16%
+
+                        
+---PARAMS: n_components=16 max_depth=8, min_samples_leaf=16, max_bins=64, learning_rate=0.1, l2_regularization=0, ACC=95.01%
+---La NUEVA PRECISIÓN MÁXIMA de Pipeline(steps=[('pca', PCA(n_components=16)),
+                ('histgradientboostingclassifier',
+                 HistGradientBoostingClassifier(l2_regularization=0,
+                                                max_bins=64, max_depth=8,
+                                                min_samples_leaf=16))]) es 95.01%
+
+
+---PARAMS: n_components=16 max_depth=8, min_samples_leaf=16, max_bins=64, learning_rate=0.1, l2_regularization=0.1, ACC=95.16%
+---La NUEVA PRECISIÓN MÁXIMA de Pipeline(steps=[('pca', PCA(n_components=16)),
+                ('histgradientboostingclassifier',
+                 HistGradientBoostingClassifier(l2_regularization=0.1,
+                                                max_bins=64, max_depth=8,
+                                                min_samples_leaf=16))]) es 95.16%
+
+
+
+---PARAMS: n_components=16 max_depth=8, min_samples_leaf=16, max_bins=64, learning_rate=0.1, l2_regularization=0.3, ACC=95.43%
+---La NUEVA PRECISIÓN MÁXIMA de Pipeline(steps=[('pca', PCA(n_components=16)),
+                ('histgradientboostingclassifier',
+                 HistGradientBoostingClassifier(l2_regularization=0.3,
+                                                max_bins=64, max_depth=8,
+                                                min_samples_leaf=16))]) es 95.43%
+
+
+---PARAMS: n_components=16 max_depth=8, min_samples_leaf=16, max_bins=64, learning_rate=0.2, l2_regularization=0.1, ACC=95.86%
+---La NUEVA PRECISIÓN MÁXIMA de Pipeline(steps=[('pca', PCA(n_components=16)),
+                ('histgradientboostingclassifier',
+                 HistGradientBoostingClassifier(l2_regularization=0.1,
+                                                learning_rate=0.2, max_bins=64,
+                                                max_depth=8,
+                                                min_samples_leaf=16))]) es 95.86%
+
+
+---PARAMS: n_components=16 max_depth=8, min_samples_leaf=16, max_bins=64, learning_rate=0.2, l2_regularization=0.2, ACC=95.90%
+---La NUEVA PRECISIÓN MÁXIMA de Pipeline(steps=[('pca', PCA(n_components=16)),
+                ('histgradientboostingclassifier',
+                 HistGradientBoostingClassifier(l2_regularization=0.2,
+                                                learning_rate=0.2, max_bins=64,
+                                                max_depth=8,
+                                                min_samples_leaf=16))]) es 95.90%
+
+
+---PARAMS: n_components=16 max_depth=8, min_samples_leaf=16, max_bins=64, learning_rate=0.2, l2_regularization=0.4, ACC=96.06%
+---La NUEVA PRECISIÓN MÁXIMA de Pipeline(steps=[('pca', PCA(n_components=16)),
+                ('histgradientboostingclassifier',
+                 HistGradientBoostingClassifier(l2_regularization=0.4,
+                                                learning_rate=0.2, max_bins=64,
+                                                max_depth=8,
+                                                min_samples_leaf=16))]) es 96.06%
+
+
+---PARAMS: n_components=16 max_depth=8, min_samples_leaf=16, max_bins=64, learning_rate=0.2, l2_regularization=0.9, ACC=96.09%
+---La NUEVA PRECISIÓN MÁXIMA de Pipeline(steps=[('pca', PCA(n_components=16)),
+                ('histgradientboostingclassifier',
+                 HistGradientBoostingClassifier(l2_regularization=0.9,
+                                                learning_rate=0.2, max_bins=64,
+                                                max_depth=8,
+                                                min_samples_leaf=16))]) es 96.09%
+
+
+---PARAMS: n_components=16 max_depth=8, min_samples_leaf=16, max_bins=64, learning_rate=0.3, l2_regularization=0.4, ACC=96.17%
+---La NUEVA PRECISIÓN MÁXIMA de Pipeline(steps=[('pca', PCA(n_components=16)),
+                ('histgradientboostingclassifier',
+                 HistGradientBoostingClassifier(l2_regularization=0.4,
+                                                learning_rate=0.3, max_bins=64,
+                                                max_depth=8,
+                                                min_samples_leaf=16))]) es 96.17%
+
+
+---PARAMS: n_components=16 max_depth=8, min_samples_leaf=256, max_bins=64, learning_rate=0.3, l2_regularization=1, ACC=96.30%
+---La NUEVA PRECISIÓN MÁXIMA de Pipeline(steps=[('pca', PCA(n_components=16)),
+                ('histgradientboostingclassifier',
+                 HistGradientBoostingClassifier(l2_regularization=1,
+                                                learning_rate=0.3, max_bins=64,
+                                                max_depth=8,
+                                                min_samples_leaf=256))]) es 96.30%
+
+
+---PARAMS: n_components=16 max_depth=16, min_samples_leaf=32, max_bins=100, learning_rate=0.3, l2_regularization=0.2, ACC=96.44%
+---La NUEVA PRECISIÓN MÁXIMA de Pipeline(steps=[('pca', PCA(n_components=16)),
+                ('histgradientboostingclassifier',
+                 HistGradientBoostingClassifier(l2_regularization=0.2,
+                                                learning_rate=0.3, max_bins=100,
+                                                max_depth=16,
+                                                min_samples_leaf=32))]) es 96.44%
+

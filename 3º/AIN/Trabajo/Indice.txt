@@ -1,0 +1,19 @@
+1. Fundamentos teóricos
+--Inteligencia Artificial
+--Agentes inteligentes
+--Aprendizaje por refuerzo
+--Videojuegos y sus características
+--Interacción humano-computadora en videojuego
+ 
+ 
+2. Modelado de agentes inteligentes en videojuegos
+--Tipos de agentes inteligentes
+--Diseño de agentes inteligentes para diferentes tipos de videojuegos
+--Técnicas de aprendizaje por refuerzo para agentes inteligentes en videojuegos
+ 
+ 
+3. Sistemas Multi-agente en videojuegos
+-- Motores de videojuegos basados en sistemas multi-agentes (basado en tesis Marín-Lora, C., Chover, M., Sotoca, J. M., & García, L. A. (2020). A game engine to make games as multi-agent systems.)
+-- De AlphaZero a AlphaStar, de agentes simples a sistemas multiagente
+----Explicar los avances en este campo desde los árboles de decisión de AlphaGo al sistema multiagente de AlphaStar que permite a un sistema multiagente jugar a StarCraft, un juego de estrategia en tiempo real.
+--(Hay otras lineas de investigación de DeepMind que no son multi-agente, sino de un solo agente, pero en la linea de hacer que este agente sea competente en diversos juegos, no solo en uno)

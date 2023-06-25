@@ -4,9 +4,13 @@ Este respositorio son notas propias de las clases del Grado en Ingeniería Infor
 
 Estas notas son correspondientes a los cursos a partir de 2º del grado. En el repositorio solo se incluyen los archivos Markdown. No se incluye el material propio dado por los diferentes departamentos del Grado.
 
+## La carpeta Computer-Science
+
+Esta carpeta es una *vault* de [Obsidian](https://obsidian.md/) correspondiente a las asignaturas de la rama de computación. Contiene diferentes archivos Markdown.
+
 ## Acerca del formato Markdown
 
-Se pueden visualizar directamente a través del navegador, sin embargo no se verán correctamente las expresiones matemáticas expresadas en LaTeX. Si se desea la visualización correcta de los archivos, se puede usar un editor de markdown como el propio de Visual Studio Code, o [MarkText](https://github.com/marktext/marktext), un editor de Markdown gratuito que permite el uso de temas e importar el archivo `.md` tanto a PDF y HTML entre otros.
+Se pueden visualizar directamente a través del navegador, sin embargo no se verán correctamente las expresiones matemáticas expresadas en LaTeX. Si se desea la visualización correcta de los archivos, se puede usar un editor de markdown como el propio de [Visual Studio Code](https://code.visualstudio.com/), [MarkText](https://github.com/marktext/marktext) o [Obsidian](https://obsidian.md/).
 
 ## Asignaturas
 
@@ -30,3 +34,10 @@ Se pueden visualizar directamente a través del navegador, sin embargo no se ver
 * **ISW**: Ingeniería del software.
 * **CPA**: Computación paralela.
 * **SIN**: Sistemas inteligentes.
+
+* **AIN**: Agentes inteligentes.
+* **CMC**: Computabilidad y Complejidad.
+* **GPR**: Gestión de proyectos.
+* **PER**: Percepción.
+* **SAR**: Sistemas de Almacenamiento y Recuperación de la Información.
+* **TOP**: Tecnicas de Optimización (Investigación Operativa).

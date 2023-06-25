@@ -1,0 +1,195 @@
+---
+title: "TOP - Práctica 8"
+autor: "Adrin Martínez"
+output: html_notebook
+---
+
+Antes de ejecutar el siguiente bloque de código hay que haber instalado IpSolverAPI con el comando `install.packages("lpSolveAPI")`
+
+Con el paquete instalado, cargamos la librería necesaria:
+```{r}
+library(lpSolveAPI)
+```
+
+Utilizando el sistema de ayuda integrado de R es posible acceder a documentación para cada función en el paquete lpSolveAPI. El siguiente comando mostrará la documentación para la función `add.constraint`:
+
+```{r}
+??add.constraint
+```
+
+Es posible visualizar el listado completo de funciones incluidas en la librería con el comando:
+
+```{r}
+ls("package:lpSolveAPI")
+```
+
+Para crear un objeto LPMO, utilizaremos el comando `make.lp(m,n)`. Si el objeto LPMO es un
+modelo con 3 variables (indicaremos 0 restricciones porque vamos a ir añadiendo de forma 
+dinámica las restricciones):
+
+```{r}
+modelo <- make.lp(0,3)
+modelo
+```
+
+```{r}
+set.objfn(modelo, c(1,9,3))
+modelo
+```
+
+Una vez definidos los coeficientes de las variables de la función objetivo, definimos las restricciones:
+```{r}
+add.constraint(modelo,c(1,2,3),">=",1)
+add.constraint(modelo,c(3,2,2),"<=",15)
+modelo
+```
+
+Utilizamos la función `lp.control` para indicar el criterio de la función objetivo:
+```{r}
+lp.control(modelo, sense="max")
+modelo
+```
+
+## Ejecutamos lpSolveAPI
+
+Una vez definido el modelo, para resolverlo se usa la función `solve()`:
+```{r}
+solve(modelo)
+```
+
+El retorno del valor 0 indica que el modelo se ha resulto de forma satisfactoria.
+
+A continuación, accedemos a los resultados del modelo utilizando para ellos los métodos:
+* `get.objective`
+* `get.variables`
+* `get.constraints`
+
+```{r}
+get.objective(modelo)
+get.variables(modelo)
+get.constraints(modelo)
+```
+
+## Costes Reducido y Costes de Oportunidad
+
+Para obtener los valores de los costes reducidos de las variables decisión y de los costes de oportunidad de las restricciones, debemos utilizar el método `get.dual.solution`:
+```{r}
+get.dual.solution(modelo)
+```
+
+## Análisis de sensibilidad
+Para obtener los intervalos de análisis de sensibilidad de los coeficientes de las variables en la función objetivo utilizaremos la función `get.sensitivity.obj`:
+```{r}
+get.sensitivity.obj(modelo)
+```
+
+## Variables enteras
+
+Por defecto, las variables son continuas y no negativas. Si alguna es entera o binaria se declara con la función `set.type()`.
+
+Supongamos que se desa indicar que el modelo incluye variables de naturaleza **entera**. En particular, queremos indicar que la segunda y la tercera variable son enteras:
+```{r}
+set.type(modelo,2,"integer")
+set.type(modelo,3,"integer")
+modelo
+```
+
+## Variables binarias
+También es posible especificar ue alguna variable del modelo es de naturaleza **binaria**. En particular si queremos indicar que la primera variable es binaria, usaremos la función `set.type` pero esta vez indicaremos `binary`:
+
+```{r}
+set.type(modelo,1,"binary")
+modelo
+```
+
+## Variables acotadas
+Para indicar que una variable tomará valores acotacos entre ciertos límites, se utiliza `set.bounds()`:
+
+## Etiquetas para variables y restricciones
+```{r}
+colNames <- c("x1","x2","x3")
+rowNames <- c("res1","res2")
+dimnames(modelo) <- list(rowNames, colNames)
+modelo
+```
+
+## Separando datos del modelo
+Es posible formular el modelo matemático separando los datos del modelo matemático:
+```{r}
+modelo <- make.lp(0,3)
+aij <- matrix(c(1,2,3,3,2,2), nrow=2, byrow=TRUE)
+ci <- c(1,9,3)
+bi <- c(1,15)
+
+set.objfn(modelo,ci)
+add.constraint(modelo, aij[1,],">=",bi[1])
+add.constraint(modelo, aij[2,],"<=",bi[2])
+```
+
+## Escribir y leer un modelo matemático en formato MPS
+
+Para escribir el modelo matemático en un fichero que pueda ser leído por otro software de optimización, se utiliza el formato MPS diseñado por IMA. Usaremos la función `write.lp`:
+```{r}
+write.lp(modelo,'modelo.mps',type="mps")
+```
+
+El fichero se habrá creado en el directorio de trabajo de **R**. Para saber este directorio:
+```{r}
+getwd()
+```
+
+Para leer:
+```{r}
+modelo <- read.lp('modelo.mps',type="mps")
+modelo
+```
+
+# Ejercicio
+
+```{r}
+ejercicio <- make.lp(0,5)
+set.objfn(ejercicio, c(634,560,570,704,812))
+add.constraint(ejercicio,c(1,0,0,0,0),">=",36)
+add.constraint(ejercicio,c(0,1,1,0,0),">=",45)
+add.constraint(ejercicio,c(0,0,0,1,1),">=",10)
+
+add.constraint(ejercicio,c(10,8,0,8,0),"<=",480)
+add.constraint(ejercicio,c(0,0,6,0,10),"<=",480)
+add.constraint(ejercicio,c(6,10,0,16,3),"<=",480)
+add.constraint(ejercicio,c(3,0,9,0,8),"<=",480)
+
+colNames <- c("A","B1","B2","C1","C2")
+rowNames <- c("DEMA","DEMB","DEMC","CAPM1","CAPM2","CAPM3","CAPM4")
+
+dimnames(ejercicio) <- list(rowNames, colNames)
+
+ejercicio
+```
+
+```{r}
+solve(ejercicio)
+get.objective(ejercicio)
+```
+
+
+Coeficientes de las variables de la función objetivo:
+```{r}
+get.variables(ejercicio)
+```
+
+Valor que toma cada una de las restricciones en orden ($DEM_i$,$CAPM_i$):
+```{r}
+get.constraints(ejercicio)
+```
+
+Ahora obtenemos el coste reducido y el coste de oportunidad:
+```{r}
+get.dual.solution(ejercicio)
+```
+
+En la salida anterior, las primeras entradas corresponden con el coste de oportunidad de las restricciones, y luego se especifica el coste reducido de las variables decisión. Independientemente del signo que de la solución, el signo será negativo si la restricción es $>=$ y positivo para restricciones $<=$.
+
+```{r}
+get.sensitivity.obj(ejercicio)
+```
+
