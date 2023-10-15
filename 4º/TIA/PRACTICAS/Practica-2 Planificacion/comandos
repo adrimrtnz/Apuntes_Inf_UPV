@@ -1,0 +1,2 @@
+ .\lpg-td.exe -o '.\Zenotravel _dominio y problemas_\zenotravel.pddl' -f '.\Zenotravel _dominio y problemas_\pfile1' -n 3
+ .\lpg-td.exe -o '.\Dominios a probar\rovers\domain.pddl' -f '.\Dominios a probar\rovers\p01.pddl' -n 3

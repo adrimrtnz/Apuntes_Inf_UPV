@@ -12,7 +12,6 @@
 #include <iostream>	
 #include <codebase.h>
 
-
 // Funcion de atencion al evento de dibujo
 void display()
 {
