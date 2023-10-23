@@ -1,0 +1,9 @@
+﻿  Main.cpp
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_03\Main.cpp(43,17): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_03\Main.cpp(43,12): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+  Generando código
+  0 of 8 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Generación de código finalizada
+  Lab_03.vcxproj -> C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_03\Lab_03.exe

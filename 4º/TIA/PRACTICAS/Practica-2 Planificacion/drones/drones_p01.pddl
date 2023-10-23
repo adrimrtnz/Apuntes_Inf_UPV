@@ -1,6 +1,14 @@
-(define (problem drones-01))
+(define (problem drones-01)
 (:domain drones)
 (:objects
+    A - Waypoint
+    B - Waypoint
+    C - Waypoint
+    D - Waypoint
+    D - Waypoint
+    E - Waypoint
+    F - Waypoint
+
     dronL1 - Light_Drone
     dronL2 - Light_Drone
     dronL3 - Light_Drone
@@ -14,36 +22,43 @@
     paqueteP2 - Heavy_Pkg
     )
 (:init
+    (= (coste-recargas) 0)
+
     (at dronL1 A)
         (= (max-battery dronL1) 100)
         (= (battery dronL1) 5)
         (= (fly-speed dronL1) 2)
         (= (recharge-delay dronL1) 8)
         (= (recharge-cost dronL1) 8)
+        (empty dronL1)
     (at dronL2 A)
         (= (max-battery dronL2) 100)
         (= (battery dronL2) 10)
         (= (fly-speed dronL2) 4)
         (= (recharge-delay dronL2) 9)
         (= (recharge-cost dronL2) 10)
+        (empty dronL2)
     (at dronL3 C)
         (= (max-battery dronL3) 150)
         (= (battery dronL3) 40)
         (= (fly-speed dronL3) 4)
         (= (recharge-delay dronL3) 10)
         (= (recharge-cost dronL3) 8)
+        (empty dronL3)
     (at dronP1 E)
         (= (max-battery dronP1) 200)
         (= (battery dronP1) 40)
         (= (fly-speed dronP1) 1)
         (= (recharge-delay dronP1) 20)
         (= (recharge-cost dronP1) 9)
+        (empty dronP1)
     (at dronP2 D)
         (= (max-battery dronP2) 220)
         (= (battery dronP2) 120)
         (= (fly-speed dronP2) 2)
         (= (recharge-delay dronP2) 25)
         (= (recharge-cost dronP2) 12)
+        (empty dronP2)
 
     (at paqueteL1 B)
     (at paqueteL2 A)
@@ -87,6 +102,15 @@
     (= (distance E F) 100)
     (= (distance F E) 100)
     (= (distance F F) 0)
+
+    (recharge-point A)
+    (recharge-point B)
+    (recharge-point C)
+    (recharge-point F)
+
+    (zvr A)
+    (zvr B)
+    (zvr C)
 )
 (:goal (and
     (at paqueteL1 C)
@@ -102,4 +126,4 @@
     (at dronP2 E)
     ))
 
-(:metric minimize (+(*0.6 (total-time)) (*0.4 (coste-recargas))))
+(:metric minimize (+(*0.6 (total-time)) (*0.4 (coste-recargas)))))
