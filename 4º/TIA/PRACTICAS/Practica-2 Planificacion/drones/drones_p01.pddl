@@ -108,6 +108,11 @@
     (recharge-point C)
     (recharge-point F)
 
+    (recharge-point-free A)
+    (recharge-point-free B)
+    (recharge-point-free C)
+    (recharge-point-free F)
+
     (zvr A)
     (zvr B)
     (zvr C)

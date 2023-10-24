@@ -7,6 +7,7 @@
         (empty ?d - (either Light_Drone Heavy_Drone))
         (recharge-point ?w - Waypoint)
         (zvr ?w - Waypoint)
+        (recharge-point-free ?w - Waypoint)
         )
     (:functions 
         (battery ?d - (either Light_Drone Heavy_Drone))
@@ -76,7 +77,6 @@
     :duration (= ?duration 2)
     :condition (and  
                     (at start (at ?d ?w))
-                    (over all (not (zvr ?w)))
                     (over all (in ?p ?d))
                     (over all (at ?d ?w))
                     (over all (not (empty ?d))))
@@ -92,43 +92,12 @@
 ;;;                            VOLAR                                  ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-    (:durative-action fly-light-delivering
-    :parameters (?p - Light_Pkg ?d - Light_Drone ?w1 ?w2 - Waypoint)
-    :duration (= ?duration (/ (distance ?w1 ?w2) (fly-speed ?d)))
-    :condition (and
-                (at start (>= (battery ?d) (distance ?w1 ?w2)))
-                (over all (in ?p ?d))
-                (over all (not (empty ?d)))
-                (at start (at ?d ?w1)))
-    :effect (and
-            (at end (not (at ?d ?w1)))
-            (at end (at ?d ?w2))
-            (at end (decrease (battery ?d) (distance ?w1 ?w2))))
-    )
-
-    (:durative-action fly-heavy-delivering
-    :parameters (?p - (either Light_Pkg Heavy_Pkg) ?d - Heavy_Drone ?w1 ?w2 - Waypoint)
-    :duration (= ?duration (/ (distance ?w1 ?w2) (fly-speed ?d)))
-    :condition (and
-                (at start (>= (battery ?d) (distance ?w1 ?w2)))
-                (over all (not (zvr ?w1)))
-                (over all (not (zvr ?w2)))
-                (over all (in ?p ?d))
-                (over all (not (empty ?d)))
-                (at start (at ?d ?w1)))
-    :effect (and
-            (at end (not (at ?d ?w1)))
-            (at end (at ?d ?w2))
-            (at end (decrease (battery ?d) (distance ?w1 ?w2))))
-    )
-
     (:durative-action fly-light
     :parameters (?d - Light_Drone ?w1 ?w2 - Waypoint)
     :duration (= ?duration (/ (distance ?w1 ?w2) (fly-speed ?d)))
     :condition (and
                 (at start (>= (battery ?d) (distance ?w1 ?w2)))
-                (at start (at ?d ?w1))
-                (over all (empty ?d)))
+                (at start (at ?d ?w1)))
     :effect (and
             (at end (not (at ?d ?w1)))
             (at end (at ?d ?w2))
@@ -142,7 +111,6 @@
                 (at start (>= (battery ?d) (distance ?w1 ?w2)))
                 (over all (not (zvr ?w1)))
                 (over all (not (zvr ?w2)))
-                (over all (empty ?d))
                 (at start (at ?d ?w1)))
     :effect (and
             (at end (not (at ?d ?w1)))
@@ -159,12 +127,15 @@
     :duration (= ?duration (recharge-delay ?d))
     :condition (and 
                     (at start (at ?d ?w))
+                    (at start (recharge-point-free ?w))
                     (over all (recharge-point ?w))
                     (over all (empty ?d))
                     (over all (at ?d ?w)))
-    :effect (and 
+    :effect (and
+                (at start (not (recharge-point-free ?w)))
                 (at end (increase (coste-recargas) (recharge-cost ?d)))
-                (at end (assign (battery ?d) (max-battery ?d))))
+                (at end (assign (battery ?d) (max-battery ?d)))
+                (at end (recharge-point-free ?w)))
     )
 
     (:durative-action recharge-heavy
@@ -172,13 +143,15 @@
     :duration (= ?duration (recharge-delay ?d))
     :condition (and 
                     (at start (at ?d ?w))
+                    (at start (recharge-point-free ?w))
                     (over all (recharge-point ?w))
-                    (over all (not (zvr ?w)))
                     (over all (empty ?d))
                     (over all (at ?d ?w)))
-    :effect (and 
+    :effect (and
+                (at start (not (recharge-point-free ?w)))
                 (at end (increase (coste-recargas) (recharge-cost ?d)))
-                (at end (assign (battery ?d) (max-battery ?d))))
+                (at end (assign (battery ?d) (max-battery ?d)))
+                (at end (recharge-point-free ?w)))
     )
 
 )
