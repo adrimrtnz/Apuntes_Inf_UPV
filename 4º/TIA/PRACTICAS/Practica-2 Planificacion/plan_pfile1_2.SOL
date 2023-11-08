@@ -1,0 +1,17 @@
+
+; Version LPG-td-1.0
+; Seed 41847651
+; Command line: ./lpg-td -o .\Zenotravel _dominio y problemas_\zenotravel.pddl -f .\Zenotravel _dominio y problemas_\pfile1 -n 3 
+; Problem pfile1
+; Time 0.00
+; Search time 0.00
+; Parsing time 0.00
+; Mutex time 0.00
+; Quality 27.26
+
+
+Time 0.00
+
+0.0003:   (FLY PLANE1 CITY0 CITY1) [3.4242]
+
+

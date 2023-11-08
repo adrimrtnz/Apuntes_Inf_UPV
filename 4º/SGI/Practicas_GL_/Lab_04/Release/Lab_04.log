@@ -1,0 +1,8 @@
+﻿  Main.cpp
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_04\Main.cpp(65,15): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+  Generando código
+  2 of 18 functions (11.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Generación de código finalizada
+  Lab_04.vcxproj -> C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_04\Lab_04.exe

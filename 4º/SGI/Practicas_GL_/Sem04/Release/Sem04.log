@@ -1,0 +1,8 @@
+﻿  Main.cpp
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Sem04\Main.cpp(123,1): warning C4326: el tipo de valor devuelto de 'main' debe ser 'int' en lugar de 'void'
+  Generando código
+  2 of 5 functions (40.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Generación de código finalizada
+  Sem04.vcxproj -> C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Sem04\Sem_04.exe

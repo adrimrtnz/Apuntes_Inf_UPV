@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # AUTORES:
-# (poner aquí el nombre o 2 nombres del equipo de prácticas
+# Adrián Martínez Martínez - amarmar4
 
 import sys
 
@@ -12,8 +12,13 @@ def langford(N):
         if num<=0:
             yield "-".join(map(str, seq))
         else:
-            # buscamos una posicion para situar una pareja num
-            pass # COMPLETAR
+            for i in range(len(seq) - num - 1):
+                if seq[i] == 0 and seq[i+1+num] == 0:
+                    seq[i] = num
+                    seq[i+1+num] = num
+                    yield from backtracking(num-1)
+                    seq[i] = 0
+                    seq[i+1+num] = 0
 
     if N%4 in (0,3):
         yield from backtracking(N)

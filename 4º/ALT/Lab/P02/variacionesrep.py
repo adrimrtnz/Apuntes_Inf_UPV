@@ -1,5 +1,6 @@
 # AUTORES:
-# (poner aquí el nombre o 2 nombres del equipo de prácticas
+# Adrián Martínez Martínez
+
 
 def variacionesRepeticion(elementos, cantidad):
     
@@ -43,6 +44,7 @@ def combinaciones(elementos, cantidad):
                     sol.pop()
                 
     yield from backtracking([], 0)
+
     
 if __name__ == "__main__":
     for n in (1,2,3):

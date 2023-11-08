@@ -3,7 +3,7 @@ import sys
 from exactcover import exact_cover
 
 # AUTORES:
-# (poner aquí el nombre o 2 nombres del equipo de prácticas
+# Adrian Martinez Martinez - amarmar4
 
 def langford_data_structure(N):
     # n1,n2,... means that the value has been used
@@ -14,15 +14,24 @@ def langford_data_structure(N):
         return sys.intern(f'p{i}')
     # crear la lista de conjuntos que resuelva la
     # secuencia de Langford con exact_cover
-    # COMPLETAR
-    # return U
+    U = list()
+    for num in range(1, N+1):
+        for i in range(2*N - num - 1):
+            U.append({position(i), position(i+1+num), value(num)})
+    return U
 
 def langford_exact_cover(N):
     if N%4 in (0,3):
         U = langford_data_structure(N)
         sol = [None]*2*N
         for coversol in exact_cover(U):
+            """El código base proporcionado funcionaba si exact_cover devolvía conjuntos,
+            con la nueva explicación devuelve un vector de 0s y 1s indicando qué conjuntos
+            se utilizan, la linea de abajo convierte la solución devuelta al formato
+            requerido"""
+            coversol = [U[i] for i, item in enumerate(coversol) if item == 1]
             for item in coversol:
+                print(item)
                 elems = sorted(item)
                 n = int(elems[0][1:])
                 p = int(elems[1][1:])

@@ -8,10 +8,18 @@ def exact_cover(listaConjuntos, U=None):
         U = set().union(*listaConjuntos) 
     
     def backtracking(sol, cjtAcumulado):
-        # COMPLETAR
-        # consulta los métodos isdisjoint y union de la clase set,
-        # podrías necesitarlos
-        
+        if len(sol) == len(listaConjuntos):     # Si es completo
+            if cjtAcumulado == U:               # Si es factible 
+                yield sol
+        else:
+            cjt = listaConjuntos[len(sol)]
+            if cjt.isdisjoint(cjtAcumulado):
+                sol.append(1)
+                yield from backtracking(sol, cjtAcumulado | cjt)
+                sol.pop()
+            sol.append(0)
+            yield from backtracking(sol, cjtAcumulado)
+            sol.pop()  
     yield from backtracking([], set())
 
 if __name__ == "__main__":
