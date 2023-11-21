@@ -1,0 +1,513 @@
+/*************************************************
+	Autor: Adrian Martinez Martinez
+	usuario UPV: amarmar4
+*************************************************/
+
+#define PROYECTO "Animacion"
+
+#include <iostream>	
+#include <sstream>
+#include <codebase.h>
+
+using namespace std;
+using namespace cb;
+
+// Globales
+static float alfa = 0;
+static float beta = 0;
+static float alfa_bolas = 0;
+static float alfa_cam = 0;
+static float rotacion_vagon = 0;
+static const int NUM_PATAS = 6;
+static const int NUM_BOLAS = 10;
+static const int GRADOS_OFFSET_PATAS = 15;
+static float MAX_MOMENTUM = 1.5f;
+static float refresh_rate = 60;
+static float delta_time = 0;
+static float momentum = 0.0f;
+static GLuint estrella;
+static GLfloat radio_int = 0.7f;
+static GLfloat radio_ext = 1.0f;
+
+// Colores
+static GLfloat c_vagoneta[]			= { 0.929f, 0.847f, 0.267f };
+static GLfloat c_base_vagon[]		= { 0.106f, 0.486f, 0.757f };
+static GLfloat c_tentaculo[]		= { 0.922f, 0.922f, 0.922f };
+static GLfloat c_suelo[]			= { 0.070f, 0.400f, 0.070f };
+static GLfloat c_pulpo[]			= { 0.537f, 0.384f, 0.745f };
+// static GLfloat c_pulpo[]			= { 0.984f, 0.957f, 0.675f };
+static GLfloat c_bola_estrella[]	= { 
+										random(0,1), random(0,1), 1,
+										random(0,1), random(0,1), 1,
+										random(0,1), random(0,1), 1,
+										random(0,1), random(0,1), 1,
+										random(0,1), random(0,1), 1,
+										random(0,1), random(0,1), 1
+									};
+
+void draw_floor()
+{
+	float ancho = 5.0f;
+	float largo = 5.0f;
+	glPushMatrix();
+	glPushAttrib(GL_CURRENT_BIT);
+	glColor3f(0.07, 0.40, 0.07);
+	glBegin(GL_QUADS);
+		glVertex3f(-ancho / 2, 0.0f, -largo / 2);
+		glVertex3f(ancho / 2, 0.0f, -largo / 2);
+		glVertex3f(ancho / 2, 0.0f, largo / 2);
+		glVertex3f(-ancho / 2, 0.0f, largo / 2);
+	glEnd();
+	glPopMatrix();
+	glPopAttrib();
+}
+
+void draw_vagon()
+{
+	float alto = 0.2f;
+	float ancho = 0.75f;
+	float profundidad = 1.0f;
+
+	glPushMatrix();
+	glBegin(GL_QUADS);
+	glPushAttrib(GL_CURRENT_BIT);
+	glColor3f(c_vagoneta[0], c_vagoneta[1], c_vagoneta[2]);
+
+	// Cara frontal
+	glVertex3f(-ancho / 2, -alto / 2, profundidad / 2);
+	glVertex3f(ancho / 2, -alto / 2, profundidad / 2);
+	glVertex3f(ancho / 2, alto / 2, profundidad / 2);
+	glVertex3f(-ancho / 2, alto / 2, profundidad / 2);
+
+	// Cara trasera
+	glVertex3f(-ancho / 2, -alto / 2, -profundidad / 2);
+	glVertex3f(-ancho / 2, alto / 2, -profundidad / 2);
+	glVertex3f(ancho / 2, alto / 2, -profundidad / 2);
+	glVertex3f(ancho / 2, -alto / 2, -profundidad / 2);
+
+	// Cara superior
+	glVertex3f(-ancho / 2, alto / 2, -profundidad / 2);
+	glVertex3f(-ancho / 2, alto / 2, profundidad / 2);
+	glVertex3f(ancho / 2, alto / 2, profundidad / 2);
+	glVertex3f(ancho / 2, alto / 2, -profundidad / 2);
+
+	// Cara inferior
+	glVertex3f(-ancho / 2, -alto / 2, -profundidad / 2);
+	glVertex3f(ancho / 2, -alto / 2, -profundidad / 2);
+	glVertex3f(ancho / 2, -alto / 2, profundidad / 2);
+	glVertex3f(-ancho / 2, -alto / 2, profundidad / 2);
+
+	// Cara derecha
+	glVertex3f(ancho / 2, -alto / 2, -profundidad / 2);
+	glVertex3f(ancho / 2, alto / 2, -profundidad / 2);
+	glVertex3f(ancho / 2, alto / 2, profundidad / 2);
+	glVertex3f(ancho / 2, -alto / 2, profundidad / 2);
+
+	// Cara izquierda
+	glVertex3f(-ancho / 2, -alto / 2, -profundidad / 2);
+	glVertex3f(-ancho / 2, -alto / 2, profundidad / 2);
+	glVertex3f(-ancho / 2, alto / 2, profundidad / 2);
+	glVertex3f(-ancho / 2, alto / 2, -profundidad / 2);
+	glEnd();
+	glPopMatrix();
+	glPopAttrib();
+}
+
+void draw_vagon_group()
+{
+	float x = 1.1f;
+	float z = 1.2f;
+
+	glPushMatrix();
+	glTranslatef(0, 0.2, 0);
+	glTranslatef(-x/2, 0, -z/2);
+	draw_vagon();
+	glTranslatef(x, 0, 0);
+	draw_vagon();
+	glTranslatef(0, 0, z);
+	draw_vagon();
+	glTranslatef(-x, 0, 0);
+	draw_vagon();
+	glPopMatrix();
+
+	// TODO: dibujar base
+	float radio = 1.7f;
+	int num_lados = 20;
+	glPushMatrix();
+	glPushAttrib(GL_CURRENT_BIT);
+	glColor3f(c_base_vagon[0], c_base_vagon[1], c_base_vagon[2]);
+	glBegin(GL_POLYGON);
+	for (int i = 0; i < num_lados; i++) {
+		glVertex3f(radio * cosf(i * 2 * PI / num_lados), 0, radio * sinf(i * 2 * PI / num_lados));
+	}
+	glEnd();
+	glPopMatrix();
+	glPopAttrib();
+
+	glPushMatrix();
+	glPushAttrib(GL_CURRENT_BIT);
+	glColor3f(0, 0, 0);
+	glRotatef(45, 0, 1, 0);
+	glTranslatef(0, 1.5, 0);
+	for (int i = 0; i < 4; i++) {
+		glPushMatrix();
+		glRotatef(i * 90, 0, 1, 0);
+		glRotatef(60, 1, 0, 0);
+		glutSolidCylinder(0.1, 1.5, 10, 10);
+		glPopMatrix();
+	}
+	glPopMatrix();
+	glPopAttrib();
+}
+
+void animated_vagon_group(float flip)
+{
+	glPushMatrix();
+	glRotatef(rotacion_vagon * flip, 0, 1, 0);
+	draw_vagon_group();
+	glPopMatrix();
+}
+
+void draw_ojos()
+{
+	float offset = .2f;
+	glPushMatrix();
+	glPushAttrib(GL_CURRENT_BIT);
+		glColor3f(1, 1, 1);
+		glTranslatef(-offset/2.0f, 0, 0);
+		glutSolidSphere(.1, 10, 10);
+		glTranslatef(offset, 0, 0);
+		glutSolidSphere(.1, 10, 10);
+	glPopMatrix();
+	glPopAttrib();
+
+	glPushMatrix();
+	glPushAttrib(GL_CURRENT_BIT);
+		glColor3f(0, 0, 0);
+		glTranslatef(-offset / 2.0f, 0, .1f);
+		glutSolidSphere(.025, 10, 10);
+		glTranslatef(offset, 0, 0);
+		glutSolidSphere(.025, 10, 10);
+	glPopMatrix();
+	glPopAttrib();
+}
+
+void draw_pata(int num_pata)
+{
+	int flip;
+	int par = num_pata % 2;
+	if (par) {
+		flip = -1;
+	}
+	else {
+		flip = 1;
+	}
+	// float offset_pata = (num_pata * GRADOS_OFFSET_PATAS * PI / 180);
+	float seno = sinf(alfa) * flip;
+	glPushMatrix();
+	glPushAttrib(GL_CURRENT_BIT);
+	glColor3f(c_tentaculo[0], c_tentaculo[1], c_tentaculo[2]);
+		glTranslatef(0, 0, 0.5);
+		glRotatef(-30 + 30 * seno, 1, 0, 0);
+		glutSolidCylinder(0.1, 3, 10, 10);
+		glTranslatef(0, 0, 3);
+		glRotatef(60, 1, 0, 0);
+		glutSolidCylinder(0.1, 0.75, 10, 10);
+		glTranslatef(0, 0, 1.6);
+		glScalef(0.6, 0.6, 0.6);
+		glRotatef(-90, 1, 0, 0);
+		//draw_vagon_group();
+		animated_vagon_group(flip);
+	glPopMatrix();
+	glPopAttrib();
+}
+
+void draw_sombrero()
+{
+	glPushMatrix();
+	glPushAttrib(GL_CURRENT_BIT);
+		glColor3f(0.2f, 0.2f, 0.2f);
+		glRotatef(90, 1, 0, 0);
+		glutSolidTorus(0.2, 0.5, 10, 10);
+		glTranslatef(0, 0, -1);
+		glColor3f(0.5f, 0.5f, 0.5f);
+		glutSolidCylinder(0.5, 1, 10, 10);
+	glPopMatrix();
+	glPopAttrib();
+}
+
+void draw_pulpo() 
+{
+	glPushMatrix();
+	glScalef(0.25, 0.25, 0.25);
+	glTranslatef(0, -2, 0);
+	for (int i = 0; i < NUM_PATAS; i++) {
+		glRotatef(360 / NUM_PATAS, 0, 1, 0);
+		draw_pata(i);
+	}
+	glPopMatrix();
+
+	glPushMatrix();
+	glScalef(0.25, 0.25, 0.25);
+	glRotatef(-20, 1, 0, 0);
+	glTranslatef(0, 0.4, 0.1);
+	draw_sombrero();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(0, 0.0, 0.13);
+	draw_ojos();
+	//glCallList(pulpo_ojo);
+	glPopMatrix();
+
+	glPushMatrix();
+	glPushAttrib(GL_CURRENT_BIT);
+		glColor3f(c_pulpo[0], c_pulpo[1], c_pulpo[2]);
+
+		glScalef(0.25, 0.25, 0.25);
+		glRotatef(90, 1, 0, 0);
+
+		glutSolidSphere(0.5, 10, 10);
+		glutSolidCylinder(0.5, 2, 10, 10);
+		// glColor3f(0, 0, 0);
+		// glutWireCylinder(0.5, 2, 5, 5);
+		glTranslatef(0, 0, 2);
+		glColor3f(0.1f, 0.1f, 0.1f);
+		glutSolidCylinder(0.1, 2, 10, 10);
+		//glutSolidCone(0.5, 1, 10, 10);
+	glPopMatrix();
+	glPopAttrib();
+}
+
+void pulpo_rotador()
+{
+	glPushMatrix();
+	glRotatef(beta, 0, 1, 0);
+	draw_pulpo();
+	glPopMatrix();
+}
+
+void estrellas_bola()
+{
+	glPushMatrix();
+	glPushAttrib(GL_CURRENT_BIT);
+	glColor3f(.5f, .5f, 1.0f);
+	glutWireSphere(1.0, 10, 10);
+	for (int i = 0; i < 6; i++) {
+		glColor3f(c_bola_estrella[3*i], c_bola_estrella[3 * i + 1], c_bola_estrella[3 * i + 2]);
+		glPushMatrix();
+		glRotatef(i * 30, 0, 1, 0);
+		glCallList(estrella);
+		glPopMatrix();
+	}
+	glPopMatrix();
+	glPopAttrib();
+}
+
+// Funcion de inicializacion propia
+void init()
+{
+	// Salida por consola
+	cout << glGetString(GL_VERSION) << endl;
+
+	// Configuración del motor del render
+	glEnable(GL_DEPTH_TEST);
+
+	estrella = glGenLists(1);
+	glNewList(estrella, GL_COMPILE);
+	glBegin(GL_TRIANGLE_STRIP);
+	for (int i = 0; i < 4; i++) {
+		glVertex3f(radio_int * cosf(i * 2 * PI / 3 + PI / 2), radio_int * sinf(i * 2 * PI / 3 + PI / 2), 0);
+		glVertex3f(radio_ext * cosf(i * 2 * PI / 3 + PI / 2), radio_ext * sinf(i * 2 * PI / 3 + PI / 2), 0);
+	}
+	glEnd();
+
+	glBegin(GL_TRIANGLE_STRIP);
+	for (int i = 0; i < 4; i++) {
+		glVertex3f(radio_int * cosf(i * 2 * PI / 3 + 3 * PI / 2), radio_int * sinf(i * 2 * PI / 3 + 3 * PI / 2), 0);
+		glVertex3f(radio_ext * cosf(i * 2 * PI / 3 + 3 * PI / 2), radio_ext * sinf(i * 2 * PI / 3 + 3 * PI / 2), 0);
+	}
+	glEnd();
+	glEndList();
+}
+
+
+void FPS()
+{
+	static int fps = 0;
+	static int antes = glutGet(GLUT_ELAPSED_TIME);
+	int ahora = glutGet(GLUT_ELAPSED_TIME);
+	int elapsed_time = ahora - antes;
+	
+	if (elapsed_time >= 1000) {
+		// Cambiar titulo ventana
+		stringstream titulo;
+		titulo << "FPS=" << fps;
+		glutSetWindowTitle(titulo.str().c_str());
+		fps = 0;
+		antes = ahora;
+	}
+	fps++;
+}
+
+
+// Funcion de atencion al evento de dibujo
+void display()
+{
+	glClearColor(0.122f, 0.110f, 0.349f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+
+	//Situación y orientación de la cámara
+	/**
+		Para la animacion de la camara he utilizado una funcion de Lemniscate
+		que hace un patron similar a un 8.
+
+		https://es.wikipedia.org/wiki/Funci%C3%B3n_el%C3%ADptica_lemnisc%C3%A1tica
+
+		El offset es para que el centro de la funcion no pase por el centro de
+		la figura, ya que si no el efecto era raro.
+	*/
+	int radio_camara = 5;
+	int offset_camara = 3;
+	float periodo = 8.0f;
+	gluLookAt(
+		offset_camara + radio_camara * sinf(alfa_cam/periodo), 
+		3, 
+		offset_camara + radio_camara * sinf(alfa_cam/periodo) * cosf(alfa_cam/periodo), 
+		0, 0, 0,
+		0, 1, 0);
+
+	glPushMatrix();
+	glTranslatef(0, 2, 0);
+	glRotatef(-beta, 0, 1, 0);
+	glScalef(0.5f, 0.5f, 0.5f);
+	estrellas_bola();
+	glPopMatrix();
+
+	// Rodeo el pulpo con más bolas del lab4
+	float radio_bolas = 7.5f;
+	float offset = 10.0f;
+	float escala_bolas = 0.15f;
+	glPushMatrix();
+	glPushAttrib(GL_CURRENT_BIT);
+		glTranslatef(0, fabs(momentum), 0);
+		glRotatef(alfa_bolas, 0, 1, 0);
+		glScalef(escala_bolas, escala_bolas, escala_bolas);
+		for (int i = 0; i < NUM_BOLAS; i++) {
+			glPushMatrix();
+			glTranslatef(
+				(offset + fabs(momentum) * radio_bolas) * cosf(i * 2 * PI / NUM_BOLAS),
+				0,
+				(offset + fabs(momentum) * radio_bolas) * sinf(i * 2 * PI / NUM_BOLAS));
+			glRotatef(alfa_bolas * 2, 1, 0, 0);
+			estrellas_bola();
+			glPopMatrix();
+		}
+	glPopMatrix();
+	glPopAttrib();
+
+	glPushMatrix();
+	glTranslatef(0, 1.0f, 0);
+	//draw_pulpo();
+	pulpo_rotador();
+	glPopMatrix();
+	draw_floor();
+
+	//glPushMatrix();
+	//glScalef(0.25, 0.25, 0.25);
+	//glTranslatef(0, 1, 0);
+	//animated_vagon_group(1);
+	//glPopMatrix();
+
+	ejes();
+
+	glutSwapBuffers();
+	FPS();
+}
+
+// Funcion de atencion al redimensionamiento
+void reshape(GLint w, GLint h)
+{
+	float ra = (float)w / h;
+	int fov_camara = 45;
+	float z_far_camara = 12.0f;
+
+	glViewport(0, 0, w, h);
+	// Elegir la camara
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+
+	gluPerspective(fov_camara, ra, 0.1, z_far_camara);
+}
+
+void update()
+{
+	// Actualizacion de variables sin tener en cuenta el tiempo
+	// alfa += 0.1;
+
+	// Actualizacion dependiendo del tiempo entre frames
+	static const float RPS = 0.10; // Revoluciones por segundo
+	static const float ratio_rotacion = 1.0;
+	static int hora_anterior = glutGet(GLUT_ELAPSED_TIME);
+	static bool acelerar = TRUE;
+
+	int hora_actual = glutGet(GLUT_ELAPSED_TIME);
+	delta_time = (hora_actual - hora_anterior) / 1000.0f;
+	alfa_bolas += RPS * 360 * delta_time;
+	alfa_cam += PI * delta_time;
+	if (glutGet(GLUT_ELAPSED_TIME) / 1000 > 2) {
+		if (momentum < MAX_MOMENTUM && acelerar) {
+			momentum += 0.1 * delta_time;
+		} else {
+			acelerar = FALSE;
+		}
+		alfa += PI * delta_time * momentum;
+		beta += RPS * 360 * delta_time * momentum;
+		rotacion_vagon += sinf(alfa / 2) * ratio_rotacion * 360 * delta_time * momentum;
+	}
+
+	if (momentum > -MAX_MOMENTUM && !acelerar) {
+		momentum -= 0.1 * delta_time;
+	}
+	else {
+		acelerar = TRUE;
+	}
+	
+	hora_anterior = hora_actual;
+
+	glutPostRedisplay();
+}
+
+// Funcion de atencion al timer
+void onTimer(int time)
+{
+	glutTimerFunc(time, onTimer, time);
+	update();
+}
+
+int main(int argc, char** argv)
+{
+	// Inicializaciones
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+	glutInitWindowSize(600, 500);
+	glutInitWindowPosition(50, 50);
+
+	// Crear ventana
+	glutCreateWindow(PROYECTO);
+
+	// Registrar callbacks
+	glutDisplayFunc(display);
+	glutReshapeFunc(reshape);
+	// glutIdleFunc(update);
+
+	// (1000 / refresh_rate) los milisegundos que tienen que pasar entre frame
+	glutTimerFunc(int(1000 / refresh_rate), onTimer, int(1000 / refresh_rate));
+
+	// Inicio propio y del bucle de eventos
+	init();
+	glutMainLoop();
+}

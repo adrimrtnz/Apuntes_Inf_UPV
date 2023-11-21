@@ -1,0 +1,11 @@
+﻿  Main.cpp
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Sem_05_01\Main.cpp(9,23): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Sem_05_01\Main.cpp(12,31): warning C4305: 'inicializando': truncamiento de 'double' a 'GLfloat'
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Sem_05_01\Main.cpp(76,31): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Sem_05_01\Main.cpp(76,39): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Sem_05_01\Main.cpp(100,1): warning C4326: el tipo de valor devuelto de 'main' debe ser 'int' en lugar de 'void'
+  Generando código
+  Previous IPDB and IOBJ mismatch, fall back to full compilation.
+  All 20 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Generación de código finalizada
+  Sem_05_01.vcxproj -> C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Sem_05_01\Sem_05_01.exe
