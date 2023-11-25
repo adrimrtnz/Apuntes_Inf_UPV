@@ -1,23 +1,44 @@
 ﻿  Main.cpp
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(54,24): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(54,18): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(54,12): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(122,18): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(154,15): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(216,22): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(217,22): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(217,17): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(217,12): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(220,24): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(253,23): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(253,18): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(258,23): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(299,15): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(452,27): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(463,20): warning C4244: '+=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(473,19): warning C4244: '-=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(62,24): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(62,18): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(62,12): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(130,18): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(150,18): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(156,67): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(156,47): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(157,47): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(159,50): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(163,48): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(168,50): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(169,12): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(174,46): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(176,12): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(185,12): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(195,29): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(225,15): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(292,17): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(302,22): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(303,22): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(303,17): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(303,12): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(305,24): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(342,23): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(342,18): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(347,23): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(389,15): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(511,23): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(519,45): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(517,45): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(563,27): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(586,27): warning C4244: '+=': conversión de 'GLdouble' a 'float'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(587,34): warning C4244: '+=': conversión de 'GLdouble' a 'float'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(588,72): warning C4244: '+=': conversión de 'GLdouble' a 'float'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(624,55): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(625,28): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Main.cpp(627,55): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
   Generando código
-  Previous IPDB and IOBJ mismatch, fall back to full compilation.
-  All 146 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  1 of 157 functions ( 0.6%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    6 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
   Lab_05.vcxproj -> C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_05\Lab_05.exe
