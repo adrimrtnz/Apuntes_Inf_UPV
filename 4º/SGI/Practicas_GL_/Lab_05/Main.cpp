@@ -43,7 +43,6 @@ static GLfloat c_base_vagon[]		= { 0.106f, 0.486f, 0.757f };
 static GLfloat c_tentaculo[]		= { 0.922f, 0.922f, 0.922f };
 static GLfloat c_suelo[]			= { 0.070f, 0.400f, 0.070f };
 static GLfloat c_pulpo[]			= { 0.537f, 0.384f, 0.745f };
-// static GLfloat c_pulpo[]			= { 0.984f, 0.957f, 0.675f };
 static GLfloat c_bola_estrella[]	= { 
 										random(0,1), random(0,1), 1,
 										random(0,1), random(0,1), 1,
@@ -132,25 +131,13 @@ void draw_vagon_group(int num_pata)
 	draw_vagon();
 	if (num_pata == 0) {
 		/*
-		Aquí he intentado replicar las transformaciones hasta la vagoneta para coger el lookAt.
-		Lo intenté y experimenté mucho con la GL_MODELVIEW_MATRIX pero sin conseguir los resultados
-		óptimos. El resultado se aproxima a una vista real de dentro de la vagoneta. Toda la
-		documentación con la que me he encontrado recomendaban usar otras librerías para calcular
-		la posición global de un determinado objeto (como glm) y que con OpenGL se complica demasiado.
+		Trato de coger la posición donde debe estar el lookAt de la cámara cuando está dentro
+		del vagón. Intenté otros métodos con la GL_MODELVIEW_MATRIX pero no resultaba y otra
+		documentación recomendaba usar otras librerías no usadas como glm.
+		*/ 
 
-		Han sido muchas horas invertidas y aunque el resultado podría mejorarse, he aprendido mucho
-		sobre OpenGL.
-		*/
 		double seno = sinf(alfa);
 		double escala = 1; // primera escala que se aplica
-
-		// Traslacion original antes de dibujar el pulpo
-		sistema->rotar(rad(beta), Vec3(0, 1, 0));
-		sistema->rotar(rad(360 / NUM_PATAS), Vec3(0, 1, 0));
-		sistema->rotar(rad(-30 + 30 * seno), Vec3(1, 0, 0));
-		sistema->rotar(rad(60), Vec3(1, 0, 0));
-		sistema->rotar(rad(-90), Vec3(1, 0, 0));
-		sistema->rotar(rad(rotacion_vagon), Vec3(0, 1, 0));
 
 		// Transformaciones en el animated vagon
 		sistema->setv(sistema->getv() + Vec3(-x / 2 * escala, 0, -z / 2 * escala));
@@ -188,7 +175,6 @@ void draw_vagon_group(int num_pata)
 			.rotate(rad(rotacion_vagon), Vec3(0, 1, 0)));
 
 		Vec3 pos = sistema->getv();
-
 		double angulo_pata = (-15 + 30 * sinf(alfa)) * PI / 180;
 		bola_x = pos.x*0.25*signo(cosf(rad(beta)));
 		bola_z = pos.y-2.5;
@@ -466,34 +452,10 @@ void display()
 	delete sistema;
 	sistema = new Sistema3d(Vec3(), Vec3(0,0,0), Vec3(), Vec3());
 	gluLookAt(
+		//6,3,6,
 		cam_x, cam_y, cam_z,
 		look_at[0], look_at[1], look_at[2],
 		0, 1, 0);
-	/*
-	double angulo_pata_otro = (-15 + 30 * sinf(alfa) * 1) * PI / 180;
-	double factor_radio_otro = 1.2;
-	double bolita_x = factor_radio_otro * sinf(beta * PI / 180) * cosf(angulo_pata_otro);
-	double bolita_y = .55 - 0.9 * sinf(angulo_pata_otro);
-	double bolita_z = factor_radio_otro * cosf(beta * PI / 180) * cosf(angulo_pata_otro);
-
-	glPushMatrix();
-	glPushAttrib(GL_CURRENT_BIT);
-	glColor3f(0, 0, 0);
-	glTranslatef(bolita_x, bolita_y, bolita_z);
-	glutSolidSphere(0.05, 10, 10);
-	glPopMatrix();
-	glPopAttrib();
-
-	glPushMatrix();
-	glPushAttrib(GL_CURRENT_BIT);
-	glColor3f(0, 0, 0);
-	glTranslatef(bola_x, bola_y, bola_z);
-	ejes();
-	glutSolidSphere(0.025, 10, 10);
-	glPopMatrix();
-	glPopAttrib();
-	*/
-
 
 	glPushMatrix();
 	glTranslatef(0, 2, 0);
@@ -527,13 +489,10 @@ void display()
 	glPushMatrix();
 	glTranslatef(0, 1.0f, 0);
 	pulpo_rotador();
-	//animated_vagon_group(1, 0);
 	glPopMatrix();
 	draw_floor();
 
 	ejes();
-
-
 
 	glutSwapBuffers();
 	FPS();
@@ -568,10 +527,6 @@ void update()
 	static int radio_camara = 5;
 	static int offset_camara = 3;
 	static float periodo = 8.0f;
-
-	//pos_cam[0] = offset_camara + radio_camara * sinf(alfa_cam / periodo);
-	//pos_cam[1] = 3;
-	//pos_cam[2] = offset_camara + radio_camara * sinf(alfa_cam / periodo) * cosf(alfa_cam / periodo);	
 
 	int hora_actual = glutGet(GLUT_ELAPSED_TIME);
 	delta_time = (hora_actual - hora_anterior) / 1000.0f;
@@ -608,10 +563,6 @@ void update()
 	double angulo_pata = (-15 + 30 * sinf(alfa)) * PI / 180;
 	double factor_radio = 1.2;
 	
-	//bola_x = factor_radio * sinf(beta * PI / 180) * cosf(angulo_pata) - sinf(rotacion_vagon * PI / 180) * 0.2;
-	//bola_y = .55 - 0.9 * sinf(angulo_pata);
-	//bola_z = factor_radio * cosf(beta * PI / 180) * cosf(angulo_pata) - cosf(rotacion_vagon * PI / 180) * 0.2;
-
 	if (!inside) {
 		cam_x = offset_camara + radio_camara * sinf(alfa_cam / periodo);
 		cam_y = 3;
@@ -629,8 +580,6 @@ void update()
 		look_at[1] = bola_y;
 		look_at[2] = bola_z;
 	}
-	
-
 	
 	hora_anterior = hora_actual;
 
