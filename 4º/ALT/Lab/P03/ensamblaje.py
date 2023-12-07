@@ -36,24 +36,24 @@ def voraz_x_pieza(costMatrix):
     columnas = [x for x in range(M)]
 
     for i in range(M):
-        min_c, j = min((costMatrix[i][j],j) for j in columnas)
-        score += min_c
+        _, j = min((costMatrix[i][j],j) for j in columnas)
         solution.append(j)
         columnas.remove(j)
+    score = compute_score(costMatrix, solution)
     return score,solution
 
 def voraz_x_instante(costMatrix):
     # costMatrix[i,j] el coste de situar pieza i en instante j
-    M = costMatrix.shape[0] # nº piezas
+    M = costMatrix.shape[1] # nº instantes
     score = 0
-    solution = []
+    solution = [None] * M
     filas = [x for x in range(M)]
 
     for j in range(M):
-        min_c, i = min((costMatrix[i][j],i) for i in filas)
-        score += min_c
-        solution.append(i)
+        _, i = min((costMatrix[i][j],i) for i in filas)
+        solution[i] = j
         filas.remove(i)
+    score = compute_score(costMatrix, solution)
     return score,solution
 
 def voraz_x_coste(costMatrix):
@@ -66,13 +66,12 @@ def voraz_x_coste(costMatrix):
     sortedMatrix = [(costMatrix[i][j], i, j) for i in range(M) for j in range(M)]
     sortedMatrix.sort()
 
-    for val, item, time in sortedMatrix:
+    for _, item, time in sortedMatrix:
         if item not in items and time not in times:
-            score += val
             solution.append(time)
             times.add(time)
             items.add(item)
-   
+    score = compute_score(costMatrix, solution)
     return score,solution
 
 def voraz_combina(costMatrix):
@@ -171,6 +170,10 @@ def functionRyP(costMatrix):
     fx,x,stats = e.solve()
     return fx,x
 
+
+def ningunaSol(arg):
+    return np.inf, None
+
 ######################################################################
 #
 #                        EXPERIMENTACIÓN
@@ -183,7 +186,6 @@ cjtAlgoritmos = {'naif': naive_solution,
                  'x_coste': voraz_x_coste,
                  'combina': voraz_combina,
                  'RyP': functionRyP}
-
 
 def probar_ejemplo():
     ejemplo = np.array([[7, 3, 7, 2],
@@ -206,7 +208,6 @@ def comparar_algoritmos(root_seed, low, high):
 
         np.random.seed(root_seed)
         seeds = np.random.randint(low=0, high=9999, size=numInstancias)
-
         for seed in seeds:
             cM = genera_instancia(talla, low=low, high=high, seed=seed)
             for label,function in cjtAlgoritmos.items():
@@ -220,8 +221,30 @@ def comparar_algoritmos(root_seed, low, high):
         print()
 
 def comparar_sol_inicial(root_seed, low, high):
-    # COMPLETAR
-    pass
+    print('talla',end=' ')
+    for label in cjtAlgoritmos:
+        print(f'{label:>10}',end=' ')
+    print()
+    numInstancias = 10
+    for talla in range(5,15+1):
+        dtalla = collections.defaultdict(float)
+
+        np.random.seed(root_seed)
+        seeds = np.random.randint(low=0, high=9999, size=numInstancias)
+        for seed in seeds:
+            cM = genera_instancia(talla, low=low, high=high, seed=seed)
+            for label,function in cjtAlgoritmos.items():
+                _,solution = function(cM)
+                ensamblaje = Ensamblaje(cM, initial_sol=solution)
+                score, _, stats = ensamblaje.solve()
+                dtalla[label] += stats['iterations']
+        
+        print(f'{talla:>5}',end=' ')
+        for label in cjtAlgoritmos:
+            media = dtalla[label]/numInstancias
+            print(f'{media:10.2f}', end=' ')
+        print()
+
     
 def probar_ryp():
     ejemplo = np.array([[7, 3, 7, 2],
