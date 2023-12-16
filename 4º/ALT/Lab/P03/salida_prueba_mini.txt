@@ -1,0 +1,20 @@
+----- checking Cota1I -----
+68 [0, 1, 3, 4, 7, 9, 6, 8, 5, 2, 0] {'time': 0.0016587540012551472, 'iterations': 473, 'gen_states': 588, 'podas_opt': 92, 'maxA': 133}
+----- checking Cota1E -----
+68 [0, 1, 3, 4, 7, 9, 6, 8, 5, 2, 0] {'time': 0.0014794629969401285, 'iterations': 473, 'gen_states': 588, 'podas_opt': 92, 'maxA': 133, 'podas_expl': 0, 'cost_expl': 126}
+----- checking Cota4I -----
+68 [0, 1, 3, 4, 7, 9, 6, 8, 5, 2, 0] {'time': 0.0009342530102003366, 'iterations': 280, 'gen_states': 398, 'podas_opt': 95, 'maxA': 86}
+----- checking Cota4E -----
+68 [0, 1, 3, 4, 7, 9, 6, 8, 5, 2, 0] {'time': 0.0009122769988607615, 'iterations': 280, 'gen_states': 398, 'podas_opt': 95, 'maxA': 83, 'podas_expl': 14, 'cost_expl': 81}
+----- checking Cota5I -----
+68 [0, 2, 5, 8, 6, 9, 7, 4, 3, 1, 0] {'time': 0.0019424570054979995, 'iterations': 89, 'gen_states': 166, 'podas_opt': 27, 'maxA': 57}
+----- checking Cota5E -----
+68 [0, 2, 5, 8, 6, 9, 7, 4, 3, 1, 0] {'time': 0.0018566390062915161, 'iterations': 89, 'gen_states': 166, 'podas_opt': 27, 'maxA': 57, 'podas_expl': 50, 'cost_expl': 56}
+----- checking Cota6I -----
+68 [0, 1, 3, 4, 7, 9, 6, 8, 5, 2, 0] {'time': 0.0010511690052226186, 'iterations': 306, 'gen_states': 436, 'podas_opt': 92, 'maxA': 112}
+----- checking Cota6E -----
+68 [0, 1, 3, 4, 7, 9, 6, 8, 5, 2, 0] {'time': 0.0010434569994686171, 'iterations': 306, 'gen_states': 436, 'podas_opt': 92, 'maxA': 112, 'podas_expl': 33, 'cost_expl': 111}
+----- checking Cota7I -----
+68 [0, 2, 5, 8, 6, 9, 7, 4, 3, 1, 0] {'time': 0.002242496993858367, 'iterations': 145, 'gen_states': 224, 'podas_opt': 40, 'maxA': 45}
+----- checking Cota7E -----
+68 [0, 2, 5, 8, 6, 9, 7, 4, 3, 1, 0] {'time': 0.0021766799909528345, 'iterations': 145, 'gen_states': 224, 'podas_opt': 40, 'maxA': 44, 'podas_expl': 38, 'cost_expl': 82}

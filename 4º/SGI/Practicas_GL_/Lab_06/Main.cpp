@@ -44,7 +44,7 @@ static float cam_x = 0.0f;
 static float cam_y = 0.0f;
 static float cam_z = 1.0f;
 static float speed = 0.0f;
-static float speed_delta = 2.0f;
+static float speed_delta = 3.0f;
 static float ini_x = 0.0f;
 static float ini_y = 0.0f;
 static float yaw_angle = 0.0f;
@@ -132,6 +132,36 @@ void draw_velocimeter()
 	glEnable(GL_LIGHTING);
 }
 
+void ship_lights()
+{
+	static float offset = 0.2f;
+	Vec3 luz_1 = sistema->getu()*offset;
+	Vec3 luz_2 = sistema->getu()*-offset;
+	GLfloat pos_luz_1[] = { luz_1.x, luz_1.y , luz_1.z , 1 };
+	GLfloat pos_luz_2[] = { luz_2.x, luz_2.y , luz_2.z , 1 };
+
+	Vec3 dir_luz_1 = luz_1.rotX(rad(20));
+	GLfloat dir_luz_1[] = { 0.2f, 0, -1.0f };
+	GLfloat dir_luz_2[] = { -0.2f, 0, -1.0f };
+
+	// Luces de las alas de la nave
+	glLightfv(GL_LIGHT1, GL_POSITION, pos_luz_1);
+	glLightfv(GL_LIGHT1, GL_SPOT_DIRECTION, {dir_luz_1.x, dir_luz_1.y, dir_luz_1.z});
+
+	GLfloat PL2[] = { 0, 5, 1, 1 };
+	GLfloat DL2[] = { 0, 1, 0 };
+	glLightfv(GL_LIGHT2, GL_POSITION, dir_luz_1);
+	glLightfv(GL_LIGHT2, GL_SPOT_DIRECTION, dir_luz_2);
+
+	if (lights_on) {
+		glEnable(GL_LIGHT1);
+		glEnable(GL_LIGHT2);
+	}
+	else {
+		glDisable(GL_LIGHT1);
+		glDisable(GL_LIGHT2);
+	}
+}
 
 void put_lights_on_scene()
 {
@@ -144,30 +174,6 @@ void put_lights_on_scene()
 
 	// Iluminacion Sol (Estrella cercana)
 	glLightfv(GL_LIGHT0, GL_POSITION, POS_SOL);
-
-	// Luces de las alas de la nave
-	glLightfv(GL_LIGHT1, GL_POSITION, pos_luz_nave);
-	glLightfv(GL_LIGHT1, GL_SPOT_DIRECTION, poif);
-
-	GLfloat PL1[] = { 0, 5, 1, 1 };
-	GLfloat DL1[] = { 0, 0, -1 };
-	glLightfv(GL_LIGHT2, GL_POSITION, PL1);
-	glLightfv(GL_LIGHT2, GL_SPOT_DIRECTION, poif);
-
-
-	if (lights_on) {
-		glEnable(GL_LIGHT1);
-		glEnable(GL_LIGHT2);
-
-		glPushMatrix();
-		glTranslatef(poi.x, poi.y, poi.z);
-		glutSolidSphere(0.1, 10, 10);
-		glPopMatrix();
-	}
-	else {
-		glDisable(GL_LIGHT1);
-		glDisable(GL_LIGHT2);
-	}
 }
 
 void configure_lights()
@@ -177,17 +183,16 @@ void configure_lights()
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, COLOR_SOL);
 
 	// Luces de las alas de la nave
-	glLightfv(GL_LIGHT1, GL_SPOT_CUTOFF, &LUZ_NAVE_CUTOFF);
-	glLightfv(GL_LIGHT1, GL_DIFFUSE, DIFFUSE_FOCOS);
-	glLightf(GL_LIGHT1, GL_SPOT_EXPONENT, 50);
-	//glLightfv(GL_LIGHT1, GL_SPECULAR, SPECULAR_FOCOS);
-	//glLightf(GL_LIGHT1, GL_CONSTANT_ATTENUATION, 1.0);
-	//glLightf(GL_LIGHT1, GL_LINEAR_ATTENUATION, 0.0);
-	//glLightf(GL_LIGHT1, GL_QUADRATIC_ATTENUATION, 0.0);
+	//glLightfv(GL_LIGHT1, GL_AMBIENT, NEGRO);
+	glLightfv(GL_LIGHT1, GL_DIFFUSE, BLANCO);
+	glLightfv(GL_LIGHT1, GL_SPECULAR, BLANCO);
+	glLightf(GL_LIGHT1, GL_SPOT_CUTOFF, 10.f);
+	glLightf(GL_LIGHT1, GL_SPOT_EXPONENT, 10.0f);
 
 	glLightfv(GL_LIGHT2, GL_DIFFUSE, BLANCO);
-	glLightf(GL_LIGHT2, GL_SPOT_CUTOFF, 70);
-	glLightf(GL_LIGHT2, GL_SPOT_EXPONENT, 10);
+	glLightfv(GL_LIGHT2, GL_SPECULAR, BLANCO);
+	glLightf(GL_LIGHT2, GL_SPOT_CUTOFF, 10.f);
+	glLightf(GL_LIGHT2, GL_SPOT_EXPONENT, 10.0f);
 }
 
 void init()
@@ -199,8 +204,6 @@ void init()
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
-	//glEnable(GL_LIGHT1);
-	//glEnable(GL_LIGHT2);
 }
 
 void FPS()
@@ -229,6 +232,9 @@ void display()
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
+	// Poner las luces de la nave antes de la cámara para que vayan colidarias con ella
+	ship_lights();
+
 	Vec3 w = sistema->getw();
 	Vec3 v = sistema->getv();
 	Vec3 o = sistema->geto();
@@ -240,7 +246,7 @@ void display()
 
 	glPushAttrib(GL_CURRENT_BIT);
 	glColor3f(0, 0, 1);
-	glPolygonMode(GL_FRONT, GL_LINE);
+	//glPolygonMode(GL_FRONT, GL_LINE);
 	
 	// Dibujar la malla
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
@@ -297,18 +303,18 @@ void update()
 		glutWarpPointer(x, y);
 
 		// Guinyada de la nave
-		yaw_angle = -mouse_delta_x / screen_center_x * 360 * delta_time * FACTOR_SUAVIZADO * PIXELES_X_GRADOS;
+		yaw_angle = -mouse_delta_x / screen_center_x * PIXELES_X_GRADOS;
 		sistema->rotar(rad(yaw_angle), sistema->getv());
 
 		// Cabeceo de la nave
-		pitch_angle = mouse_delta_y * FACTOR_SUAVIZADO * delta_time * PIXELES_X_GRADOS;
+		pitch_angle = mouse_delta_y / screen_center_y * PIXELES_X_GRADOS;
 		pitch_angle = max(-MAX_ANGULO_CABECEO, min(MAX_ANGULO_CABECEO, pitch_angle));
 		sistema->rotar(rad(pitch_angle), sistema->getu());
 	}
 
 	if (isRolling) {
 		// Alabeo de la nave
-		roll_angle = ANGULO_ALABEO * roll_side_flip * delta_time * PIXELES_X_GRADOS;
+		roll_angle = ANGULO_ALABEO * roll_side_flip * PIXELES_X_GRADOS;
 		sistema->rotar(rad(roll_angle), sistema->getw());
 	}
 
@@ -400,8 +406,7 @@ void onMouseHover(int x, int y)
 	mouse_distance_to_center = sqrt(mouse_delta_x * mouse_delta_x + mouse_delta_y * mouse_delta_y) / max_distance;
 	mouse_distance_to_center = mouse_distance_to_center < RADIO_MIRILLA_CENTRAL ? 0 : mouse_distance_to_center;
 	//printf("Delta x=%.3f, Delta y=%.3f, Distancia=%.3f, Max_distance=%.3f\n", mouse_delta_x, mouse_delta_y, mouse_distance_to_center, max_distance);
-
-	glutPostRedisplay();
+	//glutPostRedisplay();
 }
 
 int main(int argc, char** argv)

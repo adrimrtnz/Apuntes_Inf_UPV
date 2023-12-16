@@ -187,6 +187,14 @@ cjtAlgoritmos = {'naif': naive_solution,
                  'combina': voraz_combina,
                  'RyP': functionRyP}
 
+cjtAlgoritmosSolIni = {
+                'naif+RyP': naive_solution,
+                'x_pieza+RyP': voraz_x_pieza,
+                'x_instante+RyP': voraz_x_instante,
+                'x_coste+RyP': voraz_x_coste,
+                'combina+RyP': voraz_combina,
+                'RyP': ningunaSol}
+
 def probar_ejemplo():
     ejemplo = np.array([[7, 3, 7, 2],
                         [9, 9, 4, 1],
@@ -221,28 +229,42 @@ def comparar_algoritmos(root_seed, low, high):
         print()
 
 def comparar_sol_inicial(root_seed, low, high):
-    print('talla',end=' ')
-    for label in cjtAlgoritmos:
-        print(f'{label:>10}',end=' ')
-    print()
-    numInstancias = 10
-    for talla in range(5,15+1):
-        dtalla = collections.defaultdict(float)
+    stats_dict = collections.defaultdict(float)
+    stats_labels = ['iterations','gen_states','podas_opt','maxA']
 
+    '''
+    print('talla',end=' ')
+    for label in cjtAlgoritmosSolIni:
+        print(f'{label:>15}',end=' ')
+    print()
+    '''
+    numInstancias = 10
+
+
+    for talla in range(5,15+1):
         np.random.seed(root_seed)
         seeds = np.random.randint(low=0, high=9999, size=numInstancias)
         for seed in seeds:
             cM = genera_instancia(talla, low=low, high=high, seed=seed)
-            for label,function in cjtAlgoritmos.items():
+            for label,function in cjtAlgoritmosSolIni.items():
                 _,solution = function(cM)
                 ensamblaje = Ensamblaje(cM, initial_sol=solution)
                 score, _, stats = ensamblaje.solve()
-                dtalla[label] += stats['iterations']
-        
-        print(f'{talla:>5}',end=' ')
-        for label in cjtAlgoritmos:
-            media = dtalla[label]/numInstancias
-            print(f'{media:10.2f}', end=' ')
+                for key, value in stats.items():
+                    stats_dict[talla,label,key] += value
+
+    keys = list(stats.keys())
+    for key in keys:
+        print('-'*(50-len(key)//2), f'{key}', '-'*(50-len(key)//2))
+        print('talla',end=' ')
+        for label in cjtAlgoritmosSolIni:
+            print(f'{label:>15}',end=' ')
+        print()
+        for talla in range(5, 15+1):
+            print(f'{talla:>5}',end=' ')
+            for label in cjtAlgoritmosSolIni:
+                print(f'{stats_dict[talla, label, key]/numInstancias:15.2f}', end=' ')
+            print()
         print()
 
     

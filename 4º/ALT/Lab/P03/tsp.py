@@ -466,9 +466,16 @@ class TSP_Cota4(TSP):
     no visitado (más el último visitado). 
     Es fácil calcularla de manera incremental.
     '''
-
-    pass
-    # COMPLETAR
+    def initial_solution(self):
+        initial = [ self.first_vertex ]
+        initial_score = self.G.lowest_out_weight(self.first_vertex)
+        return (initial_score, initial)
+    
+    def branch(self, s_score, s):
+        lastvertex = s[-1]
+        for v,w in self.G.edges_from(lastvertex):
+            if v not in s:
+                yield (s_score + w, s+[v])
 
 class TSP_Cota5(TSP):
     '''
@@ -546,9 +553,9 @@ class TSP_Cota7E(TSP_Cota7, BranchBoundExplicit):
     pass
 
 # ir descomentando a medida que se implementen las cotas
-repertorio_cotas = [('Cota1I',TSP_Cota1I),
+repertorio_cotas = [# ('Cota1I',TSP_Cota1I),
                     # ('Cota1E',TSP_Cota1E),
-                    # ('Cota4I',TSP_Cota4I),
+                    ('Cota4I',TSP_Cota4I),
                     # ('Cota4E',TSP_Cota4E),
                     # ('Cota5I',TSP_Cota5I),
                     # ('Cota5E',TSP_Cota5E),
@@ -666,7 +673,7 @@ def prueba_mini():
 ######################################################################
             
 if __name__ == '__main__':
-    prueba_mini()
-    # prueba_generador()
+    # prueba_mini()
+    prueba_generador()
     # experimento()
 

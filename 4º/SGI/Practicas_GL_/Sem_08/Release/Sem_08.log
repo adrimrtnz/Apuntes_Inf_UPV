@@ -1,0 +1,14 @@
+﻿  Source.cpp
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Sem_08\Source.cpp(126,25): warning C4305: 'inicializando': truncamiento de 'double' a 'GLfloat'
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Sem_08\Source.cpp(126,29): warning C4305: 'inicializando': truncamiento de 'double' a 'GLfloat'
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Sem_08\Source.cpp(176,26): warning C4305: 'inicializando': truncamiento de 'double' a 'GLfloat'
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Sem_08\Source.cpp(176,30): warning C4305: 'inicializando': truncamiento de 'double' a 'GLfloat'
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Sem_08\Source.cpp(177,22): warning C4305: 'inicializando': truncamiento de 'double' a 'GLfloat'
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Sem_08\Source.cpp(177,26): warning C4305: 'inicializando': truncamiento de 'double' a 'GLfloat'
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Sem_08\Source.cpp(177,30): warning C4305: 'inicializando': truncamiento de 'double' a 'GLfloat'
+  Generando código
+  3 of 29 functions (10.3%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    3 functions had inline decision re-evaluated but remain unchanged
+  Generación de código finalizada
+  Sem_08.vcxproj -> C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Sem_08\Sem_08.exe

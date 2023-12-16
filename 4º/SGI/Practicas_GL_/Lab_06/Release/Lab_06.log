@@ -1,24 +1,13 @@
 ﻿  Main.cpp
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\config.h(16,30): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\config.h(15,30): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
   (compilando archivo de origen "Main.cpp")
   
 C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(104,12): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
 C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(122,33): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
 C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(122,26): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(138,21): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(138,18): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(138,15): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(268,36): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(268,29): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(268,22): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(300,15): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(301,15): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(405,30): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(406,27): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(407,27): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-  Generando código
-  2 of 169 functions ( 1.2%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
-  Generación de código finalizada
-  Lab_06.vcxproj -> C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Lab_06.exe
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(144,10): error C2040: 'dir_luz_1: 'GLfloat []' se diferencia en los niveles de direccionamiento indirecto de 'cb::Vec3'
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(298,15): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(299,15): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(403,30): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(404,27): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(405,27): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
