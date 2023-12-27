@@ -468,11 +468,12 @@ class TSP_Cota4(TSP):
     '''
     def initial_solution(self):
         initial = [ self.first_vertex ]
-        initial_score = self.G.lowest_out_weight(self.first_vertex)
+        initial_score = sum(self.G.lowest_out_weight(vertex) for vertex in self.G.nodes())
         return (initial_score, initial)
     
     def branch(self, s_score, s):
         lastvertex = s[-1]
+        s_score = s_score - self.G.lowest_out_weight(lastvertex)
         for v,w in self.G.edges_from(lastvertex):
             if v not in s:
                 yield (s_score + w, s+[v])
@@ -484,10 +485,30 @@ class TSP_Cota5(TSP):
     y llegan a vértices no visitados o al vértice origen.
     No es incremental.
     '''
+
+    # aquí en el branch irá un for dentro del for y no 
+    # podremos aprovechar el score del padre, habrá que
+    # recalcularlo desde 0
     
-    pass
-    # COMPLETAR
+    def initial_solution(self):
+        initial = [ self.first_vertex ]
+        initial_score = sum(self.G.lowest_out_weight(vertex) for vertex in self.G.nodes())
+        return (initial_score, initial)
     
+    def branch(self, s_score, s):
+        lastvertex = s[-1]
+        coste_actual = self.G.path_weight(s)
+        no_visitados = self.G.nodes() - s
+
+        for v,w in self.G.edges_from(lastvertex):
+            if v not in s:
+                visitados = s + [v]
+                cota = 0
+                for v2 in no_visitados:
+                    # los prohibidos son los visitados menos el primero (origen)
+                    cota += self.G.lowest_out_weight(v2, forbidden=visitados[1:])
+                yield (coste_actual + w + cota, visitados)
+
 
 class TSP_Cota6(TSP):
     '''
@@ -499,9 +520,26 @@ class TSP_Cota6(TSP):
     calcular en una sola pasada los caminos desde cada
     vértice al inicial.
     '''
+    # Dijkstra con reverse=True
+    def __init__(self, graph, first_vertex=0):
+        super().__init__(graph, first_vertex)
+        self.costes, self.preds = graph.Dijkstra(first_vertex, reverse=True)
     
-    pass
-    # COMPLETAR
+    
+    def initial_solution(self):
+        initial = [ self.first_vertex ]
+        initial_score = self.costes[self.first_vertex]
+        return (initial_score, initial)
+    
+
+    def branch(self, s_score, s):
+        lastvertex = s[-1]
+        s_score = s_score - self.costes[lastvertex]
+        for v,w in self.G.edges_from(lastvertex):
+            if v not in s:
+                # coste_vuelta = self.costes[v]
+                yield (s_score + w + self.costes[v], s+[v])
+                
 
 class TSP_Cota7(TSP):
     '''
@@ -511,9 +549,26 @@ class TSP_Cota7(TSP):
     el primero y el último de la solución parcial).
     No admite sol. incremental.
     '''
+
+    def __init__(self, graph, first_vertex=0):
+        super().__init__(graph, first_vertex)
+        self.costes, self.preds = graph.Dijkstra(first_vertex, reverse=True)
+
+    def initial_solution(self):
+        initial = [ self.first_vertex ]
+        initial_score = self.costes[self.first_vertex]
+        return (initial_score, initial)
     
-    pass
-    # COMPLETAR
+
+    def branch(self, s_score, s):
+        lastvertex = s[-1]
+        coste_actual = self.G.path_weight(s)
+
+        for v,w in self.G.edges_from(lastvertex):
+            if v not in s:
+                visitados = s + [v]
+                cota = self.G.Dijkstra1dst(src=v, dst=self.first_vertex, avoid=visitados[1:])
+                yield (coste_actual + w + cota, visitados)
 
 
 ######################################################################
@@ -553,16 +608,16 @@ class TSP_Cota7E(TSP_Cota7, BranchBoundExplicit):
     pass
 
 # ir descomentando a medida que se implementen las cotas
-repertorio_cotas = [# ('Cota1I',TSP_Cota1I),
-                    # ('Cota1E',TSP_Cota1E),
-                    ('Cota4I',TSP_Cota4I),
-                    # ('Cota4E',TSP_Cota4E),
+repertorio_cotas = [#('Cota1I',TSP_Cota1I),
+                    #('Cota1E',TSP_Cota1E),
+                    #('Cota4I',TSP_Cota4I),
+                    #('Cota4E',TSP_Cota4E),
                     # ('Cota5I',TSP_Cota5I),
                     # ('Cota5E',TSP_Cota5E),
                     # ('Cota6I',TSP_Cota6I),
                     # ('Cota6E',TSP_Cota6E),
-                    # ('Cota7I',TSP_Cota7I),
-                    # ('Cota7E',TSP_Cota7E)
+                    ('Cota7I',TSP_Cota7I),
+                    ('Cota7E',TSP_Cota7E)
                     ]
 
 ######################################################################
@@ -673,7 +728,7 @@ def prueba_mini():
 ######################################################################
             
 if __name__ == '__main__':
-    # prueba_mini()
-    prueba_generador()
+    prueba_mini()
+    # prueba_generador()
     # experimento()
 

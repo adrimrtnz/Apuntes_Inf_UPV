@@ -230,16 +230,7 @@ def comparar_algoritmos(root_seed, low, high):
 
 def comparar_sol_inicial(root_seed, low, high):
     stats_dict = collections.defaultdict(float)
-    stats_labels = ['iterations','gen_states','podas_opt','maxA']
-
-    '''
-    print('talla',end=' ')
-    for label in cjtAlgoritmosSolIni:
-        print(f'{label:>15}',end=' ')
-    print()
-    '''
     numInstancias = 10
-
 
     for talla in range(5,15+1):
         np.random.seed(root_seed)
