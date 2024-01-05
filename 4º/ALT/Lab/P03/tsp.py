@@ -550,13 +550,9 @@ class TSP_Cota7(TSP):
     No admite sol. incremental.
     '''
 
-    def __init__(self, graph, first_vertex=0):
-        super().__init__(graph, first_vertex)
-        self.costes, self.preds = graph.Dijkstra(first_vertex, reverse=True)
-
     def initial_solution(self):
         initial = [ self.first_vertex ]
-        initial_score = self.costes[self.first_vertex]
+        initial_score = 0
         return (initial_score, initial)
     
 
@@ -608,14 +604,14 @@ class TSP_Cota7E(TSP_Cota7, BranchBoundExplicit):
     pass
 
 # ir descomentando a medida que se implementen las cotas
-repertorio_cotas = [#('Cota1I',TSP_Cota1I),
-                    #('Cota1E',TSP_Cota1E),
-                    #('Cota4I',TSP_Cota4I),
-                    #('Cota4E',TSP_Cota4E),
-                    # ('Cota5I',TSP_Cota5I),
-                    # ('Cota5E',TSP_Cota5E),
-                    # ('Cota6I',TSP_Cota6I),
-                    # ('Cota6E',TSP_Cota6E),
+repertorio_cotas = [('Cota1I',TSP_Cota1I),
+                    ('Cota1E',TSP_Cota1E),
+                    ('Cota4I',TSP_Cota4I),
+                    ('Cota4E',TSP_Cota4E),
+                    ('Cota5I',TSP_Cota5I),
+                    ('Cota5E',TSP_Cota5E),
+                    ('Cota6I',TSP_Cota6I),
+                    ('Cota6E',TSP_Cota6E),
                     ('Cota7I',TSP_Cota7I),
                     ('Cota7E',TSP_Cota7E)
                     ]
@@ -680,10 +676,53 @@ def experimento():
     - Sacar los datos de manera que sea fácil realizar una interpretacion
     '''
 
-    # COMPLETAR
-    pass
+    stats_dict = collections.defaultdict(float)
+    num_instancias = 2
+    root_seed = 42
+    min_talla = 10
+    max_talla = 20
+
+    for talla in range(min_talla, max_talla+1):
+        np.random.seed(root_seed)
+        seeds = np.random.randint(low=0, high=9999, size=num_instancias)
+        for seed in seeds:
+            g = generate_random_digraph(talla, seed=seed)
+            for label, clase in repertorio_cotas:
+                print(f'[INFO] Talla {talla}, clase {label}')
+                obj = clase(g)
+                fx, x, stats = obj.solve()
+                if (x, fx) != (None, float('inf')):
+                    for key, value in stats.items():
+                        stats_dict[talla, label, key] += value
 
 
+    out_file = open('mi_salida.txt', '+w', encoding='utf-8')
+    keys = list(stats.keys())
+    for key in keys:
+        print('-'*(61-len(key)//2 + 1*(len(key) % 2 == 0)), f'{key}', '-'*(61-len(key)//2))
+        print('talla',end=' ')
+        out_file.write('-'*(61-len(key)//2 + 1*(len(key) % 2 == 0)) + f' {key} ' + '-'*(60-len(key)//2) + '\n')
+        out_file.write('talla ')
+
+        for label, _ in repertorio_cotas:
+            print(f'{label:>11}',end=' ')
+            out_file.write(f'{label:>11} ')
+        print()
+        out_file.write('\n')
+
+        for talla in range(min_talla, max_talla+1):
+            print(f'{talla:>5}',end=' ')
+            out_file.write(f'{talla:>5} ')
+            for label, _ in repertorio_cotas:
+                print(f'{stats_dict[talla, label, key]/num_instancias:11.2f}', end=' ')
+                out_file.write(f'{stats_dict[talla, label, key]/num_instancias:11.2f} ')
+            print()
+            out_file.write('\n')
+        print()
+        out_file.write('\n')
+    out_file.close()
+                
+    
 
 ######################################################################
 #
@@ -728,7 +767,7 @@ def prueba_mini():
 ######################################################################
             
 if __name__ == '__main__':
-    prueba_mini()
+    # prueba_mini()
     # prueba_generador()
-    # experimento()
+    experimento()
 

@@ -132,11 +132,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Meteorito.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bala.h" />
     <ClInclude Include="config.h" />
     <ClInclude Include="Meteorito.h" />
+    <ClInclude Include="utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

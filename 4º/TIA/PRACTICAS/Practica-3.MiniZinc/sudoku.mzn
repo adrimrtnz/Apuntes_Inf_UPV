@@ -20,6 +20,9 @@ constraint forall (j in 1..N) ( alldifferent (i in 1..N) ( celda[i,j] ));
 % Todas las celdas de una submatriz son diferentes
 constraint forall (i,j in 1..S) ( alldifferent (p, q in 1..S) ( celda[S*(i-1)+p, S*(j-1) + q] ));
 
+constraint celda[1,2] = 3;
+constraint celda[2,6] = 5;
+
 solve satisfy; % solo requerimos satisfactibilidad
 
 output["sudoku:\n"] ++ 

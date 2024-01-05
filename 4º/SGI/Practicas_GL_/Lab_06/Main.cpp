@@ -8,12 +8,22 @@
 ***************************************************/
 
 #define PROYECTO "Simulador"
+#define SOUND_ON
+
+#ifdef SOUND_ON
+#include <Windows.h>
+#include <mmsystem.h>
+#pragma comment(lib, "winmm.lib")
+#endif
 
 #include <iostream>
 #include <sstream>
 #include <string>
 #include <codebase.h>
 #include "config.h"
+#include "utils.h"
+#include "Meteorito.h"
+#include "Bala.h"
 
 using namespace std;
 using namespace cb;
@@ -24,6 +34,10 @@ static const float AREA_MIRILLA = RADIO_MIRILLA_CENTRAL * RADIO_MIRILLA_CENTRAL 
 static bool isRolling = FALSE;
 static bool lights_on = FALSE;
 static bool lights_button_pressed = FALSE;
+static bool show_cockpit = TRUE;
+static bool cockpit_button_pressed = FALSE;
+static bool camara_tercera_persona = FALSE;
+static bool camara_toggle_pressed = FALSE;
 static int screen_center_x = INITIAL_WIDTH / 2;
 static int screen_center_y = INITIAL_HEIGHT / 2;
 static float delta_time;
@@ -34,11 +48,18 @@ static Sistema3d *sistema = new Sistema3d(
 	Vec3(0, -1, 0),		// w
 	Vec3(0, 0, z0)		// o
 );
+Vec3 poi = sistema->geto() - sistema->getw();
+Vec3 cam_pos = sistema->geto();
+static float angulo_poi = 0;
+static int poi_direction = 0;
+static bool is_poi_yaw = FALSE;
 
 // IDs texturas
 static GLuint plataforma;
 static GLuint skybox;
 static GLuint tex_meteorito;
+static GLuint tex_nave;
+static GLuint tex_nave_ext;
 
 static int mouse_x = screen_center_x;
 static int mouse_y = screen_center_y;
@@ -46,93 +67,72 @@ static int mouse_viewport_y = screen_center_y;
 static float mouse_delta_x = 0.0f;
 static float mouse_delta_y = 0.0f;
 static float mouse_distance_to_center = 0.0f;
-static float cam_x = 0.0f;
-static float cam_y = 0.0f;
-static float cam_z = 1.0f;
 static float speed = 0.0f;
-static float speed_delta = 3.0f;
 static float ini_x = 0.0f;
 static float ini_y = 0.0f;
-static float yaw_angle = 0.0f;
-static float pitch_angle = 0.0f;
-static float roll_angle = 0.0f;
+static GLfloat yaw_angle = 0.0f;
+static GLfloat pitch_angle = 0.0f;
+static GLfloat roll_angle = 0.0f;
 static int roll_side_flip = 0;
-
-
-//***************************************************************************
-class Meteorito2
-{
-private:
-	float x = 0, y = 0, z = 0;
-	float rps = 0, rot_angle = 0, rot_x, rot_y, rot_z;
-	float x_desp = 0, y_desp = 0, z_desp = 0;
-	float max_distance = DIM_CUBEMAP / 2.0;
-	GLUquadricObj* quad;
-	int numPts = 100;
-	void Translate();
-public: 
-	Meteorito2();
-	void draw();
-};
-
-Meteorito2::Meteorito2()
-{
-	quad = gluNewQuadric();
-	gluQuadricTexture(quad, GL_TRUE);
-	gluQuadricNormals(quad, GLU_SMOOTH);
-	x = random(-max_distance, max_distance);
-	y = random(-max_distance, max_distance);
-	z = random(-max_distance, max_distance);
-	x_desp = random(-1, 1);
-	y_desp = random(-1, 1);
-	z_desp = random(-1, 1);
-	rps = random(MIN_RPS_METEORITO, MAX_RPS_METEORITO);
-	rot_x = random(0, 1);
-	rot_y = random(0, 1);
-	rot_z = random(0, 1);
-}
-
-void Meteorito2::Translate()
-{
-	x += x_desp * delta_time;
-	y += y_desp * delta_time;
-	z += z_desp * delta_time;
-
-	if (abs(x) > DIM_CUBEMAP || abs(y) > DIM_CUBEMAP || abs(z) > DIM_CUBEMAP) {
-		x = random(-max_distance, max_distance);
-		y = random(-max_distance, max_distance);
-		z = random(-max_distance, max_distance);
-	}
-}
-
-void Meteorito2::draw()
-{
-	rot_angle += rps * 360 * delta_time;
-	glPushMatrix();
-	glPushAttrib(GL_CURRENT_BIT);
-	glColor3f(1, 1, 1);
-	Translate();
-	glTranslatef(x, y, z);
-	glRotatef(rot_angle, rot_x, rot_y, rot_z);
-	ejes();
-	glBindTexture(GL_TEXTURE_2D, tex_meteorito);
-	gluSphere(quad, 0.5, 10, 10);
-
-	// Obtiene el número de vértices de la esfera
-	glPopAttrib();
-	glPopMatrix();
-}
-
-static Meteorito2 *meteoritos[NUM_METEORITOS];
+static Meteorito* meteoritos[NUM_METEORITOS];
+static Bala* balas[NUM_PROYECTILES];
+static int num_bala = 0;
+static int meteoritos_destruidos = 0;
 
 //***************************************************************************
 
-void draw_circle_viewport(float radius = 1.0f, int num_segments = 10)
+void draw_velocimeter() 
 {
 	// Desactivar la prueba de profundidad
 	glDisable(GL_DEPTH_TEST);
 	glDisable(GL_LIGHTING);
 	glDisable(GL_TEXTURE_2D);
+	static float radius = 1.0f;
+	static float ini_y = 9.25f;
+	float speed_ratio = speed / MAX_SPEED;
+	int color = floor(speed_ratio * 10 / 3);
+	// Desactivar la prueba de profundidad
+	glDisable(GL_DEPTH_TEST);
+	glDisable(GL_LIGHTING);
+
+	glMatrixMode(GL_PROJECTION);
+	glPushMatrix();
+	glLoadIdentity();
+	glOrtho(0.0, screen_center_x * 2, 10, 0.0, -1.0, 1.0);
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+	glLoadIdentity();
+	glPushAttrib(GL_CURRENT_BIT | GL_LINE_BIT);
+	glPolygonMode(GL_FRONT, GL_FILL);
+	
+	// Velocimetro rectangular
+	//glColor3f(SPEED_COLORS[color][0], SPEED_COLORS[color][1], SPEED_COLORS[color][2]);
+	//glColor3f(1, 1 * (1 - speed_ratio), 1 * (1 - speed_ratio));
+	glColor3f(1, 1, 1);
+	//glRectf(screen_center_x - 100, 9.30, screen_center_x - 99 + 200 * speed_ratio, 9.5);
+	glRectf(TEXT_X_MARGIN, 0.15, TEXT_X_MARGIN - 1 + 225 * speed_ratio, 0.5);
+
+	glMatrixMode(GL_MODELVIEW);
+	glPopMatrix();
+	glMatrixMode(GL_PROJECTION);
+	glPopMatrix();
+	glPopAttrib();
+
+	// Volver a activar la prueba de profundidad y luces
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_LIGHTING);
+	glEnable(GL_TEXTURE_2D);
+}
+
+void draw_gui(float radius = 1.0f, int num_segments = 10)
+{
+	draw_velocimeter();
+
+	// Desactivar la prueba de profundidad
+	glDisable(GL_DEPTH_TEST);
+	glDisable(GL_LIGHTING);
+	glDisable(GL_TEXTURE_2D);
+	
 
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
@@ -143,6 +143,15 @@ void draw_circle_viewport(float radius = 1.0f, int num_segments = 10)
 	glLoadIdentity();
 	glPushAttrib(GL_CURRENT_BIT | GL_LINE_BIT);
 	glColor3f(1, 1, 1);
+
+	glPushAttrib(GL_ALL_ATTRIB_BITS);
+	string puntuacion = "Meteoritos destruidos: " + to_string(meteoritos_destruidos);
+	string velocidad = "Velocidad: " + to_string_with_precision(speed) + " parsecs/s";
+	texto(TEXT_X_MARGIN, TEXT_Y_MARGIN, (char*)velocidad.c_str());
+	texto(TEXT_X_MARGIN, 2 * TEXT_Y_MARGIN, (char*)puntuacion.c_str());
+	glPopAttrib();
+
+
 	glLineWidth(ANCHO_LINEA_MIRILLA);
 	glBegin(GL_LINE_LOOP);
 	for (int i = 0; i < num_segments; i++) {
@@ -164,58 +173,16 @@ void draw_circle_viewport(float radius = 1.0f, int num_segments = 10)
 	glEnable(GL_LIGHTING);
 	glEnable(GL_TEXTURE_2D);
 	glEnable(GL_NORMALIZE);
-}
-
-void draw_velocimeter() 
-{
-	static float radius = 1.0f;
-	static float ini_y = 9.25f;
-	float speed_ratio = speed / MAX_SPEED;
-	int color = floor(speed_ratio * 10 / 3);
-	// Desactivar la prueba de profundidad
-	glDisable(GL_DEPTH_TEST);
-	glDisable(GL_LIGHTING);
-
-	glMatrixMode(GL_PROJECTION);
-	glPushMatrix();
-	glLoadIdentity();
-	glOrtho(0.0, screen_center_x * 2, 10, 0.0, -1.0, 1.0);
-	glMatrixMode(GL_MODELVIEW);
-	glPushMatrix();
-	glLoadIdentity();
-	glPushAttrib(GL_CURRENT_BIT | GL_LINE_BIT);
-	glPolygonMode(GL_FRONT, GL_FILL);
-	
-	//glColor3f(SPEED_COLORS[color][0], SPEED_COLORS[color][1], SPEED_COLORS[color][2]);
-	glColor3f(1, 1 * (1 - speed_ratio), 1 * (1 - speed_ratio));
-	// Velocimetro rectangular
-	glRectf(screen_center_x - 100, 9.30, screen_center_x - 99 + 200 * speed_ratio, 9.5);
-
-	glMatrixMode(GL_MODELVIEW);
-	glPopMatrix();
-	glMatrixMode(GL_PROJECTION);
-	glPopMatrix();
-	glPopAttrib();
-
-	// Volver a activar la prueba de profundidad y luces
-	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_LIGHTING);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 void ship_lights()
 {
-	static float offset = 0.2f;
-	Vec3 w = sistema->getw();
-	Vec3 v = sistema->getv();
-	Vec3 o = sistema->geto();
-	Vec3 poi = o - w;
+	static float offset = 0.15f;
 
-	/*
-	*/
-	Vec3 luz_1 = sistema->geto()*offset;
-	Vec3 luz_2 = sistema->geto()*-offset;
-	GLfloat pos_luz_1[] = { luz_1.x, luz_1.y , luz_1.z , 1 };
-	GLfloat pos_luz_2[] = { luz_2.x, luz_2.y , luz_2.z , 1 };
+	GLfloat pos_luz_1[] = { offset,  0, z0 , 1 };
+	GLfloat pos_luz_2[] = { -offset, 0 , z0 , 1 };
 	GLfloat dir_luz_1[] = { offset, 0, -1.0f };
 	GLfloat dir_luz_2[] = { -offset, 0, -1.0f };
 
@@ -248,16 +215,18 @@ void configure_lights()
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, COLOR_SOL);
 
 	// Luces de las alas de la nave
-	//glLightfv(GL_LIGHT1, GL_AMBIENT, NEGRO);
 	glLightfv(GL_LIGHT1, GL_DIFFUSE, BLANCO);
 	glLightfv(GL_LIGHT1, GL_SPECULAR, BLANCO);
 	glLightf(GL_LIGHT1, GL_SPOT_CUTOFF, SHIP_LIGHT_CUTOFF);
 	glLightf(GL_LIGHT1, GL_SPOT_EXPONENT, SHIP_LIGHT_EXPONENT);
+	glLightf(GL_LIGHT1, GL_CONSTANT_ATTENUATION, SHIPT_LIGHT_CONSTANT_ATTENUATION);
+	glLightf(GL_LIGHT1, GL_LINEAR_ATTENUATION, SHIPT_LIGHT_LINEAR_ATTENUATION);
 
 	glLightfv(GL_LIGHT2, GL_DIFFUSE, BLANCO);
 	glLightfv(GL_LIGHT2, GL_SPECULAR, BLANCO);
 	glLightf(GL_LIGHT2, GL_SPOT_CUTOFF, SHIP_LIGHT_CUTOFF);
 	glLightf(GL_LIGHT2, GL_SPOT_EXPONENT, SHIP_LIGHT_EXPONENT);
+	glLightf(GL_LIGHT2, GL_LINEAR_ATTENUATION, SHIPT_LIGHT_LINEAR_ATTENUATION);
 }
 
 void load_textures()
@@ -279,6 +248,18 @@ void load_textures()
 	loadImageFile((char*)"img/asteroid_00.jpeg");
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	glGenTextures(1, &tex_nave);
+	glBindTexture(GL_TEXTURE_2D, tex_nave);
+	loadImageFile((char*)"img/nave_cubemap.png");
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	glGenTextures(1, &tex_nave_ext);
+	glBindTexture(GL_TEXTURE_2D, tex_nave_ext);
+	loadImageFile((char*)"img/nave_cubemap_ext.png");
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 }
 
 void init()
@@ -289,7 +270,11 @@ void init()
 	load_textures();
 
 	for (int i = 0; i < NUM_METEORITOS; i++) {
-		meteoritos[i] = new Meteorito2();
+		meteoritos[i] = new Meteorito(tex_meteorito);
+	}
+
+	for (int i = 0; i < NUM_PROYECTILES; i++) {
+		balas[i] = new Bala();
 	}
 
 	glEnable(GL_DEPTH_TEST);
@@ -325,45 +310,42 @@ void load_skybox()
 	// el cubemap se deberá mover con la cámara para que sea inalcanzable
 	Vec3 o = sistema->geto();
 	glTranslatef(o.x, o.y, o.z);
-	//printf("%f, %f, %f\n", o.x, o.y, o.z);
 	
-   /***************************************************************************************
-	Crear un cubo con 6 quadtex y a cada uno darle unas coordenadas diferentes del cubemap. 
-	***************************************************************************************/
-	// Cara frontal
-	glBindTexture(GL_TEXTURE_2D, skybox);
-	quadtex(CUBEMAP_VERTEX[0], CUBEMAP_VERTEX[1], CUBEMAP_VERTEX[2], CUBEMAP_VERTEX[3], 
-		0.50f, 0.75f, 1/3.0f, 2/3.0f, 
-		1, 1);
-
-	// Cara derecha
-	quadtex(CUBEMAP_VERTEX[4], CUBEMAP_VERTEX[5], CUBEMAP_VERTEX[6], CUBEMAP_VERTEX[7],
-		0.75f, 1, 1/3.0f, 2/3.0f,
-		1, 1);
-
-	// Cara izquierda
-	quadtex(CUBEMAP_VERTEX[8], CUBEMAP_VERTEX[9], CUBEMAP_VERTEX[10], CUBEMAP_VERTEX[11],
-		0.25, 0.5f, 1/3.0f, 2/3.0f,
-		1, 1);
-
-	// Cara trasera
-	quadtex(CUBEMAP_VERTEX[12], CUBEMAP_VERTEX[13], CUBEMAP_VERTEX[14], CUBEMAP_VERTEX[15],
-		0, 0.25f, 1/3.0f, 2/3.0f,
-		1, 1);
-
-	// Cara superior
-	quadtex(CUBEMAP_VERTEX[16], CUBEMAP_VERTEX[17], CUBEMAP_VERTEX[18], CUBEMAP_VERTEX[19],
-		0.5f, 0.75f, 2/3.0f, 1,
-		1, 1);
-
-	// Cara inferior
-	quadtex(CUBEMAP_VERTEX[20], CUBEMAP_VERTEX[21], CUBEMAP_VERTEX[22], CUBEMAP_VERTEX[23],
-		0.5f, 0.75f, 0, 1/3.0f,
-		1, 1);
+	draw_skybox_cubemap(skybox);
 
 	glEnable(GL_LIGHTING);
 	glPopMatrix();
 
+}
+
+void load_ship_cubemap()
+{
+	glDisable(GL_LIGHTING);
+	glPushMatrix();
+
+	Vec3 o = sistema->geto();
+	Vec3 w = sistema->getw().normalize();
+	Vec3 v = sistema->getv().normalize();
+	Vec3 u = sistema->getu().normalize();
+
+	// Construir la matriz de transformación
+	GLfloat matriz_transformacion[16] = {
+		u.x, u.y, u.z, 0.0f,
+		-w.x, -w.y, -w.z, 0.0f,
+		v.x, v.y, v.z, 0.0f,
+		o.x, o.y, o.z, 1.0f
+	};
+	glMultMatrixf(matriz_transformacion);
+
+	if (camara_tercera_persona) {
+		draw_ship_cubemap_outside(tex_nave_ext);
+	}
+	else {
+		draw_ship_cubemap_inside(tex_nave);
+	}
+
+	glEnable(GL_LIGHTING);
+	glPopMatrix();
 }
 
 void display()
@@ -380,10 +362,14 @@ void display()
 	Vec3 w = sistema->getw();
 	Vec3 v = sistema->getv();
 	Vec3 o = sistema->geto();
-	Vec3 poi = o - w;
 
 	// Situacion y orientación de la cámara
-	gluLookAt(o.x, o.y, o.z, poi.x, poi.y, poi.z, v.x, v.y, v.z);
+	if (camara_tercera_persona) {
+		gluLookAt(cam_pos.x, cam_pos.y, cam_pos.z, poi.x, poi.y, poi.z, v.x, v.y, v.z);
+	} 
+	else {
+		gluLookAt(o.x, o.y, o.z, poi.x, poi.y, poi.z, v.x, v.y, v.z);
+	}
 
 	sistema->drawGlobal();
 
@@ -411,12 +397,41 @@ void display()
 
 	// Dibujar los meteoritos
 	for (int i = 0; i < NUM_METEORITOS; i++) {
-		meteoritos[i]->draw();
+		meteoritos[i]->draw(delta_time);
+		if (Vec3(meteoritos[i]->get_position() - o).norm() < MAX_DITANCIA_IMPACTO) {
+#ifdef SOUND_ON
+			PlaySound(TEXT("sound/hit.wav"), NULL, SND_FILENAME | SND_ASYNC);
+#endif
+		}
+	}
+
+	for (int i = 0; i < NUM_PROYECTILES; i++) {
+		if (balas[i]->isShooting()) {
+			balas[i]->draw(delta_time);
+		}
+	}
+
+	// Tratar de hacer lo siguiente de forma más óptima
+	for (int i = 0; i < NUM_PROYECTILES; i++) {
+		if (balas[i]->isShooting()) {
+			Vec3 bala_pos = balas[i]->get_position();
+			for (int j = 0; j < NUM_METEORITOS; j++) {
+				Vec3 met_pos = meteoritos[j]->get_position();
+				float distancia = (bala_pos - met_pos).norm();
+				if (Vec3(bala_pos - met_pos).norm() < MAX_DITANCIA_IMPACTO) {
+					meteoritos[j]->teleport();
+					meteoritos_destruidos++;
+				}
+			}
+		}
+	}
+
+	if (show_cockpit) {
+		load_ship_cubemap();
 	}
 
 	// Dibujar círculo central mirilla
-	draw_circle_viewport(RADIO_MIRILLA_CENTRAL);
-	draw_velocimeter();
+	draw_gui(RADIO_MIRILLA_CENTRAL);
 	
 
 	glutSwapBuffers();
@@ -471,8 +486,28 @@ void update()
 		sistema->rotar(rad(roll_angle), sistema->getw());
 	}
 
+	Vec3 o = sistema->geto();
+	Vec3 w = sistema->getw();
+	Vec3 v = sistema->getv();
+
 	// Movimiento de la nave
-	sistema->seto(sistema->geto() - sistema->getw() * speed * delta_time);
+	sistema->seto(o - w * speed * delta_time);
+
+	// Punto de vista del piloto
+	poi = w;
+	if (is_poi_yaw) {
+		angulo_poi += ANGULO_GIRO_POI * poi_direction * PIXELES_X_GRADOS;
+	}
+
+	if (camara_tercera_persona) {
+		poi = w * 3 - v * 0.5;
+		cam_pos = w * 3 + v * 0.5;
+		cam_pos.rotate(rad(angulo_poi), v);
+		cam_pos += o;
+	}	
+	poi.rotate(rad(angulo_poi), v);
+	poi = o - poi;
+	
 
 	glutPostRedisplay();
 }
@@ -484,16 +519,49 @@ void onTimer(int time)
 	update();
 }
 
+void catchKey(int key, int x, int y)
+{
+	switch (key) {
+	case GLUT_KEY_UP:
+		angulo_poi = 0;
+		is_poi_yaw = FALSE;
+		break;
+	case GLUT_KEY_LEFT:
+		poi_direction = 1;
+		is_poi_yaw = TRUE;
+		break;
+	case GLUT_KEY_RIGHT:
+		poi_direction = -1;
+		is_poi_yaw = TRUE;
+		break;
+	
+	}
+}
+
+void catchReleasedKey(int key, int x, int y)
+{
+	switch (key) {
+	case GLUT_KEY_LEFT:
+		is_poi_yaw = FALSE;
+		break;
+	case GLUT_KEY_RIGHT:
+		is_poi_yaw = FALSE;
+		break;
+	default:
+		break;
+	}
+}
+
 void onKey(unsigned char key, int x, int y)
 {
 	switch (key) {
 	case 'a':
-		speed += speed_delta * delta_time;
+		speed += ACCEL_SPEED * delta_time;
 		speed = min(speed, MAX_SPEED);
 		cout << "Acelerando, velocidad = " << speed << endl;
 		break;
 	case 'z':
-		speed -= speed_delta * delta_time;
+		speed -= STOP_SPEED * delta_time;
 		speed = max(0, speed);
 		cout << "Frenando, velocidad = " << speed << endl;
 		break;
@@ -519,6 +587,18 @@ void onKey(unsigned char key, int x, int y)
 		}
 		lights_button_pressed = TRUE;
 		break;
+	case 'c':
+		if (!cockpit_button_pressed) {
+			show_cockpit = !show_cockpit;
+			cockpit_button_pressed = TRUE;
+		}
+		break;
+	case 'p':
+		if (!camara_toggle_pressed) {
+			camara_tercera_persona = !camara_tercera_persona;
+			camara_toggle_pressed = TRUE;
+		}
+		break;
 	case 27:
 		exit(0);
 		break;
@@ -541,6 +621,26 @@ void onKeyRelease(unsigned char key, int x, int y)
 		case 'l':
 			lights_button_pressed = FALSE;
 			break;
+		case 'c':
+			cockpit_button_pressed = FALSE;
+			break;
+		case 'p':
+			camara_toggle_pressed = FALSE;
+			break;
+	}
+}
+
+void onMouseClick(int button, int state, int x, int y)
+{
+	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
+		Vec3 o = sistema->geto();
+		Vec3 w = sistema->getw();
+		Vec3 poi = o - w;
+		balas[num_bala % NUM_PROYECTILES]->set_vectors(poi, w);
+#ifdef SOUND_ON
+		PlaySound(TEXT("sound/shooting.wav"), NULL, SND_FILENAME | SND_ASYNC);
+#endif // SOUND_ON
+		num_bala++;
 	}
 }
 
@@ -579,8 +679,12 @@ int main(int argc, char** argv)
 	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
 	glutKeyboardFunc(onKey);
+	glutMouseFunc(onMouseClick);
+	glutSpecialFunc(catchKey);
+	glutSpecialUpFunc(catchReleasedKey);
 	glutKeyboardUpFunc(onKeyRelease);
 	glutPassiveMotionFunc(onMouseHover);
+	
 
 	// (1000 / refresh_rate) los milisegundos que tienen que pasar entre frame
 	glutTimerFunc(int(1000 / REFRESH_RATE), onTimer, int(1000 / REFRESH_RATE));
