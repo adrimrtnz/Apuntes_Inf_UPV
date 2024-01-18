@@ -19,7 +19,7 @@ private:
 	bool isExploding = FALSE;
 	bool isPlaying = FALSE;
 	float rps = 0, rot_angle = 0, rot_x, rot_y, rot_z;
-	float max_distance = DIM_CUBEMAP / 2.0;
+	float max_distance = MET_MAX_DISTANCE;
 	GLUquadricObj* quad;
 	GLuint tex_meteorito;
 	int numPts = 100;
@@ -30,9 +30,14 @@ public:
 	Vec3 get_position();
 	void draw(float delta_time);
 	void teleport();
-	void cambia_dir();
+	bool is_exploding();
 };
 
+
+bool Meteorito::is_exploding()
+{
+	return isExploding;
+}
 
 void Meteorito::draw_explosion(float delta_time) 
 {

@@ -13,6 +13,7 @@ private:
 	bool shoot = FALSE;
 public:
 	bool isShooting();
+	void impacto();
 	float distancia();
 	Vec3 get_position();
 	void set_vectors(Vec3 origen, Vec3 direccion);
@@ -25,6 +26,11 @@ void Bala::set_vectors(Vec3 src, Vec3 dst)
 	actual = src;
 	direccion = dst;
 	shoot = TRUE;
+}
+
+void Bala::impacto()
+{
+	shoot = FALSE;
 }
 
 bool Bala::isShooting()

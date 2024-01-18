@@ -33,6 +33,7 @@ using namespace cb;
 static const float AREA_MIRILLA = RADIO_MIRILLA_CENTRAL * RADIO_MIRILLA_CENTRAL * PI;
 static bool isRolling = FALSE;
 static bool lights_on = FALSE;
+static bool show_minimap = FALSE;
 static bool lights_button_pressed = FALSE;
 static bool show_cockpit = TRUE;
 static bool cockpit_button_pressed = FALSE;
@@ -57,9 +58,12 @@ static bool is_poi_yaw = FALSE;
 // IDs texturas
 static GLuint plataforma;
 static GLuint skybox;
+static GLuint sol_tex;
 static GLuint tex_meteorito;
 static GLuint tex_nave;
 static GLuint tex_nave_ext;
+static GLuint tex_ala;
+static GLuint cabeza_pilot_tex;
 
 static int mouse_x = screen_center_x;
 static int mouse_y = screen_center_y;
@@ -73,11 +77,13 @@ static float ini_y = 0.0f;
 static GLfloat yaw_angle = 0.0f;
 static GLfloat pitch_angle = 0.0f;
 static GLfloat roll_angle = 0.0f;
+static GLfloat alfa_sol = 0.0f;
 static int roll_side_flip = 0;
 static Meteorito* meteoritos[NUM_METEORITOS];
 static Bala* balas[NUM_PROYECTILES];
 static int num_bala = 0;
 static int meteoritos_destruidos = 0;
+GLUquadricObj* sol;
 
 //***************************************************************************
 
@@ -91,6 +97,9 @@ void draw_velocimeter()
 	static float ini_y = 9.25f;
 	float speed_ratio = speed / MAX_SPEED;
 	int color = floor(speed_ratio * 10 / 3);
+	int viewport[4];
+	glGetIntegerv(GL_VIEWPORT, viewport);
+
 	// Desactivar la prueba de profundidad
 	glDisable(GL_DEPTH_TEST);
 	glDisable(GL_LIGHTING);
@@ -98,7 +107,7 @@ void draw_velocimeter()
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
 	glLoadIdentity();
-	glOrtho(0.0, screen_center_x * 2, 10, 0.0, -1.0, 1.0);
+	gluOrtho2D(viewport[0], viewport[2], viewport[1], viewport[3]);
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
 	glLoadIdentity();
@@ -106,11 +115,8 @@ void draw_velocimeter()
 	glPolygonMode(GL_FRONT, GL_FILL);
 	
 	// Velocimetro rectangular
-	//glColor3f(SPEED_COLORS[color][0], SPEED_COLORS[color][1], SPEED_COLORS[color][2]);
-	//glColor3f(1, 1 * (1 - speed_ratio), 1 * (1 - speed_ratio));
 	glColor3f(1, 1, 1);
-	//glRectf(screen_center_x - 100, 9.30, screen_center_x - 99 + 200 * speed_ratio, 9.5);
-	glRectf(TEXT_X_MARGIN, 0.15, TEXT_X_MARGIN - 1 + 225 * speed_ratio, 0.5);
+	glRectf(TEXT_X_MARGIN, viewport[3] - TEXT_Y_MARGIN + 20, TEXT_X_MARGIN - 1 + 225 * speed_ratio, viewport[3] - TEXT_Y_MARGIN * 2 + 25);
 
 	glMatrixMode(GL_MODELVIEW);
 	glPopMatrix();
@@ -147,9 +153,86 @@ void draw_gui(float radius = 1.0f, int num_segments = 10)
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	string puntuacion = "Meteoritos destruidos: " + to_string(meteoritos_destruidos);
 	string velocidad = "Velocidad: " + to_string_with_precision(speed) + " parsecs/s";
+	string luces_str = "Estado Luces: " + on_off_str(lights_on);
 	texto(TEXT_X_MARGIN, TEXT_Y_MARGIN, (char*)velocidad.c_str());
 	texto(TEXT_X_MARGIN, 2 * TEXT_Y_MARGIN, (char*)puntuacion.c_str());
+	texto(TEXT_X_MARGIN, 3 * TEXT_Y_MARGIN, (char*)luces_str.c_str(), lights_on ? BLANCO : ROJO);
 	glPopAttrib();
+
+	// ********************************* MINIMAPA
+	if (show_minimap) {
+		static const int lado_minimapa = 175;
+		static const int offset_minimapa_x = 75;
+		static const int offset_minimapa_y = 25;
+		static const int line_width = 2;
+		glPushAttrib(GL_CURRENT_BIT);
+
+		glColor3f(0, 0, 0); // Color negro
+		glBegin(GL_QUADS);
+		glVertex2f(screen_center_x * 2 - (offset_minimapa_x + lado_minimapa), offset_minimapa_y); // Superior izquierdo
+		glVertex2f(screen_center_x * 2 - offset_minimapa_x, offset_minimapa_y); // Superior derecho
+		glVertex2f(screen_center_x * 2 - offset_minimapa_x, lado_minimapa + offset_minimapa_y); // Inferior derecho
+		glVertex2f(screen_center_x * 2 - (offset_minimapa_x + lado_minimapa), lado_minimapa + offset_minimapa_y); // Inferior izquierdo
+		glEnd();
+
+		// Añadir un borde blanco alrededor del MINIMAPA
+		glColor3f(1, 1, 1); // Color blanco
+		glLineWidth(2); // Ancho de línea de 2 píxeles
+		glBegin(GL_LINE_LOOP);
+		glVertex2f(screen_center_x * 2 - (offset_minimapa_x + lado_minimapa + 2), offset_minimapa_y + line_width); // Superior izquierdo
+		glVertex2f(screen_center_x * 2 - offset_minimapa_x, offset_minimapa_y + line_width); // Superior derecho
+		glVertex2f(screen_center_x * 2 - offset_minimapa_x, offset_minimapa_y + line_width + lado_minimapa); // Inferior derecho
+		glVertex2f(screen_center_x * 2 - (offset_minimapa_x + lado_minimapa + 2), offset_minimapa_y + line_width + lado_minimapa); // Inferior izquierdo
+		glEnd();
+
+		static Vec3 base = Vec3(0, 0, 0);
+		Vec3 my_pos = sistema->geto();
+		Vec3 ship_front = sistema->getw().normalize();
+		Vec3 diferencia = (my_pos - base);
+		float prod_escalar = ship_front.dot(Vec3(0, 1, 0));
+		float prod_cruz_z = ship_front.cross(Vec3(0, 1, 0)).z;
+		float w_norm = (sistema->getw().norm());
+		static float base_norm = Vec3(0, 1, 0).norm();
+		float angle = acos(prod_escalar / (w_norm * base_norm)) * 180 / PI;
+		//float angle = acos(prod_escalar) * 180 / PI;
+
+		if (prod_cruz_z < 0) {
+			angle = 360 - angle;
+		}
+
+		// Base
+		string altura_respecto_base = "z-base: " + to_string_with_precision(diferencia.z);
+		texto(screen_center_x * 2 - 240, TEXT_Y_MARGIN * 1.7, (char*)altura_respecto_base.c_str());
+
+		float base_offset_x = max(min(diferencia.x, offset_minimapa_x  -8), -90);
+		float base_offset_y = max(min(diferencia.y, offset_minimapa_x - 8), -90);
+
+		glPushMatrix();
+		glColor3f(0, 1, 0); // Color verde
+		glBegin(GL_QUADS);
+		glVertex2f(screen_center_x * 2 - (lado_minimapa + 10) - base_offset_x, 115 + base_offset_y); // Sup izq
+		glVertex2f(screen_center_x * 2 - (lado_minimapa + 10) - base_offset_x, 135 + base_offset_y); // Inferior izquierdo
+		glVertex2f(screen_center_x * 2 - (lado_minimapa - 10) - base_offset_x, 135 + base_offset_y); // Inferior derecho
+		glVertex2f(screen_center_x * 2 - (lado_minimapa - 10) - base_offset_x, 115 + base_offset_y); // Sup derecho
+		glEnd();
+		glPopMatrix();
+
+		// Nave
+		glPushMatrix();
+		glColor3f(0, 0, 1); // Color amarillo
+		glTranslatef(screen_center_x * 2 - lado_minimapa, 125, 0);
+		glRotatef(angle - 180, 0, 0, 1);
+		glTranslatef(-(screen_center_x * 2 - lado_minimapa), -125, 0);
+		glBegin(GL_TRIANGLES);
+		glVertex2f(screen_center_x * 2 - 175, 115); // Superior
+		glVertex2f(screen_center_x * 2 - 185, 135); // Inferior izquierdo
+		glVertex2f(screen_center_x * 2 - 165, 135); // Inferior derecho
+		glEnd();
+		glPopMatrix();
+
+		glPopAttrib();
+		// ********************************* FIN MINIMAPA
+	}
 
 
 	glLineWidth(ANCHO_LINEA_MIRILLA);
@@ -260,14 +343,45 @@ void load_textures()
 	loadImageFile((char*)"img/nave_cubemap_ext.png");
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	glGenTextures(1, &sol_tex);
+	glBindTexture(GL_TEXTURE_2D, sol_tex);
+	loadImageFile((char*)"img/sol.jpg");
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	glGenTextures(1, &tex_ala);
+	glBindTexture(GL_TEXTURE_2D, tex_ala);
+	loadImageFile((char*)"img/ala.jpg");
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	glGenTextures(1, &cabeza_pilot_tex);
+	glBindTexture(GL_TEXTURE_2D, cabeza_pilot_tex);
+	loadImageFile((char*)"img/cabolo.jpg");
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 }
 
 void init()
 {
 	cout << glGetString(GL_VERSION) << endl;
+
+	printf("Nuevos Controles:\n");
+	printf("    - Q: Alabeo hacia la izquierda\n");
+	printf("    - W: Alabeo hacia la derecha\n");
+	printf("    - P: Alternar vista primera/tercera persona\n");
+	printf("    - TAB: Muestra/Oculta el minimapa\n");
+	printf("    - Flecha Derecha: Gira la vista hacia la derecha\n");
+	printf("    - Flecha Izquierda: Gira la vista hacia la izquierda\n");
+	printf("    - Flecha Arriba: Resetea angulo de la vista\n");
+	printf("    - Boton izquierdo raton: Disparo\n");
 	
 	configure_lights();
 	load_textures();
+	sol = gluNewQuadric();
+	gluQuadricTexture(sol, GL_TRUE);
+	gluQuadricNormals(sol, GLU_SMOOTH);
 
 	for (int i = 0; i < NUM_METEORITOS; i++) {
 		meteoritos[i] = new Meteorito(tex_meteorito);
@@ -336,9 +450,14 @@ void load_ship_cubemap()
 		o.x, o.y, o.z, 1.0f
 	};
 	glMultMatrixf(matriz_transformacion);
-
 	if (camara_tercera_persona) {
-		draw_ship_cubemap_outside(tex_nave_ext);
+		glRotatef(deg(yaw_angle), 0, -1, 0);
+		glRotatef(deg(pitch_angle)/2, 1, 0, 0);
+		glPushMatrix();
+		glTranslatef(0, 0.1, -DIM_PILOT_HEAD);
+		draw_pilot(cabeza_pilot_tex);
+		glPopMatrix();
+		draw_ship_cubemap_outside(tex_nave_ext, tex_ala, angulo_poi);
 	}
 	else {
 		draw_ship_cubemap_inside(tex_nave);
@@ -368,18 +487,14 @@ void display()
 		gluLookAt(cam_pos.x, cam_pos.y, cam_pos.z, poi.x, poi.y, poi.z, v.x, v.y, v.z);
 	} 
 	else {
-		gluLookAt(o.x, o.y, o.z, poi.x, poi.y, poi.z, v.x, v.y, v.z);
+		cam_pos = o;
+		gluLookAt(cam_pos.x, cam_pos.y, cam_pos.z, poi.x, poi.y, poi.z, v.x, v.y, v.z);
 	}
-
-	sistema->drawGlobal();
 
 	glPushAttrib(GL_CURRENT_BIT);
 	glColor3f(0, 0, 1);
-	//glPolygonMode(GL_FRONT, GL_LINE);
 	
 	// Dibujar la malla
-	glPushAttrib(GL_ALL_ATTRIB_BITS);
-	//glMaterialfv(GL_FRONT, GL_DIFFUSE, AZUL);
 	glBindTexture(GL_TEXTURE_2D, plataforma);
 	quad(PLATAFORMA_V[0], PLATAFORMA_V[1], PLATAFORMA_V[2], PLATAFORMA_V[3], RESOLUCION, RESOLUCION);
 	glPopAttrib();
@@ -387,8 +502,15 @@ void display()
 	// Objetos Iluminacion
 	put_lights_on_scene();
 	glPushMatrix();
-	glTranslatef(POS_SOL[0], POS_SOL[1], POS_SOL[2]);
-	glutWireSphere(0.1, 10, 10);
+	glPushAttrib(GL_ALL_ATTRIB_BITS);
+
+	// dibujar Sol sin luz para que los focos no lo iluminen
+	glDisable(GL_LIGHTING);
+	glBindTexture(GL_TEXTURE_2D, sol_tex);
+	glTranslatef(POS_SOL[0] + o.x, POS_SOL[1] + o.y, POS_SOL[2] + o.z);
+	glRotatef(alfa_sol, 0, 0, 1);
+	gluSphere(sol, 22, 20, 20);
+	glEnable(GL_LIGHTING);
 	glPopMatrix();
 	glPopAttrib();
 
@@ -397,11 +519,13 @@ void display()
 
 	// Dibujar los meteoritos
 	for (int i = 0; i < NUM_METEORITOS; i++) {
-		meteoritos[i]->draw(delta_time);
-		if (Vec3(meteoritos[i]->get_position() - o).norm() < MAX_DITANCIA_IMPACTO) {
+		if (!esta_detras(poi -  cam_pos, (meteoritos[i]->get_position() - cam_pos)) || meteoritos[i]->is_exploding()) {
+			meteoritos[i]->draw(delta_time);
+			if (Vec3(meteoritos[i]->get_position() - o).norm() < MAX_DITANCIA_IMPACTO) {
 #ifdef SOUND_ON
-			PlaySound(TEXT("sound/hit.wav"), NULL, SND_FILENAME | SND_ASYNC);
+				PlaySound(TEXT("sound/hit.wav"), NULL, SND_FILENAME | SND_ASYNC);
 #endif
+			}
 		}
 	}
 
@@ -411,7 +535,7 @@ void display()
 		}
 	}
 
-	// Tratar de hacer lo siguiente de forma más óptima
+	// Comprobacion de colisiones
 	for (int i = 0; i < NUM_PROYECTILES; i++) {
 		if (balas[i]->isShooting()) {
 			Vec3 bala_pos = balas[i]->get_position();
@@ -420,6 +544,7 @@ void display()
 				float distancia = (bala_pos - met_pos).norm();
 				if (Vec3(bala_pos - met_pos).norm() < MAX_DITANCIA_IMPACTO) {
 					meteoritos[j]->teleport();
+					balas[i]->impacto();
 					meteoritos_destruidos++;
 				}
 			}
@@ -433,7 +558,6 @@ void display()
 	// Dibujar círculo central mirilla
 	draw_gui(RADIO_MIRILLA_CENTRAL);
 	
-
 	glutSwapBuffers();
 	FPS();
 }
@@ -448,7 +572,7 @@ void reshape(GLint w, GLint h)
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
-	gluPerspective(30, ra, 0.1, zFar);
+	gluPerspective(FOVY_CAMARA, ra, 0.1, zFar);
 }
 
 void update()
@@ -459,6 +583,7 @@ void update()
 	int hora_actual = glutGet(GLUT_ELAPSED_TIME);
 	delta_time = (hora_actual - hora_anterior) / 1000.0f;
 	hora_anterior = hora_actual;
+	alfa_sol += RPS_SOL * 360 * delta_time;
 
 	if (mouse_distance_to_center > 0) {
 		// Que el raton se estabilice en el centro de nuevo
@@ -466,7 +591,6 @@ void update()
 		int delta_y = mouse_delta_y * delta_time > 0 ? ceil(mouse_delta_y * delta_time) : floor(mouse_delta_y * delta_time);
 		int x = mouse_x - delta_x;
 		int y = mouse_viewport_y + delta_y;
-		//cout << mouse_delta_x << " " << mouse_delta_y << endl;
 		glutWarpPointer(x, y);
 
 		// Guinyada de la nave
@@ -481,7 +605,6 @@ void update()
 
 	if (isRolling) {
 		// Alabeo de la nave
-		// TODO meter el momentum para que sea mas realista
 		roll_angle = ANGULO_ALABEO * roll_side_flip * PIXELES_X_GRADOS;
 		sistema->rotar(rad(roll_angle), sistema->getw());
 	}
@@ -556,44 +679,41 @@ void onKey(unsigned char key, int x, int y)
 {
 	switch (key) {
 	case 'a':
+	case 'A':
 		speed += ACCEL_SPEED * delta_time;
 		speed = min(speed, MAX_SPEED);
-		cout << "Acelerando, velocidad = " << speed << endl;
 		break;
 	case 'z':
+	case 'Z':
 		speed -= STOP_SPEED * delta_time;
 		speed = max(0, speed);
-		cout << "Frenando, velocidad = " << speed << endl;
 		break;
 	case 'q':
-		cout << "Alabeando a la izquierda" << endl;
+	case 'Q':
 		isRolling = TRUE;
 		roll_side_flip = 1;
 		break;
 	case 'w':
-		cout << "Alabeando a la derecha" << endl;
+	case 'W':
 		isRolling = TRUE;
 		roll_side_flip = -1;
 		break;
 	case 'l':
+	case 'L':
 		if (!lights_button_pressed) {
-			if (lights_on) {
-				cout << "Apagando luces" << endl;
-			}
-			else {
-				cout << "Encenciendo luces" << endl;
-			}
 			lights_on = !lights_on;
 		}
 		lights_button_pressed = TRUE;
 		break;
 	case 'c':
+	case 'C':
 		if (!cockpit_button_pressed) {
 			show_cockpit = !show_cockpit;
 			cockpit_button_pressed = TRUE;
 		}
 		break;
 	case 'p':
+	case 'P':
 		if (!camara_toggle_pressed) {
 			camara_tercera_persona = !camara_tercera_persona;
 			camara_toggle_pressed = TRUE;
@@ -611,21 +731,28 @@ void onKeyRelease(unsigned char key, int x, int y)
 {
 	switch (key) {
 		case 'q':
-			cout << "Dejando de alabear a la izquierda" << endl;
+		case 'Q':
 			isRolling = FALSE;
 			break;
 		case 'w':
-			cout << "Dejando de alabear a la derecha" << endl;
+		case 'W':
 			isRolling = FALSE;
 			break;
 		case 'l':
+		case 'L':
 			lights_button_pressed = FALSE;
 			break;
 		case 'c':
+		case 'C':
 			cockpit_button_pressed = FALSE;
 			break;
 		case 'p':
+		case 'P':
 			camara_toggle_pressed = FALSE;
+			break;
+		case 9:
+			// Identificador de la tecla tab
+			show_minimap = !show_minimap;
 			break;
 	}
 }

@@ -3,29 +3,34 @@
 // Constantes Globales
 static const float REFRESH_RATE = 60;
 static const int RESOLUCION = 200;
+static const float DIM_PILOT_HEAD = 0.05f;
+static const float DIM_PILOT_BODY = 0.08f;
 static const float DIM_ESPACIO = 3;
-static const float DIM_CUBEMAP = 150;
+static const float DIM_CUBEMAP = 500;
+static const float MET_MAX_DISTANCE = 100.0f;
 static const float DIM_SHIP_CUBEMAP = 0.2f;
 static const float SHIP_LIGHT_CUTOFF = 7.5;
 static const float SHIP_LIGHT_EXPONENT = 2.0f;
 static const float SHIPT_LIGHT_CONSTANT_ATTENUATION = 1.0f;
 static const float SHIPT_LIGHT_LINEAR_ATTENUATION = 0.05f;
 static const float zFar = 1000;
+static const float FOVY_CAMARA = 30;
 static const float ANGULO_GIRO = 180.0f;
 static const float ANGULO_ALABEO = 2.0f;
 static const float MAX_ANGULO_CABECEO = 89.0f;
 static const float MAX_ANGULO_ALABEO = 30.0f;
 static const float ANGULO_GIRO_POI = 1.0f;
+static const float RPS_SOL = 0.01f;
 static const float PIXELES_X_GRADOS = 1.0f;
 static const int INITIAL_WIDTH = 1280;
 static const int INITIAL_HEIGHT = 720;
 static const float EPSILON = 1e-3;
-static const int MAX_SPEED = 10;
+static const int MAX_SPEED = 20;
 static const float ACCEL_SPEED = 5.0f;
 static const float STOP_SPEED = 10.0f;
 static const float RADIO_MIRILLA_CENTRAL = 12.0f;
 static const float ANCHO_LINEA_MIRILLA = 3.0f;
-static const int NUM_METEORITOS = 200;
+static const int NUM_METEORITOS = 400;
 static const int NUM_PROYECTILES = 4;
 static const float MAX_DITANCIA_IMPACTO = 1.5f;
 static const float MIN_RPS_METEORITO = 0.1f;
@@ -135,15 +140,49 @@ GLfloat SHIP_CUBEMAP_VERTEX_OUTSIDE[][3] = {
 	{  DIM_SHIP_CUBEMAP, -DIM_SHIP_CUBEMAP,  DIM_SHIP_CUBEMAP/2},	// Arriba 3 v18
 	{ -DIM_SHIP_CUBEMAP, -DIM_SHIP_CUBEMAP,  DIM_SHIP_CUBEMAP/2},	// Arriba 4 v19
 
-	{ -DIM_SHIP_CUBEMAP, -DIM_SHIP_CUBEMAP, -DIM_SHIP_CUBEMAP/2 },	// Abajo 1 v20
-	{  DIM_SHIP_CUBEMAP, -DIM_SHIP_CUBEMAP, -DIM_SHIP_CUBEMAP/2 },	// Abajo 2 v21
-	{  DIM_SHIP_CUBEMAP,  DIM_SHIP_CUBEMAP, -DIM_SHIP_CUBEMAP/2 },	// Abajo 3 v22
-	{ -DIM_SHIP_CUBEMAP,  DIM_SHIP_CUBEMAP, -DIM_SHIP_CUBEMAP/2 },	// Abajo 4 v23
+	{ -DIM_SHIP_CUBEMAP, -DIM_SHIP_CUBEMAP, -DIM_SHIP_CUBEMAP },	// Abajo 1 v20
+	{  DIM_SHIP_CUBEMAP, -DIM_SHIP_CUBEMAP, -DIM_SHIP_CUBEMAP },	// Abajo 2 v21
+	{  DIM_SHIP_CUBEMAP,  DIM_SHIP_CUBEMAP, -DIM_SHIP_CUBEMAP },	// Abajo 3 v22
+	{ -DIM_SHIP_CUBEMAP,  DIM_SHIP_CUBEMAP, -DIM_SHIP_CUBEMAP },	// Abajo 4 v23
+};
+
+// Vertices del cubemap de la cabeza del piloto. Parto de la base de los anteriores y reordeno vertices
+// para hacerlo en sentido antiorario visto desde fuera, no desde dentro como los de antes
+GLfloat CUBEMAP_PILOT_VERTEX[][3] = {
+	{  DIM_PILOT_HEAD,  DIM_PILOT_HEAD, -DIM_PILOT_HEAD },	// Frontal 2 v1
+	{ -DIM_PILOT_HEAD,  DIM_PILOT_HEAD, -DIM_PILOT_HEAD },	// Frontal 1 v0
+	{ -DIM_PILOT_HEAD,  DIM_PILOT_HEAD,  DIM_PILOT_HEAD },	// Frontal 4 v3
+	{  DIM_PILOT_HEAD,  DIM_PILOT_HEAD,  DIM_PILOT_HEAD },	// Frontal 3 v2
+
+	{  DIM_PILOT_HEAD, -DIM_PILOT_HEAD, -DIM_PILOT_HEAD },	// Derecha 2 v5
+	{  DIM_PILOT_HEAD,  DIM_PILOT_HEAD, -DIM_PILOT_HEAD },	// Derecha 1 v4
+	{  DIM_PILOT_HEAD,  DIM_PILOT_HEAD,  DIM_PILOT_HEAD },	// Derecha 4 v7
+	{  DIM_PILOT_HEAD, -DIM_PILOT_HEAD,  DIM_PILOT_HEAD },	// Derecha 3 v6
+
+	{ -DIM_PILOT_HEAD,  DIM_PILOT_HEAD, -DIM_PILOT_HEAD },	// Izquierda 2 v9
+	{ -DIM_PILOT_HEAD, -DIM_PILOT_HEAD, -DIM_PILOT_HEAD },	// Izquierda 1 v8
+	{ -DIM_PILOT_HEAD, -DIM_PILOT_HEAD,  DIM_PILOT_HEAD },	// Izquierda 4 v11
+	{ -DIM_PILOT_HEAD,  DIM_PILOT_HEAD,  DIM_PILOT_HEAD },	// Izquierda 3 v10
+
+	{ -DIM_PILOT_HEAD, -DIM_PILOT_HEAD, -DIM_PILOT_HEAD },	// Detras 2 v13
+	{  DIM_PILOT_HEAD, -DIM_PILOT_HEAD, -DIM_PILOT_HEAD },	// Detras 1 v12
+	{  DIM_PILOT_HEAD, -DIM_PILOT_HEAD,  DIM_PILOT_HEAD },	// Detras 4 v15
+	{ -DIM_PILOT_HEAD, -DIM_PILOT_HEAD,  DIM_PILOT_HEAD },	// Detras 3 v14
+
+	{  DIM_PILOT_HEAD,  DIM_PILOT_HEAD,  DIM_PILOT_HEAD },	// Arriba 2 v17
+	{ -DIM_PILOT_HEAD,  DIM_PILOT_HEAD,  DIM_PILOT_HEAD },	// Arriba 1 v16
+	{ -DIM_PILOT_HEAD, -DIM_PILOT_HEAD,  DIM_PILOT_HEAD },	// Arriba 4 v19
+	{  DIM_PILOT_HEAD, -DIM_PILOT_HEAD,  DIM_PILOT_HEAD },	// Arriba 3 v18
+
+	{  DIM_PILOT_HEAD, -DIM_PILOT_HEAD, -DIM_PILOT_HEAD },	// Abajo 2 v21
+	{ -DIM_PILOT_HEAD, -DIM_PILOT_HEAD, -DIM_PILOT_HEAD },	// Abajo 1 v20
+	{ -DIM_PILOT_HEAD,  DIM_PILOT_HEAD, -DIM_PILOT_HEAD },	// Abajo 4 v23
+	{  DIM_PILOT_HEAD,  DIM_PILOT_HEAD, -DIM_PILOT_HEAD },	// Abajo 3 v22
 };
 
 
 // Configuracion Iluminacion
-static const float POS_SOL[] = { 1, 10, 2, 0.0 };
+static const float POS_SOL[] = { 220, 400, 220, 0.0 };
 static const float COLOR_SOL[] = { 1, 1, 1, 1 };
 
 

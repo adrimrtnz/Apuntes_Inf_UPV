@@ -1,47 +1,77 @@
 ﻿  Main.cpp
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\config.h(22,30): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\config.h(27,30): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
   (compilando archivo de origen "Main.cpp")
   
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Meteorito.h(54,37): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\utils.h(112,26): warning C4305: 'inicializando': truncamiento de 'double' a 'GLfloat'
   (compilando archivo de origen "Main.cpp")
   
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Meteorito.h(55,37): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\utils.h(112,30): warning C4305: 'inicializando': truncamiento de 'double' a 'GLfloat'
   (compilando archivo de origen "Main.cpp")
   
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Meteorito.h(56,37): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\utils.h(113,22): warning C4305: 'inicializando': truncamiento de 'double' a 'GLfloat'
   (compilando archivo de origen "Main.cpp")
   
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Meteorito.h(58,16): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\utils.h(113,26): warning C4305: 'inicializando': truncamiento de 'double' a 'GLfloat'
+  (compilando archivo de origen "Main.cpp")
+  
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\utils.h(113,30): warning C4305: 'inicializando': truncamiento de 'double' a 'GLfloat'
+  (compilando archivo de origen "Main.cpp")
+  
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Meteorito.h(59,37): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
   (compilando archivo de origen "Main.cpp")
   
 C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Meteorito.h(60,37): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
   (compilando archivo de origen "Main.cpp")
   
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Meteorito.h(60,26): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Meteorito.h(61,37): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
   (compilando archivo de origen "Main.cpp")
   
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Meteorito.h(88,37): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Meteorito.h(63,16): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
   (compilando archivo de origen "Main.cpp")
   
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Meteorito.h(88,22): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Meteorito.h(65,37): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
   (compilando archivo de origen "Main.cpp")
   
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Meteorito.h(89,37): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Meteorito.h(65,26): warning C4305: 'argumento': truncamiento de 'double' a 'float'
   (compilando archivo de origen "Main.cpp")
   
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Meteorito.h(89,22): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Meteorito.h(93,37): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
   (compilando archivo de origen "Main.cpp")
   
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(93,12): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(113,25): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(465,15): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(466,15): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(656,30): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(657,27): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(658,27): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Meteorito.h(93,22): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  (compilando archivo de origen "Main.cpp")
+  
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Meteorito.h(94,37): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  (compilando archivo de origen "Main.cpp")
+  
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Meteorito.h(94,22): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  (compilando archivo de origen "Main.cpp")
+  
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(99,12): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(119,130): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(119,53): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(172,34): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(173,34): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(174,34): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(175,34): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(182,34): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(183,34): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(184,34): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(185,34): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(205,50): warning C4244: 'argumento': conversión de 'double' a 'unsigned int'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(223,36): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(225,16): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(227,34): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(228,34): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(229,34): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(457,19): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(590,15): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(591,15): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(783,30): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(784,27): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Main.cpp(785,27): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
   Generando código
-  9 of 236 functions ( 3.8%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    5 functions had inline decision re-evaluated but remain unchanged
+  Previous IPDB was built with incompatible compiler, fall back to full compilation.
+  All 245 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Generación de código finalizada
   Lab_06.vcxproj -> C:\Users\adri_\OneDrive\UPV\4º\SGI\Practicas_GL_\Lab_06\Lab_06.exe

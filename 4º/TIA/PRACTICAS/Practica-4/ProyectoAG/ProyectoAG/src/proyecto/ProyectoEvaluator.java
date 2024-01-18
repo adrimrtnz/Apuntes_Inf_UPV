@@ -16,17 +16,7 @@ public class ProyectoEvaluator implements Evaluator<ArrayList<Double>>
 		int riesgo = 0;
 		
 		for (int id = 0; id < fenotype.size(); id++)
-		{
-			inversion += fenotype.get(id);
-			if (inversion > DatosInversiones.maxInversionTotal) 
-			{
-				// No se puede invertir más del 100%
-				beneficio = Double.MIN_VALUE;
-				riesgo = Integer.MAX_VALUE;
-				break;
-			}
-			
-			
+		{			
 			beneficio += fenotype.get(id) * DatosInversiones.beneficioEmpresa[id];
 			if (fenotype.get(id) > 0) {				
 				riesgo += DatosInversiones.riesgoEmpresa[id];
