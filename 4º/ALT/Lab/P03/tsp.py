@@ -679,8 +679,8 @@ def experimento():
     stats_dict = collections.defaultdict(float)
     num_instancias = 2
     root_seed = 42
-    min_talla = 10
-    max_talla = 20
+    min_talla = 5
+    max_talla = 10
 
     for talla in range(min_talla, max_talla+1):
         np.random.seed(root_seed)
@@ -688,7 +688,7 @@ def experimento():
         for seed in seeds:
             g = generate_random_digraph(talla, seed=seed)
             for label, clase in repertorio_cotas:
-                print(f'[INFO] Talla {talla}, clase {label}')
+                #print(f'[INFO] Talla {talla}, clase {label}')
                 obj = clase(g)
                 fx, x, stats = obj.solve()
                 if (x, fx) != (None, float('inf')):
@@ -696,31 +696,31 @@ def experimento():
                         stats_dict[talla, label, key] += value
 
 
-    out_file = open('mi_salida.txt', '+w', encoding='utf-8')
+    #out_file = open('mi_salida.txt', '+w', encoding='utf-8')
     keys = list(stats.keys())
     for key in keys:
         print('-'*(61-len(key)//2 + 1*(len(key) % 2 == 0)), f'{key}', '-'*(61-len(key)//2))
         print('talla',end=' ')
-        out_file.write('-'*(61-len(key)//2 + 1*(len(key) % 2 == 0)) + f' {key} ' + '-'*(60-len(key)//2) + '\n')
-        out_file.write('talla ')
+        #out_file.write('-'*(61-len(key)//2 + 1*(len(key) % 2 == 0)) + f' {key} ' + '-'*(60-len(key)//2) + '\n')
+        #out_file.write('talla ')
 
         for label, _ in repertorio_cotas:
             print(f'{label:>11}',end=' ')
-            out_file.write(f'{label:>11} ')
+            #out_file.write(f'{label:>11} ')
         print()
-        out_file.write('\n')
+        #out_file.write('\n')
 
         for talla in range(min_talla, max_talla+1):
             print(f'{talla:>5}',end=' ')
-            out_file.write(f'{talla:>5} ')
+            #out_file.write(f'{talla:>5} ')
             for label, _ in repertorio_cotas:
                 print(f'{stats_dict[talla, label, key]/num_instancias:11.2f}', end=' ')
-                out_file.write(f'{stats_dict[talla, label, key]/num_instancias:11.2f} ')
+                #out_file.write(f'{stats_dict[talla, label, key]/num_instancias:11.2f} ')
             print()
-            out_file.write('\n')
+            #out_file.write('\n')
         print()
-        out_file.write('\n')
-    out_file.close()
+        #out_file.write('\n')
+    #out_file.close()
                 
     
 
