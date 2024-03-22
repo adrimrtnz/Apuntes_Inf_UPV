@@ -1,0 +1,1 @@
+{"type":"FeatureCollection","features":[{"type":"Feature","id":"0a74ba16-187a-448f-894b-ccf6ece458fb","geometry":{"type":"Polygon","coordinates":[[[36550, 15612],[37586, 15612],[37586, 17464],[36550, 17464],[36550, 15612]]]},"properties":{"objectType":"annotation","classification":{"name":"UDH-sure","color":[98, 2, 2]}}}]}
